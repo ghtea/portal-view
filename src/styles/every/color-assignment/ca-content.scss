@@ -1,0 +1,17 @@
+@import 'palette.scss';
+
+// ELEMENT__PROPERTY__SITUATION___THEME
+// big-element--small-element
+//                            what-it-is--
+//                                        __big-modifier--small-modifier
+
+// name of theme: theme-light, theme-dark
+
+
+$content__map-color-assignment: (
+
+    content--input--label__font-color___light: map-get($map-color-series__basic, '40'),
+
+    
+
+);

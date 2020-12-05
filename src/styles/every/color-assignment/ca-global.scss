@@ -1,0 +1,98 @@
+@import 'palette.scss';
+
+// ELEMENT__PROPERTY__SITUATION___THEME
+// big-element--small-element
+//                            what-it-is--
+//                                        __big-modifier--small-modifier
+
+// name of theme: theme-light, theme-dark
+
+
+$global__map-color-assignment: (
+
+    body__background-color___light: map-get($map-color-series__basic, '100'),
+
+    body__font-color___light: map-get($map-color-series__basic, '25'),
+
+
+    div__background-color___light: transparent,
+    div__background-color___dark: transparent,
+    div__font-color___light: inherit,
+    div__font-color___dark: inherit ,
+    div__border-color___light: transparent,
+    div__border-color___dark: transparent,
+
+
+    a__font-color___light: inherit,
+    a__font-color___dark: inherit,
+
+
+    button__background-color___light: transparent,
+    button__background-color___dark: transparent,
+    button__font-color___light: inherit,
+    button__font-color___dark: inherit,
+    button__border-color___light: transparent,
+    button__border-color___dark: transparent,
+
+
+    button__background-color__hover___light: transparent,
+    button__background-color__hover___dark: transparent,
+    button__font-color__hover___light: inherit,
+    button__font-color__hover___dark: inherit,
+    button__border-color__hover___light: transparent,
+    button__border-color__hover___dark: transparent,
+
+
+    button__background-color__focus___light: transparent,
+    button__background-color__focus___dark: transparent,
+    button__font-color__focus___light: inherit,
+    button__font-color__focus___dark: inherit,
+    button__border-color__focus___light:  map-get($map-color-series__basic, '50'),
+    button__border-color__focus___dark:  map-get($map-color-series__basic, '50'),
+    button__outline-color__focus___light:  transparent, // rgba(map-get($map-color-series__basic, '50'), 0.5),
+    button__outline-color__focus___dark:  transparent, // rgba(map-get($map-color-series__basic, '50'), 0.5),
+
+
+    button-main__background-color___light: map-get($map-color-series__main, '50'),
+    button-main__background-color___dark: map-get($map-color-series__main, '50'),
+    button-main__font-color___light: map-get($map-color-series__main, '100'),
+    button-main__font-color___dark: map-get($map-color-series__main, '00'),
+    button-main__border-color__focus___light:  transparent,
+    button-main__border-color__focus___dark:  transparent,
+    button-main__outline-color__focus___light:  transparent,
+    button-main__outline-color__focus___dark:  transparent,
+
+    
+    button-social__font-color___light: map-get($map-color-series__basic, '100'),
+
+    button-google__background-color___light: map-get($map-color-series__google, '50'),
+
+    button-facebook__background-color___light: map-get($map-color-series__facebook, '50'),
+
+    button-twitter__background-color___light: map-get($map-color-series__twitter, '60'),
+
+    
+    input-text__background-color___light: map-get($map-color-series__basic, '100'),
+
+    input-text__font-color-___light: map-get($map-color-series__basic, '25'),
+
+    input-text__border-color___light:  map-get($map-color-series__basic, '75'),
+
+
+    input-text__background-color__focus___light: map-get($map-color-series__main, '100'),
+
+    input-text__font-color__focus___light: map-get($map-color-series__basic, '25'),
+
+    input-text__border-color__focus___light:  map-get($map-color-series__main, '75'),
+
+    input-text__outline-color__focus___light:  transparent,
+
+    input-text--box-shadow-color__focus___light:  rgba(map-get($map-color-series__main, '60'), 0.3),
+
+
+    header__background-color___light: transparent,
+    header__background-color___dark: transparent,
+    header__font-color___light: inherit,
+    header__font-color___dark: inherit
+
+);

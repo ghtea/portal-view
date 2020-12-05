@@ -1,0 +1,196 @@
+@import 'styles/every.scss';
+
+
+body {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include color-body-each-theme(background-color, body__background-color);
+    @include color-body-each-theme(color, body__font-color);
+
+    // use div.app as body (about colors)
+
+    width: 100%; min-width: $device-xs__min-width;
+    height: auto; 
+
+    box-sizing: border-box;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    
+    position: relative;
+    
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+}
+
+div {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include color-each-theme-not-module(background-color, div__background-color);
+    @include color-each-theme-not-module(color, div__font-color);
+
+    width: 100%;
+    height: auto; 
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    
+    position: relative;
+    z-index: inherit;
+
+    overflow: visible;
+
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+
+
+}
+
+
+button {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    
+    @include color-each-theme-not-module(background-color, button__background-color);
+    @include color-each-theme-not-module(color, button__font-color);
+
+    @include frame-each-theme-not-module(border, 1px, solid, button__border-color);
+    border-radius: 4px;
+
+    width: auto;
+    height: auto; 
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    
+    
+    font-family: 'Noto Sans KR', sans-serif;
+    position: static;
+
+    overflow: visible;
+    cursor: pointer;
+
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+
+    &:focus {
+        border-style: none;
+        @include frame-each-theme-not-module(outline, 2px, solid, button__outline-color__focus);
+    }
+}
+
+
+
+a {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    
+    @include color-each-theme-not-module(color, a__font-color);
+
+    border-radius: 4px;
+
+    width: auto;
+    height: auto; 
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    
+    
+    position: static;
+
+    overflow: visible;
+    cursor: pointer;
+    
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+}
+
+
+
+
+input[type=text], input[type=password] {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    @include color-each-theme-not-module(background-color, input-text__background-color);
+    @include color-each-theme-not-module(color, input-text__font-color);
+
+    @include frame-each-theme-not-module(border, 1px, solid, input-text__border-color);
+    border-radius: 0px;
+
+    width: auto;
+    height: auto; 
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    
+    
+    position: static;
+
+    overflow: visible;
+    cursor: pointer;
+    
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+
+    &:focus {
+        @include color-each-theme-not-module(background-color, input-text__background-color__focus);
+        @include color-each-theme-not-module(color, input-text__font-color__focus);
+
+        @include frame-each-theme-not-module(border, 2px, solid, input-text__border-color__focus);
+        @include frame-each-theme-not-module(outline, 1px, solid, input-text__outline-color__focus);
+    
+        @include shadow-each-theme-not-module(box-shadow, 0px, 0px, 15px, 2px, input-text--box-shadow-color__focus);
+    }
+}
+
+
+
+header {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include color-each-theme(background-color, header__background-color);
+    @include color-each-theme(color, header__font-color);
+
+    width: 100%;
+    height: auto; 
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    
+    position: relative;
+    z-index: inherit;
+
+    overflow: visible;
+
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+}

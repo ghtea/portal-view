@@ -1,0 +1,65 @@
+@import 'palette.scss';
+
+// ELEMENT__PROPERTY__SITUATION___THEME
+// big-element--small-element
+//                            what-it-is--
+//                                        __big-modifier--small-modifier
+
+// name of theme: theme-light, theme-dark
+
+
+$nav__map-color-assignment: (
+
+
+    nav-1--bar__background-color___light: map-get($map-color-series__main, '65'),
+
+    nav-1--bar__font-color___light: map-get($map-color-series__main, '100'),
+
+    nav-1--bar__border-color___light: map-get($map-color-series__main, '60'),
+
+    nav-1--bar--left__icon-color___light: map-get($map-color-series__main, '60'),
+
+    nav-1--bar--right__icon-color___light: map-get($map-color-series__main, '60'),
+
+
+    nav-1--board__background-color___light: darken(map-get($map-color-series__main, '65'), 2%),
+
+    nav-1--board__font-color___light: map-get($map-color-series__main, '95'),
+
+    nav-1--board__border-color___light: map-get($map-color-series__main, '70'),
+
+
+
+    nav-2--name-app__icon-color___light: map-get($map-color-series__main, '60'),
+
+    nav-2--name-app__font-color___light: map-get($map-color-series__basic, '20'),
+
+    nav-2__border-color___light: map-get($map-color-series__basic, '80'),
+
+
+    
+    nav-2--link__font-color___light: map-get($map-color-series__basic, '40'),
+
+    nav-2--link__font-color__hover___light: map-get($map-color-series__basic, '20'),
+
+
+    nav-2--link-main__font-color___light: map-get($map-color-series__main, '100'),
+
+    nav-2--link-main__background-color__hover___light: map-get($map-color-series__main, '60'),
+
+
+    nav-2--tool__icon-color___light: map-get($map-color-series__basic, '60'),
+
+
+    nav-2--modal__background-color___light: map-get($map-color-series__basic, '100'),
+
+    nav-2--modal__font-color___light: map-get($map-color-series__basic, '25'),
+
+    nav-2--modal__border-color___light: map-get($map-color-series__basic, '90'),
+
+    nav-2--modal__background-color__hover___light: lighten(map-get($map-color-series__basic, '95'), 3%),
+
+    nav-2--modal__box-shadow-color___light: rgba(map-get($map-color-series__basic, '60'), 0.3),
+
+    nav-2--modal__drop-shadow-color___light: rgba(map-get($map-color-series__basic, '60'), 0.5)
+);

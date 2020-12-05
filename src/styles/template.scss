@@ -1,0 +1,68 @@
+@import 'every.scss';
+
+// react + sass 전반적인 정리 https://velog.io/@velopert/react-component-styling
+.template {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex: 1 0 auto;
+
+    width: 100%; min-width: $device-xs__min-width; max-width: $device-m__min-width;
+    height: auto; min-height: 0px; max-height: $device-xs__max-height;
+
+    box-sizing: border-box;
+
+    @include color(background-color, div__background-color);
+    @include color(color, div__font-color);
+
+    @include frame(border, 1px, solid, div__border-color);
+    // https://developer.mozilla.org/ko/docs/Web/CSS/border
+    // border-width: 1px;
+    // border-style: solid;
+    // @include color(border-color, div__border-color);
+
+    @include frame(outline, 0px, none, div__border-color);
+    // https://developer.mozilla.org/ko/docs/Web/CSS/outline
+    // border-width: 0px;
+    // border-style: none;
+    // @include color(border-color, div__border-color);
+
+    @include shadow(box-shadow, 0px, 0px, 15px, 2px, input-text--box-shadow-color__focus);
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+
+    text-decoration: none;    /*  none | line-through | overline | underline | initial | inherit  (position)  (color)  (style)              https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration   */
+
+    position: relative; /*   static  fixed   absolute   (not yet sticky)    */
+    top: 0px; bottom: 0px; right: 0px; left: 0px;    /* negative values are not supported yet*/
+    z-index: auto;   /*  very complicated more than expected   https://mytory.net/archives/10997  */
+    
+    margin: 0px 0px 0px 0px; /* top right bottom left */
+    padding: 0px 0px 0px 0px; /* top right bottom left */
+    
+    overflow: auto; /*   auto | visible | hidden |  scroll    relative, fixed 인 자식들 때문에 visible 을 default로! */
+  
+    cursor: auto;  /*  pointer  */
+    
+    visibility: visible; /* hidden */
+    opacity: 1;
+
+
+
+    border-collapse: separate;  /*  collapse | separate  */
+
+    @media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
+	    
+	}
+
+
+    .icon-logo {
+        @include color-each-theme(color, nav-2--name-app__icon-color);
+        width: 36px;
+        height: 36px;
+    }
+}

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+.template {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 0 auto;
+  width: 100%;
+  min-width: 320px;
+  max-width: 768px;
+  height: auto;
+  min-height: 0px;
+  max-height: 440px;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  /*  none | line-through | overline | underline | initial | inherit  (position)  (color)  (style)              https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration   */
+  position: relative;
+  /*   static  fixed   absolute   (not yet sticky)    */
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  /* negative values are not supported yet*/
+  z-index: auto;
+  /*  very complicated more than expected   https://mytory.net/archives/10997  */
+  margin: 0px 0px 0px 0px;
+  /* top right bottom left */
+  padding: 0px 0px 0px 0px;
+  /* top right bottom left */
+  overflow: auto;
+  /*   auto | visible | hidden |  scroll    relative, fixed 인 자식들 때문에 visible 을 default로! */
+  cursor: auto;
+  /*  pointer  */
+  visibility: visible;
+  /* hidden */
+  opacity: 1;
+  border-collapse: separate;
+  /*  collapse | separate  */ }
+  .theme-light .template {
+    background-color: transparent; }
+  .theme-dark .template {
+    background-color: transparent; }
+  .theme-light .template {
+    color: inherit; }
+  .theme-dark .template {
+    color: inherit; }
+  .theme-light .template {
+    border: 1px solid transparent; }
+  .theme-dark .template {
+    border: 1px solid transparent; }
+  .theme-light .template {
+    outline: 0px none transparent; }
+  .theme-dark .template {
+    outline: 0px none transparent; }
+  .theme-light .template {
+    box-shadow: 0px 0px 15px 2px rgba(36, 145, 255, 0.3); }
+  .theme-dark .template {
+    box-shadow: 0px 0px 15px 2px; }

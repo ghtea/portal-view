@@ -1,0 +1,1 @@
+# Template for React App with TypeScript

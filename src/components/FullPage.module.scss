@@ -1,0 +1,17 @@
+@import 'styles/every.scss';
+
+.root {
+
+    z-index: 100;
+} 
+
+.background {
+
+    @include color-each-theme(background-color, full-page__background-color);
+
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    z-index: 10;
+} 

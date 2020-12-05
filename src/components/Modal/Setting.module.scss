@@ -1,0 +1,127 @@
+@import 'styles/every.scss';
+
+.header {
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    flex: 0 0 auto;
+  
+    width: 100%;
+    height: 50px;
+    
+  
+    margin: 0px 0px 0px 0px; /* top right bottom left */
+    padding: 5px 20px 0px 20px; /* top right bottom left */
+    
+    & > div:nth-child(1){
+        width: auto;
+        font-size: 1.2rem;
+    }
+    & > div:nth-child(2){
+        width: auto;
+        cursor: pointer;
+    }
+
+    
+    .icon-x {
+        @include color-each-theme(color, setting--header__icon-color);
+        width: 24px;
+        height: 24px;
+    }
+
+}
+
+
+.content {
+  
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+    flex: 1 1 auto;
+  
+    width: calc(100% - 20px);
+    height: auto;  min-height: 50px;
+    
+    @include frame-each-theme(border-top, 1px, solid, modal__border-color);
+
+    margin: 0px 0px 0px 0px; /* top right bottom left */
+    padding: 0px 0px 10px 0px; /* top right bottom left */
+  
+}
+
+
+
+.content__section {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: auto;
+    height: auto;
+  
+    & > div:nth-child(1){ /* title */
+        justify-content: center;
+
+        width: auto;
+        height: 24px;
+        font-size: 0.9rem;
+    }
+  
+    & > div:nth-child(2){ /* options */
+        
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    
+        width: auto;
+        height: 32px;
+
+        @include color-each-theme(background-color, setting--option-behind__background-color);
+        
+        border-radius: 5px;
+    
+        padding: 0px 3px 0px 3px; /* top right bottom left */
+    
+    
+    
+        & > div {
+            justify-content: center;
+
+            width: auto;
+            height: 26px;
+            border-radius: 5px;
+            padding: 1px 6px 1px 6px; /* top right bottom left */
+            
+            cursor: pointer;
+            
+            &:nth-child(n+2){
+                margin-left: 8px;
+                
+            }
+        }
+    }
+}
+
+
+.button-option {
+    
+    @include color-each-theme(background-color, setting--option-off__background-color);
+    @include color-each-theme(color, setting--option-off__font-color);
+
+    &:global(.active----true) {
+        @include color-each-theme(background-color, setting--option-on__background-color);
+        @include color-each-theme(color, setting--option-on__font-color);
+
+        @include shadow-each-theme(box-shadow, 0px, 0px, 2px, 2px, setting--option-on__box-shadow-color);
+    }
+
+}
+

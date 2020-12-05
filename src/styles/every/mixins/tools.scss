@@ -1,0 +1,32 @@
+@function map-pairs($value, $order: normal) {
+// $order: normal 'key value', opposite 'value key'
+
+  @if type-of($value) == 'map' {
+    $keys: ();
+    $values: ();
+
+    @each $key, $val in $value {
+      $keys: append($keys, $key);
+      $values: append($values, $val);
+    }
+
+    @if ($order == normal){
+        @return zip($keys, $values);
+    }
+    @else {
+        @return zip($values, $keys);
+    }
+    
+  }
+
+}
+
+
+@function map-merge-all($maps...) {
+    $collection: ();
+
+    @each $map in $maps {
+        $collection: map-merge($collection, $map);
+    }
+    @return $collection;
+}

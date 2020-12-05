@@ -1,0 +1,65 @@
+
+
+// triangle: https://css-tricks.com/triangle-with-shadow/
+
+// props => props.lengthBasic   삼각형 빗면의 길이
+
+// 
+export const Div_Triangle = styled.div`
+  width: ${props=>props.lengthBasic * 2}px;
+  height: ${props=>props.lengthBasic * 2}px;
+  position: relative;
+  overflow: hidden;
+  
+  /*box-shadow: 0 16px 10px -17px rgba(0, 0, 0, 0.5); for cutted side */
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: ${props=>props.lengthBasic}px;
+    height: ${props=>props.lengthBasic}px;
+    background: ${
+      props => `hsl(
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+      `
+    };
+    transform: rotate(45deg); /* Prefixes... */
+    top: ${props=>props.lengthBasic * 2 - props.lengthBasic * 0.5 }px;
+    left: ${(props=>props.lengthBasic * 2 - props.lengthBasic)/2}px;
+    
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.1);
+  }
+`
+
+
+export const Div_Reactangle = styled.div`
+  
+  width: 200px;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.1); 
+  border-radius: 4px;
+  
+`
+  
+
+
+
+/*
+& > div:nth-child(1) {
+    width: 0; 
+    height: 0; 
+    background-color: transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid ${
+      props => `hsl(
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+      `
+    };
+    box-shadow: 0px -6px 6px 6px rgba(0, 0, 0, 0.5); 
+    z-index: 401;
+  }
+*/

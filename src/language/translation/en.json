@@ -1,0 +1,67 @@
+{
+    
+    
+    "Nav": {
+        
+        "Home": "Home",
+        "Setting": "Setting",
+        
+        "NameApp": "React App",
+        
+        "LogIn": "Log In",
+        "SignUp": "Sign Up",
+        
+        "System": "System",   
+        "System_State": "State",
+        "System_Styles": "Styles",
+        "System_Language": "Language",
+        
+        "Diary": "Diary"
+    },
+    
+    
+    "FullPage": {
+        
+        "LogIn": {
+            "LogIn": "Log In",
+            "EmailAddress": "Email Address",
+            "Password": "Password"
+        },
+        "SignUp": {
+            "SignUp": "Sign Up"
+        }
+        
+    },
+    
+    
+    "Modal": {
+        "Setting": {
+            "Title": "Setting",
+            "Theme": "Theme",
+            "Language": "Language"
+        }
+    },
+    
+    
+    "Notification": {
+        
+        "Test1": "Succuessfully tested 1 !",
+        "Test2": "Succuessfully tested 2 !",
+        
+        "LogIn_Failed": "Log In has failed",
+        
+        "SignUp_DuplicateEmail": "That email is already existing",
+        "SignUp_Succeeded": "Successfully signed up!",
+        "SignUp_UnknownError": "An unknown error has occurred"
+    },
+    
+    
+    "Content": {
+        "Home": {
+            "Welcome": "Welcome!"
+        }
+    }
+    
+}
+
+

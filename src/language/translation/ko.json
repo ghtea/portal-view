@@ -1,0 +1,69 @@
+
+
+
+{
+    
+    
+    "Nav": {
+        
+        "Home": "홈",
+        "NameApp": "리액트 앱",
+        "Setting": "설정",
+
+        "LogIn": "로그인",
+        "SignUp": "회원가입",
+        
+        "System": "시스템",   
+        "System_State": "상태",
+        "System_Styles": "스타일",
+        "System_Language": "언어",
+        
+        "Diary": "일기"
+    },
+    
+    
+    "FullPage": {
+        
+        "LogIn": {
+            "LogIn": "로그인",
+            "EmailAddress": "이메일 주소",
+            "Password": "비밀번호"
+        },
+        "SignUp": {
+            "SignUp": "회원가입"
+        }
+        
+    },
+    
+    
+    "Modal": {
+        "Setting": {
+            "Title": "설정",
+            "Theme": "테마",
+            "Language": "언어"
+        }
+    },
+    
+    
+    "Notification": {
+        
+        "Test1": "테스트에 성공하였습니다 1 !",
+        "Test2": "테스트에 성공하였습니다 2 !",
+        
+        "LogIn_Failed": "로그인에 실패하였습니다",
+        
+        "SignUp_DuplicateEmail": "해당 이메일이 이미 등록되어 있습니다",
+        "SignUp_Succeeded": "성공적으로 회원가입하였습니다!",
+        "SignUp_UnknownError": "알수 없는 에러가 발생했습니다"
+    },
+    
+    
+    "Content": {
+        "Home": {
+            "Welcome": "환영합니다!"
+        }
+    }
+    
+}
+
+

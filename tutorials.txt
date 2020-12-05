@@ -1,0 +1,4 @@
+# React with TypeScript
+
+전반적인 강의
+https://velog.io/@velopert/using-react-with-typescript

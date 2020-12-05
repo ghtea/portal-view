@@ -1,0 +1,168 @@
+@import '../color-assignment.scss';
+@import 'tools.scss';
+
+@mixin color-body-each-theme($property, $key-color-front) {
+
+    @each $name-theme in $list-name-theme {
+
+        body.theme----#{$name-theme} {
+            #{$property}: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+        }
+    }
+}
+
+@mixin color-each-theme($property, $key-color-front) {
+
+    @each $name-theme in $list-name-theme {
+
+        :global(.theme----#{$name-theme}) & {
+            #{$property}: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+        }
+    }
+}
+
+
+@mixin color-each-theme-not-module($property, $key-color-front) {
+
+    @each $name-theme in $list-name-theme {
+
+        .theme----#{$name-theme} & {
+            #{$property}: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+        }
+    }
+}
+
+
+
+@mixin frame-each-theme($property, $width, $style, $key-color-front) {
+
+    // ex: border, border-top, outline
+    @each $name-theme in $list-name-theme {
+
+        $color: map-get(
+            $map: $map-color-assignment, 
+            $key: #{$key-color-front}___#{$name-theme}
+        );
+
+        :global(.theme----#{$name-theme}) & {
+            #{$property}: $width $style $color;
+    }
+
+  }
+}
+@mixin frame-each-theme-not-module($property, $width, $style, $key-color-front) {
+
+    // ex: border, border-top, outline
+    @each $name-theme in $list-name-theme {
+
+        $color: map-get(
+            $map: $map-color-assignment, 
+            $key: #{$key-color-front}___#{$name-theme}
+        );
+
+        .theme----#{$name-theme} & {
+            #{$property}: $width $style $color;
+    }
+
+  }
+}
+
+@mixin shadow-each-theme($property, $offset-x, $offset-y, $blur-radius, $spread-radius, $key-color-front) {
+
+    // ex: box-shadow, text-shadow ( drop-shadow 사용법은 아직 잘 모르겠다)
+
+    @if $property == box-shadow {
+        @each $name-theme in $list-name-theme {
+
+            $color: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+
+            :global(.theme----#{$name-theme}) & {
+                #{$property}: $offset-x $offset-y $blur-radius $spread-radius $color;
+            }
+        }
+    }
+
+    @else if $property == text-shadow {
+        @each $name-theme in $list-name-theme {
+
+            $color: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+
+            :global(.theme----#{$name-theme}) & {
+                #{$property}: $offset-x $offset-y $blur-radius $color;
+            }
+        }
+    }
+
+}
+@mixin shadow-each-theme-not-module($property, $offset-x, $offset-y, $blur-radius, $spread-radius, $key-color-front) {
+
+    // ex: box-shadow, text-shadow ( drop-shadow 사용법은 아직 잘 모르겠다)
+
+    @if $property == box-shadow {
+        @each $name-theme in $list-name-theme {
+
+            $color: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+
+            .theme----#{$name-theme} & {
+                #{$property}: $offset-x $offset-y $blur-radius $spread-radius $color;
+            }
+        }
+    }
+
+    @else if $property == text-shadow {
+        @each $name-theme in $list-name-theme {
+
+            $color: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+
+            .theme----#{$name-theme} & {
+                #{$property}: $offset-x $offset-y $blur-radius $color;
+            }
+        }
+    }
+
+}
+
+
+
+// 90deg = to right 
+@mixin linear-gradient-each-theme($propery, $direction, $map-color-stop...) { 
+    
+    $list-color-stop: map-pairs($value: $map-color-stop, $order: opposite);
+    
+    @each $name-theme in $list-name-theme {
+        :global(.theme----#{$name-theme}) & {
+            #{$property}: linear-gradient( $direction, $list-color-stop);
+        }
+    }
+}
+@mixin linear-gradient-each-theme-not-module($propery, $direction, $map-color-stop...) { 
+    
+    $list-color-stop: map-pairs($value: $map-color-stop, $order: opposite);
+    
+    @each $name-theme in $list-name-theme {
+        .theme----#{$name-theme} & {
+            #{$property}: linear-gradient( $direction, $list-color-stop);
+        }
+    }
+}

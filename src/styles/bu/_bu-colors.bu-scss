@@ -1,0 +1,99 @@
+@import 'colors/palette';
+
+// TYPE--BIG__SMALL--MODIFY     - once between one block
+
+
+$name--theme: light;
+
+
+$background-color--body: map.get($map--color--basic, '100');
+ 
+
+    
+    Content : {
+      label___font: returnColor( palette.basic['40'])
+      
+      
+    },
+    
+    Nav : {
+      nav1_bar___bg: returnColor( palette.main['65']),
+      nav1_bar___font: returnColor( palette.main['100']),
+      nav1_bar___border: returnColor( palette.main['60']),
+      
+      nav1_board___bg: returnColor( palette.basic['85']),
+      nav1_board___font: returnColor( palette.basic['25']),
+      nav1_board___border: returnColor( palette.basic['75']),
+      
+      
+
+      nav2_tool___icon: returnColor( palette.basic['70']),
+      
+      nav2_modal___bg: returnColor( palette.basic['100']),
+      nav2_modal___font: returnColor( palette.basic['25']),
+      nav2_modal___border: returnColor( palette.basic['90']),
+      
+      nav2_modal___bg__hover: returnColor( palette.basic['95']),
+      nav2_modal___box_shadow: returnColor( palette.basic['60'], 0.3),
+      nav2_modal___drop_shadow: returnColor( palette.basic['60'], 0.5)
+    },
+    
+    FullPage : {
+      full_page___bg: returnColor( palette.basic['95']),
+      full_page_name_app___font: returnColor( palette.basic['10'])
+      
+    },
+    
+    Modal : {
+      modal___bg: returnColor( palette.basic['100']),
+      modal___font: returnColor( palette.basic['25']),
+      modal___border: returnColor( palette.basic['90']),
+      modal___box_shadow: returnColor( palette.basic['60'], 0.3),
+      modal___drop_shadow: returnColor( palette.basic['60'], 0.5),
+      shadow___bg: returnColor( palette.basic['00'], 0.1),
+      
+      setting_header___icon: returnColor( palette.basic['70']),
+      setting_header___icon__hover: returnColor( palette.basic['50']),
+      setting_option___bg: returnColor( palette.basic['100']),
+      setting_option_behind___bg: returnColor( palette.basic['90'])
+      
+    },
+    
+    Notification : {
+      banner___box_shadow: returnColor( palette.basic['60'], 0.3),
+      
+      banner___bg__success: returnColor( palette.success['90']),
+      banner___font__success: returnColor( palette.success['40']),
+      banner___border__success: returnColor( palette.success['70']),
+      banner___icon__success: returnColor( palette.success['50']),
+      banner___box_shadow__success: returnColor( palette.success['60'], 0.3),
+      
+      
+      banner___bg__hint: returnColor( palette.hint['90']),
+      banner___font__hint: returnColor( palette.hint['40']),
+      banner___border__hint: returnColor( palette.hint['70']),
+      banner___icon__hint: returnColor( palette.hint['50']),
+      banner___box_shadow__hint: returnColor( palette.hint['60'], 0.3),
+      
+      banner___bg__error: returnColor( palette.error['90']),
+      banner___font__error: returnColor( palette.error['40']),
+      banner___border__error: returnColor( palette.error['70']),
+      banner___icon__error: returnColor( palette.error['50']),
+      banner___box_shadow__error: returnColor( palette.error['60'], 0.3),
+      
+      banner___bg__warning: returnColor( palette.warning['90']),
+      banner___font__warning: returnColor( palette.warning['40']),
+      banner___border__warning: returnColor( palette.warning['70']),
+      banner___icon__warning: returnColor( palette.warning['50']),
+      banner___box_shadow__warning: returnColor( palette.warning['60'], 0.3)
+      
+    },
+    
+    Share: {
+      button_google___bg: returnColor( palette.Google['50']),
+      button_facebook___bg: returnColor( palette.Facebook['50']),
+      button_twitter___bg: returnColor( palette.Twitter['60'])
+    }
+    
+    
+  };

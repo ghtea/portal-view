@@ -1,0 +1,160 @@
+@import 'styles/every.scss';
+
+
+.root {
+
+    visibility: visible;
+    &:global(.showing----false) {
+        visibility: hidden;
+    } 
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+  
+    position: relative;
+    top: 0px;
+    z-index: 200;
+  
+  
+	@media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
+	  display: none;
+	}
+  
+    & * {
+        @include color-each-theme(color, nav-1--bar__font-color);
+    }
+}
+
+
+
+@keyframes rotateIconX {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes moveDownIconThreeBars {
+    0% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+.bar {
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: $nav-1--bar__height;     /* we should let 'Content', 'Nav1 - Board' know this value too */ 
+    
+    //background-color: red !important;
+    @include color-each-theme(background-color, nav-1--bar__background-color);
+    @include color-each-theme(color, nav-1--bar__font-color);
+
+    @include frame-each-theme(border-bottom, 1px, solid, nav-1--bar__border-color);
+
+    z-index: 100;
+    
+  
+    & > div:nth-child(1) {
+        width: 40px;
+    }
+    & > div:nth-child(2) {
+        width: calc(100% - 80px);  // 320-80 ~
+    }
+  
+  
+    & > div:nth-child(3) {
+        width: 40px;
+        & button .icon-x {
+            animation: rotateIconX 0.4s ease-out 0s 1 normal;
+        }
+        & button .icon-three-bars {
+            animation: moveDownIconThreeBars 0.4s ease-out 0s 1 normal;
+        }
+    }
+  
+	@media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
+	    display: none;
+	}
+    
+    .icon-logo {
+        @include color-each-theme(color, nav-1--bar--left__icon-color);
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon-x {
+        @include color-each-theme(color, nav-1--bar--right__icon-color);
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon-three-bars {
+        @include color-each-theme(color, nav-1--bar--right__icon-color);
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+@keyframes moveDownBoard {
+    0% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.board {
+
+    width: 100%;
+    height: auto;
+    // height: calc(100vh - #{$nav-1--bar__height});     /* using height of*/
+    
+    @include color-each-theme(background-color, nav-1--board__background-color);
+
+    position: fixed;
+    top: $nav-1--bar__height;
+    z-index: 50;
+  
+    animation: moveDownBoard 0.2s ease-out 0s 1 normal;
+
+	@media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
+	  display: none;
+	}
+  
+    & > div {
+        
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+
+        @include frame-each-theme(border-bottom, 1px, solid, nav-1--board__border-color);
+    
+        width: calc(100% - 20px);
+        height: 70px;
+    
+    & > a {
+        width: 100%;
+        height: 100%;
+        @include color-each-theme(color, nav-1--board__font-color);
+
+    }
+    
+  }
+}
+
