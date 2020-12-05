@@ -1,0 +1,20 @@
+@import 'palette.scss';
+
+// ELEMENT__PROPERTY__SITUATION___THEME
+// big-element--small-element
+//                            what-it-is--
+//                                        __big-modifier--small-modifier
+
+// name of theme: theme-light, theme-dark
+
+
+$full-page__map-color-assignment: (
+
+    full-page__background-color___light: map-get($map-color-series__basic, '95'),
+
+    full-page--top-bar--name-app__font-color___light: map-get($map-color-series__basic, '10'),
+
+    full-page--top-bar--name-app__icon-color___light: map-get($map-color-series__basic, '10'),
+
+    
+);

@@ -87,19 +87,19 @@
 	}
     
     .icon-logo {
-        @include color-each-theme(color, nav-1--bar--left__icon-color);
+        @include color-each-theme(color, nav-1--bar--name-app__icon-color);
         width: 30px;
         height: 30px;
     }
 
     .icon-x {
-        @include color-each-theme(color, nav-1--bar--right__icon-color);
+        @include color-each-theme(color, nav-1--bar--tool__icon-color);
         width: 30px;
         height: 30px;
     }
 
     .icon-three-bars {
-        @include color-each-theme(color, nav-1--bar--right__icon-color);
+        @include color-each-theme(color, nav-1--bar--tool__icon-color);
         width: 30px;
         height: 30px;
     }

@@ -10,10 +10,10 @@
 
 $global__map-color-assignment: (
 
-    body__background-color___light: $background___light,
-    body__background-color___dark: $background___dark,
-    body__font-color___light: hsl($h-basic,12%,25%),
-    body__font-color___dark: hsl($h-basic,12%,70%),
+    body__background-color___light: map-get($map-color-series__basic, '95'),
+    body__background-color___dark: map-get($map-color-series__basic, '00'),
+    body__font-color___light: map-get($map-color-series__basic, '25'),
+    body__font-color___dark: map-get($map-color-series__basic, '75'),
 
     div__background-color___light: transparent,
     div__background-color___dark: transparent,
@@ -47,8 +47,8 @@ $global__map-color-assignment: (
     button__background-color__focus___dark: transparent,
     button__font-color__focus___light: inherit,
     button__font-color__focus___dark: inherit,
-    button__border-color__focus___light:  hsl($h-basic,12%,50%),
-    button__border-color__focus___dark:  hsl($h-basic,12%,50%),
+    button__border-color__focus___light:  map-get($map-color-series__basic, '50'),
+    button__border-color__focus___dark:  map-get($map-color-series__basic, '50'),
     button__outline-color__focus___light:  transparent, // rgba(map-get($map-color-series__basic, '50'), 0.5),
     button__outline-color__focus___dark:  transparent, // rgba(map-get($map-color-series__basic, '50'), 0.5),
 

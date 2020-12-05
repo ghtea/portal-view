@@ -123,12 +123,6 @@ function Nav1({}: PropsNav1) {
           </div>
           <div> 
             <a
-              onClick={(event)=>onClick_LinkInsideApp( '/log-in')}
-            > {t('Nav', 'LogIn')}
-            </a>
-          </div>
-          <div> 
-            <a
               onClick={()=>onClick_ShowHideSetting()}
             > {t('Nav', 'Setting')}
             </a>

@@ -113,7 +113,7 @@
 
 .button-option {
     
-    @include color-each-theme(background-color, setting--option-off__background-color);
+    background-color: transparent;
     @include color-each-theme(color, setting--option-off__font-color);
 
     &:global(.active----true) {

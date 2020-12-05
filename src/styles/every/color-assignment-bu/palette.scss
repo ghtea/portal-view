@@ -3,29 +3,8 @@
 
 // TYPE__MODIFY     - once between one block
 
-$h-basic: 220;   
-$h-main: 200;   $s-main: 90%;
-$h-sub: 335;
-
-$h-success: 120;
-$h-hint: 335;
-$h-warning: 15;
-$h-error: 0;
-
-
-$front___light: hsl($h-basic,12%,100%);
-$front___dark: hsl($h-basic,12%,8%);
-
-$background___light: hsl($h-basic,12%,95%);
-$background___dark: hsl($h-basic,12%,0%);
-
-$border___light: hsl($h-basic,12%,80%);
-$border___dark: hsl($h-basic,12%,20%);
-
-
-
 $map-color-series__basic: (
-  '00': hsl(210,15%,5%),
+  '00': hsl(210,15%,0%),
   '05': hsl(210,15%,5%),
   '10': hsl(210,15%,10%),
   '15': hsl(210,15%,15%),
