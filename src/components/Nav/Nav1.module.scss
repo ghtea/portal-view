@@ -106,18 +106,18 @@
 }
 
 
-@keyframes moveDownBoard {
+@keyframes showBoard {
     0% {
-        transform: translateY(-50px);
+        transform: translateX(50px);
     }
     100% {
-        transform: translateY(0px);
+        transform: translateX(0px);
     }
 }
 
 .board {
 
-    width: 100%;
+    width: 280px;
     height: auto;
     // height: calc(100vh - #{$nav-1--bar__height});     /* using height of*/
     
@@ -127,9 +127,10 @@
       
     position: absolute;
     top: $nav-1--bar__height;
+    right: 0px;
     z-index: 50;
   
-    animation: moveDownBoard 0.2s ease-out 0s 1 normal;
+    animation: showBoard 0.2s ease-out 0s 1 normal;
 
 	@media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
 	  display: none;
@@ -146,7 +147,7 @@
             @include frame-each-theme(border-top, 1px, solid, nav-1--board__border-color);
         }
         width: calc(100% - 20px);
-        height: 70px;
+        height: 50px;
     
     & > a {
         width: 100%;

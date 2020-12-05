@@ -11,9 +11,9 @@
 $global__map-color-assignment: (
 
     body__background-color___light: map-get($map-color-series__basic, '95'),
-
+    body__background-color___dark: map-get($map-color-series__basic, '00'),
     body__font-color___light: map-get($map-color-series__basic, '25'),
-
+    body__font-color___dark: map-get($map-color-series__basic, '75'),
 
     div__background-color___light: transparent,
     div__background-color___dark: transparent,
@@ -64,31 +64,31 @@ $global__map-color-assignment: (
 
     
     button-social__font-color___light: map-get($map-color-series__basic, '100'),
-
+    button-social__font-color___dark: map-get($map-color-series__basic, '00'),
     button-google__background-color___light: map-get($map-color-series__google, '50'),
-
+    button-google__background-color___dark: map-get($map-color-series__google, '50'),
     button-facebook__background-color___light: map-get($map-color-series__facebook, '50'),
-
+    button-facebook__background-color___dark: map-get($map-color-series__facebook, '50'),
     button-twitter__background-color___light: map-get($map-color-series__twitter, '60'),
-
+    button-twitter__background-color___dark: map-get($map-color-series__twitter, '40'),
     
     input-text__background-color___light: map-get($map-color-series__basic, '100'),
-
+    input-text__background-color___dark: map-get($map-color-series__basic, '00'),
     input-text__font-color-___light: map-get($map-color-series__basic, '25'),
-
+    input-text__font-color-___dark: map-get($map-color-series__basic, '75'),
     input-text__border-color___light:  map-get($map-color-series__basic, '75'),
-
+    input-text__border-color___dark:  map-get($map-color-series__basic, '25'),
 
     input-text__background-color__focus___light: map-get($map-color-series__main, '100'),
-
+    input-text__background-color__focus___dark: map-get($map-color-series__main, '00'),
     input-text__font-color__focus___light: map-get($map-color-series__basic, '25'),
-
+    input-text__font-color__focus___dark: map-get($map-color-series__basic, '75'),
     input-text__border-color__focus___light:  map-get($map-color-series__main, '75'),
-
+    input-text__border-color__focus___dark:  map-get($map-color-series__main, '25'),
     input-text__outline-color__focus___light:  transparent,
-
+    input-text__outline-color__focus___dark:  transparent,
     input-text--box-shadow-color__focus___light:  rgba(map-get($map-color-series__main, '60'), 0.3),
-
+    input-text--box-shadow-color__focus___dark:  rgba(map-get($map-color-series__main, '40'), 0.3),
 
     header__background-color___light: transparent,
     header__background-color___dark: transparent,

@@ -11,11 +11,11 @@
 $modal__map-color-assignment: (
 
     modal__background-color___light: map-get($map-color-series__basic, '100'),
-
+    modal__background-color___dark: map-get($map-color-series__basic, '10'),
     modal__font-color___light: map-get($map-color-series__basic, '25'),
-
-    modal__border-color___light: map-get($map-color-series__basic, '90'),
-
+    modal__font-color___dark: map-get($map-color-series__basic, '75'),
+    modal__border-color___light: map-get($map-color-series__basic, '70'),
+    modal__border-color___dark: map-get($map-color-series__basic, '30'),
     modal__box-shadow-color___light: rgba(map-get($map-color-series__basic, '60'), 0.3),
 
     modal__drop-shadow-color___light: rgba(map-get($map-color-series__basic, '60'), 0.5),

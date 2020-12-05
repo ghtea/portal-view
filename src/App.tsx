@@ -56,11 +56,12 @@ function App({}: PropsApp) {
   
   
   
-  const nameThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['name']);
-  
+    const optionThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['option']);
+    const nameThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['name']);
+
   useEffect(() => {
     dispatch(actionsStatus.return__READ_OPTION_THEME() );
-  }, []);
+  }, [optionThemeCurrent]);
   
   useEffect(()=>{
         if (nameThemeCurrent === 'dark'){
