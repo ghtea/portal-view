@@ -5,7 +5,7 @@
 
     @each $name-theme in $list-name-theme {
 
-        body.theme----#{$name-theme} {
+        &.theme----#{$name-theme} {
             #{$property}: map-get(
                 $map: $map-color-assignment, 
                 $key: #{$key-color-front}___#{$name-theme}

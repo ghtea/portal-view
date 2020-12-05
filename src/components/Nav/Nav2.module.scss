@@ -4,6 +4,8 @@
 
     display: none;
 
+    @include color-each-theme(background-color, nav-2--bar__background-color);
+
     visibility: visible;
     &:global(.active----false) {
         visibility: hidden;

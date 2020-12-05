@@ -11,7 +11,7 @@ import SoloDestination from './Nav2/SoloDestination';
 
 import styles from './Nav2.module.scss';
 
-import IconHome from 'svgs/basic/IconHome';
+import IconLogo from 'svgs/others/IconLogo';
 // import IconSignIn from 'svgs/basic/IconSignIn';
 import IconSetting from 'svgs/basic/IconSetting';
 // import IconGlobe from 'svgs/basic/IconGlobe';
@@ -55,7 +55,7 @@ function Nav2({}: PropsNav2) {
           onClick={()=>onClick_LinkInsideApp('/')}
         >
           <div>
-            <IconHome className={`${styles['icon-logo']}`} />
+            <IconLogo className={`${styles['icon-logo']}`} />
           </div>
         </button>
         <button

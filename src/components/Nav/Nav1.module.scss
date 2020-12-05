@@ -22,9 +22,6 @@
 	  display: none;
 	}
   
-    & * {
-        @include color-each-theme(color, nav-1--bar__font-color);
-    }
 }
 
 
@@ -58,25 +55,25 @@
     width: 100%;
     height: $nav-1--bar__height;     /* we should let 'Content', 'Nav1 - Board' know this value too */ 
     
-    //background-color: red !important;
     @include color-each-theme(background-color, nav-1--bar__background-color);
     @include color-each-theme(color, nav-1--bar__font-color);
 
+    // @include frame-each-theme(border-bottom, 1px, solid, nav-1--bar__border-color);
     @include frame-each-theme(border-bottom, 1px, solid, nav-1--bar__border-color);
-
+        
     z-index: 100;
     
   
     & > div:nth-child(1) {
-        width: 40px;
+        width: 60px;
     }
     & > div:nth-child(2) {
-        width: calc(100% - 80px);  // 320-80 ~
+        width: calc(100% - 120px);  // 320-80 ~
     }
   
   
     & > div:nth-child(3) {
-        width: 40px;
+        width: 60px;
         & button .icon-x {
             animation: rotateIconX 0.4s ease-out 0s 1 normal;
         }
@@ -126,7 +123,9 @@
     
     @include color-each-theme(background-color, nav-1--board__background-color);
 
-    position: fixed;
+    @include frame-each-theme(border-bottom, 1px, solid, nav-1--bar__border-color);
+      
+    position: absolute;
     top: $nav-1--bar__height;
     z-index: 50;
   
@@ -143,8 +142,9 @@
         justify-content: center;
         align-items: center;
 
-        @include frame-each-theme(border-bottom, 1px, solid, nav-1--board__border-color);
-    
+        &:nth-child(n+2) {
+            @include frame-each-theme(border-top, 1px, solid, nav-1--board__border-color);
+        }
         width: calc(100% - 20px);
         height: 70px;
     

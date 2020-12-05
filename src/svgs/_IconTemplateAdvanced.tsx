@@ -21,19 +21,19 @@ const Icon = ({ className, kind, directon }: PropsIcon) => {
 
     const transform: string = useMemo(()=>{
         if (directon === 'right'){
-            return 'rotate(0deg)'
+            return 'rotate(0)'
         }
         else if (directon === 'down'){
-            return 'rotate(90deg)'
+            return 'rotate(90)'
         }
         else if (directon === 'left'){
-            return 'rotate(180deg)'
+            return 'rotate(180)'
         }
         else if (directon === 'up'){
-            return 'rotate(270deg)'
+            return 'rotate(270)'
         }
         else {
-            return 'rotate(0deg)'
+            return 'rotate(0)'
         }
     },[directon]);
 

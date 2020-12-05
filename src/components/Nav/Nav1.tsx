@@ -8,7 +8,7 @@ import * as actionsStatus from 'store/actions/status';
 
 import styles from './Nav1.module.scss';
 
-import IconHome from 'svgs/basic/IconHome';
+import IconLogo from 'svgs/others/IconLogo';
 import IconThreeBars from 'svgs/basic/IconThreeBars';
 import IconX from 'svgs/basic/IconX';
 
@@ -26,8 +26,11 @@ function Nav1({}: PropsNav1) {
   const showingBoardNav1:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']['boardNav1']);
   const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['setting']);
 
+    const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
+
+  //event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>,
   const onClick_LinkInsideApp = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, destination:string) => {
+    ( destination:string) => {
       history.push(destination);
       dispatch(actionsStatus.return__REPLACE({
         listKey:['showing', 'nav', 'boardNav1'],
@@ -68,14 +71,28 @@ function Nav1({}: PropsNav1) {
 
         <div className={`${styles['bar']}`} >
             <div>
-                <button
-                    onClick={(event)=>onClick_LinkInsideApp(event, '/')}
-                >   <IconHome className={`${styles['icon-logo']}`} />
-                </button>
+                { !readyUser &&
+                    <div className={`${styles['tool']}`} >
+                        <a className={`${styles['link-main']}`} 
+                            onClick={()=>onClick_LinkInsideApp('/log-in')} 
+                        >
+                        {t('Nav', 'LogIn')}
+                        </a>
+                    </div>
+                }
+        
+                { readyUser &&
+                    <div className={`${styles['tool']}`} > 
+                        logged in
+                    </div>
+                }
             </div>
         
             <div>
-            (title)
+                <button
+                    onClick={(event)=>onClick_LinkInsideApp('/')}
+                >   <IconLogo className={`${styles['icon-logo']}`} />
+                </button>
             </div>
         
             <div>
@@ -94,19 +111,19 @@ function Nav1({}: PropsNav1) {
         <div className={`${styles['board']}`} >
           <div> 
             <a
-              onClick={(event)=>onClick_LinkInsideApp(event, '/')}
+              onClick={(event)=>onClick_LinkInsideApp( '/')}
             > {t('Nav', 'Home')}
             </a>
           </div>
           <div> 
             <a
-              onClick={(event)=>onClick_LinkInsideApp(event, '/')}
+              onClick={(event)=>onClick_LinkInsideApp( '/')}
             > {t('Nav', 'System')}
             </a>
           </div>
           <div> 
             <a
-              onClick={(event)=>onClick_LinkInsideApp(event, '/log-in')}
+              onClick={(event)=>onClick_LinkInsideApp( '/log-in')}
             > {t('Nav', 'LogIn')}
             </a>
           </div>
