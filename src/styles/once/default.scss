@@ -137,6 +137,10 @@ input[type=text], input[type=password] {
     @include color-each-theme-not-module(background-color, input-text__background-color);
     @include color-each-theme-not-module(color, input-text__font-color);
 
+    &::placeholder {
+        @include color-each-theme-not-module(color, input-text--placeholder__font-color);
+    }
+
     @include frame-each-theme-not-module(border, 1px, solid, input-text__border-color);
     border-radius: 0px;
 

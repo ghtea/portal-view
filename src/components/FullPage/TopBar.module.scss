@@ -28,7 +28,7 @@
 }
 
 .icon-logo {
-    @include color-each-theme(color, full-page--top-bar--name-app);
+    @include color-each-theme(color, full-page--top-bar--name-app__icon-color);
     width: 36px;
     height: 36px;
 }

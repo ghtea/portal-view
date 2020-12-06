@@ -146,23 +146,31 @@
 
 
 // 90deg = to right 
-@mixin linear-gradient-each-theme($propery, $direction, $map-color-stop...) { 
-    
-    $list-color-stop: map-pairs($value: $map-color-stop, $order: opposite);
-    
+@mixin linear-gradient-each-theme($property, $direction, $list-stop, $list-key-color-front, $is-module: true) { 
+
     @each $name-theme in $list-name-theme {
-        :global(.theme----#{$name-theme}) & {
-            #{$property}: linear-gradient( $direction, $list-color-stop);
+
+        $list-color: ();
+        @each $key-color-front in $list-key-color-front {
+            $list-color: append($list-color, map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            ));
         }
+
+        $list-color-stop : zip($list-color, $list-stop);
+
+        @if ($is-module == true) {
+            :global(.theme----#{$name-theme}) & {
+                #{$property}: linear-gradient( $direction, $list-color-stop);
+            }
+        }
+        @else {
+            .theme----#{$name-theme} & {
+                #{$property}: linear-gradient( $direction, $list-color-stop);
+            }
+        }
+
     }
 }
-@mixin linear-gradient-each-theme-not-module($propery, $direction, $map-color-stop...) { 
-    
-    $list-color-stop: map-pairs($value: $map-color-stop, $order: opposite);
-    
-    @each $name-theme in $list-name-theme {
-        .theme----#{$name-theme} & {
-            #{$property}: linear-gradient( $direction, $list-color-stop);
-        }
-    }
-}
+

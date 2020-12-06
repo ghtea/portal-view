@@ -7,7 +7,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 
-import IconHome from 'svgs/basic/IconHome';
+import IconLogo from 'svgs/others/IconLogo';
 
 import styles from './TopBar.module.scss';
 
@@ -32,7 +32,7 @@ function TopBar({}: PropsTopBar) {
     >
     
       <div>
-          <IconHome className={`${styles['icon-logo']}`} />
+          <IconLogo className={`${styles['icon-logo']}`} />
       </div>
       
       <div> 

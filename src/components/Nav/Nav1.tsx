@@ -41,9 +41,9 @@ function Nav1({}: PropsNav1) {
   
   
   const onClick_ShowHideBoard = useCallback(
-    
-    (event:React.MouseEvent<HTMLButtonElement> ) => {
-      event.preventDefault();
+    // event:React.MouseEvent<HTMLButtonElement> 
+    () => {
+      //event.preventDefault();
       
       console.log('heoo');
       dispatch(actionsStatus.return__REPLACE({
@@ -70,6 +70,25 @@ function Nav1({}: PropsNav1) {
     <header className={`${styles['root']} showing----${showingNav}`}>
 
         <div className={`${styles['bar']}`} >
+            
+            <div>
+                <button
+                    onClick={()=>onClick_ShowHideBoard()}
+                >
+                    {showingBoardNav1 ? ( <IconX className={`${styles['icon-x']}`} />) : (
+                        <IconThreeBars className={`${styles['icon-three-bars']}`} />
+                    )}
+                </button>
+            </div>
+
+            <div>
+                <button
+                    onClick={()=>onClick_LinkInsideApp('/')}
+                >   <IconLogo className={`${styles['icon-logo']}`} />
+                </button>
+            </div>
+        
+            
             <div>
                 { !readyUser &&
                     <div className={`${styles['tool']}`} >
@@ -87,37 +106,22 @@ function Nav1({}: PropsNav1) {
                     </div>
                 }
             </div>
-        
-            <div>
-                <button
-                    onClick={(event)=>onClick_LinkInsideApp('/')}
-                >   <IconLogo className={`${styles['icon-logo']}`} />
-                </button>
-            </div>
-        
-            <div>
-            <button
-                onClick={(event)=>onClick_ShowHideBoard(event)}
-            >
-                {showingBoardNav1 ? ( <IconX className={`${styles['icon-x']}`} />) : (
-                    <IconThreeBars className={`${styles['icon-three-bars']}`} />
-                )}
-            </button>
-            </div>
+
             
         </div> 
       
       {showingBoardNav1 && (
+          <>
         <div className={`${styles['board']}`} >
           <div> 
             <a
-              onClick={(event)=>onClick_LinkInsideApp( '/')}
+              onClick={()=>onClick_LinkInsideApp( '/')}
             > {t('Nav', 'Home')}
             </a>
           </div>
           <div> 
             <a
-              onClick={(event)=>onClick_LinkInsideApp( '/')}
+              onClick={()=>onClick_LinkInsideApp( '/')}
             > {t('Nav', 'System')}
             </a>
           </div>
@@ -128,6 +132,11 @@ function Nav1({}: PropsNav1) {
             </a>
           </div>
         </div>
+        <div 
+            className={`${styles['shadow-of-board']}`} 
+            onClick={()=>onClick_ShowHideBoard()}
+        />
+        </>
       )}
       
     </header>

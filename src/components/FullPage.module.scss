@@ -7,8 +7,13 @@
 
 .background {
 
-    @include color-each-theme(background-color, full-page__background-color);
-
+    // @include color-each-theme(background-color, full-page__background-color);
+    
+    @include linear-gradient-each-theme(background, to bottom, 
+        (20%, 100%),
+        (full-page__gradient-color-1, full-page__gradient-color-2)
+    );
+    
     width: 100%;
     height: 100%;
 

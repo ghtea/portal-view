@@ -10,11 +10,17 @@
 
 $full-page__map-color-assignment: (
 
-    full-page__background-color___light: map-get($map-color-series__basic, '95'),
+    full-page__background-color___light: $background___light,
+    full-page__background-color___dark: $background___dark,
 
-    full-page--top-bar--name-app__font-color___light: map-get($map-color-series__basic, '10'),
+    full-page__gradient-color-1___light: $background___light,
+    full-page__gradient-color-1___dark: $background___dark,
+    full-page__gradient-color-2___light: hsl($h-basic,$s-basic, 85%),
+    full-page__gradient-color-2___dark: hsl($h-basic,$s-basic, 15%),
 
-    full-page--top-bar--name-app__icon-color___light: map-get($map-color-series__basic, '10'),
-
+    full-page--top-bar--name-app__font-color___light: hsl($h-basic,$s-basic,25%),
+    full-page--top-bar--name-app__font-color___dark: hsl($h-basic,$s-basic,70%),
+    full-page--top-bar--name-app__icon-color___light: hsl($h-main,$s-main,50%),
+    full-page--top-bar--name-app__icon-color___dark: hsl($h-main,$s-main,50%),
     
 );

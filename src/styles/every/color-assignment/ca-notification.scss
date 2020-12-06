@@ -10,55 +10,53 @@
 
 $notification__map-color-assignment: (
 
-    banner__box-shadow-color___light: rgba(map-get($map-color-series__basic, '60'), 0.3),
+    banner__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,60%), 0.3),
+    banner__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,40%), 0.3),
+
+    banner-success__background-color___light: hsl($h-success,$s-success,90%),
+    banner-success__background-color___dark: hsl($h-success,$s-success,10%),
+    banner-success__font-color___light: hsl($h-success,$s-success,40%),
+    banner-success__font-color___dark: hsl($h-success,$s-success,60%),
+    banner-success__border-color___light: hsl($h-success,$s-success,70%),
+    banner-success__border-color___dark: hsl($h-success,$s-success,30%),
+    banner-success__icon-color___light: hsl($h-success,$s-success,50%),
+    banner-success__icon-color___dark: hsl($h-success,$s-success,50%),
+    banner-success__box-shadow-color___light: rgba(hsl($h-success,$s-success,60%), 0.3),
+    banner-success__box-shadow-color___dark: rgba(hsl($h-success,$s-success,40%), 0.3),
 
 
-    banner-success__background-color___light: map-get($map-color-series__success, '90'),
-
-    banner-success__font-color___light: map-get($map-color-series__success, '40'),
-
-    banner-success__border-color___light: map-get($map-color-series__success, '70'),
-
-    banner-success__icon-color___light: map-get($map-color-series__success, '50'),
-    
-    banner-success__box-shadow-color___light: rgba(map-get($map-color-series__success, '60'), 0.3),
-
-
-
-
-    banner-hint__background-color___light: map-get($map-color-series__hint, '90'),
-
-    banner-hint__font-color___light: map-get($map-color-series__hint, '40'),
-
-    banner-hint__border-color___light: map-get($map-color-series__hint, '70'),
-
-    banner-hint__icon-color___light: map-get($map-color-series__hint, '50'),
-
-    banner-hint__box-shadow-color___light: rgba(map-get($map-color-series__hint, '60'), 0.3),
+    banner-hint__background-color___light: hsl($h-hint,$s-hint,90%),
+    banner-hint__background-color___dark: hsl($h-hint,$s-hint,10%),
+    banner-hint__font-color___light: hsl($h-hint,$s-hint,40%),
+    banner-hint__font-color___dark: hsl($h-hint,$s-hint,60%),
+    banner-hint__border-color___light: hsl($h-hint,$s-hint,70%),
+    banner-hint__border-color___dark: hsl($h-hint,$s-hint,30%),
+    banner-hint__icon-color___light: hsl($h-hint,$s-hint,50%),
+    banner-hint__icon-color___dark: hsl($h-hint,$s-hint,50%),
+    banner-hint__box-shadow-color___light: rgba(hsl($h-hint,$s-hint,60%), 0.3),
+    banner-hint__box-shadow-color___dark: rgba(hsl($h-hint,$s-hint,40%), 0.3),
 
 
-    banner-error__background-color___light: map-get($map-color-series__error, '90'),
+    banner-error__background-color___light: hsl($h-error,$s-error,90%),
+    banner-error__background-color___dark: hsl($h-error,$s-error,10%),
+    banner-error__font-color___light: hsl($h-error,$s-error,40%),
+    banner-error__font-color___dark: hsl($h-error,$s-error,60%),
+    banner-error__border-color___light: hsl($h-error,$s-error,70%),
+    banner-error__border-color___dark: hsl($h-error,$s-error,30%),
+    banner-error__icon-color___light: hsl($h-error,$s-error,50%),
+    banner-error__icon-color___dark: hsl($h-error,$s-error,50%),
+    banner-error__box-shadow-color___light: rgba(hsl($h-error,$s-error,60%), 0.3),
+    banner-error__box-shadow-color___dark: rgba(hsl($h-error,$s-error,40%), 0.3),
 
-    banner-error__font-color___light: map-get($map-color-series__error, '40'),
-
-    banner-error__border-color___light: map-get($map-color-series__error, '70'),
-
-    banner-error__icon-color___light: map-get($map-color-series__error, '50'),
-
-    banner-error__box-shadow-color___light: rgba(map-get($map-color-series__error, '60'), 0.3),
-
-
-    banner-warning__background-color___light: map-get($map-color-series__warning, '90'),
-
-    banner-warning__font-color___light: map-get($map-color-series__warning, '40'),
-
-    banner-warning__border-color___light: map-get($map-color-series__warning, '70'),
-
-    banner-warning__icon-color___light: map-get($map-color-series__warning, '50'),
-
-    banner-warning__box-shadow-color___light: rgba(map-get($map-color-series__warning, '60'), 0.3),
-
-
-
+    banner-warning__background-color___light: hsl($h-warning,$s-warning,90%),
+    banner-warning__background-color___dark: hsl($h-warning,$s-warning,10%),
+    banner-warning__font-color___light: hsl($h-warning,$s-warning,40%),
+    banner-warning__font-color___dark: hsl($h-warning,$s-warning,60%),
+    banner-warning__border-color___light: hsl($h-warning,$s-warning,70%),
+    banner-warning__border-color___dark: hsl($h-warning,$s-warning,30%),
+    banner-warning__icon-color___light: hsl($h-warning,$s-warning,50%),
+    banner-warning__icon-color___dark: hsl($h-warning,$s-warning,50%),
+    banner-warning__box-shadow-color___light: rgba(hsl($h-warning,$s-warning,60%), 0.3),
+    banner-warning__box-shadow-color___dark: rgba(hsl($h-warning,$s-warning,40%), 0.3),
 
 );

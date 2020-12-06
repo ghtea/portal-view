@@ -16,7 +16,7 @@ import Cookies from 'js-cookie';
 //import IconSignUp from 'svgs/basic/IconSignUp';
 
 import styles from './SignUp.module.scss';
-
+import stylesLogIn from './LogIn.module.scss';
 
 type PropsSignUp = {};
 
@@ -67,30 +67,31 @@ function SignUp({}: PropsSignUp) {
   return (
     <div className={`${styles['root']}`} >
         
-        <div className={`${styles['title-page']}`} >  Sign Up </div>
+        <div className={`${stylesLogIn['title-page']}`} >  Sign Up </div>
         
-        <div className={`${styles['input-identity']}`} >
+        <div className={`${stylesLogIn['input-identity']}`} >
+            <div> Email Address </div>
           <input 
             type='text' 
             placeholder='Email Address' 
             value={inputEmail.value}
             onChange={inputEmail.onChange} 
           /> 
-          <div> Email Address </div>
         </div>
         
         
-        <div className={`${styles['input-password']}`} >
+        <div className={`${stylesLogIn['input-password']}`} >
+            <div> Password </div>
           <input 
             type='password'
             placeholder='Password'
             value={inputPassword1.value}
             onChange={inputPassword1.onChange}
           /> 
-          <div> Password </div>
         </div>
         
-        <div className={`${styles['input-password']}`} >
+        <div className={`${stylesLogIn['input-password']}`} >
+            <div> Password Again </div>
           <input 
             type='password'
             placeholder='Password Again'
@@ -99,19 +100,18 @@ function SignUp({}: PropsSignUp) {
             onChange={inputPassword2.onChange}
             onKeyPress={onKeyPress_SignUp}
           /> 
-          <div> Password Again </div>
         </div> 
         
         
         
-        <div className={`${styles['button-enter']}`} >
+        <div className={`${stylesLogIn['button-enter']}`} >
           <button
             onClick={()=>onClick_SignUp()}
           > Sign Up 
           </button>
         </div>
         
-        <div className={`${styles['collection-link']}`} > 
+        <div className={`${stylesLogIn['collection-link']}`} > 
           <div> 
             <a
               onClick={()=>onClick_LinkInsideApp( '/')}

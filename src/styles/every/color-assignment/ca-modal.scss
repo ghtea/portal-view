@@ -12,30 +12,29 @@ $modal__map-color-assignment: (
 
     modal__background-color___light: $front___light,
     modal__background-color___dark: $front___dark,
-    modal__font-color___light: map-get($map-color-series__basic, '25'),
-    modal__font-color___dark: hsl($h-basic,12%,75%),
-    modal__border-color___light: $border___light,
-    modal__border-color___dark: hsl($h-basic,12%,12%),
-    modal__box-shadow-color___light: rgba(hsl($h-basic,12%,50%), 0.7),
-    modal__box-shadow-color___dark: rgba(hsl($h-basic,12%,0%), 0.7),
+    modal__font-color___light: hsl($h-basic,$s-basic,25%),
+    modal__font-color___dark: hsl($h-basic,$s-basic,75%),
+    modal__border-color___light: hsl($h-basic,$s-basic,75%),
+    modal__border-color___dark: hsl($h-basic,$s-basic,15%),
+    modal__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,50%), 0.7),
+    modal__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.7),
     
-    modal--shadow__background-color___light: rgba(hsl($h-basic,12%,10%), 0.3),
-    modal--shadow__background-color___dark: rgba(hsl($h-basic,12%,5%), 0.3),
+    modal--shadow__background-color___light: rgba(hsl($h-basic,$s-basic,10%), 0.3),
+    modal--shadow__background-color___dark: rgba(hsl($h-basic,$s-basic,5%), 0.3),
 
-    setting--header__icon-color___light: map-get($map-color-series__basic, '70'),
+    setting--header__icon-color___light: hsl($h-basic,$s-basic,70%),
+    setting--header__icon-color___dark: hsl($h-basic,$s-basic,30%),
+    setting--header__icon-color__hover___light: hsl($h-basic,$s-basic,50%),
+    setting--header__icon-color__hover___dark: hsl($h-basic,$s-basic,50%),
+    setting--option-behind__background-color___light: hsl($h-basic,$s-basic,90%),
+    setting--option-behind__background-color___dark: hsl($h-basic,$s-basic,4%),
 
-    setting--header__icon-color__hover___light: map-get($map-color-series__basic, '50'),
-
-    setting--option-behind__background-color___light: hsl($h-basic,12%,90%),
-    setting--option-behind__background-color___dark: hsl($h-basic,12%,8%),
-
-
-    setting--option-off__font-color___light: hsl($h-basic,12%,50%),
-    setting--option-off__font-color___dark: hsl($h-basic,12%,50%),
+    setting--option-off__font-color___light: hsl($h-basic,$s-basic,50%),
+    setting--option-off__font-color___dark: hsl($h-basic,$s-basic,50%),
     setting--option-on__background-color___light: $front___light,
     setting--option-on__background-color___dark: $front___dark,
-    setting--option-on__font-color___light: hsl($h-basic,12%,30%),
-    setting--option-on__font-color___dark: hsl($h-basic,12%,70%),
-    setting--option-on__box-shadow-color___light: rgba(hsl($h-basic,12%,65%), 0.5),
-    setting--option-on__box-shadow-color___dark: rgba(hsl($h-basic,12%, 3%), 0.5)
+    setting--option-on__font-color___light: hsl($h-basic,$s-basic,30%),
+    setting--option-on__font-color___dark: hsl($h-basic,$s-basic,70%),
+    setting--option-on__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,65%), 0.5),
+    setting--option-on__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic, 3%), 0.5)
 );

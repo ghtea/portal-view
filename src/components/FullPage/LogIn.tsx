@@ -51,23 +51,25 @@ function LogIn({}: PropsLogIn) {
         <div className={`${styles['title-page']}`} > {t('FullPage', 'LogIn', 'LogIn')}</div>
             
         <div className={`${styles['input-identity']}`} >
+            <div> {t('FullPage', 'LogIn', 'EmailAddress')} </div>
             <input 
                 type='text'
                 placeholder={t('FullPage', 'LogIn', 'EmailAddress')}
                 value={inputEmail.value}
                 onChange={inputEmail.onChange} 
             /> 
-            <div> {t('FullPage', 'LogIn', 'EmailAddress')} </div>
+            
         </div> 
             
         <div className={`${styles['input-password']}`} >
+            <div> {t('FullPage', 'LogIn', 'Password')} </div>
             <input 
                 type='password'
                 placeholder={t('FullPage', 'LogIn', 'Password')}
                 value={inputPassword.value}
                 onChange={inputPassword.onChange}
             /> 
-            <div> {t('FullPage', 'LogIn', 'Password')} </div>
+            
         </div> 
         
         <div> message </div>
@@ -80,7 +82,7 @@ function LogIn({}: PropsLogIn) {
         </div> 
         
     
-        <div> 
+        <div className={`${styles['division']}`} > 
             <div> or Log In with </div>
         </div> 
         
