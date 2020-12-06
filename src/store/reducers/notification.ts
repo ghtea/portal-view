@@ -33,7 +33,7 @@ export type Banner = {
 
 export type State = {
   listBanner: Banner[],
-  listCodeSituationSpecial: string[]
+  listCodeSituationOthers: string[]
 }
 
 
@@ -41,7 +41,7 @@ const stateInitial = {
   
   listBanner: [],
   
-  listCodeSituationSpecial: []
+  listCodeSituationOthers: []
   
 };
 

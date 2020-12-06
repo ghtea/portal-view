@@ -20,7 +20,6 @@
     "@types/styled-components": "^5.1.4",
     "@types/uuid": "^8.3.0",
     "axios": "^0.21.0",
-    "babel-plugin-styled-components": "^1.12.0",
     "i18next": "^19.8.3",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.0.21",

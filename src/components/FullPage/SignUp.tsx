@@ -30,8 +30,8 @@ function SignUp({}: PropsSignUp) {
   const inputPassword1 = useInput(""); // {value, setValue, onChange};
   const inputPassword2 = useInput(""); // {value, setValue, onChange};
   
-  const messageEmail = useState('');
-  const messagePassword = useState('');
+  const [messageEmail, setMessageEmail] = useState('');
+  const [messagePassword, setMessagePassword] = useState('');
   
   const onClick_LinkInsideApp = useCallback(
     (destination:string) => {
@@ -71,6 +71,7 @@ function SignUp({}: PropsSignUp) {
         
         <div className={`${stylesLogIn['input-identity']}`} >
             <div> Email Address </div>
+            <div> {messageEmail} </div>
           <input 
             type='text' 
             placeholder='Email Address' 
@@ -82,6 +83,7 @@ function SignUp({}: PropsSignUp) {
         
         <div className={`${stylesLogIn['input-password']}`} >
             <div> Password </div>
+            <div> {messagePassword} </div>
           <input 
             type='password'
             placeholder='Password'
@@ -92,6 +94,7 @@ function SignUp({}: PropsSignUp) {
         
         <div className={`${stylesLogIn['input-password']}`} >
             <div> Password Again </div>
+            <div> {messagePassword} </div>
           <input 
             type='password'
             placeholder='Password Again'

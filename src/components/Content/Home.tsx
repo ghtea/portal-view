@@ -28,6 +28,11 @@ function Home({}: PropsHome) {
   
   return (
     <div className={`${styles['root']}`} >
+
+        <div className={`${styles['search']}`}>
+            <input type='text' />
+        </div>
+
         <div> {t('Content', 'Home', 'Welcome')} </div>
         
         <div> 

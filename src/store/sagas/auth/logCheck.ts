@@ -36,6 +36,11 @@ const requestLogCheck = () => {
 
 function* logCheck(action: actionsAuth.type__LOG_CHECK) {
     try {
+
+        yield put( actionsNotification.return__REPLACE({
+            listKey: ['listCodeSituationOthers'],
+            replacement: []
+        }) );
         
         yield put( actionsStatus.return__REPLACE({
             listKey: ['ready', 'user'],
@@ -69,7 +74,7 @@ function* logCheck(action: actionsAuth.type__LOG_CHECK) {
         } 
         
         else {
-        
+            
     
             const res = yield call( requestLogCheck );
             
@@ -98,7 +103,7 @@ function* logCheck(action: actionsAuth.type__LOG_CHECK) {
                 console.log(codeSituation);
                 
                 // SignUp_UnknownError, SignUp_DuplicateEmail
-                yield put( actionsNotification.return__ADD_CODE_SITUATION_SPECIAL({
+                yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
                     codeSituation: codeSituation
                 }) );
                 
@@ -128,7 +133,7 @@ function* logCheck(action: actionsAuth.type__LOG_CHECK) {
         console.log(error);
         console.log('log check has been failed');
         
-        yield put( actionsNotification.return__ADD_CODE_SITUATION_SPECIAL({
+        yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
             codeSituation: 'LogCheck_UnknownError'
         }) );
         

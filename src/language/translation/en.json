@@ -48,11 +48,18 @@
         "Test1": "Succuessfully tested 1 !",
         "Test2": "Succuessfully tested 2 !",
         
-        "LogIn_Failed": "Log In has failed",
-        
+        "LogIn_UnknownError": "An unknown error has occurred",
+        "LogIn_NoEmail": "Please enter email address",
+        "LogIn_NoPassword": "Please enter password",
+
+        "SignUp_UnknownError": "An unknown error has occurred",
+        "SignUp_NoEmail": "Please enter email address",
+        "SignUp_NotValidEmail": "The email address is not valid",
+        "SignUp_NoPassword": "Please enter both passwords",
+        "SignUp_PasswordsDifferent": "The two passwords are different",
+        "SignUp_ShortPassword": "Password should be at least 6 characters long",
         "SignUp_DuplicateEmail": "That email is already existing",
-        "SignUp_Succeeded": "Successfully signed up!",
-        "SignUp_UnknownError": "An unknown error has occurred"
+        "SignUp_Succeeded": "Successfully signed up!"
     },
     
     

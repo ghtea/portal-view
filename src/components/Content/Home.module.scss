@@ -4,3 +4,21 @@
 
     
 } 
+
+
+.search {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    height: 80px;
+
+    & > input {
+        height: 44px;
+        padding-left: 8px;
+        font-size: 1.1rem;
+        border-radius: 2px;
+    }
+}

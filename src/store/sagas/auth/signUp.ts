@@ -37,26 +37,47 @@ const requestSignUp = (bodyRequest: BodyRequest) => {
 
 function* signUp(action: actionsAuth.type__SIGN_UP) {
     try {
-            console.log(action)
+
+        yield put( actionsNotification.return__REPLACE({
+            listKey: ['listCodeSituationOthers'],
+            replacement: []
+        }) );
+        
+
         if (action.payload.email === "") {
             console.log('type email address');
+            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                codeSituation: 'SignUp_NoEmail'
+            }) );
             //addDeleteNotification("auth01", language);
         }
         else if ( !(/\S+@\S+\.\S+/).test(action.payload.email) ){
             console.log('type valid email address');
+            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                codeSituation: 'SignUp_NotValidEmail'
+            }) );
             //addDeleteNotification("auth021", language);
         }
         
         else if (action.payload.password1 === "" || action.payload.password2 === "") {
             console.log('type both passwords');
+            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                codeSituation: 'SignUp_NoPassword'
+            }) );
             //addDeleteNotification("auth03", language);
         }
         else if (action.payload.password1 !== action.payload.password2) {
             console.log('two passwords are different');
+            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                codeSituation: 'SignUp_PasswordsDifferent'
+            }) );
             //addDeleteNotification("auth04", language);
         }
         else if (action.payload.password1.length < 6) {
             console.log('password is too short');
+            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                codeSituation: 'SignUp_ShortPassword'
+            }) );
             //addDeleteNotification("auth04", language);
         }
         
@@ -92,7 +113,7 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
                 
                 console.log(codeSituation);
                 // SignUp_UnknownError, SignUp_DuplicateEmail
-                yield put( actionsNotification.return__ADD_CODE_SITUATION_SPECIAL({
+                yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
                     codeSituation: codeSituation
                 }) );
             
@@ -110,7 +131,7 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
         console.log(error);
         console.log('sign up has been failed');
         
-        yield put( actionsNotification.return__ADD_CODE_SITUATION_SPECIAL({
+        yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
             codeSituation: 'SignUp_UnknownError'
         }) );
     }

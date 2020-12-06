@@ -50,11 +50,18 @@
         "Test1": "테스트에 성공하였습니다 1 !",
         "Test2": "테스트에 성공하였습니다 2 !",
         
-        "LogIn_Failed": "로그인에 실패하였습니다",
-        
+        "LogIn_UnknownError": "알수 없는 에러가 발생했습니다",
+        "LogIn_NoEmail": "이메일 주소를 입력해주세요",
+        "LogIn_NoPassword": "비밀번호를 입력해주세요",
+
+        "SignUp_UnknownError": "알수 없는 에러가 발생했습니다",
+        "SignUp_NoEmail": "이메일 주소를 입력해주세요",
+        "SignUp_NotValidEmail": "이메일 주소가 유효하지 않습니다",
+        "SignUp_NoPassword": "비밀번호를 모두 입력해주세요",
+        "SignUp_PasswordsDifferent": "두 비밀번호가 서로 다릅니다",
+        "SignUp_ShortPassword": "비밀번호는 6글자 이상으로 정해주세요",
         "SignUp_DuplicateEmail": "해당 이메일이 이미 등록되어 있습니다",
-        "SignUp_Succeeded": "성공적으로 회원가입하였습니다!",
-        "SignUp_UnknownError": "알수 없는 에러가 발생했습니다"
+        "SignUp_Succeeded": "성공적으로 회원가입하였습니다!"
     },
     
     

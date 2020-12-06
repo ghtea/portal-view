@@ -36,17 +36,25 @@ const requestLogIn = (bodyRequest: BodyRequest) => {
 function* logIn(action: actionsAuth.type__LOG_IN) {
     try {
         
+        yield put( actionsNotification.return__REPLACE({
+            listKey: ['listCodeSituationOthers'],
+            replacement: []
+        }) );
+
+
         if (action.payload.email === "") {
             console.log('type email address');
+            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                codeSituation: 'LogIn_NoEmail'
+            }) );
             //addDeleteNotification("auth01", language);
-        }
-        else if ( !(/\S+@\S+\.\S+/).test(action.payload.email) ){
-            console.log('type valid email address');
-            //addDeleteNotification("auth021", language);
         }
         
         else if (action.payload.password === "") {
             console.log('type password');
+            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                codeSituation: 'LogIn_NoPassword'
+            }) );
             //addDeleteNotification("auth03", language);
         }
         
@@ -98,7 +106,7 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 console.log(codeSituation);
                 
                 // SignUp_UnknownError, SignUp_DuplicateEmail
-                yield put( actionsNotification.return__ADD_CODE_SITUATION_SPECIAL({
+                yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
                     codeSituation: codeSituation
                 }) );
                 
@@ -128,7 +136,7 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
         console.log(error);
         console.log('log in has been failed');
         
-        yield put( actionsNotification.return__ADD_CODE_SITUATION_SPECIAL({
+        yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
             codeSituation: 'LogIn_UnknownError'
         }) );
         
