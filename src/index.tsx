@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter} from "react-router-dom";
+import { Route, Router} from "react-router-dom";
+import historyApp from './historyApp';
+
 import App from './App';
 //import './index.css';
 import {Provider} from 'react-redux'
@@ -16,7 +18,7 @@ const render = () => {
     ReactDOM.render(
         <React.StrictMode>
   
-          <BrowserRouter>
+          <Router history={historyApp}>
           
             <CookiesProvider>
               <Provider store={store}>
@@ -26,7 +28,7 @@ const render = () => {
               </Provider>
             </CookiesProvider>
           
-          </BrowserRouter>
+          </Router>
         
         </React.StrictMode>,
         document.getElementById('root')

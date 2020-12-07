@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 
-import { useHistory, useLocation } from "react-router-dom";
+import history from "historyApp";
+import { useLocation } from "react-router-dom";
 import useTranslationTyped from 'tools/hooks/useTranslationTyped'
 
 import {useSelector, useDispatch} from "react-redux";
@@ -16,7 +17,6 @@ type PropsTopBar = {};
 
 function TopBar({}: PropsTopBar) {
   
-  const history = useHistory();
   const { t } = useTranslationTyped();
   
   // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 

@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import history from "historyApp";
 import useTranslationTyped from 'tools/hooks/useTranslationTyped'
 
 import {useSelector, useDispatch} from "react-redux";
@@ -11,6 +11,8 @@ import styles from './Nav1.module.scss';
 import IconLogo from 'svgs/others/IconLogo';
 import IconThreeBars from 'svgs/basic/IconThreeBars';
 import IconX from 'svgs/basic/IconX';
+import IconUserCircle from 'svgs/basic/IconUserCircle';
+
 
 
 
@@ -18,7 +20,6 @@ type PropsNav1 = {};
 
 function Nav1({}: PropsNav1) {
   
-  const history = useHistory();
   const { t } = useTranslationTyped();
   const dispatch = useDispatch();
   
@@ -102,7 +103,7 @@ function Nav1({}: PropsNav1) {
         
                 { readyUser &&
                     <div className={`${styles['tool']}`} > 
-                        logged in
+                        <IconUserCircle className={`${styles['icon-user-circle']}`} />
                     </div>
                 }
             </div>

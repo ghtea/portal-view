@@ -1,9 +1,11 @@
 import { call, spawn, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 import queryString from 'query-string';
+import history from "historyApp";
 
 import Cookies from 'js-cookie';
 import { v4 as uuidv4 } from 'uuid';
+
 
 import * as config from 'config';
 
@@ -31,6 +33,7 @@ const requestLogIn = (bodyRequest: BodyRequest) => {
             return error.response;
         });
 };
+
 
 
 function* logIn(action: actionsAuth.type__LOG_IN) {
@@ -99,7 +102,19 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                     listKey: ['ready', 'user'],
                     replacement: true
                 }) );
-            
+                
+                /*
+                const query = queryString.parse(location.search);
+                if(query.destination !== undefined) {
+                history.push(query.destination);
+                }
+                else if (query.shouldGoBack === "yes") {
+                history.goBack();
+                }
+                else { history.push('/') }
+                */
+
+                history.push('/');
             }
             else {
                 
