@@ -6,6 +6,7 @@
 @import 'color-assignment/ca-modal.scss';
 @import 'color-assignment/ca-nav.scss';
 @import 'color-assignment/ca-notification.scss';
+@import 'color-assignment/ca-action.scss';
 
 
 $map-color-assignment: map-merge-all(
@@ -14,7 +15,8 @@ $map-color-assignment: map-merge-all(
     $full-page__map-color-assignment,
     $modal__map-color-assignment,
     $nav__map-color-assignment,
-    $notification__map-color-assignment
+    $notification__map-color-assignment,
+    $action__map-color-assignment
 );
 
 $list-name-theme: (light, dark);

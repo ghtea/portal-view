@@ -38,7 +38,7 @@ const Icon = ({ className, kind, directon }: PropsIcon) => {
     },[directon]);
 
   return (
-    <div className={className} >
+    <div className={`${className} icon`} >
   
     {(!kind || kind === 'regular') && 
       <svg

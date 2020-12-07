@@ -13,7 +13,7 @@ const propsDefault = {
 // Hint
 const Icon = ({ className, kind }: PropsIcon) => {
   return (
-    <div className={className}>
+    <div className={`${className} icon`} >
       <svg
         width="100%"
         height="100%"

@@ -23,6 +23,7 @@
     // border-width: 1px;
     // border-style: solid;
     // @include color(border-color, div__border-color);
+    border-radius: 0px;
 
     @include frame(outline, 0px, none, div__border-color);
     // https://developer.mozilla.org/ko/docs/Web/CSS/outline

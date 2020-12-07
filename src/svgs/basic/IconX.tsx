@@ -13,7 +13,7 @@ const propsDefault = {
 // X
 const Icon = ({ className, kind }: PropsIcon) => {
   return (
-    <div className={className}>
+    <div className={`${className} icon`} >
 
         {(!kind || kind === 'regular') && 
       <svg
