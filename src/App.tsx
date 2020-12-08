@@ -1,6 +1,10 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 
+import { IntlProvider } from 'react-intl'
+import translationEn from 'language/translation/en.json';
+import translationKo from 'language/translation/ko.json';
+
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
@@ -55,8 +59,19 @@ function App({}: PropsApp) {
     dispatch(actionsStatus.return__READ_LANGUAGE() );
   }, []);
   
+    const codeLanguageCurrent:string = useSelector((state: StateRoot) => state['status']['current']['language']);
+    const translationLanguageCurrent = useMemo(()=>{
+        if (codeLanguageCurrent === 'ko'){
+            return translationKo;
+        }
+        else {
+            return translationEn;
+        }
+    },[codeLanguageCurrent])
+    
   
-  
+
+
     const optionThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['option']);
     const nameThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['name']);
 
@@ -86,18 +101,20 @@ function App({}: PropsApp) {
   // https://dev.to/cmcwebcode40/simple-react-dark-mode-with-scss-lae
   return ( 
     <>
-    <Notification />
-    <Modal />
-    
-    {isFullPage && <FullPage/>}
-    
-    {!isFullPage && 
-        <>
-        <Nav/>
-        <Content/>
-        <Action/>
-        </>
-    }
+        <IntlProvider locale={codeLanguageCurrent} messages={translationLanguageCurrent} >
+            <Notification />
+            <Modal />
+            
+            {isFullPage && <FullPage/>}
+            
+            {!isFullPage && 
+                <>
+                <Nav/>
+                <Content/>
+                <Action/>
+                </>
+            }
+        </IntlProvider>
     </>
     
   );

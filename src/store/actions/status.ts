@@ -26,7 +26,6 @@ type typeAction =
 // typescript 안의 type 과 redux 의 type 구분 주의!
 
 
-
 export const name__CHANGE_LANGUAGE: string = `status/CHANGE_LANGUAGE`;    // 뒤에 as const 를 붙이면 reducer 에서 status.REPLACE 로 쓸때 오류 뜬다. 아직 이해못
 
 interface Payload__CHANGE_LANGUAGE {
@@ -41,6 +40,23 @@ export const return__CHANGE_LANGUAGE = (payload?: Payload__CHANGE_LANGUAGE) => {
 };
 
 export type type__CHANGE_LANGUAGE = ReturnType<typeof return__CHANGE_LANGUAGE>;
+
+
+
+export const name__DETECT_LANGUAGE: string = `status/DETECT_LANGUAGE`;    // 뒤에 as const 를 붙이면 reducer 에서 status.REPLACE 로 쓸때 오류 뜬다. 아직 이해못
+
+interface Payload__DETECT_LANGUAGE {
+    replacement: string;
+}
+
+export const return__DETECT_LANGUAGE = (payload?: Payload__DETECT_LANGUAGE) => {    
+    return {
+        type: name__DETECT_LANGUAGE,
+        payload: payload
+    }
+};
+
+export type type__DETECT_LANGUAGE = ReturnType<typeof return__DETECT_LANGUAGE>;
 
 
 
@@ -66,17 +82,5 @@ export const return__DECIDE_THEME = () => {
 };
 
 export type type__DECIDE_THEME = ReturnType<typeof return__DECIDE_THEME>;
-
-
-
-export const name__READ_LANGUAGE: string = `status/READ_LANGUAGE`;    
-
-export const return__READ_LANGUAGE = () => {    
-    return {
-        type: name__READ_LANGUAGE
-    }
-};
-
-export type type__READ_LANGUAGE = ReturnType<typeof return__READ_LANGUAGE>;
 
 

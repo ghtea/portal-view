@@ -1,73 +1,52 @@
 {
     
+    "Nav.Home": "Home",
+    "Nav.Setting": "Setting",
+        
+    "Nav.NameApp": "Portal View",
     
-    "Nav": {
-        
-        "Home": "Home",
-        "Setting": "Setting",
-        
-        "NameApp": "Portal View",
-        
-        "LogIn": "Log In",
-        "SignUp": "Sign Up",
-        
-        "System": "System",   
-        "System_State": "State",
-        "System_Styles": "Styles",
-        "System_Language": "Language",
-        
-        "Diary": "Diary"
-    },
+    "Nav.LogIn": "Log In",
+    "Nav.SignUp": "Sign Up",
+    
+    "Nav.System": "System",   
+    "Nav.System_State": "State",
+    "Nav.System_Styles": "Styles",
+    "Nav.System_Language": "Language",
+    "Nav.Diary": "Diary",
     
     
-    "FullPage": {
-        
-        "LogIn": {
-            "LogIn": "Log In",
-            "EmailAddress": "Email Address",
-            "Password": "Password"
-        },
-        "SignUp": {
-            "SignUp": "Sign Up"
-        }
-        
-    },
     
+    "FullPage.LogIn": "LogIn",
+    "FullPage.EmailAddress": "Email Address",
+    "FullPage.Password": "Password",
+    "FullPage.SignUp": "Sign Up",
     
-    "Modal": {
-        "Setting": {
-            "Title": "Setting",
-            "Theme": "Theme",
-            "Language": "Language"
-        }
-    },
-    
-    
-    "Notification": {
-        
-        "Test1": "Succuessfully tested 1 !",
-        "Test2": "Succuessfully tested 2 !",
-        
-        "LogIn_UnknownError": "An unknown error has occurred",
-        "LogIn_NoEmail": "Please enter email address",
-        "LogIn_NoPassword": "Please enter password",
 
-        "SignUp_UnknownError": "An unknown error has occurred",
-        "SignUp_NoEmail": "Please enter email address",
-        "SignUp_NotValidEmail": "The email address is not valid",
-        "SignUp_NoPassword": "Please enter both passwords",
-        "SignUp_PasswordsDifferent": "The two passwords are different",
-        "SignUp_ShortPassword": "Password should be at least 6 characters long",
-        "SignUp_DuplicateEmail": "That email is already existing",
-        "SignUp_Succeeded": "Successfully signed up!"
-    },
+    "Modal.Setting": "Setting",
+    "Modal.Theme": "Theme",
+    "Modal.Language": "Language",
     
     
-    "Content": {
-        "Home": {
-            "Welcome": "Welcome!"
-        }
-    }
+    
+    "Notification.Test1": "Succuessfully tested 1 !",
+    "Notification.Test2": "Succuessfully tested 2 !",
+    
+    "Notification.LogIn_UnknownError": "An unknown error has occurred",
+    "Notification.LogIn_NoEmail": "Please enter email address",
+    "Notification.LogIn_NoPassword": "Please enter password",
+
+    "Notification.SignUp_UnknownError": "An unknown error has occurred",
+    "Notification.SignUp_NoEmail": "Please enter email address",
+    "Notification.SignUp_NotValidEmail": "The email address is not valid",
+    "Notification.SignUp_NoPassword": "Please enter both passwords",
+    "Notification.SignUp_PasswordsDifferent": "The two passwords are different",
+    "Notification.SignUp_ShortPassword": "Password should be at least 6 characters long",
+    "Notification.SignUp_DuplicateEmail": "That email is already existing",
+    "Notification.SignUp_Succeeded": "Successfully signed up!",
+    
+    
+    
+    "Content.Home_Welcome": "Welcome!"
     
 }
 

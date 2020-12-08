@@ -3,74 +3,54 @@
 
 {
     
-    
-    "Nav": {
+    "Nav.Home": "홈",
+    "Nav.Setting": "설정",
         
-        "Home": "홈",
-        "NameApp": "포탈 뷰",
-        "Setting": "설정",
+    "Nav.NameApp": "포탈 뷰",
+    
+    "Nav.LogIn": "로그인",
+    "Nav.SignUp": "회원가입",
+    
+    "Nav.System": "시스템",   
+    "Nav.System_State": "상태 관리",
+    "Nav.System_Styles": "스타일",
+    "Nav.System_Language": "언어",
+    "Nav.Diary": "일기",
+    
+    
+    
+    "FullPage.LogIn": "로그인",
+    "FullPage.EmailAddress": "이메일 주소",
+    "FullPage.Password": "비밀번호",
+    "FullPage.SignUp": "회원가입",
+    
 
-        "LogIn": "로그인",
-        "SignUp": "회원가입",
-        
-        "System": "시스템",   
-        "System_State": "상태",
-        "System_Styles": "스타일",
-        "System_Language": "언어",
-        
-        "Diary": "일기"
-    },
+    "Modal.Setting": "설정",
+    "Modal.Theme": "테마",
+    "Modal.Language": "언어",
     
     
-    "FullPage": {
-        
-        "LogIn": {
-            "LogIn": "로그인",
-            "EmailAddress": "이메일 주소",
-            "Password": "비밀번호"
-        },
-        "SignUp": {
-            "SignUp": "회원가입"
-        }
-        
-    },
     
+    "Notification.Test1": "테스트에 성공하였습니다 1 !",
+    "Notification.Test2": "테스트에 성공하였습니다 2 !",
     
-    "Modal": {
-        "Setting": {
-            "Title": "설정",
-            "Theme": "테마",
-            "Language": "언어"
-        }
-    },
-    
-    
-    "Notification": {
-        
-        "Test1": "테스트에 성공하였습니다 1 !",
-        "Test2": "테스트에 성공하였습니다 2 !",
-        
-        "LogIn_UnknownError": "알수 없는 에러가 발생했습니다",
-        "LogIn_NoEmail": "이메일 주소를 입력해주세요",
-        "LogIn_NoPassword": "비밀번호를 입력해주세요",
+    "Notification.LogIn_UnknownError": "알수 없는 에러가 발생했습니다",
+    "Notification.LogIn_NoEmail": "이메일 주소를 입력해주세요",
+    "Notification.LogIn_NoPassword": "비밀번호를 입력해주세요",
 
-        "SignUp_UnknownError": "알수 없는 에러가 발생했습니다",
-        "SignUp_NoEmail": "이메일 주소를 입력해주세요",
-        "SignUp_NotValidEmail": "이메일 주소가 유효하지 않습니다",
-        "SignUp_NoPassword": "비밀번호를 모두 입력해주세요",
-        "SignUp_PasswordsDifferent": "두 비밀번호가 서로 다릅니다",
-        "SignUp_ShortPassword": "비밀번호는 6글자 이상으로 정해주세요",
-        "SignUp_DuplicateEmail": "해당 이메일이 이미 등록되어 있습니다",
-        "SignUp_Succeeded": "성공적으로 회원가입하였습니다!"
-    },
+    "Notification.SignUp_UnknownError": "알수 없는 에러가 발생했습니다",
+    "Notification.SignUp_NoEmail": "이메일 주소를 입력해주세요",
+    "Notification.SignUp_NotValidEmail": "이메일 주소가 유효하지 않습니다",
+    "Notification.SignUp_NoPassword": "비밀번호를 모두 입력해주세요",
+    "Notification.SignUp_PasswordsDifferent": "두 비밀번호가 서로 다릅니다",
+    "Notification.SignUp_ShortPassword": "비밀번호는 6글자 이상이어야 합니다",
+    "Notification.SignUp_DuplicateEmail": "해당 이메일이 이미 등록되어 있습니다",
+    "Notification.SignUp_Succeeded": "성공적으로 회원가입하였습니다!",
     
     
-    "Content": {
-        "Home": {
-            "Welcome": "환영합니다!"
-        }
-    }
     
+    "Content.Home_Welcome": "환영합니다!"
+
 }
 
 
