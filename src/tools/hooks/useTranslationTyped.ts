@@ -1,3 +1,8 @@
+
+
+// not work since TS 4.1.2 ... sad
+// https://stackoverflow.com/questions/58277973/how-to-type-check-i18n-dictionaries-with-typescript
+
 import { useTranslation } from 'react-i18next';
 import translationEn from 'language/translation/en.json';
 
@@ -23,17 +28,11 @@ interface TypedTFunction<D extends Dictionary> {
     // ... up to a reasonable key parameters length of your choice ...
 }
 
-function useTranslationTyped(): { t: TypedTFunction<typeof translationEn> } {
+function useTranslationTyped(): { t: TypedTFunction<Translation> } {
     const { t } = useTranslation();
     // implementation goes here. Here join keys by dot (depends on your options)
     return { 
-        
-        t(...keys: string[]) { 
-            
-            return t(keys.join(".")) 
-            
-        } 
-        
+        t(...keys: string[]) { return t(keys.join(".")) }
     }
 }
 
@@ -48,4 +47,3 @@ export default useTranslationTyped;
 
 
 
-// https://stackoverflow.com/questions/58277973/how-to-type-check-i18n-dictionaries-with-typescript

@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
-import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+// import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+import { useTranslation } from 'react-i18next'
 
 import {useSelector, useDispatch} from "react-redux";
 
@@ -16,7 +17,7 @@ type PropsHome = {};
 function Home({}: PropsHome) {
   
   const dispatch = useDispatch();
-  const { t } = useTranslationTyped();
+  const { t } = useTranslation();
   
   const onClick_AddTestingBanner = useCallback(
     (codeSituation:string) => {

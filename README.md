@@ -1,5 +1,5 @@
 # Portal View
-여러 웹사이트를 정리해주는 걸 도와줘서 매우 효율적인 웹사용 경험을 제공하는 웹앱
+입체적인 북마크 관리 웹앱
 
 ## skills
 skill |  level (0-5) | focus
@@ -13,8 +13,11 @@ Immer | 2 |
 i18next | 2 | 
 
 ## system
-- components
-- styles
-- state management
-- language
-- icons
+- [Components](#components)
+- Styles
+- State Management
+- Language
+- Icons
+
+
+### Components
