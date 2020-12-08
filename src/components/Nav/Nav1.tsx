@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
-import { useHistory } from "react-router-dom";
+
+import history from 'historyApp';
 import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
@@ -19,7 +20,7 @@ type PropsNav1 = {};
 
 function Nav1({}: PropsNav1) {
   
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   
   const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']['all']);

@@ -1,4 +1,6 @@
 import createSagaMiddleware, { END } from "redux-saga";
+import history from 'historyApp';
+
 import {applyMiddleware, compose, createStore} from "redux";
 import logger from 'redux-logger';
 
@@ -6,8 +8,11 @@ import reducerRoot from './store/reducers';
 import sagaRoot from './store/sagas';
 
 
-
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware({
+    context: {
+        history: history
+    }
+});
 
 // type State = ReturnType<typeof reducerRoot>;
 

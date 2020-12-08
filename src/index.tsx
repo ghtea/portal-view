@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter} from "react-router-dom";
+import { Route, Router} from "react-router-dom";  // BrowserRouter
+import history from 'historyApp';
 
 import App from './App';
 //import './index.css';
@@ -17,7 +18,7 @@ const render = () => {
     ReactDOM.render(
         <React.StrictMode>
   
-          <BrowserRouter>
+          <Router history={history}>
 
             <CookiesProvider>
                 <Provider store={store}>
@@ -25,7 +26,7 @@ const render = () => {
                 </Provider>
             </CookiesProvider>
           
-          </BrowserRouter>
+          </Router>
         
         </React.StrictMode>,
         document.getElementById('root')

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 
-import { useHistory, useLocation } from "react-router-dom";
+import history from 'historyApp';
+import { useLocation } from "react-router-dom";
 import { FormattedMessage } from 'react-intl';
 import Cookies from 'js-cookie';
 
@@ -20,7 +21,6 @@ type PropsSetting = {};
 function Setting({}: PropsSetting) {
   
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const languageCurrent:string = useSelector((state: StateRoot) => state['status']['current']['language']);
   const optionThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['option']);

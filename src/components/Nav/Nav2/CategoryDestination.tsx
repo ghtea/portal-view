@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { useHistory } from "react-router-dom";
+import history from 'historyApp';
 import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
@@ -21,7 +21,6 @@ function CategoryDestination({
   listIdLink
 }: PropsCategoryDestination) {
   
-  let history = useHistory();
   const dispatch = useDispatch();  
   
   // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 

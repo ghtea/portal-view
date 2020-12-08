@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { useHistory } from "react-router-dom";
+import history from 'historyApp';
 import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
@@ -22,7 +22,6 @@ type PropsSoloDestination = {
 
 function SoloDestination({idSolo}: PropsSoloDestination) {
   
-  let history = useHistory();
   const dispatch = useDispatch();
   
   // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>,

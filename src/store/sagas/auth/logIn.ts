@@ -1,4 +1,4 @@
-import { call, spawn, put, takeEvery } from "redux-saga/effects";
+import { call, spawn, put, takeEvery, getContext } from "redux-saga/effects";
 import axios from "axios";
 import queryString from 'query-string';
 
@@ -36,6 +36,8 @@ const requestLogIn = (bodyRequest: BodyRequest) => {
 function* logIn(action: actionsAuth.type__LOG_IN) {
     try {
         
+        const history = yield getContext('history');
+
         yield put( actionsNotification.return__REPLACE({
             listKey: ['listCodeSituationOthers'],
             replacement: []
@@ -99,6 +101,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                     listKey: ['ready', 'user'],
                     replacement: true
                 }) );
+
+                history.push('/');
             
             }
             else {

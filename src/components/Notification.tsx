@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import { useHistory } from "react-router-dom";
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';

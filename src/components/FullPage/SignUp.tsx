@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import { useHistory, useLocation } from "react-router-dom";
+import history from 'historyApp';
+import { useLocation } from "react-router-dom";
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
@@ -23,7 +24,6 @@ type PropsSignUp = {intl: any};
 function SignUp({intl}: PropsSignUp) {
   
   const dispatch = useDispatch();
-  const history = useHistory();
   
   const inputEmail = useInput(""); // {value, setValue, onChange};
   const inputPassword1 = useInput(""); // {value, setValue, onChange};

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 
-import { useHistory, useLocation } from "react-router-dom";
+import history from 'historyApp';
+import { useLocation } from "react-router-dom";
 import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
@@ -15,8 +16,6 @@ import styles from './TopBar.module.scss';
 type PropsTopBar = {};
 
 function TopBar({}: PropsTopBar) {
-  
-  const history = useHistory();
   
   // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 
    
