@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import history from "historyApp";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import useTranslationTyped from 'tools/hooks/useTranslationTyped'
 
 import {useSelector, useDispatch} from "react-redux";
@@ -23,6 +22,7 @@ function LogIn({}: PropsLogIn) {
   
   const dispatch = useDispatch();
   const { t } = useTranslationTyped();
+  const history = useHistory();
 
     // when login button is pushed, notification code of reaction is added to  this list, when login button is pushed again this list cleared once 
     const listCodeSituationOthers:string[] = useSelector((state: StateRoot) => state['notification']['listCodeSituationOthers']);

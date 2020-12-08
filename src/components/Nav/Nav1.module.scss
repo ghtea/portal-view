@@ -73,46 +73,37 @@
         & button .icon-three-bars {
             animation: showThreeBars 0.4s ease-out 0s 1 normal;
         }
-
-        .icon-x {
-            @include color-each-theme(color, nav-1--bar--tool__icon-color);
-            width: 30px;
-            height: 30px;
-        }
-
-        .icon-three-bars {
-            @include color-each-theme(color, nav-1--bar--tool__icon-color);
-            width: 30px;
-            height: 30px;
-        }
     }
-
     & > div:nth-child(2) {
         width: calc(100% - 120px);  // 320-80 ~
-
-        .icon-logo {
-            @include color-each-theme(color, nav-1--bar--name-app__icon-color);
-            width: 30px;
-            height: 30px;
-        }
     }
   
   
     & > div:nth-child(3) {
         width: 60px;
-
-        .icon-user-circle {
-            @include color-each-theme(color, nav-1--bar--tool__icon-color);
-            width: 30px;
-            height: 30px;
-        }
     }
   
 	@media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
 	    display: none;
 	}
     
-    
+    .icon-logo {
+        @include color-each-theme(color, nav-1--bar--name-app__icon-color);
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon-x {
+        @include color-each-theme(color, nav-1--bar--tool__icon-color);
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon-three-bars {
+        @include color-each-theme(color, nav-1--bar--tool__icon-color);
+        width: 30px;
+        height: 30px;
+    }
 }
 
 

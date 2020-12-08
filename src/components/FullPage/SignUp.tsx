@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import history from "historyApp";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import useTranslationTyped from 'tools/hooks/useTranslationTyped'
 
 import {useSelector, useDispatch} from "react-redux";
@@ -24,6 +23,7 @@ type PropsSignUp = {};
 function SignUp({}: PropsSignUp) {
   
   const dispatch = useDispatch();
+  const history = useHistory();
   const { t } = useTranslationTyped();
   
   const inputEmail = useInput(""); // {value, setValue, onChange};
