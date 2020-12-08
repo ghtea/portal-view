@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 
 import { useHistory, useLocation } from "react-router-dom";
-import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+import { FormattedMessage } from 'react-intl';
 import Cookies from 'js-cookie';
 
 import {useSelector, useDispatch} from "react-redux";
@@ -24,8 +24,6 @@ function Setting({}: PropsSetting) {
 
   const languageCurrent:string = useSelector((state: StateRoot) => state['status']['current']['language']);
   const optionThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['option']);
-
-  const { t } = useTranslationTyped();
   
   const onClick_HideSetting = useCallback(
     () => {
@@ -55,9 +53,12 @@ function Setting({}: PropsSetting) {
   
   const onClick_ChangeLanguage = useCallback(
     (replacement:string) => {
-      dispatch(actionsStatus.return__CHANGE_LANGUAGE({
+
+      dispatch(actionsStatus.return__REPLACE({
+        listKey: ['current', 'language'],
         replacement: replacement
-      }) )
+      }) );
+
     }, []
   );
   
@@ -66,7 +67,7 @@ function Setting({}: PropsSetting) {
     <div className={`${styles['root']} ${stylesModal['root']}`} >
       
       <div className={`${styles['header']}`} >
-        <div> {t('Modal', 'Setting', 'Title')} </div>
+        <div>  <FormattedMessage id={`Modal.Setting_Title`} /> </div>
         <div
           onClick={()=>onClick_HideSetting()}
         > 
@@ -78,7 +79,7 @@ function Setting({}: PropsSetting) {
       <div className={`${styles['content']}`} >
         
         <div className={`${styles['content__section']}`} >
-          <div> {t('Modal', 'Setting', 'Theme')} </div>
+          <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
           <div>
             <div className={`${styles['button-option']} active----${optionThemeCurrent === 'auto'}`}
                 onClick={()=>onClick_ChangeOptionTheme('auto')}
@@ -96,7 +97,7 @@ function Setting({}: PropsSetting) {
         </div>
         
         <div className={`${styles['content__section']}`} >
-          <div> {t('Modal', 'Setting', 'Language')} </div>
+          <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
           <div>
             <div className={`${styles['button-option']} active----${languageCurrent === 'en'}`}
               onClick={()=>onClick_ChangeLanguage('en')}

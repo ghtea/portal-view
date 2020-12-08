@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
-// import useTranslationTyped from 'tools/hooks/useTranslationTyped'
-import { useTranslation } from 'react-i18next'
+
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 
@@ -17,7 +17,6 @@ type PropsHome = {};
 function Home({}: PropsHome) {
   
   const dispatch = useDispatch();
-  const { t } = useTranslation();
   
   const onClick_AddTestingBanner = useCallback(
     (codeSituation:string) => {
@@ -34,7 +33,9 @@ function Home({}: PropsHome) {
             <input type='text' />
         </div>
 
-        <div> {t('Content', 'Home', 'Welcome')} </div>
+        <div>
+            <FormattedMessage id={`Content.Home_Welcome`} />
+        </div>
         
         <div> 
           <button
@@ -57,3 +58,4 @@ function Home({}: PropsHome) {
 Home.defaultProps = {};
 
 export default Home;
+

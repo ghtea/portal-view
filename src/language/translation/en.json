@@ -19,12 +19,13 @@
     "FullPage.LogIn": "LogIn",
     "FullPage.EmailAddress": "Email Address",
     "FullPage.Password": "Password",
+    "FullPage.PasswordAgain": "Password Again",
     "FullPage.SignUp": "Sign Up",
     
 
-    "Modal.Setting": "Setting",
-    "Modal.Theme": "Theme",
-    "Modal.Language": "Language",
+    "Modal.Setting_Title": "Setting",
+    "Modal.Setting_Theme": "Theme",
+    "Modal.Setting_Language": "Language",
     
     
     

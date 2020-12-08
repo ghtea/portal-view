@@ -165,6 +165,12 @@
         width: 24px;
         height: 24px;
     }
+
+    .icon-user-circle {
+        @include color-each-theme(color, nav-2--tool__icon-color);
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .link-main {

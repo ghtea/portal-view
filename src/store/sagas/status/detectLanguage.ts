@@ -34,7 +34,7 @@ function* detectLanguage() {
     const codeLanguageFromBrowser = navigator.language ;
     console.log(codeLanguageFromBrowser);
 
-    const codeStandardFromCookie = Cookies.get("codeStandard");
+    const codeStandardFromCookie = Cookies.get("codeLanguageStandard");
     
     // https://www.metamodpro.com/browser-language-codes
     // https://gist.github.com/wpsmith/7604842
@@ -56,7 +56,8 @@ function* detectLanguage() {
     yield put( actionsStatus.return__REPLACE({
         listKey:['current', 'language'],
         replacement: replacement
-    }))
+    }));
+
 }
 
 export default detectLanguage;

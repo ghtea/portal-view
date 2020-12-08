@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useTranslation } from 'react-i18next'
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -22,9 +22,7 @@ function CategoryDestination({
 }: PropsCategoryDestination) {
   
   let history = useHistory();
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
-  
+  const dispatch = useDispatch();  
   
   // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 
   const onClick_LinkInsideApp = useCallback(
@@ -76,7 +74,7 @@ function CategoryDestination({
                 onClick = {()=>onClick_CategoryDestination_Title(idCategory) }
 			> 
 			  <div> 
-			    <a> {t(`Nav.${idCategory}`)}  </a>
+			    <a> <FormattedMessage id={`Nav.${idCategory}`} />  </a>
 			  </div>
 			  <div> 
 			    <IconAngle className={`${styles['icon-angle']}`} directon={"down"} /> 
@@ -94,7 +92,7 @@ function CategoryDestination({
                         <div className={`${styles['link']}`}
                             key={`idLink-${index}`}
                             onClick={()=>onClick_LinkInsideApp(`/${convertName.pascalToSnake(idCategory)}/${convertName.pascalToSnake(idLink)}`)}
-                        > <a> {t(`Nav.${idCategory}_${idLink}`)} </a> 
+                        > <a> <FormattedMessage id={`Nav.${idCategory}_${idLink}`} />  </a> 
   					    </div>
 				    ))}
 				</div>

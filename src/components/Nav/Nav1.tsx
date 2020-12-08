@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
-import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -11,6 +11,7 @@ import styles from './Nav1.module.scss';
 import IconLogo from 'svgs/others/IconLogo';
 import IconThreeBars from 'svgs/basic/IconThreeBars';
 import IconX from 'svgs/basic/IconX';
+import IconUserCircle from 'svgs/basic/IconUserCircle';
 
 
 
@@ -19,7 +20,6 @@ type PropsNav1 = {};
 function Nav1({}: PropsNav1) {
   
   const history = useHistory();
-  const { t } = useTranslationTyped();
   const dispatch = useDispatch();
   
   const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']['all']);
@@ -95,14 +95,14 @@ function Nav1({}: PropsNav1) {
                         <a className={`${styles['link-main']}`} 
                             onClick={()=>onClick_LinkInsideApp('/log-in')} 
                         >
-                        {t('Nav', 'LogIn')}
+                            <FormattedMessage id="Nav.LogIn" />
                         </a>
                     </div>
                 }
         
                 { readyUser &&
                     <div className={`${styles['tool']}`} > 
-                        logged in
+                        <IconUserCircle className={`${styles['icon-user-circle']}`} />
                     </div>
                 }
             </div>
@@ -116,19 +116,19 @@ function Nav1({}: PropsNav1) {
           <div> 
             <a
               onClick={()=>onClick_LinkInsideApp( '/')}
-            > {t('Nav', 'Home')}
+            >   <FormattedMessage id="Nav.Home" />
             </a>
           </div>
           <div> 
             <a
               onClick={()=>onClick_LinkInsideApp( '/')}
-            > {t('Nav', 'System')}
+            >   <FormattedMessage id="Nav.System" />
             </a>
           </div>
           <div> 
             <a
               onClick={()=>onClick_ShowHideSetting()}
-            > {t('Nav', 'Setting')}
+            >   <FormattedMessage id="Nav.Setting" />
             </a>
           </div>
         </div>

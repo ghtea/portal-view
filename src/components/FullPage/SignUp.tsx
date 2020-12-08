@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import { useHistory, useLocation } from "react-router-dom";
-import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -18,20 +18,20 @@ import Cookies from 'js-cookie';
 import styles from './SignUp.module.scss';
 import stylesLogIn from './LogIn.module.scss';
 
-type PropsSignUp = {};
+type PropsSignUp = {intl: any};
 
-function SignUp({}: PropsSignUp) {
+function SignUp({intl}: PropsSignUp) {
   
   const dispatch = useDispatch();
   const history = useHistory();
-  const { t } = useTranslationTyped();
   
   const inputEmail = useInput(""); // {value, setValue, onChange};
   const inputPassword1 = useInput(""); // {value, setValue, onChange};
   const inputPassword2 = useInput(""); // {value, setValue, onChange};
   
-  const [messageEmail, setMessageEmail] = useState('');
-  const [messagePassword, setMessagePassword] = useState('');
+  const [codeSituationEmail, setCodeSituationEmail] = useState('');
+  const [codeSituationPassword, setCodeSituationPassword] = useState('');
+  // 나머지는 나중에... LogIn 참고...
   
   const onClick_LinkInsideApp = useCallback(
     (destination:string) => {
@@ -67,14 +67,16 @@ function SignUp({}: PropsSignUp) {
   return (
     <div className={`${styles['root']}`} >
         
-        <div className={`${stylesLogIn['title-page']}`} >  Sign Up </div>
+        <div className={`${stylesLogIn['title-page']}`} >  
+            <FormattedMessage id={`FullPage.SignUp`} />
+        </div>
         
         <div className={`${stylesLogIn['input-identity']}`} >
-            <div> Email Address </div>
-            <div> {messageEmail} </div>
+            <div> <FormattedMessage id={`FullPage.EmailAddress`} /> </div>
+            <div> <FormattedMessage id={`Notification.${codeSituationEmail}`} /> </div>
           <input 
             type='text' 
-            placeholder='Email Address' 
+            placeholder={intl.formatMessage({ id: 'FullPage.EmailAddress'})} 
             value={inputEmail.value}
             onChange={inputEmail.onChange} 
           /> 
@@ -82,22 +84,21 @@ function SignUp({}: PropsSignUp) {
         
         
         <div className={`${stylesLogIn['input-password']}`} >
-            <div> Password </div>
-            <div> {messagePassword} </div>
+            <div> <FormattedMessage id={`FullPage.Password`} /> </div>
+            <div> <FormattedMessage id={`Notification.${codeSituationPassword}`} /></div>
           <input 
             type='password'
-            placeholder='Password'
+            placeholder={intl.formatMessage({ id: 'FullPage.Password'})}
             value={inputPassword1.value}
             onChange={inputPassword1.onChange}
           /> 
         </div>
         
         <div className={`${stylesLogIn['input-password']}`} >
-            <div> Password Again </div>
-            <div> {messagePassword} </div>
+            <div> <FormattedMessage id={`FullPage.PasswordAgain`} /> </div>
           <input 
             type='password'
-            placeholder='Password Again'
+            placeholder={intl.formatMessage({ id: 'FullPage.PasswordAgain'})}
             
             value={inputPassword2.value}
             onChange={inputPassword2.onChange}
@@ -110,7 +111,7 @@ function SignUp({}: PropsSignUp) {
         <div className={`${stylesLogIn['button-enter']}`} >
           <button
             onClick={()=>onClick_SignUp()}
-          > Sign Up 
+          > <FormattedMessage id={`FullPage.SignUp`} />
           </button>
         </div>
         
@@ -118,12 +119,12 @@ function SignUp({}: PropsSignUp) {
           <div> 
             <a
               onClick={()=>onClick_LinkInsideApp( '/')}
-            > Home </a> 
+            > <FormattedMessage id={`Nav.Home`} /> </a> 
           </div>
           <div> 
             <a
               onClick={()=>onClick_LinkInsideApp('/log-in')}
-            > Log In </a> 
+            > <FormattedMessage id={`Nav.LogIn`} /> </a> 
           </div>
         </div>
         
@@ -134,4 +135,4 @@ function SignUp({}: PropsSignUp) {
 
 SignUp.defaultProps = {};
 
-export default SignUp;
+export default injectIntl(SignUp);

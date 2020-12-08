@@ -30,8 +30,8 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
     
     const kindSituation: KindSituation = catalogSituation[codeSituation]['kind'];
     
-    const message: string = instanceI18n.t(`Notification.${codeSituation}`);
-    console.log(message);
+    const idMessage: string = `Notification.${codeSituation}`;
+    //console.log(message);
     
     
     let levelTimeBanner:actionsNotification.LevelTimeBanner = 'normal';
@@ -56,7 +56,7 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
       id: id,  
       codeSituation: codeSituation, 
       kindSituation: kindSituation,
-      message: message,
+      idMessage: idMessage,
       msTime: msTime 
     }
     

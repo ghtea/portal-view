@@ -1,6 +1,8 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 
+import Cookies from 'js-cookie';
+
 import { IntlProvider } from 'react-intl'
 import translationEn from 'language/translation/en.json';
 import translationKo from 'language/translation/ko.json';
@@ -54,10 +56,7 @@ function App({}: PropsApp) {
   
   
   
-  // read languge from result of i18Next detector
-  useEffect(() => {
-    dispatch(actionsStatus.return__READ_LANGUAGE() );
-  }, []);
+    // Language
   
     const codeLanguageCurrent:string = useSelector((state: StateRoot) => state['status']['current']['language']);
     const translationLanguageCurrent = useMemo(()=>{
@@ -69,6 +68,14 @@ function App({}: PropsApp) {
         }
     },[codeLanguageCurrent])
     
+    useEffect(()=>{
+        if (codeLanguageCurrent === ''){
+            dispatch(actionsStatus.return__DETECT_LANGUAGE() );
+        }
+        else {
+            Cookies.set('codeLanguageStandard', codeLanguageCurrent, { expires: 30 });
+        }
+    },[codeLanguageCurrent])
   
 
 

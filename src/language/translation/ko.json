@@ -5,11 +5,11 @@
     
     "Nav.Home": "홈",
     "Nav.Setting": "설정",
-        
-    "Nav.NameApp": "포탈 뷰",
-    
     "Nav.LogIn": "로그인",
     "Nav.SignUp": "회원가입",
+
+
+    "Nav.NameApp": "포탈 뷰",
     
     "Nav.System": "시스템",   
     "Nav.System_State": "상태 관리",
@@ -22,12 +22,13 @@
     "FullPage.LogIn": "로그인",
     "FullPage.EmailAddress": "이메일 주소",
     "FullPage.Password": "비밀번호",
+    "FullPage.PasswordAgain": "비밀번호 재입력",
     "FullPage.SignUp": "회원가입",
     
 
-    "Modal.Setting": "설정",
-    "Modal.Theme": "테마",
-    "Modal.Language": "언어",
+    "Modal.Setting_Title": "설정",
+    "Modal.Setting_Theme": "테마",
+    "Modal.Setting_Language": "언어",
     
     
     

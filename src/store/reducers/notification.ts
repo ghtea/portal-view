@@ -23,7 +23,7 @@ export type Banner = {
   id: string,  
   codeSituation: string, 
   kindSituation: KindSituation,
-  message: string,
+  idMessage: string,
   msTime: number 
 }
 

@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useEffect } from "react";
 
 import { useHistory, useLocation } from "react-router-dom";
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -54,7 +55,7 @@ function Banner({
         {banner['kindSituation'] === 'warning' &&  <IconWarning className={`${styles['icon-warning']}`}  /> }
       </div>
         
-      <div> {banner['message']} </div>
+      <div> <FormattedMessage id={banner.idMessage} />; </div>
       
         <div> 
             <button className={`${styles['button-delete']}`} 

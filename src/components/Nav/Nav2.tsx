@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
-import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -14,7 +14,7 @@ import styles from './Nav2.module.scss';
 import IconLogo from 'svgs/others/IconLogo';
 // import IconSignIn from 'svgs/basic/IconSignIn';
 import IconSetting from 'svgs/basic/IconSetting';
-// import IconGlobe from 'svgs/basic/IconGlobe';
+import IconUserCircle from 'svgs/basic/IconUserCircle';
 
 
 type PropsNav2 = {};
@@ -23,7 +23,6 @@ function Nav2({}: PropsNav2) {
   
     let history = useHistory();
     const dispatch = useDispatch();
-    const { t } = useTranslationTyped();
     
     const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']['all']);
     
@@ -42,7 +41,7 @@ function Nav2({}: PropsNav2) {
       dispatch(actionsStatus.return__REPLACE({ 
         listKey: ['showing', 'modal', 'setting'],
         replacement: true
-      }))
+      }));
     },[]
   );
   
@@ -61,7 +60,7 @@ function Nav2({}: PropsNav2) {
         <button
           onClick={()=>onClick_LinkInsideApp('/')}
         >
-          {t('Nav', 'NameApp')}
+            <FormattedMessage id={`Nav.NameApp`} />
         </button>
       </div>
       
@@ -92,14 +91,14 @@ function Nav2({}: PropsNav2) {
                 <a className={`${styles['link-main']}`} 
                     onClick={()=>onClick_LinkInsideApp('/log-in')} 
                 >
-                {t('Nav', 'LogIn')}
+                    <FormattedMessage id={`Nav.LogIn`} />
                 </a>
             </div>
         }
         
         { readyUser &&
             <div className={`${styles['tool']}`} > 
-                logged in
+                <IconUserCircle className={`${styles['icon-user-circle']}`} />
             </div>
         }
         

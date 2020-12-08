@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 
 import { useHistory, useLocation } from "react-router-dom";
-import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -17,7 +17,6 @@ type PropsTopBar = {};
 function TopBar({}: PropsTopBar) {
   
   const history = useHistory();
-  const { t } = useTranslationTyped();
   
   // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 
    
@@ -36,7 +35,8 @@ function TopBar({}: PropsTopBar) {
       </div>
       
       <div> 
-        <a> {t('Nav', 'NameApp')}
+        <a> 
+            <FormattedMessage id={`Nav.NameApp`} />
         </a>
       </div>
         

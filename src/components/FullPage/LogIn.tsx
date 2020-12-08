@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import { useHistory, useLocation } from "react-router-dom";
-import useTranslationTyped from 'tools/hooks/useTranslationTyped'
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -16,12 +16,11 @@ import useInput from 'tools/hooks/useInput';
 import styles from './LogIn.module.scss';
 
 
-type PropsLogIn = {};
+type PropsLogIn = {intl:any};
 
-function LogIn({}: PropsLogIn) {
+function LogIn({intl}: PropsLogIn) {
   
   const dispatch = useDispatch();
-  const { t } = useTranslationTyped();
   const history = useHistory();
 
     // when login button is pushed, notification code of reaction is added to  this list, when login button is pushed again this list cleared once 
@@ -37,21 +36,21 @@ function LogIn({}: PropsLogIn) {
   const inputEmail = useInput(""); // {value, setValue, onChange};
   const inputPassword = useInput(""); // {value, setValue, onChange};
   
-  const [messageEmail, setMessageEmail] = useState('');
-  const [messagePassword, setMessagePassword] = useState('');
+  const [codeSituationEmail, setCodeSituationEmail] = useState('');
+  const [codeSituationPassword, setCodeSituationPassword] = useState('');
   
     useEffect(()=>{
         if(listCodeSituationOthers.includes('LogIn_NoEmail')){
-            setMessageEmail(t('Notification', 'LogIn_NoEmail'));
+            setCodeSituationEmail('LogIn_NoEmail');
         }
         else {
-            setMessageEmail('');
+            setCodeSituationEmail('');
         }
         if(listCodeSituationOthers.includes('LogIn_NoPassword')){
-            setMessagePassword(t('Notification', 'LogIn_NoPassword'));
+            setCodeSituationPassword('LogIn_NoPassword');
         }
         else {
-            setMessagePassword('');
+            setCodeSituationPassword('');
         }
     },[listCodeSituationOthers])
 
@@ -70,25 +69,27 @@ function LogIn({}: PropsLogIn) {
   return (
     <div className={`${styles['root']}`} >
 
-        <div className={`${styles['title-page']}`} > {t('FullPage', 'LogIn', 'LogIn')}</div>
+        <div className={`${styles['title-page']}`} > 
+            <FormattedMessage id={`FullPage.LogIn`} />
+        </div>
             
         <div className={`${styles['input-identity']}`} >
-            <div> {t('FullPage', 'LogIn', 'EmailAddress')} </div>
-            <div> {messageEmail} </div>
+            <div> <FormattedMessage id={`FullPage.EmailAddress`} /> </div>
+            <div> <FormattedMessage id={`Notification.${codeSituationEmail}`} /> </div>
             <input 
                 type='text'
-                placeholder={t('FullPage', 'LogIn', 'EmailAddress')}
+                placeholder={intl.formatMessage({ id: 'FullPage.EmailAddress'})}
                 value={inputEmail.value}
                 onChange={inputEmail.onChange} 
             /> 
         </div> 
             
         <div className={`${styles['input-password']}`} >
-            <div> {t('FullPage', 'LogIn', 'Password')} </div>
-            <div> {messagePassword} </div>
+            <div> <FormattedMessage id={`FullPage.Password`} /> </div>
+            <div> <FormattedMessage id={`Notification.${codeSituationPassword}`} /></div>
             <input 
                 type='password'
-                placeholder={t('FullPage', 'LogIn', 'Password')}
+                placeholder={intl.formatMessage({ id: 'FullPage.Password'})}
                 value={inputPassword.value}
                 onChange={inputPassword.onChange}
             /> 
@@ -98,7 +99,7 @@ function LogIn({}: PropsLogIn) {
         <div className={`${styles['button-enter']}`} >
             <button
                 onClick={()=>onClick_LogIn()}
-            > {t('FullPage', 'LogIn', 'LogIn')} 
+            > <FormattedMessage id={`FullPage.LogIn`} />
             </button>
         </div> 
         
@@ -131,5 +132,5 @@ function LogIn({}: PropsLogIn) {
 
 LogIn.defaultProps = {};
 
-export default LogIn;
+export default injectIntl(LogIn);
 

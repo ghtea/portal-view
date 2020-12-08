@@ -25,7 +25,7 @@ const stateInitial = {
   
   current: {
     
-    language: 'en',   // en, ko, ja
+    language: '',   // en, ko, ja    , it should be blank at first check cookie first (call DETECT_LANGUAGE)
     
     
     theme: {

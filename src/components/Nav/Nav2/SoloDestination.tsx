@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { useTranslation } from 'react-i18next'
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -24,7 +24,6 @@ function SoloDestination({idSolo}: PropsSoloDestination) {
   
   let history = useHistory();
   const dispatch = useDispatch();
-  const { t } = useTranslation();
   
   // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>,
   const onClick_LinkInsideApp = useCallback(
@@ -40,7 +39,7 @@ function SoloDestination({idSolo}: PropsSoloDestination) {
             <a
                 onClick={()=>onClick_LinkInsideApp(`/${ convertName.pascalToSnake(idSolo)}`)}
             > 
-                {t(`Nav.${idSolo}`)} 
+                <FormattedMessage id={`Nav.${idSolo}`} />
             </a> 
         </div>
     </div>
