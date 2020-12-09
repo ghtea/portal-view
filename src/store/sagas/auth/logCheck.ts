@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import Cookies from 'js-cookie';
 import { v4 as uuidv4 } from 'uuid';
 
-import * as config from 'config';
+//import * as config from 'config';
 
 import * as actionsStatus from "store/actions/status";
 import * as actionsAuth from "store/actions/auth";
@@ -20,7 +20,7 @@ interface BodyRequest {
 
 const requestLogCheck = () => {
     
-    return axios.get(`${config.URL_BACK}/auth/log-check`, {withCredentials: true})
+    return axios.get(`${process.env.REACT_APP_URL_BACK}/auth/log-check`, {withCredentials: true})
     
         .then(response => { 
         	//console.log(response)

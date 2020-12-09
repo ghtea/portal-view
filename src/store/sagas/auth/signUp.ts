@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import Cookies from 'js-cookie';
 import { v4 as uuidv4 } from 'uuid';
 
-import * as config from 'config';
+// import * as config from 'config';
 
 import * as actionsStatus from "store/actions/status";
 import * as actionsNotification from "store/actions/notification";
@@ -22,7 +22,7 @@ interface BodyRequest {
 
 const requestSignUp = (bodyRequest: BodyRequest) => {
     
-    return axios.post(`${config.URL_BACK}/auth/sign-up`, bodyRequest, {withCredentials: true})
+    return axios.post(`${process.env.REACT_APP_URL_BACK}/auth/sign-up`, bodyRequest, {withCredentials: true})
     
         .then(response => { 
         	//console.log(response)
