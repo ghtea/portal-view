@@ -34,8 +34,8 @@ div {
     justify-content: flex-start;
     align-items: center;
 
-    @include color-each-theme-not-module(background-color, div__background-color);
-    @include color-each-theme-not-module(color, div__font-color);
+    @include color-each-theme(background-color, div__background-color, $is-module: false);
+    @include color-each-theme(color, div__font-color, $is-module: false);
 
     width: 100%;
     height: auto; 
@@ -64,10 +64,10 @@ button {
     align-items: center;
 
     
-    @include color-each-theme-not-module(background-color, button__background-color);
-    @include color-each-theme-not-module(color, button__font-color);
+    @include color-each-theme(background-color, button__background-color, $is-module: false);
+    @include color-each-theme(color, button__font-color, $is-module: false);
 
-    @include frame-each-theme-not-module(border, 1px, solid, button__border-color);
+    @include frame-each-theme(border, 1px, solid, button__border-color, $is-module: false);
     border-radius: 4px;
 
     width: auto;
@@ -89,7 +89,7 @@ button {
 
     &:focus {
         border-style: none;
-        @include frame-each-theme-not-module(outline, 2px, solid, button__outline-color__focus);
+        @include frame-each-theme(outline, 2px, solid, button__outline-color__focus, $is-module: false);
     }
 }
 
@@ -103,7 +103,7 @@ a {
     align-items: center;
 
     
-    @include color-each-theme-not-module(color, a__font-color);
+    @include color-each-theme(color, a__font-color, $is-module: false);
 
     border-radius: 4px;
 
@@ -134,14 +134,14 @@ input[type=text], input[type=password] {
     justify-content: center;
     align-items: center;
 
-    @include color-each-theme-not-module(background-color, input-text__background-color);
-    @include color-each-theme-not-module(color, input-text__font-color);
+    @include color-each-theme(background-color, input-text__background-color, $is-module: false);
+    @include color-each-theme(color, input-text__font-color, $is-module: false);
 
     &::placeholder {
-        @include color-each-theme-not-module(color, input-text--placeholder__font-color);
+        @include color-each-theme(color, input-text--placeholder__font-color, $is-module: false);
     }
 
-    @include frame-each-theme-not-module(border, 1px, solid, input-text__border-color);
+    @include frame-each-theme(border, 1px, solid, input-text__border-color, $is-module: false);
     border-radius: 0px;
 
     width: auto;
@@ -161,13 +161,13 @@ input[type=text], input[type=password] {
     padding: 0px 0px 0px 0px; 
 
     &:focus {
-        @include color-each-theme-not-module(background-color, input-text__background-color__focus);
-        @include color-each-theme-not-module(color, input-text__font-color__focus);
+        @include color-each-theme(background-color, input-text__background-color__focus, $is-module: false);
+        @include color-each-theme(color, input-text__font-color__focus, $is-module: false);
 
-        @include frame-each-theme-not-module(border, 2px, solid, input-text__border-color__focus);
-        @include frame-each-theme-not-module(outline, 1px, solid, input-text__outline-color__focus);
+        @include frame-each-theme(border, 2px, solid, input-text__border-color__focus, $is-module: false);
+        @include frame-each-theme(outline, 1px, solid, input-text__outline-color__focus, $is-module: false);
     
-        @include shadow-each-theme-not-module(box-shadow, 0px, 0px, 15px, 2px, input-text--box-shadow-color__focus);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 15px, 2px, input-text--box-shadow-color__focus, $is-module: false);
     }
 }
 
@@ -180,8 +180,8 @@ header {
     justify-content: flex-start;
     align-items: center;
 
-    @include color-each-theme(background-color, header__background-color);
-    @include color-each-theme(color, header__font-color);
+    @include color-each-theme(background-color, header__background-color, $is-module: false);
+    @include color-each-theme(color, header__font-color, $is-module: false);
 
     width: 100%;
     height: auto; 

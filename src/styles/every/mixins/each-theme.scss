@@ -1,7 +1,16 @@
 @import '../color-assignment.scss';
 @import 'tools.scss';
 
+// default without class
+$name-theme-default: nth($list-name-theme, 1);
+
+
 @mixin color-body-each-theme($property, $key-color-front) {
+
+    #{$property}: map-get(
+        $map: $map-color-assignment, 
+        $key: #{$key-color-front}___#{$name-theme-default}
+    );
 
     @each $name-theme in $list-name-theme {
 
@@ -14,73 +23,49 @@
     }
 }
 
-@mixin color-each-theme($property, $key-color-front) {
 
-    @each $name-theme in $list-name-theme {
+@mixin color-each-theme($property, $key-color-front, $is-module: true) {
 
-        :global(.theme----#{$name-theme}) & {
-            #{$property}: map-get(
-                $map: $map-color-assignment, 
-                $key: #{$key-color-front}___#{$name-theme}
-            );
+    #{$property}: map-get(
+        $map: $map-color-assignment, 
+        $key: #{$key-color-front}___#{$name-theme-default}
+    );
+
+    @if ($is-module == true) {
+        @each $name-theme in $list-name-theme {
+            :global(.theme----#{$name-theme}) & {
+                #{$property}: map-get(
+                    $map: $map-color-assignment, 
+                    $key: #{$key-color-front}___#{$name-theme}
+                );
+            }
         }
     }
-}
-
-
-@mixin color-each-theme-not-module($property, $key-color-front) {
-
-    @each $name-theme in $list-name-theme {
-
-        .theme----#{$name-theme} & {
-            #{$property}: map-get(
-                $map: $map-color-assignment, 
-                $key: #{$key-color-front}___#{$name-theme}
-            );
+    @else {
+        @each $name-theme in $list-name-theme {
+            .theme----#{$name-theme} & {
+                #{$property}: map-get(
+                    $map: $map-color-assignment, 
+                    $key: #{$key-color-front}___#{$name-theme}
+                );
+            }
         }
     }
+
 }
+    
 
 
+// ex: border, border-top, outline
+@mixin frame-each-theme($property, $width, $style, $key-color-front, $is-module: true) {
 
-@mixin frame-each-theme($property, $width, $style, $key-color-front) {
+    $color: map-get(
+        $map: $map-color-assignment, 
+        $key: #{$key-color-front}___#{$name-theme-default}
+    );
+    #{$property}: $width $style $color;
 
-    // ex: border, border-top, outline
-    @each $name-theme in $list-name-theme {
-
-        $color: map-get(
-            $map: $map-color-assignment, 
-            $key: #{$key-color-front}___#{$name-theme}
-        );
-
-        :global(.theme----#{$name-theme}) & {
-            #{$property}: $width $style $color;
-    }
-
-  }
-}
-@mixin frame-each-theme-not-module($property, $width, $style, $key-color-front) {
-
-    // ex: border, border-top, outline
-    @each $name-theme in $list-name-theme {
-
-        $color: map-get(
-            $map: $map-color-assignment, 
-            $key: #{$key-color-front}___#{$name-theme}
-        );
-
-        .theme----#{$name-theme} & {
-            #{$property}: $width $style $color;
-    }
-
-  }
-}
-
-@mixin shadow-each-theme($property, $offset-x, $offset-y, $blur-radius, $spread-radius, $key-color-front) {
-
-    // ex: box-shadow, text-shadow ( drop-shadow 사용법은 아직 잘 모르겠다)
-
-    @if $property == box-shadow {
+    @if ($is-module == true) {
         @each $name-theme in $list-name-theme {
 
             $color: map-get(
@@ -89,8 +74,58 @@
             );
 
             :global(.theme----#{$name-theme}) & {
-                #{$property}: $offset-x $offset-y $blur-radius $spread-radius $color;
+                #{$property}: $width $style $color;
             }
+        }
+    }
+    @else {
+        @each $name-theme in $list-name-theme {
+
+            $color: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+
+            .theme----#{$name-theme} & {
+                #{$property}: $width $style $color;
+            }
+
+        }
+    }
+    
+}
+
+
+
+
+@mixin shadow-each-theme($property, $offset-x, $offset-y, $blur-radius, $spread-radius, $key-color-front, $is-module: true) {
+
+    // ex: box-shadow, text-shadow ( drop-shadow 사용법은 아직 잘 모르겠다)
+    $color: map-get(
+        $map: $map-color-assignment, 
+        $key: #{$key-color-front}___#{$name-theme-default}
+    );
+    #{$property}: $offset-x $offset-y $blur-radius $spread-radius $color;
+    
+    @if $property == box-shadow {
+        @each $name-theme in $list-name-theme {
+
+            $color: map-get(
+                $map: $map-color-assignment, 
+                $key: #{$key-color-front}___#{$name-theme}
+            );
+
+            @if ($is-module == true) {
+                :global(.theme----#{$name-theme}) & {
+                    #{$property}: $offset-x $offset-y $blur-radius $spread-radius $color;
+                }
+            }
+            @else {
+                .theme----#{$name-theme} & {
+                    #{$property}: $offset-x $offset-y $blur-radius $spread-radius $color;
+                }
+            }
+            
         }
     }
 
@@ -102,46 +137,22 @@
                 $key: #{$key-color-front}___#{$name-theme}
             );
 
-            :global(.theme----#{$name-theme}) & {
-                #{$property}: $offset-x $offset-y $blur-radius $color;
+            @if ($is-module == true) {
+                :global(.theme----#{$name-theme}) & {
+                    #{$property}: $offset-x $offset-y $blur-radius $color;
+                }
+            }
+            @else {
+                .theme----#{$name-theme} & {
+                    #{$property}: $offset-x $offset-y $blur-radius $color;
+                }
             }
         }
     }
 
 }
-@mixin shadow-each-theme-not-module($property, $offset-x, $offset-y, $blur-radius, $spread-radius, $key-color-front) {
 
-    // ex: box-shadow, text-shadow ( drop-shadow 사용법은 아직 잘 모르겠다)
 
-    @if $property == box-shadow {
-        @each $name-theme in $list-name-theme {
-
-            $color: map-get(
-                $map: $map-color-assignment, 
-                $key: #{$key-color-front}___#{$name-theme}
-            );
-
-            .theme----#{$name-theme} & {
-                #{$property}: $offset-x $offset-y $blur-radius $spread-radius $color;
-            }
-        }
-    }
-
-    @else if $property == text-shadow {
-        @each $name-theme in $list-name-theme {
-
-            $color: map-get(
-                $map: $map-color-assignment, 
-                $key: #{$key-color-front}___#{$name-theme}
-            );
-
-            .theme----#{$name-theme} & {
-                #{$property}: $offset-x $offset-y $blur-radius $color;
-            }
-        }
-    }
-
-}
 
 
 

@@ -43,16 +43,21 @@ function LogIn({intl}: PropsLogIn) {
     useEffect(()=>{
         if(listCodeSituationOthers.includes('LogIn_NoEmail')){
             setCodeSituationEmail('LogIn_NoEmail');
+            setCodeSituationPassword('');
+        }
+        else if(listCodeSituationOthers.includes('LogIn_NoPassword')){
+            setCodeSituationPassword('LogIn_NoPassword');
+            setCodeSituationEmail('');
+        }
+        else if (listCodeSituationOthers.includes('LogIn_UnknownError')) {
+            setCodeSituationEmail('');
+            setCodeSituationPassword('');
         }
         else {
             setCodeSituationEmail('');
-        }
-        if(listCodeSituationOthers.includes('LogIn_NoPassword')){
-            setCodeSituationPassword('LogIn_NoPassword');
-        }
-        else {
             setCodeSituationPassword('');
         }
+
     },[listCodeSituationOthers])
 
   const onClick_LogIn = useCallback(
