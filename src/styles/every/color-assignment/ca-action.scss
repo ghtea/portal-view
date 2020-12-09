@@ -12,8 +12,8 @@ $action__map-color-assignment: (
 
     action--main-closed__background-color___light: hsl($h-main,$s-main,50%),
     action--main-closed__background-color___dark: hsl($h-main,$s-main,50%),
-    action--main-open__background-color___light: hsl($h-basic,$s-basic,75%),
-    action--main-open__background-color___dark: hsl($h-basic,$s-basic,25%),
+    action--main-open__background-color___light: hsl($h-basic,$s-basic,50%),
+    action--main-open__background-color___dark: hsl($h-basic,$s-basic,50%),
 
     action--main-closed__icon-color___light: hsl($h-basic,$s-basic,100%),
     action--main-closed__icon-color___dark: hsl($h-basic,$s-basic,0%),

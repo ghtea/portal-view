@@ -11,8 +11,8 @@
     position: fixed;
     z-index: 700;
     
-    bottom: 80px;
-    right: 50px;
+    bottom: 60px;
+    right: 30px;
 
     .main {
 
@@ -29,8 +29,8 @@
 
             .icon-three-dots {
                 @include color-each-theme(color, action--main-closed__icon-color);
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -50,9 +50,9 @@
         @include color-each-theme(background-color, action--menu__background-color);
 
         position: absolute;
-        bottom: -5px;
+        bottom: 0px;
 
-        width: 60px;
+        width: 50px;
         height: auto;
         padding-bottom: 70px;
         border-radius: 30px;
@@ -60,7 +60,7 @@
         z-index: 720;
 
         & > *:nth-child(1) {
-            margin-top: 8px;
+            margin-top: 12px;
         }
         & > *:nth-child(n+2) {
             margin-top: 8px;
@@ -70,16 +70,16 @@
         }
 
         .icon-plus {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
         }
         .icon-copy {
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
         }
         .icon-share {
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
         }
     }
 

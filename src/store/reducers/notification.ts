@@ -1,8 +1,6 @@
 import produce from 'immer';
 import {handleActions} from 'redux-actions';
 
-import instanceI18n from 'language/i18n';
-
 
 import * as actionsNotification from 'store/actions/notification';
 import {CatalogSituation, KindSituation} from 'language/catalogSituation';

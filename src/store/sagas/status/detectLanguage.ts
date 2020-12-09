@@ -31,7 +31,8 @@ function* detectLanguage() {
     
     let replacement = 'en';
 
-    const codeLanguageFromBrowser = navigator.language ;
+    const codeLanguageFromBrowser = (navigator.languages && navigator.languages[0]) || navigator.language || 'en-US';
+
     console.log(codeLanguageFromBrowser);
 
     const codeStandardFromCookie = Cookies.get("codeLanguageStandard");

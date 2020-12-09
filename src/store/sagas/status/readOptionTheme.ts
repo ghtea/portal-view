@@ -2,8 +2,6 @@ import { call, spawn, put, takeEvery, select } from "redux-saga/effects";
 
 import Cookies from 'js-cookie';
 
-import instanceI18n from 'language/i18n';
-
 import * as actionsStatus from "store/actions/status";
 import {StateRoot} from 'store/reducers';
 

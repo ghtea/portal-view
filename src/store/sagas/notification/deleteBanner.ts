@@ -6,7 +6,6 @@ import {StateRoot} from 'store/reducers';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import instanceI18n from 'language/i18n';
 //import catalogSituation from 'language/catalogSituation';
 
 

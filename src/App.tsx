@@ -31,7 +31,8 @@ function App({}: PropsApp) {
   
   
   
-  const [isFullPage, setIsFullPage] = useState(false);
+  const [isFullPage, setIsFullPage] = useState(true);   // default value is true because if it was false, Nav is shown shortly after reload
+  
   const listFullPage : string[] = [
     '/log-in', '/sign-up', '/lost'
   ];

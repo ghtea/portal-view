@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import history from 'historyApp';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -18,12 +18,12 @@ import useInput from 'tools/hooks/useInput';
 import styles from './LogIn.module.scss';
 
 
-type PropsLogIn = {intl:any};
+type PropsLogIn = {};
 
-function LogIn({intl}: PropsLogIn) {
+function LogIn() {
   
   const dispatch = useDispatch();
-
+    const intl = useIntl();
     // when login button is pushed, notification code of reaction is added to  this list, when login button is pushed again this list cleared once 
     const listCodeSituationOthers:string[] = useSelector((state: StateRoot) => state['notification']['listCodeSituationOthers']);
 
@@ -81,7 +81,7 @@ function LogIn({intl}: PropsLogIn) {
             
         <div className={`${styles['input-identity']}`} >
             <div> <FormattedMessage id={`FullPage.EmailAddress`} /> </div>
-            <div> <FormattedMessage id={`Notification.${codeSituationEmail}`} /> </div>
+            <div> { codeSituationEmail && <FormattedMessage id={`Notification.${codeSituationEmail}`} /> }  </div>
             <input 
                 type='text'
                 placeholder={intl.formatMessage({ id: 'FullPage.EmailAddress'})}
@@ -92,7 +92,7 @@ function LogIn({intl}: PropsLogIn) {
             
         <div className={`${styles['input-password']}`} >
             <div> <FormattedMessage id={`FullPage.Password`} /> </div>
-            <div> <FormattedMessage id={`Notification.${codeSituationPassword}`} /></div>
+            <div> { codeSituationPassword && <FormattedMessage id={`Notification.${codeSituationPassword}`}/>} </div>
             <input 
                 type='password'
                 placeholder={intl.formatMessage({ id: 'FullPage.Password'})}
@@ -138,5 +138,5 @@ function LogIn({intl}: PropsLogIn) {
 
 LogIn.defaultProps = {};
 
-export default injectIntl(LogIn);
+export default LogIn;
 

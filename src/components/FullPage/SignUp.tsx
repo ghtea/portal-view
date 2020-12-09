@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import history from 'historyApp';
 import { useLocation } from "react-router-dom";
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -19,13 +19,14 @@ import Cookies from 'js-cookie';
 import styles from './SignUp.module.scss';
 import stylesLogIn from './LogIn.module.scss';
 
-type PropsSignUp = {intl: any};
+type PropsSignUp = {};
 
-function SignUp({intl}: PropsSignUp) {
+function SignUp({}: PropsSignUp) {
   
   const dispatch = useDispatch();
-  
-  const inputEmail = useInput(""); // {value, setValue, onChange};
+    const intl = useIntl();
+
+    const inputEmail = useInput(""); // {value, setValue, onChange};
   const inputPassword1 = useInput(""); // {value, setValue, onChange};
   const inputPassword2 = useInput(""); // {value, setValue, onChange};
   
@@ -73,7 +74,7 @@ function SignUp({intl}: PropsSignUp) {
         
         <div className={`${stylesLogIn['input-identity']}`} >
             <div> <FormattedMessage id={`FullPage.EmailAddress`} /> </div>
-            <div> <FormattedMessage id={`Notification.${codeSituationEmail}`} /> </div>
+            <div> { codeSituationEmail &&  <FormattedMessage id={`Notification.${codeSituationEmail}`} />} </div>
           <input 
             type='text' 
             placeholder={intl.formatMessage({ id: 'FullPage.EmailAddress'})} 
@@ -85,7 +86,7 @@ function SignUp({intl}: PropsSignUp) {
         
         <div className={`${stylesLogIn['input-password']}`} >
             <div> <FormattedMessage id={`FullPage.Password`} /> </div>
-            <div> <FormattedMessage id={`Notification.${codeSituationPassword}`} /></div>
+            <div> { codeSituationPassword &&  <FormattedMessage id={`Notification.${codeSituationPassword}`} />} </div>
           <input 
             type='password'
             placeholder={intl.formatMessage({ id: 'FullPage.Password'})}
@@ -135,4 +136,4 @@ function SignUp({intl}: PropsSignUp) {
 
 SignUp.defaultProps = {};
 
-export default injectIntl(SignUp);
+export default SignUp;
