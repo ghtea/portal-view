@@ -36,7 +36,7 @@ const stateInitial = {
   
   showing: {
     nav: {
-      all: true,
+      all: false,
       boardNav1: false
     },
     modal: {

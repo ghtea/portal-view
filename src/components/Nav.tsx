@@ -4,12 +4,14 @@ import { useHistory, useLocation } from "react-router-dom";
 import styled, {ThemeProvider }  from 'styled-components';
 
 import {useSelector, useDispatch} from "react-redux";
+import {StateRoot} from 'store/reducers';
+
 import * as actionsStatus from 'store/actions/status';
 
 import Nav1 from "./Nav/Nav1";
 import Nav2 from "./Nav/Nav2";
 
-//import styles from './Nav.module.scss';
+import styles from './Nav.module.scss';
 
 
 // TS  https://velog.io/@velopert/create-typescript-react-component
@@ -17,15 +19,16 @@ type PropsNav = {};
 
 function Nav({}: PropsNav) {
   
-  let location = useLocation();
-  
-  
-  return (
-    <>
-      <Nav1/>
-      <Nav2/>
-    </>
-  )
+    let location = useLocation();
+
+    const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']['all']);
+
+    return (
+        <div className={`${styles['root']} showing----${showingNav}`} >
+            <Nav1 />
+            <Nav2/>
+        </div>
+    )
   
 }
 

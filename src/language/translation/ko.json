@@ -19,14 +19,6 @@
     "Nav.Diary": "일기",
     
     
-    
-    "FullPage.LogIn": "로그인",
-    "FullPage.EmailAddress": "이메일 주소",
-    "FullPage.Password": "비밀번호",
-    "FullPage.PasswordAgain": "비밀번호 재입력",
-    "FullPage.SignUp": "회원가입",
-    
-
     "Modal.Setting_Title": "설정",
     "Modal.Setting_Theme": "테마",
     "Modal.Setting_Language": "언어",
@@ -50,8 +42,15 @@
     "Notification.SignUp_Succeeded": "성공적으로 회원가입하였습니다!",
     
     
+    "Page.Home.Welcome": "환영합니다!",
     
-    "Content.Home_Welcome": "환영합니다!"
+    "Page.LogIn.LogIn": "로그인",
+    "Page.LogIn.EmailAddress": "이메일 주소",
+    "Page.LogIn.Password": "비밀번호",
+    "Page.LogIn.SignUp": "회원가입",
+
+    "Page.SignUp.PasswordAgain": "비밀번호 재입력"
+
 
 }
 

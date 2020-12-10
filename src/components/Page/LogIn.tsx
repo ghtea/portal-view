@@ -14,8 +14,11 @@ import * as actionsStatus from 'store/actions/status';
 import useInput from 'tools/hooks/useInput';
 
 //import IconLogIn from 'svgs/basic/IconLogIn';
+import TopBar from './LogIn/TopBar';
 
 import styles from './LogIn.module.scss';
+
+
 
 
 type PropsLogIn = {};
@@ -75,63 +78,70 @@ function LogIn() {
   return (
     <div className={`${styles['root']}`} >
 
-        <div className={`${styles['title-page']}`} > 
-            <FormattedMessage id={`FullPage.LogIn`} />
-        </div>
-            
-        <div className={`${styles['input-identity']}`} >
-            <div> <FormattedMessage id={`FullPage.EmailAddress`} /> </div>
-            <div> { codeSituationEmail && <FormattedMessage id={`Notification.${codeSituationEmail}`} /> }  </div>
-            <input 
-                type='text'
-                placeholder={intl.formatMessage({ id: 'FullPage.EmailAddress'})}
-                value={inputEmail.value}
-                onChange={inputEmail.onChange} 
-            /> 
-        </div> 
-            
-        <div className={`${styles['input-password']}`} >
-            <div> <FormattedMessage id={`FullPage.Password`} /> </div>
-            <div> { codeSituationPassword && <FormattedMessage id={`Notification.${codeSituationPassword}`}/>} </div>
-            <input 
-                type='password'
-                placeholder={intl.formatMessage({ id: 'FullPage.Password'})}
-                value={inputPassword.value}
-                onChange={inputPassword.onChange}
-            /> 
-        </div> 
+        <TopBar />
 
-        
-        <div className={`${styles['button-enter']}`} >
-            <button
-                onClick={()=>onClick_LogIn()}
-            > <FormattedMessage id={`FullPage.LogIn`} />
-            </button>
-        </div> 
-        
-    
-        <div className={`${styles['division']}`} > 
-            <div> or Log In with </div>
-        </div> 
-        
-        <div className={`${styles['collection-social']}`} >
-            <button> Google </button>
-            <button> Facebook </button>
-            <button> Twitter </button>
-        </div> 
-        
-        <div className={`${styles['collection-link']}`} >
-            <div> 
-                <a
-                onClick={(event)=>onClick_LinkInsideApp(event, '/')}
-                > Home </a> 
+        <div className={`${styles['content']}`} >
+
+
+            <div className={`${styles['title-page']}`} > 
+                <FormattedMessage id={`Page.LogIn.LogIn`} />
             </div>
-            <div> <a
-                onClick={(event)=>onClick_LinkInsideApp(event, '/sign-up')}
-            > Sign Up </a> 
-            </div>
-        </div> 
+                
+            <div className={`${styles['input-identity']}`} >
+                <div> <FormattedMessage id={`Page.LogIn.EmailAddress`} /> </div>
+                <div> { codeSituationEmail && <FormattedMessage id={`Notification.${codeSituationEmail}`} /> }  </div>
+                <input 
+                    type='text'
+                    placeholder={intl.formatMessage({ id: 'Page.LogIn.EmailAddress'})}
+                    value={inputEmail.value}
+                    onChange={inputEmail.onChange} 
+                /> 
+            </div> 
+                
+            <div className={`${styles['input-password']}`} >
+                <div> <FormattedMessage id={`Page.LogIn.Password`} /> </div>
+                <div> { codeSituationPassword && <FormattedMessage id={`Notification.${codeSituationPassword}`}/>} </div>
+                <input 
+                    type='password'
+                    placeholder={intl.formatMessage({ id: 'Page.LogIn.Password'})}
+                    value={inputPassword.value}
+                    onChange={inputPassword.onChange}
+                /> 
+            </div> 
+
             
+            <div className={`${styles['button-enter']}`} >
+                <button
+                    onClick={()=>onClick_LogIn()}
+                > <FormattedMessage id={`Page.LogIn.LogIn`} />
+                </button>
+            </div> 
+            
+        
+            <div className={`${styles['division']}`} > 
+                <div> or Log In with </div>
+            </div> 
+            
+            <div className={`${styles['collection-social']}`} >
+                <button> Google </button>
+                <button> Facebook </button>
+                <button> Twitter </button>
+            </div> 
+            
+            <div className={`${styles['collection-link']}`} >
+                <div> 
+                    <a
+                    onClick={(event)=>onClick_LinkInsideApp(event, '/')}
+                    > Home </a> 
+                </div>
+                <div> <a
+                    onClick={(event)=>onClick_LinkInsideApp(event, '/sign-up')}
+                > Sign Up </a> 
+                </div>
+            </div> 
+
+
+        </div>
     </div>
   );
 }

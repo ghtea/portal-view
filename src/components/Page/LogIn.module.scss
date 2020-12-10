@@ -1,12 +1,21 @@
 @import 'styles/every.scss';
 
-.root {
 
-  width: $device-xs__min-width; 
-  height: auto;
+.root {
+    @include linear-gradient-each-theme(background, to bottom, 
+        (20%, 100%),
+        (page--log-in__gradient-color-1, page--log-in__gradient-color-2)
+    );
+
+    height: 100vh;
+}
+
+.content {
+
+    width: $device-xs__min-width; 
+    height: auto;
   
-  margin: 20px 0px 0px 0px; /* top right bottom left */
-  padding: 0px 0px 0px 0px; /* top right bottom left */
+    margin-top: $page__margin-top;  
 
 }
 
@@ -40,7 +49,7 @@
         height: 24px;
 
         font-size: 0.9rem;
-        @include color-each-theme(color, content--input--label__font-color);
+        @include color-each-theme(color, page--log-in--input--label__font-color);
         
         left: 5px;
         font-weight: normal;
@@ -55,12 +64,12 @@
         top: 77px;
 
         font-size: 0.9rem;
-        @include color-each-theme(color, content--input--label-error__font-color);
+        @include color-each-theme(color, page--log-in--input--label-error__font-color);
         
     }
 
     &:focus-within > div:nth-child(1) {
-        @include color-each-theme(color, content--input--label__font-color__focus);
+        @include color-each-theme(color, page--log-in--input--label__font-color__focus);
     }
   
     & > input {
@@ -92,7 +101,7 @@
 
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-end;
+    justify-page--log-in: flex-end;
     align-items: center;
   
     width: 100%; 
@@ -114,7 +123,7 @@
 
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-page--log-in: center;
     align-items: center;
 
 
@@ -139,7 +148,7 @@
 .division {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-page--log-in: center;
     align-items: center;
 
     height: 40px;
@@ -149,7 +158,7 @@
 
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
+    justify-page--log-in: space-around;
     align-items: center;
 
     margin: 10px 0px 0px 0px; /* top right bottom left */

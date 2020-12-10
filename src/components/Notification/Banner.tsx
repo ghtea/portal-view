@@ -55,7 +55,7 @@ function Banner({
         {banner['kindSituation'] === 'warning' &&  <IconWarning className={`${styles['icon-warning']}`}  /> }
       </div>
         
-      <div> <FormattedMessage id={banner.idMessage} />; </div>
+      <div> <FormattedMessage id={banner.idMessage} /> </div>
       
         <div> 
             <button className={`${styles['button-delete']}`} 

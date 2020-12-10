@@ -1,9 +1,12 @@
 @import 'styles/every.scss';
 
 .root {
-
     
-} 
+}
+
+.content {
+    margin-top: $page__margin-top;
+}
 
 
 .search {

@@ -1,22 +1,20 @@
 @import 'mixins/tools.scss';
 
 @import 'color-assignment/ca-global.scss';
-@import 'color-assignment/ca-content.scss';
-@import 'color-assignment/ca-full-page.scss';
 @import 'color-assignment/ca-modal.scss';
 @import 'color-assignment/ca-nav.scss';
 @import 'color-assignment/ca-notification.scss';
 @import 'color-assignment/ca-action.scss';
+@import 'color-assignment/ca-page.scss';
 
 
 $map-color-assignment: map-merge-all(
     $global__map-color-assignment, 
-    $content__map-color-assignment,
-    $full-page__map-color-assignment,
     $modal__map-color-assignment,
     $nav__map-color-assignment,
     $notification__map-color-assignment,
-    $action__map-color-assignment
+    $action__map-color-assignment,
+    $page__map-color-assignment
 );
 
 $list-name-theme: (light, dark);

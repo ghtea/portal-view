@@ -16,13 +16,6 @@
     "Nav.Diary": "Diary",
     
     
-    
-    "FullPage.LogIn": "LogIn",
-    "FullPage.EmailAddress": "Email Address",
-    "FullPage.Password": "Password",
-    "FullPage.PasswordAgain": "Password Again",
-    "FullPage.SignUp": "Sign Up",
-    
 
     "Modal.Setting_Title": "Setting",
     "Modal.Setting_Theme": "Theme",
@@ -48,8 +41,15 @@
     
     
     
-    "Content.Home_Welcome": "Welcome!"
+    "Page.Home.Welcome": "Welcome!",
     
+    "Page.LogIn.LogIn": "LogIn",
+    "Page.LogIn.EmailAddress": "Email Address",
+    "Page.LogIn.Password": "Password",
+    "Page.LogIn.SignUp": "Sign Up",
+
+    "Page.SignUp.PasswordAgain": "Password Again"
+
 }
 
 

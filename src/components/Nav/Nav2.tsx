@@ -97,7 +97,7 @@ function Nav2({}: PropsNav2) {
         
         { readyUser &&
             <div className={`${styles['tool']}`} > 
-                <IconUserCircle className={`${styles['icon-user-circle']}`} />
+                <IconUserCircle className={`${styles['icon-user-circle']}`} kind="solid"/>
             </div>
         }
         

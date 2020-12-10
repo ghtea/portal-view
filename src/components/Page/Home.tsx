@@ -1,11 +1,11 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 
-
+import * as actionsStatus from 'store/actions/status';
 import * as actionsNotification from 'store/actions/notification';
 
 import styles from './Home.module.scss';
@@ -16,8 +16,24 @@ type PropsHome = {};
 
 function Home({}: PropsHome) {
   
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();     
   
+    useEffect(()=>{
+        dispatch(actionsStatus.return__REPLACE({
+            listKey: ['showing', 'nav', 'all'],
+            replacement: true
+        }));
+
+        return () => {
+            dispatch(actionsStatus.return__REPLACE({
+                listKey: ['showing', 'nav', 'all'],
+                replacement: false
+            }));
+        }
+
+    },[]);
+
+
   const onClick_AddTestingBanner = useCallback(
     (codeSituation:string) => {
       dispatch(actionsNotification.return__ADD_DELETE_BANNER({
@@ -27,14 +43,17 @@ function Home({}: PropsHome) {
   );
   
   return (
+
     <div className={`${styles['root']}`} >
+        <div className={`${styles['content']}`} >
+
 
         <div className={`${styles['search']}`}>
             <input type='text' />
         </div>
 
         <div>
-            <FormattedMessage id={`Content.Home_Welcome`} />
+            <FormattedMessage id={`Page.Home.Welcome`} />
         </div>
         
         <div> 
@@ -50,7 +69,9 @@ function Home({}: PropsHome) {
           > test 2 
           </button>
         </div>
-        
+
+
+        </div>
     </div>
   );
 }

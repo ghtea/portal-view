@@ -3,10 +3,12 @@
 .root {
 
     position: relative;
-    top: $nav-1--bar__height;
+    // top: $nav-1--bar__height;
+    top: 0;
     z-index: 0;
 
     @media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
-	    top: $nav-2--bar__height;
+        // top: $nav-2--bar__height;
+        top: 0;
 	}
 } 

@@ -1,1 +1,10 @@
 @import 'styles/every.scss';
+
+.root {
+    display: none;
+
+    &:global(.showing----true){
+        display: flex;
+    }
+}
+

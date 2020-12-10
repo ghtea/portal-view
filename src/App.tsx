@@ -15,8 +15,7 @@ import * as actionsAuth from 'store/actions/auth';
 import 'styles/once.scss';
 
 import Nav from "./components/Nav";
-import Content from "./components/Content";
-import FullPage from "./components/FullPage";
+import Page from "./components/Page";
 import Modal from "./components/Modal";
 import Notification from "./components/Notification";
 import Action from "./components/Action";
@@ -30,7 +29,7 @@ function App({}: PropsApp) {
   const dispatch = useDispatch();
   
   
-  
+  /*
   const [isFullPage, setIsFullPage] = useState(true);   // default value is true because if it was false, Nav is shown shortly after reload
   
   const listFullPage : string[] = [
@@ -54,7 +53,7 @@ function App({}: PropsApp) {
     }
     
   }, [location]);
-  
+  */
   
   
     // Language
@@ -112,16 +111,9 @@ function App({}: PropsApp) {
         <IntlProvider locale={codeLanguageCurrent} messages={translationLanguageCurrent} >
             <Notification />
             <Modal />
-            
-            {isFullPage && <FullPage/>}
-            
-            {!isFullPage && 
-                <>
-                <Nav/>
-                <Content/>
-                <Action/>
-                </>
-            }
+            <Action/>
+            <Nav/>
+            <Page/>
         </IntlProvider>
     </>
     
