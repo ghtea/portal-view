@@ -20,9 +20,14 @@ interface BodyRequest {
 
 const requestLogIn = (bodyRequest: BodyRequest) => {
     
-    return axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
-    .then(response => ({ response }))
-    .catch(error => ({ error }))
+    try {
+        const response = axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true});
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+
 };
 
 
@@ -72,15 +77,9 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 password: action.payload.password
             };
         
-            const { response, error } = yield call( requestLogIn, bodyRequest );
+            const response  = yield call( requestLogIn, bodyRequest );
             
-            let codeSituation = '';
-            if (response){
-                codeSituation = response.data.codeSituation;
-            }
-            else {
-                codeSituation = error.response.data.codeSituation;
-            }
+            const codeSituation = response.data.codeSituation;
             
             if (codeSituation === 'LogIn_Succeeded') {
                 
