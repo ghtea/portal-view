@@ -75,8 +75,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
         
 
             const {response, error}  = yield call( requestLogIn, bodyRequest );
-            alert(response);
-            alert(error);
+            
+            alert(error.response);
             if (response && response.data.codeSituation === 'LogIn_Succeeded'){
 
                 Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
