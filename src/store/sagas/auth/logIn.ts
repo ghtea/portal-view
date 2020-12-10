@@ -21,15 +21,8 @@ interface BodyRequest {
 const requestLogIn = (bodyRequest: BodyRequest) => {
     
     return axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
-    
-        .then(response => { 
-        	//console.log(response)
-        	return response;
-        })
-        .catch(error => {
-            //console.log(error.response)
-            return error.response;
-        });
+    .then(response => ({ response }))
+    .catch(error => ({ error }))
 };
 
 
@@ -79,17 +72,18 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 password: action.payload.password
             };
         
-    
-            const res = yield call( requestLogIn, bodyRequest );
-            console.log(res);
+            const { response, error } = yield call( requestLogIn, bodyRequest );
             
-            const codeSituation = res.data.codeSituation;
+            let codeSituation = '';
+            if (response){
+                codeSituation = response.data.codeSituation;
+            }
+            else {
+                codeSituation = error.response.data.codeSituation;
+            }
             
             if (codeSituation === 'LogIn_Succeeded') {
                 
-                //Cookies.remove('logged');
-                console.log(res.data.payload)
-                // const user = res.data.payload;
                 Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
                 
                 yield put( actionsStatus.return__REPLACE({
