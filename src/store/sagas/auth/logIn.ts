@@ -96,9 +96,9 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
             else {
                 const codeSituation = error.response.data.codeSituation;
 
+                alert('우선 이거부터 확인...');
                 console.log(codeSituation);
-                alert(codeSituation);
-                
+
                 yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
                     codeSituation: codeSituation
                 }) );
