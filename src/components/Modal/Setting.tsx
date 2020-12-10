@@ -9,11 +9,11 @@ import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 
-
+import {pascalToCamel} from 'tools/vanilla/convertName';
 import IconX from 'svgs/basic/IconX';
 
 import styles from './Setting.module.scss';
-import stylesModal from '../Modal.module.scss';
+import stylesModalA from 'components/Modal/Template/ModalA.module.scss';
 
 
 type PropsSetting = {};
@@ -25,21 +25,16 @@ function Setting({}: PropsSetting) {
   const languageCurrent:string = useSelector((state: StateRoot) => state['status']['current']['language']);
   const optionThemeCurrent:string = useSelector((state: StateRoot) => state['status']['current']['theme']['option']);
   
-  const onClick_HideSetting = useCallback(
+  const onClick_HideModal = useCallback(
     () => {
       dispatch(actionsStatus.return__REPLACE({ 
-        listKey: ['showing', 'modal', 'setting'],
+        listKey: ['showing', 'modal', pascalToCamel('Setting')],
         replacement: false
       }))
     },[]
   );
   
-  const onClick_LinkInsideApp = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, destination:string) => {
-      history.push(destination);
-    },[history]
-  );
-  
+  // ~ template
   
   const onClick_ChangeOptionTheme = useCallback(
     (replacement:string) => {
@@ -64,19 +59,25 @@ function Setting({}: PropsSetting) {
   
   
   return (
-    <div className={`${styles['root']} ${stylesModal['root']}`} >
-      
-      <div className={`${styles['header']}`} >
-        <div>  <FormattedMessage id={`Modal.Setting_Title`} /> </div>
-        <div
-          onClick={()=>onClick_HideSetting()}
-        > 
-            <IconX className={`${styles['icon-x']}`} />
+    <div 
+        className={`${stylesModalA['background-shadow']}`} 
+        onClick={()=>onClick_HideModal()}
+    >
+        <div className={`${stylesModalA['modal']}`} >
+
+
+
+        <div className={`${stylesModalA['header']}`} >
+            <div>  <FormattedMessage id={`Modal.Setting_Title`} /> </div>
+            <div
+                onClick={()=>onClick_HideModal()}
+            > 
+                <IconX className={`${stylesModalA['icon-x']}`} />
+            </div>
         </div>
-      </div>
+    
       
-      
-      <div className={`${styles['content']}`} >
+      <div className={`${stylesModalA['content']}`} >
         
         <div className={`${styles['content__section']}`} >
           <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
@@ -112,7 +113,8 @@ function Setting({}: PropsSetting) {
         
       </div>
         
-        
+
+        </div>   
     </div>
   );
 }

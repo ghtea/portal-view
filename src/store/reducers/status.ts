@@ -40,7 +40,8 @@ const stateInitial = {
       boardNav1: false
     },
     modal: {
-      setting: false
+      setting: false,
+      creatingPortal: false
     }
   }
   

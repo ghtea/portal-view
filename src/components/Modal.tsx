@@ -6,39 +6,24 @@ import * as actionsStatus from 'store/actions/status';
 
 import Setting from "./Modal/Setting";
 
-import styles from './Modal.module.scss';
+// import styles from './Modal.module.scss';
 
 
 type PropsModal = {};
 
 function Modal({}: PropsModal) {
   
-  const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['setting']);
-  const dispatch = useDispatch();
-  
-  const onClick_HideModal = useCallback(
-    (idModal:string) => {
-      dispatch(actionsStatus.return__REPLACE({ 
-        listKey: ['showing', 'modal', idModal],
-        replacement: false
-      }))
-    },[showingSetting]
-  );
+    const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['setting']);
+    const showingCreatingPortal:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['creatingPortal']);
+
   
   return (
       
     <>
       
-      {showingSetting && 
-        <>
-            <div 
-                className={`${styles['shadow-of-modal']}`} 
-                onClick={()=>onClick_HideModal('setting')}
-            />
-            <Setting />
-        </>
-      }
+      {showingSetting && <Setting />}
       
+
     </>
       
   );

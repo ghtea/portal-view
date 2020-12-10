@@ -22,10 +22,14 @@ $modal__map-color-assignment: (
     modal--shadow__background-color___light: rgba(hsl($h-basic,$s-basic,10%), 0.3),
     modal--shadow__background-color___dark: rgba(hsl($h-basic,$s-basic,5%), 0.3),
 
-    setting--header__icon-color___light: hsl($h-basic,$s-basic,70%),
-    setting--header__icon-color___dark: hsl($h-basic,$s-basic,30%),
-    setting--header__icon-color__hover___light: hsl($h-basic,$s-basic,50%),
-    setting--header__icon-color__hover___dark: hsl($h-basic,$s-basic,50%),
+    modal--header__icon-color___light: hsl($h-basic,$s-basic,70%),
+    modal--header__icon-color___dark: hsl($h-basic,$s-basic,30%),
+    modal--header__icon-color__hover___light: hsl($h-basic,$s-basic,50%),
+    modal--header__icon-color__hover___dark: hsl($h-basic,$s-basic,50%),
+
+
+
+    
     setting--option-behind__background-color___light: hsl($h-basic,$s-basic,90%),
     setting--option-behind__background-color___dark: hsl($h-basic,$s-basic,4%),
 
