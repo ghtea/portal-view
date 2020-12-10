@@ -20,13 +20,9 @@ interface BodyRequest {
 
 const requestLogIn = (bodyRequest: BodyRequest) => {
     
-    try {
-        const response = axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true});
-        return response;
-    }
-    catch (error) {
-        return error.response;
-    }
+    return axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
+    .then(response => ({ response }))
+    .catch(error => ({ error }))
 
 };
 
@@ -77,12 +73,11 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 password: action.payload.password
             };
         
-            const response  = yield call( requestLogIn, bodyRequest );
-            
-            const codeSituation = response.data.codeSituation;
-            
-            if (codeSituation === 'LogIn_Succeeded') {
-                
+
+            const {response, error}  = yield call( requestLogIn, bodyRequest );
+
+            if (response && response.data.codeSituation === 'LogIn_Succeeded'){
+
                 Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
                 
                 yield put( actionsStatus.return__REPLACE({
@@ -96,13 +91,11 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 }) );
 
                 history.push('/');
-            
+
             }
             else {
-                
+                const codeSituation = error.response.data.codeSituation;
                 console.log(codeSituation);
-                
-                // SignUp_UnknownError, SignUp_DuplicateEmail
                 yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
                     codeSituation: codeSituation
                 }) );
@@ -120,7 +113,7 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 
                 Cookies.remove('logged_in')
             }
-            
+                
             
         } // higher else
     
