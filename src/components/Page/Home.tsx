@@ -54,20 +54,18 @@ function Home({}: PropsHome) {
         };
 
         try {
-            const codeSituation = await fetch(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, {
+            const res = await fetch(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, {
                 method: 'POST', // or 'PUT'
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(bodyRequest),
+                body: JSON.stringify(bodyRequest)
             })
-            .then(response => response.json())
-            .then(response => ( response.data.codeSituation ))
-            .catch(error => { alert(error); return ( error.response.data.codeSituation )})
-
-            console.log(codeSituation);
-            alert(codeSituation);
+            
+            // console.log(codeSituation);
+            console.log(res.json())
+            alert(res.json());
 
         }
         catch(error) {

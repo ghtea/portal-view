@@ -20,7 +20,12 @@ interface BodyRequest {
 
 const requestLogIn = (bodyRequest: BodyRequest) => {
     
-    return axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
+    return axios({
+        method: 'post',
+        url: `${process.env.REACT_APP_URL_BACK}/auth/log-in`, 
+        data: bodyRequest, 
+        withCredentials: true
+    })
     .then(response => ({ response }))
     .catch(error => ({ error }))
 
