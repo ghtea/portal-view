@@ -74,6 +74,16 @@ function LogIn() {
     },
     [inputEmail, inputPassword]
   );
+
+  const onKeyPress_LogIn = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        onClick_LogIn();
+      }
+    },
+    []
+  );
+
   
   return (
     <div className={`${styles['root']}`} >
@@ -84,28 +94,29 @@ function LogIn() {
 
 
             <div className={`${styles['title-page']}`} > 
-                <FormattedMessage id={`Page.LogIn.LogIn`} />
+                <FormattedMessage id={`Page.LogIn_LogIn`} />
             </div>
                 
             <div className={`${styles['input-identity']}`} >
-                <div> <FormattedMessage id={`Page.LogIn.EmailAddress`} /> </div>
+                <div> <FormattedMessage id={`Page.LogIn_EmailAddress`} /> </div>
                 <div> { codeSituationEmail && <FormattedMessage id={`Notification.${codeSituationEmail}`} /> }  </div>
                 <input 
                     type='text'
-                    placeholder={intl.formatMessage({ id: 'Page.LogIn.EmailAddress'})}
+                    placeholder={intl.formatMessage({ id: 'Page.LogIn_EmailAddress'})}
                     value={inputEmail.value}
                     onChange={inputEmail.onChange} 
                 /> 
             </div> 
                 
             <div className={`${styles['input-password']}`} >
-                <div> <FormattedMessage id={`Page.LogIn.Password`} /> </div>
+                <div> <FormattedMessage id={`Page.LogIn_Password`} /> </div>
                 <div> { codeSituationPassword && <FormattedMessage id={`Notification.${codeSituationPassword}`}/>} </div>
                 <input 
                     type='password'
-                    placeholder={intl.formatMessage({ id: 'Page.LogIn.Password'})}
+                    placeholder={intl.formatMessage({ id: 'Page.LogIn_Password'})}
                     value={inputPassword.value}
                     onChange={inputPassword.onChange}
+                    onKeyPress={onKeyPress_LogIn}
                 /> 
             </div> 
 
@@ -113,7 +124,7 @@ function LogIn() {
             <div className={`${styles['button-enter']}`} >
                 <button
                     onClick={()=>onClick_LogIn()}
-                > <FormattedMessage id={`Page.LogIn.LogIn`} />
+                > <FormattedMessage id={`Page.LogIn_LogIn`} />
                 </button>
             </div> 
             
@@ -132,11 +143,11 @@ function LogIn() {
                 <div> 
                     <a
                     onClick={(event)=>onClick_LinkInsideApp(event, '/')}
-                    > Home </a> 
+                    > <FormattedMessage id={`Nav.Home`} /> </a> 
                 </div>
                 <div> <a
                     onClick={(event)=>onClick_LinkInsideApp(event, '/sign-up')}
-                > Sign Up </a> 
+                > <FormattedMessage id={`Nav.SignUp`} /> </a> 
                 </div>
             </div> 
 

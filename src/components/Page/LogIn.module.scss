@@ -80,7 +80,9 @@
         border-radius: 4px;
 
         padding-left: 8px;
-    
+        
+        @include frame-each-theme(border, 2px, solid, page--log-in--input__border-color);
+
         &:focus {
 
             &::placeholder {

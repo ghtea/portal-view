@@ -83,7 +83,7 @@
     width: calc(100% - 20px);
     height: auto;  min-height: 50px;
     
-    @include frame-each-theme(border-top, 1px, solid, modal__border-color);
+    @include frame-each-theme(border-top, 2px, solid, modal--header__border-color);
 
     margin: 0px 0px 0px 0px; /* top right bottom left */
     padding: 0px 0px 10px 0px; /* top right bottom left */

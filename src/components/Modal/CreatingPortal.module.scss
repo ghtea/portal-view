@@ -1,5 +1,8 @@
 @import 'styles/every.scss';
 
+.modal {
+
+}
 
 .content__section {
 
@@ -8,8 +11,9 @@
     justify-content: flex-start;
     align-items: flex-start;
 
-    width: auto;
+    width: 100%;
     height: auto;
+    margin-top: 5px;
   
     & > div:nth-child(1){ /* title */
         justify-content: center;
@@ -26,10 +30,10 @@
         justify-content: flex-start;
         align-items: center;
     
-        width: auto;
-        height: 32px;
+        width: 100%;
+        height: 48px;
 
-        @include color-each-theme(background-color, setting--option-behind__background-color);
+        // @include color-each-theme(background-color, setting--option-behind__background-color);
         
         border-radius: 5px;
     

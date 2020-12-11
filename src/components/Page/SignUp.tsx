@@ -23,12 +23,12 @@ type PropsSignUp = {};
 
 function SignUp({}: PropsSignUp) {
   
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const intl = useIntl();
 
     const inputEmail = useInput(""); // {value, setValue, onChange};
-  const inputPassword1 = useInput(""); // {value, setValue, onChange};
-  const inputPassword2 = useInput(""); // {value, setValue, onChange};
+    const inputPassword1 = useInput(""); // {value, setValue, onChange};
+    const inputPassword2 = useInput(""); // {value, setValue, onChange};
   
   const [codeSituationEmail, setCodeSituationEmail] = useState('');
   const [codeSituationPassword, setCodeSituationPassword] = useState('');
@@ -74,15 +74,15 @@ function SignUp({}: PropsSignUp) {
 
                 
             <div className={`${stylesLogIn['title-page']}`} >  
-                <FormattedMessage id={`Page.LogIn.SignUp`} />
+                <FormattedMessage id={`Page.LogIn_SignUp`} />
             </div>
             
             <div className={`${stylesLogIn['input-identity']}`} >
-                <div> <FormattedMessage id={`Page.LogIn.EmailAddress`} /> </div>
+                <div> <FormattedMessage id={`Page.LogIn_EmailAddress`} /> </div>
                 <div> { codeSituationEmail &&  <FormattedMessage id={`Notification.${codeSituationEmail}`} />} </div>
             <input 
                 type='text' 
-                placeholder={intl.formatMessage({ id: 'Page.LogIn.EmailAddress'})} 
+                placeholder={intl.formatMessage({ id: 'Page.LogIn_EmailAddress'})} 
                 value={inputEmail.value}
                 onChange={inputEmail.onChange} 
             /> 
@@ -90,21 +90,21 @@ function SignUp({}: PropsSignUp) {
             
             
             <div className={`${stylesLogIn['input-password']}`} >
-                <div> <FormattedMessage id={`Page.LogIn.Password`} /> </div>
+                <div> <FormattedMessage id={`Page.LogIn_Password`} /> </div>
                 <div> { codeSituationPassword &&  <FormattedMessage id={`Notification.${codeSituationPassword}`} />} </div>
             <input 
                 type='password'
-                placeholder={intl.formatMessage({ id: 'Page.LogIn.Password'})}
+                placeholder={intl.formatMessage({ id: 'Page.LogIn_Password'})}
                 value={inputPassword1.value}
                 onChange={inputPassword1.onChange}
             /> 
             </div>
             
             <div className={`${stylesLogIn['input-password']}`} >
-                <div> <FormattedMessage id={`Page.SignUp.PasswordAgain`} /> </div>
+                <div> <FormattedMessage id={`Page.SignUp_PasswordAgain`} /> </div>
             <input 
                 type='password'
-                placeholder={intl.formatMessage({ id: 'Page.SignUp.PasswordAgain'})}
+                placeholder={intl.formatMessage({ id: 'Page.SignUp_PasswordAgain'})}
                 
                 value={inputPassword2.value}
                 onChange={inputPassword2.onChange}
@@ -117,7 +117,7 @@ function SignUp({}: PropsSignUp) {
             <div className={`${stylesLogIn['button-enter']}`} >
             <button
                 onClick={()=>onClick_SignUp()}
-            > <FormattedMessage id={`Page.LogIn.SignUp`} />
+            > <FormattedMessage id={`Page.LogIn_SignUp`} />
             </button>
             </div>
             

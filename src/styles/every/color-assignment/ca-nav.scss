@@ -36,8 +36,10 @@ $nav__map-color-assignment: (
     nav-2--name-app__icon-color___dark: hsl($h-main,$s-main,50%),
     nav-2--name-app__font-color___light: hsl($h-basic,$s-basic,20%),
     nav-2--name-app__font-color___dark: hsl($h-basic,$s-basic,80%),
-    nav-2__border-color___light: hsl($h-basic,$s-basic,83%),
-    nav-2__border-color___dark: hsl($h-basic,$s-basic,12%),
+    nav-2--border-top__border-color___light: hsl($h-main,$s-main,50%),
+    nav-2--border-top__border-color___dark: hsl($h-main,$s-main,50%),
+    nav-2--border-bottom__border-color___light: hsl($h-basic,$s-basic,83%),
+    nav-2--border-bottom__border-color___dark: hsl($h-basic,$s-basic,12%),
 
     
     nav-2--link__font-color___light: hsl($h-basic,$s-basic,40%),

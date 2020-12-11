@@ -72,8 +72,8 @@ $global__map-color-assignment: (
     button-twitter__background-color___light: hsl(200,100%,60%),
     button-twitter__background-color___dark: hsl(200,100%,40%),
     
-    input-text__background-color___light: hsl($h-basic,$s-basic,100%),
-    input-text__background-color___dark: hsl($h-basic,$s-basic,10%),
+    input-text__background-color___light: hsl($h-basic,$s-basic,95%),
+    input-text__background-color___dark: hsl($h-basic,$s-basic,6%),
     input-text__font-color___light: hsl($h-basic,$s-basic,50%),
     input-text__font-color___dark: hsl($h-basic,$s-basic,50%),
     input-text--placeholder__font-color___light: hsl($h-basic,$s-basic,50%),
@@ -81,14 +81,12 @@ $global__map-color-assignment: (
     input-text__border-color___light:  transparent,
     input-text__border-color___dark:  transparent,
 
-    input-text__background-color__focus___light: hsl($h-main,80%,100%),
-    input-text__background-color__focus___dark: hsl($h-main,80%,5%),
+    input-text__background-color__focus___light: hsl($h-basic,$s-basic,90%),
+    input-text__background-color__focus___dark: hsl($h-basic,$s-basic,3%),
     input-text__font-color__focus___light: hsl($h-basic,$s-basic,25%),
     input-text__font-color__focus___dark: hsl($h-basic,$s-basic,75%),
     input-text__border-color__focus___light:  hsl($h-main,$s-main,75%),
     input-text__border-color__focus___dark:  hsl($h-main,$s-main,40%),
-    input-text__outline-color__focus___light:  transparent,
-    input-text__outline-color__focus___dark:  transparent,
     input-text--box-shadow-color__focus___light:  rgba(hsl($h-main,$s-main,60%), 0.3),
     input-text--box-shadow-color__focus___dark:  rgba(hsl($h-main,$s-main,40%), 0.3),
 

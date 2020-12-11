@@ -2,14 +2,16 @@ import React, { useCallback, useEffect } from "react";
 
 import history from 'historyApp';
 import { useLocation } from "react-router-dom";
-import { FormattedMessage } from 'react-intl';
-import Cookies from 'js-cookie';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 
 import {pascalToCamel} from 'tools/vanilla/convertName';
+import useInput from 'tools/hooks/useInput';
+
+
 import IconX from 'svgs/basic/IconX';
 
 import styles from './CreatingPortal.module.scss';
@@ -20,16 +22,25 @@ type PropsCreatingPortal = {};
 
 function CreatingPortal({}: PropsCreatingPortal) {
   
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const intl = useIntl();
 
-  const onClick_HideModal = useCallback(
-    () => {
-      dispatch(actionsStatus.return__REPLACE({ 
-        listKey: ['showing', 'modal', pascalToCamel('CreatingPortal')],
-        replacement: false
-      }))
-    },[]
-  );
+
+    const onClick_HideModal = useCallback(
+        () => {
+        dispatch(actionsStatus.return__REPLACE({ 
+            listKey: ['showing', 'modal', pascalToCamel('CreatingPortal')],
+            replacement: false
+        }))
+        },[]
+    );
+
+
+    const inputName = useInput(""); // {value, setValue, onChange};
+    const inputUrl = useInput(""); // {value, setValue, onChange};
+    const inputTags = useInput(""); // {value, setValue, onChange};
+
+  
   
   // ~ template
   
@@ -46,11 +57,13 @@ function CreatingPortal({}: PropsCreatingPortal) {
   */
   
   return (
+    <>
     <div 
         className={`${stylesModalA['background-shadow']}`} 
         onClick={()=>onClick_HideModal()}
-    >
-        <div className={`${stylesModalA['modal']}`} >
+    />
+    
+        <div className={`${styles['modal']} ${stylesModalA['modal']}`} >
 
 
 
@@ -68,30 +81,45 @@ function CreatingPortal({}: PropsCreatingPortal) {
         
         <div className={`${styles['content__section']}`} >
           <div> <FormattedMessage id={`Modal.CreatingPortal_Name`} /> </div>
-          <div>
-            
+          <div className={`${styles['input-name']}`} >
+                <input 
+                    type='text'
+                    placeholder={intl.formatMessage({ id: 'Page.CreatingPortal_Name'})}
+                    value={inputName.value}
+                    onChange={inputName.onChange} 
+                /> 
           </div>
         </div>
         
         <div className={`${styles['content__section']}`} >
           <div>  <FormattedMessage id={`Modal.CreatingPortal_Url`} /></div>
-          <div>
-            
+          <div className={`${styles['input-url']}`} >
+                <input 
+                    type='text'
+                    placeholder={intl.formatMessage({ id: 'Page.CreatingPortal_Url'})}
+                    value={inputUrl.value}
+                    onChange={inputUrl.onChange} 
+                /> 
           </div>
         </div>
 
         <div className={`${styles['content__section']}`} >
           <div>  <FormattedMessage id={`Modal.CreatingPortal_Tags`} /></div>
-          <div>
-            
+          <div className={`${styles['input-tags']}`} >
+                <input 
+                    type='text'
+                    placeholder={intl.formatMessage({ id: 'Page.CreatingPortal_Tags'})}
+                    value={inputTags.value}
+                    onChange={inputTags.onChange} 
+                /> 
           </div>
         </div>
         
       </div>
         
 
-        </div>   
     </div>
+    </>
   );
 }
 

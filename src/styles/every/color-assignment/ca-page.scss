@@ -17,7 +17,8 @@ $page__map-color-assignment: (
     page--log-in--input--label-error__font-color___light: hsl($h-error,$s-error,50%),
     page--log-in--input--label-error__font-color___dark: hsl($h-error,$s-error,50%),
 
-
+    page--log-in--input__border-color___light: hsl($h-basic,$s-basic,80%),
+    page--log-in--input__border-color___dark: hsl($h-basic,$s-basic,20%),
 
     // page--home__background-color___light: $background___light,
     // page--home__background-color___dark: $background___dark,

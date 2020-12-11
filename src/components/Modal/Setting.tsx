@@ -56,16 +56,19 @@ function Setting({}: PropsSetting) {
 
     }, []
   );
+
+  
   
   
   return (
+    <>
+
     <div 
         className={`${stylesModalA['background-shadow']}`} 
         onClick={()=>onClick_HideModal()}
-    >
-        <div className={`${stylesModalA['modal']}`} >
+    />
 
-
+    <div className={`${styles['modal']} ${stylesModalA['modal']}`} >
 
         <div className={`${stylesModalA['header']}`} >
             <div>  <FormattedMessage id={`Modal.Setting_Title`} /> </div>
@@ -113,9 +116,8 @@ function Setting({}: PropsSetting) {
         
       </div>
         
-
-        </div>   
     </div>
+    </>
   );
 }
 
