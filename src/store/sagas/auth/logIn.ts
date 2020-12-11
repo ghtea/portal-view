@@ -102,6 +102,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
             }
             else {   
+                alert(JSON.stringify(error, null,4));
+                
                 alert(JSON.stringify(error.response,null,4));
                 alert(JSON.stringify(error.request,null,4));
                 alert(JSON.stringify(error.config,null,4));
