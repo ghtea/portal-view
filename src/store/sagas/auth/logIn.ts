@@ -107,7 +107,7 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
                 const codeSituation = error.response.data.codeSituation;
                 
-                
+                alert(codeSituation);
 
                 console.log(codeSituation);
 
