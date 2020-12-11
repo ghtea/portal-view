@@ -56,7 +56,7 @@ function Home({}: PropsHome) {
         try {
             const codeSituation = await axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
             .then(response => ( response.data.codeSituation ))
-            .catch(error => ( error.response.data.codeSituation ))
+            .catch(error => { alert(error); return ( error.response.data.codeSituation )})
 
             console.log(codeSituation);
             alert(codeSituation);
