@@ -20,9 +20,6 @@ interface BodyRequest {
 
 const requestLogIn = (bodyRequest: BodyRequest) => {
     
-
-    alert(process.env.REACT_APP_URL_BACK);
-
     return axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
     .then(response => ({ response }))
     .catch(error => ({ error }))
@@ -79,9 +76,10 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
             const {response, error}  = yield call( requestLogIn, bodyRequest );
             
-            
 
             if (response && response.data.codeSituation === 'LogIn_Succeeded'){
+
+                alert(response.data.codeSituation);
 
                 Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
                 
@@ -100,6 +98,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
             }
             else {
                 const codeSituation = error.response.data.codeSituation;
+                
+                alert(codeSituation);
 
                 console.log(codeSituation);
 

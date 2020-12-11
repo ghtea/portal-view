@@ -26,7 +26,7 @@
     @include color-each-theme(color, modal__font-color);
 
     @include frame-each-theme(border, 1px, solid, modal__border-color);
-    @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, modal__box-shadow);
+    @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, modal__box-shadow-color);
 
     border-radius: 12px;
 

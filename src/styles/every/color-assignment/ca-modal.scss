@@ -16,11 +16,11 @@ $modal__map-color-assignment: (
     modal__font-color___dark: hsl($h-basic,$s-basic,75%),
     modal__border-color___light: hsl($h-basic,$s-basic,75%),
     modal__border-color___dark: hsl($h-basic,$s-basic,15%),
-    modal__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,50%), 0.7),
-    modal__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.7),
+    modal__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,60%), 0.5),
+    modal__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.5),
     
     modal--shadow__background-color___light: rgba(hsl($h-basic,$s-basic,10%), 0.3),
-    modal--shadow__background-color___dark: rgba(hsl($h-basic,$s-basic,5%), 0.3),
+    modal--shadow__background-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.3),
 
     modal--header__icon-color___light: hsl($h-basic,$s-basic,70%),
     modal--header__icon-color___dark: hsl($h-basic,$s-basic,30%),

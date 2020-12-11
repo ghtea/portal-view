@@ -21,7 +21,11 @@
     "Modal.Setting_Theme": "Theme",
     "Modal.Setting_Language": "Language",
     
-    
+    "Modal.CreatingPortal_Title": "Create Portal",
+    "Modal.CreatingPortal_Name": "Name",
+    "Modal.CreatingPortal_Url": "URL",
+    "Modal.CreatingPortal_Tags": "Tags",
+
     
     "Notification.Test1": "Succuessfully tested 1 !",
     "Notification.Test2": "Succuessfully tested 2 !",
@@ -41,14 +45,14 @@
     
     
     
-    "Page.Home.Welcome": "Welcome!",
+    "Page.Home_Welcome": "Welcome!",
     
-    "Page.LogIn.LogIn": "LogIn",
-    "Page.LogIn.EmailAddress": "Email Address",
-    "Page.LogIn.Password": "Password",
-    "Page.LogIn.SignUp": "Sign Up",
+    "Page.LogIn_LogIn": "LogIn",
+    "Page.LogIn_EmailAddress": "Email Address",
+    "Page.LogIn_Password": "Password",
+    "Page.LogIn_SignUp": "Sign Up",
 
-    "Page.SignUp.PasswordAgain": "Password Again"
+    "Page.SignUp_PasswordAgain": "Password Again"
 
 }
 

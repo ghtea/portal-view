@@ -23,6 +23,7 @@ function Action({}: PropsAction) {
 
   const [isOpenAction, setIsOpenAction] = useState(false)
   
+
   const onClick_OpenCloseAction = useCallback(
     (decision?:boolean) => {
         if (decision === true || decision === false){
@@ -30,6 +31,15 @@ function Action({}: PropsAction) {
         }
         setIsOpenAction(!isOpenAction);
     },[isOpenAction]
+  );
+
+  const onClick_ShowModal = useCallback(
+    (idModal:string) => {
+      dispatch(actionsStatus.return__REPLACE({ 
+        listKey: ['showing', 'modal', idModal],
+        replacement: true
+      }))
+    },[]
   );
   
 
@@ -47,7 +57,7 @@ function Action({}: PropsAction) {
         
         <div className={`${styles['menu']}`} >
             <button
-                
+                onClick={()=>onClick_ShowModal('creatingPortal')}
             > <IconPlus className={`${styles['icon-plus']}`} /> 
             </button>
             <button

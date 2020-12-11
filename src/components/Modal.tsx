@@ -5,6 +5,7 @@ import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 
 import Setting from "./Modal/Setting";
+import CreatingPortal from "./Modal/CreatingPortal";
 
 // import styles from './Modal.module.scss';
 
@@ -22,7 +23,7 @@ function Modal({}: PropsModal) {
     <>
       
       {showingSetting && <Setting />}
-      
+      {showingCreatingPortal && <CreatingPortal />}
 
     </>
       

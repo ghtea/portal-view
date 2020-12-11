@@ -18,13 +18,18 @@
     "Nav.System_Language": "언어",
     "Nav.Diary": "일기",
     
+
     
     "Modal.Setting_Title": "설정",
     "Modal.Setting_Theme": "테마",
     "Modal.Setting_Language": "언어",
     
-    
-    
+    "Modal.CreatingPortal_Title": "포털 만들기",
+    "Modal.CreatingPortal_Name": "이름",
+    "Modal.CreatingPortal_Url": "URL",
+    "Modal.CreatingPortal_Tags": "태그",
+
+
     "Notification.Test1": "테스트에 성공하였습니다 1 !",
     "Notification.Test2": "테스트에 성공하였습니다 2 !",
     
@@ -42,14 +47,14 @@
     "Notification.SignUp_Succeeded": "성공적으로 회원가입하였습니다!",
     
     
-    "Page.Home.Welcome": "환영합니다!",
+    "Page.Home_Welcome": "환영합니다!",
     
-    "Page.LogIn.LogIn": "로그인",
-    "Page.LogIn.EmailAddress": "이메일 주소",
-    "Page.LogIn.Password": "비밀번호",
-    "Page.LogIn.SignUp": "회원가입",
+    "Page.LogIn_LogIn": "로그인",
+    "Page.LogIn_EmailAddress": "이메일 주소",
+    "Page.LogIn_Password": "비밀번호",
+    "Page.LogIn_SignUp": "회원가입",
 
-    "Page.SignUp.PasswordAgain": "비밀번호 재입력"
+    "Page.SignUp_PasswordAgain": "비밀번호 재입력"
 
 
 }

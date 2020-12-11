@@ -6,6 +6,8 @@ import { FormattedMessage } from 'react-intl';
 import {useSelector, useDispatch} from "react-redux";
 
 import * as actionsStatus from 'store/actions/status';
+import * as actionsAuth from 'store/actions/auth';
+
 import * as actionsNotification from 'store/actions/notification';
 
 import styles from './Home.module.scss';
@@ -41,6 +43,15 @@ function Home({}: PropsHome) {
       }) )
     }, []
   );
+
+  const onClick_TestAxios = useCallback(
+    () => {
+      dispatch(actionsAuth.return__LOG_IN({
+        email: 'd',
+        password: 'dd'
+      }) );
+    }, []
+  );
   
   return (
 
@@ -53,7 +64,7 @@ function Home({}: PropsHome) {
         </div>
 
         <div>
-            <FormattedMessage id={`Page.Home.Welcome`} />
+            <FormattedMessage id={`Page.Home_Welcome`} />
         </div>
         
         <div> 
@@ -67,6 +78,13 @@ function Home({}: PropsHome) {
           <button
             onClick={event=>onClick_AddTestingBanner('Test2')}
           > test 2 
+          </button>
+        </div>
+
+        <div> 
+          <button
+            onClick={event=>onClick_TestAxios()}
+          > test axios 
           </button>
         </div>
 

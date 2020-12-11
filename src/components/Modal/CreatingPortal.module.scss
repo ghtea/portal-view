@@ -1,0 +1,40 @@
+@import 'styles/every.scss';
+
+
+.content__section {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: auto;
+    height: auto;
+  
+    & > div:nth-child(1){ /* title */
+        justify-content: center;
+
+        width: auto;
+        height: 24px;
+        font-size: 0.9rem;
+    }
+  
+    & > div:nth-child(2){ /* options */
+        
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    
+        width: auto;
+        height: 32px;
+
+        @include color-each-theme(background-color, setting--option-behind__background-color);
+        
+        border-radius: 5px;
+    
+        padding: 0px 3px 0px 3px; /* top right bottom left */
+    
+    
+    }
+}
