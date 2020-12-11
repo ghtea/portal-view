@@ -101,11 +101,11 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 history.push('/');
 
             }
-            else {
-                alert(error.response);
-                alert(error.request);
-                alert(error.config);
-                alert(error.message);   
+            else {   
+                alert(JSON.stringify(error.response,null,4));
+                alert(JSON.stringify(error.request,null,4));
+                alert(JSON.stringify(error.config,null,4));
+                alert(JSON.stringify(error.message,null,4));   
 
                 const codeSituation = error.response.data.codeSituation;
                 
