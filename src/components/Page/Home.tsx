@@ -54,7 +54,15 @@ function Home({}: PropsHome) {
         };
 
         try {
-            const codeSituation = await axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
+            const codeSituation = await fetch(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, {
+                method: 'POST', // or 'PUT'
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bodyRequest),
+            })
+            .then(response => response.json())
             .then(response => ( response.data.codeSituation ))
             .catch(error => { alert(error); return ( error.response.data.codeSituation )})
 
