@@ -102,8 +102,10 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
             }
             else {
-
-                alert(error);
+                alert(error.response);
+                alert(error.request);
+                alert(error.config);
+                alert(error.message);   
 
                 const codeSituation = error.response.data.codeSituation;
                 
@@ -138,8 +140,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
         
     } catch (error) {
         
-        console.log(error);
-        alert(error);
+        //console.log(error);
+        //alert(error);
         console.log('log in has been failed');
         
         yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
