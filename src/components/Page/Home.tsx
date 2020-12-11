@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { FormattedMessage } from 'react-intl';
+import axios from 'axios';
 
 import {useSelector, useDispatch} from "react-redux";
 
@@ -45,11 +46,20 @@ function Home({}: PropsHome) {
   );
 
   const onClick_TestAxios = useCallback(
-    () => {
-      dispatch(actionsAuth.return__LOG_IN({
-        email: 'd',
-        password: 'dd'
-      }) );
+    async () => {
+
+        const bodyRequest = {
+            email: 's', 
+            password: 's'
+        };
+
+        const codeSituation = await axios.post(`${process.env.REACT_APP_URL_BACK}/auth/log-in`, bodyRequest, {withCredentials: true})
+        .then(response => ( response.data.codeSituation ))
+        .catch(error => ( error.response.data.codeSituation ))
+
+        console.log(codeSituation);
+        alert(codeSituation);
+
     }, []
   );
   
