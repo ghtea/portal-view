@@ -102,9 +102,12 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
             }
             else {
+
+                alert(error);
+
                 const codeSituation = error.response.data.codeSituation;
                 
-                alert(codeSituation);
+                
 
                 console.log(codeSituation);
 
