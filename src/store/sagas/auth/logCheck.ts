@@ -59,7 +59,7 @@ function* logCheck(action: actionsAuth.type__LOG_CHECK) {
             console.log("no logged in user");
             
             //replaceDataAuth("user", {});
-            yield put( actionsAuth.return__REPLACE({
+            yield put( actionsStatus.return__REPLACE({
                 listKey: ['loading', 'user'],
                 replacement: false
             }) );

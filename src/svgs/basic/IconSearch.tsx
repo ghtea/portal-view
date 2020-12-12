@@ -10,7 +10,7 @@ const propsDefault = {
   className: ''
 };
 
-// Template
+// Search
 const Icon = ({ className, kind }: PropsIcon) => {
   return (
     <div className={`${className} icon`} >

@@ -28,7 +28,6 @@ function Nav1({}: PropsNav1) {
   const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['setting']);
 
     const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
-    const loadingUser:boolean = useSelector((state: StateRoot) => state['status']['loading']['user']);
 
   //event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>,
   const onClick_LinkInsideApp = useCallback(
@@ -92,18 +91,20 @@ function Nav1({}: PropsNav1) {
         
             
             <div>
-                { !readyUser && !loadingUser &&
-                    <a className={`${styles['log-in']}`} 
-                        onClick={()=>onClick_LinkInsideApp('/log-in')} 
-                    >
-                        <FormattedMessage id="Nav.LogIn" />
-                    </a>
+                { !readyUser &&
+                    <div className={`${styles['tool']}`} >
+                        <a className={`${styles['link-main']}`} 
+                            onClick={()=>onClick_LinkInsideApp('/log-in')} 
+                        >
+                            <FormattedMessage id="Nav.LogIn" />
+                        </a>
+                    </div>
                 }
         
                 { readyUser &&
-                    <button className={`${styles['user']}`} > 
+                    <div className={`${styles['tool']}`} > 
                         <IconUserCircle className={`${styles['icon-user-circle']}`} />
-                    </button>
+                    </div>
                 }
             </div>
 

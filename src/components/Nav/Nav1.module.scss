@@ -49,7 +49,7 @@
     
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     width: 100%;
@@ -65,8 +65,10 @@
     
   
     & > div:nth-child(1) {
-        width: 60px;
-        width: 60px;
+        
+        width: auto;
+        margin-left: 10px;
+
         & button .icon-x {
             animation: rotateIconX 0.4s ease-out 0s 1 normal;
         }
@@ -90,9 +92,13 @@
 
 
     & > div:nth-child(2) {
-        width: calc(100% - 120px);  // 320-80 ~
+        width: auto; 
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%);
         .icon-logo {
-            @include color-each-theme(color, nav-1--bar--name-app__icon-color);
+            @include color-each-theme(color, nav-1--bar--logo-app__icon-color);
             width: 30px;
             height: 30px;
         }
@@ -100,12 +106,28 @@
   
   
     & > div:nth-child(3) {
-        width: 60px;
 
-        .icon-user-circle {
-            @include color-each-theme(color, nav-2--tool__icon-color);
-            width: 24px;
-            height: 24px;
+        width: auto;
+        margin-right: 10px;
+
+        .log-in {
+            @include color-each-theme(color, nav-2--log-in__font-color);
+            @include frame-each-theme(border, 2px, solid, nav-2--log-in__border-color);
+            font-weight: bold;
+            border-radius: 18px;
+
+            width: auto;
+            height: 36px;
+            padding: 0px 10px 0px 10px;
+            margin-left: 6px;
+        }
+
+        .user {
+            .icon-user-circle {
+                @include color-each-theme(color, nav-2--tool__icon-color);
+                width: 24px;
+                height: 24px;
+            }
         }
     }
   

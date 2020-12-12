@@ -45,7 +45,7 @@
 }
 
 
-.name-app {
+.left {
     
     display: flex;
     flex-flow: row nowrap;
@@ -58,7 +58,7 @@
     
     & > *:nth-child(2) {
 
-        @include color-each-theme(color, nav-2--name-app__font-color);
+        @include color-each-theme(color, nav-2--logo-app__font-color);
 
         font-size: 1.4rem;
         font-weight: bold;
@@ -67,49 +67,67 @@
 	}
 
     .icon-logo {
-        @include color-each-theme(color, nav-2--name-app__icon-color);
+        @include color-each-theme(color, nav-2--logo-app__icon-color);
         width: 36px;
         height: 36px;
     }
 }
 
-.collection-destination {
+.middle {
     
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 
-    @include color-each-theme(color, nav-2--link__font-color);
 
     
-    & > div:nth-child(n+2){
+    & > *:nth-child(n+2){
         margin-left: 10px;
     }
   
-    & > div {
+    .tool-main {
         
         display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
         align-items: center;
 
         width: auto;
-        height: auto;
+        height: 36px;
         
         cursor: pointer;
+
+        @include color-each-theme(color, nav-2--tool__font-color);
+        @include frame-each-theme(border, 1px, solid, nav-2--tool__border-color);
+        border-radius: 18px;
+
+        padding: 0px 10px 0px 4px;
         
-        &:hover {
+        & > div:nth-child(1) {
+            width: 30px;
 
-            @include color-each-theme(color, nav-2--link__font-color__hover);
+        }
 
+        & > div:nth-child(2){
+            width: auto;
+        }
+
+        .icon-search {
+            @include color-each-theme(color, nav-2--tool__icon-color);
+            width: 24px;
+        }
+
+        .icon-plus {
+            @include color-each-theme(color, nav-2--tool__icon-color);
+            width: 20px;
         }
     }
 
 }
 
 
-.collection-tool {
+.right {
   
     display: flex;
     flex-flow: row nowrap;
@@ -117,72 +135,37 @@
     align-items: center;
 
 	& > *:last-child {
-	  margin-right: 10px;
+      margin-right: 10px;
 	}
   
-}
 
-
-.tool {
-
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    
-    width: auto;
-    height: auto;
-  
-	& > *:nth-child(1) {
-	  margin-right: 10px;
-	}
-  
-    & > a {
-        
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-end;
-        align-items: center;
-
-        @include color-each-theme(color, nav-2--link__font-color);
-        
-        width: auto;
-    
-    
-        & > div:nth-child(n+2){
-            margin-left: 8px;
+    .setting {
+        .icon-setting {
+            @include color-each-theme(color, nav-2--tool__icon-color);
+            width: 24px;
+            height: 24px;
         }
-        
-        & > div {
-            width: auto;
-            color: inherit;  
-        }
-        
-    
     }
 
-    .icon-setting {
-        @include color-each-theme(color, nav-2--tool__icon-color);
-        width: 24px;
-        height: 24px;
+    .log-in {
+        @include color-each-theme(color, nav-2--log-in__font-color);
+        @include frame-each-theme(border, 2px, solid, nav-2--log-in__border-color);
+        font-weight: bold;
+        border-radius: 18px;
+
+        height: 36px;
+        padding: 0px 10px 0px 10px;
+        margin-left: 6px;
     }
 
-    .icon-user-circle {
-        @include color-each-theme(color, nav-2--tool__icon-color);
+    .user {
+        @include color-each-theme(color, nav-2--user__icon-color);
         width: 30px;
         height: 30px;
+        margin-left: 6px;
     }
+
 }
 
-.link-main {
 
-    @include color-each-theme(background-color, nav-2--link-main__background-color); // !important
-    @include color-each-theme(color, nav-2--link-main__font-color); // !important
 
-    padding: 4px 8px 4px 8px; /* top right bottom left */
-  
-    border-radius: 5px;
-  
-    font-weight: regular;
-  
-}

@@ -56,10 +56,7 @@ function Action({}: PropsAction) {
 
         
         <div className={`${styles['menu']}`} >
-            <button
-                onClick={()=>onClick_ShowModal('creatingPortal')}
-            > <IconPlus className={`${styles['icon-plus']}`} /> 
-            </button>
+
             <button
                 
             > <IconCopy className={`${styles['icon-copy']}`} /> 
