@@ -158,6 +158,7 @@
         margin-left: 6px;
     }
 
+    
     .user {
         @include color-each-theme(color, nav-2--user__icon-color);
         width: 30px;
