@@ -3,11 +3,14 @@ import {combineReducers} from 'redux';
 import reducerStatus from './reducers/status';
 import reducerNotification from './reducers/notification';
 import reducerAuth from './reducers/auth';
+import reducerPortal from './reducers/portal';
+
 
 const reducerRoot = combineReducers({
   notification: reducerNotification,
   status: reducerStatus,
-  auth: reducerAuth
+  auth: reducerAuth,
+  portal: reducerPortal
   //theme: themeReducer
 });
 

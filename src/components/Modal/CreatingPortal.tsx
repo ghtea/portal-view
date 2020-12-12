@@ -7,6 +7,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
+import * as actionsPortal from 'store/actions/portal';
 
 import {pascalToCamel} from 'tools/vanilla/convertName';
 import useInput from 'tools/hooks/useInput';
@@ -40,7 +41,20 @@ function CreatingPortal({}: PropsCreatingPortal) {
     const inputUrl = useInput(""); // {value, setValue, onChange};
     const inputTags = useInput(""); // {value, setValue, onChange};
 
-  
+
+    const onClick_CreatePortal = useCallback(
+        () => {
+        
+            dispatch(actionsPortal.return__CREATE_PORTAL({
+                kind: 'kind',
+                name: inputName.value,
+                url: inputUrl.value,
+                tags: inputTags.value,
+            }));
+        
+        },
+        [inputName, inputUrl, inputTags]
+    );
   
   // ~ template
   
@@ -84,7 +98,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
           <div className={`${styles['input-name']}`} >
                 <input 
                     type='text'
-                    placeholder={intl.formatMessage({ id: 'Page.CreatingPortal_Name'})}
+                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Name'})}
                     value={inputName.value}
                     onChange={inputName.onChange} 
                 /> 
@@ -96,7 +110,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
           <div className={`${styles['input-url']}`} >
                 <input 
                     type='text'
-                    placeholder={intl.formatMessage({ id: 'Page.CreatingPortal_Url'})}
+                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Url'})}
                     value={inputUrl.value}
                     onChange={inputUrl.onChange} 
                 /> 
@@ -108,13 +122,22 @@ function CreatingPortal({}: PropsCreatingPortal) {
           <div className={`${styles['input-tags']}`} >
                 <input 
                     type='text'
-                    placeholder={intl.formatMessage({ id: 'Page.CreatingPortal_Tags'})}
+                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Tags'})}
                     value={inputTags.value}
                     onChange={inputTags.onChange} 
                 /> 
           </div>
         </div>
         
+
+        <div className={`${styles['content__section']}`} >
+            <button
+                className={`${styles['button-create']}`}
+                onClick={()=>onClick_CreatePortal()}
+            > <FormattedMessage id={`Modal.CreatingPortal_Create`} /> </button>
+        </div>
+
+
       </div>
         
 

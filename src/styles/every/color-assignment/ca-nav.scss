@@ -11,60 +11,60 @@
 $nav__map-color-assignment: (
 
 
-    nav-2--bar__background-color___light: $front___light,
-    nav-2--bar__background-color___dark: $front___dark,
-    nav-2--border-top__border-color___light: hsl($h-main,$s-main,50%),
-    nav-2--border-top__border-color___dark: hsl($h-main,$s-main,50%),
-    nav-2--border-bottom__border-color___light: hsl($h-basic,$s-basic,83%),
-    nav-2--border-bottom__border-color___dark: hsl($h-basic,$s-basic,12%),
+    nav--bar__background-color___light: $front___light,
+    nav--bar__background-color___dark: $front___dark,
+    nav--border-top__border-color___light: hsl($h-main,$s-main,50%),
+    nav--border-top__border-color___dark: hsl($h-main,$s-main,50%),
+    nav--border-bottom__border-color___light: hsl($h-basic,$s-basic,83%),
+    nav--border-bottom__border-color___dark: hsl($h-basic,$s-basic,12%),
 
-    nav-2--logo-app__icon-color___light: hsl($h-main,$s-main,50%),
-    nav-2--logo-app__icon-color___dark: hsl($h-main,$s-main,50%),
-    nav-2--logo-app__font-color___light: hsl($h-basic,$s-basic,20%),
-    nav-2--logo-app__font-color___dark: hsl($h-basic,$s-basic,80%),
+    nav--logo-app__icon-color___light: hsl($h-main,$s-main,50%),
+    nav--logo-app__icon-color___dark: hsl($h-main,$s-main,50%),
+    nav--logo-app__font-color___light: hsl($h-basic,$s-basic,20%),
+    nav--logo-app__font-color___dark: hsl($h-basic,$s-basic,80%),
 
-    nav-2--tool__font-color___light: hsl($h-basic,$s-basic,50%),
-    nav-2--tool__font-color___dark: hsl($h-basic,$s-basic,60%),
-    nav-2--tool__icon-color___light: hsl($h-basic,$s-basic,40%),
-    nav-2--tool__icon-color___dark: hsl($h-basic,$s-basic,70%),
-    nav-2--tool__border-color___light: hsl($h-basic,$s-basic,70%),
-    nav-2--tool__border-color___dark: hsl($h-basic,$s-basic,40%),
+    nav--tool__font-color___light: hsl($h-basic,$s-basic,50%),
+    nav--tool__font-color___dark: hsl($h-basic,$s-basic,60%),
+    nav--tool__icon-color___light: hsl($h-basic,$s-basic,40%),
+    nav--tool__icon-color___dark: hsl($h-basic,$s-basic,70%),
+    nav--tool__border-color___light: hsl($h-basic,$s-basic,70%),
+    nav--tool__border-color___dark: hsl($h-basic,$s-basic,40%),
 
-    nav-2--log-in__font-color___light: hsl($h-main,$s-main,50%),
-    nav-2--log-in__font-color___dark: hsl($h-main,$s-main,60%),
-    nav-2--log-in__border-color___light: hsl($h-main,$s-main,50%),
-    nav-2--log-in__border-color___dark: hsl($h-main,$s-main,60%),
-    nav-2--user__font-color___light: hsl($h-basic,$s-basic,60%),
-    nav-2--user__font-color___dark: hsl($h-basic,$s-basic,40%)
+    nav--log-in__font-color___light: hsl($h-main,$s-main,50%),
+    nav--log-in__font-color___dark: hsl($h-main,$s-main,60%),
+    nav--log-in__border-color___light: hsl($h-main,$s-main,50%),
+    nav--log-in__border-color___dark: hsl($h-main,$s-main,60%),
+    nav--user__font-color___light: hsl($h-basic,$s-basic,60%),
+    nav--user__font-color___dark: hsl($h-basic,$s-basic,40%)
 
 );
 
 
 /*
 
-    nav-2--link__font-color___light: hsl($h-basic,$s-basic,40%),
-    nav-2--link__font-color___dark: hsl($h-basic,$s-basic,70%),
-    nav-2--link__font-color__hover___light: hsl($h-basic,$s-basic,20%),
-    nav-2--link__font-color__hover___dark: hsl($h-basic,$s-basic,80%),
+    nav--link__font-color___light: hsl($h-basic,$s-basic,40%),
+    nav--link__font-color___dark: hsl($h-basic,$s-basic,70%),
+    nav--link__font-color__hover___light: hsl($h-basic,$s-basic,20%),
+    nav--link__font-color__hover___dark: hsl($h-basic,$s-basic,80%),
 
-    nav-2--link-main__font-color___light: hsl($h-main,$s-main,100%),
-    nav-2--link-main__font-color___dark: hsl($h-main,$s-main,0%),
-    nav-2--link-main__background-color__hover___light: hsl($h-main,$s-main,60%),
-    nav-2--link-main__background-color__hover___dark: hsl($h-main,$s-main,40%),
+    nav--link-main__font-color___light: hsl($h-main,$s-main,100%),
+    nav--link-main__font-color___dark: hsl($h-main,$s-main,0%),
+    nav--link-main__background-color__hover___light: hsl($h-main,$s-main,60%),
+    nav--link-main__background-color__hover___dark: hsl($h-main,$s-main,40%),
 
 
-    nav-2--modal__background-color___light: $front___light,
-    nav-2--modal__background-color___dark: $front___dark,
-    nav-2--modal__font-color___light: hsl($h-basic,$s-basic,25%),
-    nav-2--modal__font-color___dark: hsl($h-basic,$s-basic,75%),
+    nav--modal__background-color___light: $front___light,
+    nav--modal__background-color___dark: $front___dark,
+    nav--modal__font-color___light: hsl($h-basic,$s-basic,25%),
+    nav--modal__font-color___dark: hsl($h-basic,$s-basic,75%),
 
-    nav-2--modal__border-color___light: hsl($h-basic,$s-basic,90%),
-    nav-2--modal__border-color___dark: hsl($h-basic,$s-basic,10%),
-    nav-2--modal__background-color__hover___light: hsl($h-basic,$s-basic,98%),
-    nav-2--modal__background-color__hover___dark: hsl($h-basic,$s-basic,7%),
-    nav-2--modal__box-shadow-color___light: rgba(hsl($h-main,$s-main,60%), 0.3),
-    nav-2--modal__box-shadow-color___dark: rgba(hsl($h-main,$s-main,10%), 0.3),
-    //nav-2--modal__drop-shadow-color___light: rgba(hsl($h-basic,$s-basic,60%), 0.5),
-    //nav-2--modal__drop-shadow-color___dark: rgba(hsl($h-basic,$s-basic,40%), 0.5)
+    nav--modal__border-color___light: hsl($h-basic,$s-basic,90%),
+    nav--modal__border-color___dark: hsl($h-basic,$s-basic,10%),
+    nav--modal__background-color__hover___light: hsl($h-basic,$s-basic,98%),
+    nav--modal__background-color__hover___dark: hsl($h-basic,$s-basic,7%),
+    nav--modal__box-shadow-color___light: rgba(hsl($h-main,$s-main,60%), 0.3),
+    nav--modal__box-shadow-color___dark: rgba(hsl($h-main,$s-main,10%), 0.3),
+    //nav--modal__drop-shadow-color___light: rgba(hsl($h-basic,$s-basic,60%), 0.5),
+    //nav--modal__drop-shadow-color___dark: rgba(hsl($h-basic,$s-basic,40%), 0.5)
 
 */

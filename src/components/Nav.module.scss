@@ -2,7 +2,7 @@
 
 .root {
 
-    @include color-each-theme(background-color, nav-2--bar__background-color);
+    @include color-each-theme(background-color, nav--bar__background-color);
 
     visibility: visible;
     &:global(.active----false) {
@@ -14,8 +14,8 @@
     justify-content: space-between;
     align-items: center;
 
-    @include frame-each-theme(border-top, 3px, solid, nav-2--border-top__border-color);
-    @include frame-each-theme(border-bottom, 1px, solid, nav-2--border-bottom__border-color);
+    @include frame-each-theme(border-top, 3px, solid, nav--border-top__border-color);
+    @include frame-each-theme(border-bottom, 1px, solid, nav--border-bottom__border-color);
     
     width: 100%; min-width: $device-xs__min-width;
     height: $nav__height;   /* we should let 'Content' know this value too */ 
@@ -41,7 +41,7 @@
         align-items: center;
 
         width: auto;
-        @include color-each-theme(color, nav-2--logo-app__font-color);
+        @include color-each-theme(color, nav--logo-app__font-color);
 
         font-weight: bold;
         
@@ -51,9 +51,9 @@
         & > div:nth-child(1) {
             width: auto;
             .icon-logo {
-                @include color-each-theme(color, nav-2--logo-app__icon-color);
-                width: 34px;
-                height: 34px;
+                @include color-each-theme(color, nav--logo-app__icon-color);
+                width: 32px;
+                height: 32px;
             }
         }
 
@@ -99,13 +99,13 @@
         align-items: center;
 
         width: auto;
-        height: 36px;
+        height: 32px;
         
         cursor: pointer;
 
-        @include color-each-theme(color, nav-2--tool__font-color);
-        @include frame-each-theme(border, 1px, solid, nav-2--tool__border-color);
-        border-radius: 18px;
+        @include color-each-theme(color, nav--tool__font-color);
+        @include frame-each-theme(border, 1px, solid, nav--tool__border-color);
+        border-radius: 16px;
 
         padding: 0px 7px 0px 7px;
         @media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
@@ -122,17 +122,18 @@
                 display: flex;
                 width: auto;
                 font-size: 0.9rem;
+                padding-bottom: 2px;
 	        }
         }
 
         .icon-search {
-            @include color-each-theme(color, nav-2--tool__icon-color);
-            width: 22px;
+            @include color-each-theme(color, nav--tool__icon-color);
+            width: 20px;
         }
 
         .icon-plus {
-            @include color-each-theme(color, nav-2--tool__icon-color);
-            width: 18px;
+            @include color-each-theme(color, nav--tool__icon-color);
+            width: 16px;
         }
     }
 
@@ -155,20 +156,20 @@
 
     .setting {
         .icon-setting {
-            @include color-each-theme(color, nav-2--tool__icon-color);
+            @include color-each-theme(color, nav--tool__icon-color);
             width: 24px;
             height: 24px;
         }
     }
 
     .log-in {
-        @include color-each-theme(color, nav-2--log-in__font-color);
-        @include frame-each-theme(border, 2px, solid, nav-2--log-in__border-color);
+        @include color-each-theme(color, nav--log-in__font-color);
+        @include frame-each-theme(border, 2px, solid, nav--log-in__border-color);
         font-weight: bold;
         border-radius: 15px;
 
         height: 30px;
-        padding: 0px 8px 0px 8px;
+        padding: 0px 8px 2px 8px;
         margin-left: 6px;
 
         font-size: 0.9rem;
@@ -177,7 +178,7 @@
 
     
     .user {
-        @include color-each-theme(color, nav-2--user__icon-color);
+        @include color-each-theme(color, nav--user__icon-color);
         width: 30px;
         height: 30px;
         margin-left: 6px;

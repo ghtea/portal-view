@@ -75,6 +75,7 @@ const reducerStatus = handleActions<State, any>({
 }, stateInitial);
 
 
+export default reducerStatus;
 
 // key가 차례대로 적혀있는 list를 이용해서 object access 하기!
 // https://medium.com/better-programming/4-ways-to-safely-access-nested-objects-in-vanilla-javascript-8671d09348a8
@@ -111,10 +112,6 @@ const reducerStatus = (statePrevious: typeState = stateInitial, action: any): ty
 }
 
 */
-
-
-
-export default reducerStatus;
 
 
 /*

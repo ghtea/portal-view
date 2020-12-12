@@ -41,4 +41,12 @@
     
     
     }
+
+
+    .button-create {
+        width: 100%;
+        height: 36px;
+        @include color-each-theme(background-color, button-main__background-color);
+        @include color-each-theme(color, button-main__font-color);
+    }
 }
