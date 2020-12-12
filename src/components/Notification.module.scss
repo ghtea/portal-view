@@ -9,7 +9,4 @@
     top: 20px;
     z-index: 900;
   
-	@media (min-width: $device-m__min-width) { // 320≤ xs < 576,   576 ≤ s < 768,   768 ≤ m < 992,   992 ≤ l < 1200,   1200 ≤ xl
-	    top: 0px;
-	}
 } 

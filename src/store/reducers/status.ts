@@ -35,10 +35,9 @@ const stateInitial = {
   },
   
   showing: {
-    nav: {
-      all: false,
-      boardNav1: false
-    },
+
+    nav: false,
+
     modal: {
       setting: false,
       creatingPortal: false

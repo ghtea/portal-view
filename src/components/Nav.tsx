@@ -1,45 +1,132 @@
-import React, {useEffect, useState} from 'react';
-import { useHistory, useLocation } from "react-router-dom";
-
-import styled, {ThemeProvider }  from 'styled-components';
+import React, { useCallback } from "react";
+import history from 'historyApp';
+import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
-
 import * as actionsStatus from 'store/actions/status';
-
-import Nav1 from "./Nav/Nav1";
-import Nav2 from "./Nav/Nav2";
 
 import styles from './Nav.module.scss';
 
+import IconLogo from 'svgs/others/IconLogo';
+import IconSearch from 'svgs/basic/IconSearch';
+import IconPlus from 'svgs/basic/IconPlus';
+import IconSetting from 'svgs/basic/IconSetting';
+import IconUserCircle from 'svgs/basic/IconUserCircle';
 
-// TS  https://velog.io/@velopert/create-typescript-react-component
+
 type PropsNav = {};
 
 function Nav({}: PropsNav) {
   
-    let location = useLocation();
-
-    const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']['all']);
-
-    return (
-        <div className={`${styles['root']} showing----${showingNav}`} >
-            <Nav1 />
-            <Nav2/>
-        </div>
-    )
+    const dispatch = useDispatch();
+    
+    const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']);
+    
+    const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
+    const loadingUser:boolean = useSelector((state: StateRoot) => state['status']['loading']['user']);
   
+// event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 
+  const onClick_LinkInsideApp = useCallback(
+    (destination:string) => {
+      history.push(destination);
+    },[history]
+  );
+  
+  const onClick_ShowModal = useCallback(
+    (idModal:string) => {
+      dispatch(actionsStatus.return__REPLACE({ 
+        listKey: ['showing', 'modal', idModal],
+        replacement: true
+      }));
+    },[]
+  );
+  
+  
+  return (
+    <header className={`${styles['root']} showing----${showingNav}`}>
+
+      <div className={`${styles['left']}`} >
+        <a
+            className={`${styles['logo-app']}`}
+            onClick={()=>onClick_LinkInsideApp('/')}
+        >
+            <div>
+                <IconLogo className={`${styles['icon-logo']}`} />
+            </div>
+            <div>
+                <FormattedMessage id={`Nav.NameApp`} />
+            </div>
+        </a>
+      </div>
+      
+      
+      <div className={`${styles['middle']}`} >
+
+          <button
+            className={`${styles['tool-main']}`}
+            onClick={()=>onClick_ShowModal('searching')}
+          > 
+            <div> <IconSearch className={`${styles['icon-search']}`} /> </div>
+            <div> Search </div>
+          </button>
+
+          <button
+            className={`${styles['tool-main']}`}
+            onClick={()=>onClick_ShowModal('creatingPortal')}
+          > 
+            <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
+            <div> Add </div>
+          </button>
+
+      </div>
+
+      
+
+      <div className={`${styles['right']}`} >
+        
+        { !readyUser && !loadingUser &&
+            <a className={`${styles['log-in']}`} 
+                onClick={()=>onClick_LinkInsideApp('/log-in')} 
+            >
+                <div> <FormattedMessage id={`Nav.LogIn`} /> </div>
+            </a>
+        }
+        
+        { readyUser &&
+            <button className={`${styles['user']}`} 
+                
+            >
+            <div> <IconUserCircle className={`${styles['icon-user-circle']}`} kind="solid"/> </div>
+            </button>
+        }
+
+        <button className={`${styles['setting']}`} 
+            onClick={()=>onClick_ShowModal('setting')}
+        >
+          <div> <IconSetting className={`${styles['icon-setting']}`} /> </div>
+        </button>
+        
+      </div>
+      
+    </header>
+  );
 }
+
+Nav.defaultProps = {};
 
 export default Nav;
 
 
+// 브라우저 상의 특정 요소 위치 파악
+// https://stackoverflow.com/questions/37200019/how-to-get-elements-clientx-and-clienty-of-an-element
+
+// <Div_Triangle lengthBasic={12} onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Color') } />
+
+
+
 /*
-
- const reducer = (resultCurrent:boolean, pageCurrent:string):boolean => (new RegExp(`^${pageCurrent}`)).test(location.pathname) ? true : false;
-
-  
-  const isFullPage: boolean = listFullPage.reduce(reducer, false)
-  
+<a onClick={(event)=>onClick_LinkInsideApp(event, '/sign-up')} >
+            {t('Nav', 'SignUp')}
+          </a>
 */

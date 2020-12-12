@@ -10,31 +10,6 @@
 
 $nav__map-color-assignment: (
 
-    nav-1--bar__background-color___light: $front___light,
-    nav-1--bar__background-color___dark: $front___dark,
-    nav-1--bar__font-color___light: hsl($h-basic,$s-basic,30%),
-    nav-1--bar__font-color___dark: hsl($h-basic,$s-basic,70%),
-    nav-1--bar__border-color___light: hsl($h-basic,$s-basic,83%),
-    nav-1--bar__border-color___dark: hsl($h-basic,$s-basic,12%),
-    nav-1--bar--logo-app__icon-color___light: hsl($h-main,$s-main,50%),
-    nav-1--bar--logo-app__icon-color___dark: hsl($h-main,$s-main,50%),
-
-    nav-1--log-in__font-color___light: hsl($h-main,$s-main,50%),
-    nav-1--log-in__font-color___dark: hsl($h-main,$s-main,60%),
-    nav-1--log-in__border-color___light: hsl($h-main,$s-main,50%),
-    nav-1--log-in__border-color___dark: hsl($h-main,$s-main,60%),
-    nav-1--bar--tool__icon-color___light: hsl($h-basic,$s-basic,30%),
-    nav-1--bar--tool__icon-color___dark:hsl($h-basic,$s-basic,70%),
-
-    nav-1--board__background-color___light: $front___light,
-    nav-1--board__background-color___dark: $front___dark,
-    nav-1--board__font-color___light: hsl($h-basic,$s-basic,30%),
-    nav-1--board__font-color___dark: hsl($h-basic,$s-basic,70%),
-    nav-1--board__border-color___light: hsl($h-basic,$s-basic,85%),
-    nav-1--board__border-color___dark: hsl($h-basic,$s-basic,12%),
-    nav-1--shadow-of-board__background-color___light: rgba(hsl($h-basic,$s-basic,40%), 0.3),
-    nav-1--shadow-of-board__background-color___dark: rgba(hsl($h-basic,$s-basic, 0%), 0.4),
-
 
     nav-2--bar__background-color___light: $front___light,
     nav-2--bar__background-color___dark: $front___dark,
