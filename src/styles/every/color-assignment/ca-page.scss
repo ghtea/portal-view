@@ -12,24 +12,24 @@ $page__map-color-assignment: (
 
     page--log-in--input--label__font-color___light: hsl($h-basic,$s-basic,50%),
     page--log-in--input--label__font-color___dark: hsl($h-basic,$s-basic,50%),
-    page--log-in--input--label__font-color__focus___light: hsl($h-main,$s-main,50%),
-    page--log-in--input--label__font-color__focus___dark: hsl($h-main,$s-main,50%),
+    page--log-in--input--label__font-color__focus___light: $light__front__active__normal,
+    page--log-in--input--label__font-color__focus___dark: $dark__front__active__normal,
     page--log-in--input--label-error__font-color___light: hsl($h-error,$s-error,50%),
     page--log-in--input--label-error__font-color___dark: hsl($h-error,$s-error,50%),
 
     page--log-in--input__border-color___light: hsl($h-basic,$s-basic,80%),
     page--log-in--input__border-color___dark: hsl($h-basic,$s-basic,20%),
-
+    
     // page--home__background-color___light: $background___light,
     // page--home__background-color___dark: $background___dark,
 
-    page--log-in__gradient-color-1___light: $background___light,
-    page--log-in__gradient-color-1___dark: $background___dark,
+    page--log-in__gradient-color-1___light: $light__back__background,
+    page--log-in__gradient-color-1___dark: $dark__back__background,
     page--log-in__gradient-color-2___light: hsl($h-basic,$s-basic, 85%),
     page--log-in__gradient-color-2___dark: hsl($h-basic,$s-basic, 15%),
 
     page--log-in--top-bar--name-app__font-color___light: hsl($h-basic,$s-basic,25%),
     page--log-in--top-bar--name-app__font-color___dark: hsl($h-basic,$s-basic,70%),
-    page--log-in--top-bar--name-app__icon-color___light: hsl($h-main,$s-main,50%),
-    page--log-in--top-bar--name-app__icon-color___dark: hsl($h-main,$s-main,50%)
+    page--log-in--top-bar--name-app__icon-color___light: $light__front__active__normal,
+    page--log-in--top-bar--name-app__icon-color___dark: $dark__front__active__normal
 );

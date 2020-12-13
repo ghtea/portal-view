@@ -12,31 +12,49 @@ $h-hint: 200;    $s-hint: 80%;
 $h-warning: 15;   $s-warning: 100%;
 $h-error: 0;   $s-error: 85%;
 
-
+/*
 $front___light: hsl($h-basic,$s-basic,100%);
 $front___dark: hsl($h-basic,$s-basic,10%);
 
 $background___light: hsl($h-basic,$s-basic,95%);
 $background___dark: hsl($h-basic,$s-basic,6%);
+*/
 
 
 
-$light__front__background: hsl($h-basic,$s-basic,100%);
+// light
 $light__back__background: hsl($h-basic,$s-basic,95%);
 
-$light__front__basic__weak-most: hsl($h-basic,$s-basic,100%);
-$light__front__basic__weak-very: hsl($h-basic,$s-basic,100%);
-$light__front__basic__weak: hsl($h-basic,$s-basic,100%);
-$light__front__basic__normal: hsl($h-basic,$s-basic,100%);
-$light__front__basic__strong: hsl($h-basic,$s-basic,100%);
-$light__front__basic__strong-very: hsl($h-basic,$s-basic,100%);
-$light__front__basic__strong-most: hsl($h-basic,$s-basic,100%);
+$light__front__background: hsl($h-basic,$s-basic,100%);
 
-$light__front__active__weak: hsl($h-main,$s-main,100%);
-$light__front__active__normal: hsl($h-main,$s-main,100%);
-$light__front__active__strong: hsl($h-main,$s-main,100%);
+$light__front__basic__weak-most: hsl($h-basic,$s-basic,95%);
+$light__front__basic__weak-very: hsl($h-basic,$s-basic,83%);
+$light__front__basic__weak: hsl($h-basic,$s-basic,50%);
+$light__front__basic__normal: hsl($h-basic,$s-basic,40%);
+$light__front__basic__strong: hsl($h-basic,$s-basic,100%);
+$light__front__basic__strong-very: hsl($h-basic,$s-basic,20%);
+//$light__front__basic__strong-most: hsl($h-basic,$s-basic,100%);
+
+$light__front__active__weak: hsl($h-main,$s-main,65%);
+$light__front__active__normal: hsl($h-main,$s-main,50%);
+//$light__front__active__strong: hsl($h-main,$s-main,100%);
+
+
 
 // dark
-$dark__front__background: hsl($h-basic,$s-basic,10%);
 $dark__back__background: hsl($h-basic,$s-basic,6%);
+
+$dark__front__background: hsl($h-basic,$s-basic,10%);
+
+$dark__front__basic__weak-most: hsl($h-basic,$s-basic,6%);
+$dark__front__basic__weak-very: hsl($h-basic,$s-basic,12%);
+$dark__front__basic__weak: hsl($h-basic,$s-basic,60%);
+$dark__front__basic__normal: hsl($h-basic,$s-basic,70%);
+$dark__front__basic__strong: hsl($h-basic,$s-basic,100%);
+$dark__front__basic__strong-very: hsl($h-basic,$s-basic,80%);
+//$dark__front__basic__strong-most: hsl($h-basic,$s-basic,100%);
+
+$dark__front__active__weak: hsl($h-main,$s-main,45%);
+$dark__front__active__normal: hsl($h-main,$s-main,50%);
+//$dark__front__active__strong: hsl($h-main,$s-main,100%);
 

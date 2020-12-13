@@ -10,8 +10,8 @@
 
 $action__map-color-assignment: (
 
-    action--main-closed__background-color___light: hsl($h-main,$s-main,50%),
-    action--main-closed__background-color___dark: hsl($h-main,$s-main,50%),
+    action--main-closed__background-color___light: $light__front__active__normal,
+    action--main-closed__background-color___dark: $dark__front__active__normal,
     action--main-open__background-color___light: hsl($h-basic,$s-basic,50%),
     action--main-open__background-color___dark: hsl($h-basic,$s-basic,50%),
 
@@ -25,8 +25,8 @@ $action__map-color-assignment: (
     action--main__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,50%), 0.7),
     action--main__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.7),
     
-    action--menu__background-color___light: $front___light,
-    action--menu__background-color___dark: $front___dark,
+    action--menu__background-color___light: $light__front__background,
+    action--menu__background-color___dark: $dark__front__background,
     action--menu__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,50%), 0.7),
     action--menu__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.7),
 
@@ -38,8 +38,8 @@ $action__map-color-assignment: (
     action--option-off__font-color___light: hsl($h-basic,$s-basic,50%),
     action--option-off__font-color___dark: hsl($h-basic,$s-basic,50%),
 
-    action--option-on__background-color___light: $front___light,
-    action--option-on__background-color___dark: $front___dark,
+    action--option-on__background-color___light: $light__front__background,
+    action--option-on__background-color___dark: $dark__front__background,
     action--option-on__font-color___light: hsl($h-basic,$s-basic,30%),
     action--option-on__font-color___dark: hsl($h-basic,$s-basic,70%),
     action--option-on__icon-color___light: hsl($h-basic,$s-basic,30%),

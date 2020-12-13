@@ -11,15 +11,15 @@
 $nav__map-color-assignment: (
 
 
-    nav--bar__background-color___light: $front___light,
-    nav--bar__background-color___dark: $front___dark,
-    nav--border-top__border-color___light: hsl($h-main,$s-main,50%),
-    nav--border-top__border-color___dark: hsl($h-main,$s-main,50%),
+    nav--bar__background-color___light: $light__front__background,
+    nav--bar__background-color___dark: $dark__front__background,
+    nav--border-top__border-color___light: $light__front__active__normal,
+    nav--border-top__border-color___dark: $dark__front__active__normal,
     nav--border-bottom__border-color___light: hsl($h-basic,$s-basic,83%),
     nav--border-bottom__border-color___dark: hsl($h-basic,$s-basic,12%),
 
-    nav--logo-app__icon-color___light: hsl($h-main,$s-main,50%),
-    nav--logo-app__icon-color___dark: hsl($h-main,$s-main,50%),
+    nav--logo-app__icon-color___light: $light__front__active__normal,
+    nav--logo-app__icon-color___dark: $dark__front__active__normal,
     nav--logo-app__font-color___light: hsl($h-basic,$s-basic,20%),
     nav--logo-app__font-color___dark: hsl($h-basic,$s-basic,80%),
 
@@ -30,12 +30,12 @@ $nav__map-color-assignment: (
     nav--tool__border-color___light: hsl($h-basic,$s-basic,70%),
     nav--tool__border-color___dark: hsl($h-basic,$s-basic,40%),
 
-    nav--log-in__font-color___light: hsl($h-main,$s-main,50%),
-    nav--log-in__font-color___dark: hsl($h-main,$s-main,60%),
-    nav--log-in__border-color___light: hsl($h-main,$s-main,50%),
-    nav--log-in__border-color___dark: hsl($h-main,$s-main,60%),
-    nav--user__font-color___light: hsl($h-basic,$s-basic,60%),
-    nav--user__font-color___dark: hsl($h-basic,$s-basic,40%)
+    nav--log-in__font-color___light: $light__front__active__normal,
+    nav--log-in__font-color___dark: $dark__front__active__normal,
+    nav--log-in__border-color___light: $light__front__active__normal,
+    nav--log-in__border-color___dark: $dark__front__active__normal,
+    nav--user__icon-color___light: hsl($h-basic,$s-basic,60%),
+    nav--user__icon-color___dark: hsl($h-basic,$s-basic,40%)
 
 );
 

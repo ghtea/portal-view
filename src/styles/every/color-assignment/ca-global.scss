@@ -10,8 +10,8 @@
 
 $global__map-color-assignment: (
 
-    body__background-color___light: $background___light,
-    body__background-color___dark: $background___dark,
+    body__background-color___light: $light__back__background,
+    body__background-color___dark: $dark__back__background,
     body__font-color___light: hsl($h-basic,$s-basic,25%),
     body__font-color___dark: hsl($h-basic,$s-basic,70%),
 
@@ -47,24 +47,22 @@ $global__map-color-assignment: (
     button__background-color__focus___dark: transparent,
     button__font-color__focus___light: inherit,
     button__font-color__focus___dark: inherit,
-    button__border-color__focus___light:  hsl($h-basic,$s-basic,50%),
-    button__border-color__focus___dark:  hsl($h-basic,$s-basic,50%),
     button__outline-color__focus___light:  transparent, // rgba(map-get($map-color-series__basic, '50'), 0.5),
     button__outline-color__focus___dark:  transparent, // rgba(map-get($map-color-series__basic, '50'), 0.5),
 
 
-    button-main__background-color___light: hsl($h-main,$s-main,50%),
-    button-main__background-color___dark: hsl($h-main,$s-main,50%),
-    button-main__font-color___light: hsl($h-main,$s-main,100%),
-    button-main__font-color___dark: hsl($h-main,$s-main,0%),
+    button-main__background-color___light: $light__front__active__normal,
+    button-main__background-color___dark: $dark__front__active__normal,
+    button-main__font-color___light: $light__front__background,
+    button-main__font-color___dark: $dark__front__background,
     button-main__border-color__focus___light:  transparent,
     button-main__border-color__focus___dark:  transparent,
     button-main__outline-color__focus___light:  transparent,
     button-main__outline-color__focus___dark:  transparent,
 
     
-    button-social__font-color___light: hsl($h-basic,$s-basic,100%),
-    button-social__font-color___dark: hsl($h-basic,$s-basic,10%),
+    button-social__font-color___light: $light__front__background,
+    button-social__font-color___dark: $dark__front__background,
     button-google__background-color___light: hsl(16, 90%, 50%),
     button-google__background-color___dark: hsl(16, 90%, 50%),
     button-facebook__background-color___light: hsl(222,70%,50%),
@@ -72,8 +70,8 @@ $global__map-color-assignment: (
     button-twitter__background-color___light: hsl(200,100%,60%),
     button-twitter__background-color___dark: hsl(200,100%,40%),
     
-    input-text__background-color___light: hsl($h-basic,$s-basic,95%),
-    input-text__background-color___dark: hsl($h-basic,$s-basic,6%),
+    input-text__background-color___light: $light__front__basic__weak-most,
+    input-text__background-color___dark: $dark__front__basic__weak-most,
     input-text__font-color___light: hsl($h-basic,$s-basic,50%),
     input-text__font-color___dark: hsl($h-basic,$s-basic,50%),
     input-text--placeholder__font-color___light: hsl($h-basic,$s-basic,50%),
@@ -81,12 +79,12 @@ $global__map-color-assignment: (
     input-text__border-color___light:  transparent,
     input-text__border-color___dark:  transparent,
 
-    input-text__background-color__focus___light: hsl($h-basic,$s-basic,95%),
-    input-text__background-color__focus___dark: hsl($h-basic,$s-basic,3%),
+    input-text__background-color__focus___light: $light__front__basic__weak-most,
+    input-text__background-color__focus___dark: $dark__front__basic__weak-most,
     input-text__font-color__focus___light: hsl($h-basic,$s-basic,25%),
     input-text__font-color__focus___dark: hsl($h-basic,$s-basic,75%),
-    input-text__border-color__focus___light:  hsl($h-main,$s-main,75%),
-    input-text__border-color__focus___dark:  hsl($h-main,$s-main,40%),
+    input-text__border-color__focus___light:  $light__front__active__weak,
+    input-text__border-color__focus___dark:  $dark__front__active__weak,
     input-text--box-shadow-color__focus___light:  rgba(hsl($h-main,$s-main,60%), 0.3),
     input-text--box-shadow-color__focus___dark:  rgba(hsl($h-main,$s-main,40%), 0.3),
 
