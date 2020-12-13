@@ -31,9 +31,14 @@ export type type__CREATE_PORTAL = ReturnType<typeof return__CREATE_PORTAL>;
 
 
 
+
 export const name__GET_LIST_PORTAL = 'portal/GET_LIST_PORTAL';
 
-export const return__GET_LIST_PORTAL = (payload: any) => {
+interface Payload__GET_LIST_PORTAL {
+    idUser:string
+}
+
+export const return__GET_LIST_PORTAL = (payload: Payload__GET_LIST_PORTAL) => {
     return {
         type: name__GET_LIST_PORTAL,
         payload: payload
