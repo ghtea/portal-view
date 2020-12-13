@@ -18,3 +18,25 @@ $front___dark: hsl($h-basic,$s-basic,10%);
 
 $background___light: hsl($h-basic,$s-basic,95%);
 $background___dark: hsl($h-basic,$s-basic,6%);
+
+
+
+$light__front__background: hsl($h-basic,$s-basic,100%);
+$light__back__background: hsl($h-basic,$s-basic,95%);
+
+$light__front__basic__weak-most: hsl($h-basic,$s-basic,100%);
+$light__front__basic__weak-very: hsl($h-basic,$s-basic,100%);
+$light__front__basic__weak: hsl($h-basic,$s-basic,100%);
+$light__front__basic__normal: hsl($h-basic,$s-basic,100%);
+$light__front__basic__strong: hsl($h-basic,$s-basic,100%);
+$light__front__basic__strong-very: hsl($h-basic,$s-basic,100%);
+$light__front__basic__strong-most: hsl($h-basic,$s-basic,100%);
+
+$light__front__active__weak: hsl($h-main,$s-main,100%);
+$light__front__active__normal: hsl($h-main,$s-main,100%);
+$light__front__active__strong: hsl($h-main,$s-main,100%);
+
+// dark
+$dark__front__background: hsl($h-basic,$s-basic,10%);
+$dark__back__background: hsl($h-basic,$s-basic,6%);
+

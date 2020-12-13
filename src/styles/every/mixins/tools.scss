@@ -30,3 +30,12 @@
     }
     @return $collection;
 }
+
+
+// https://css-tricks.com/snippets/sass/deep-getset-maps/
+@function map-get-deep($map, $keys...) {
+    @each $key in $keys {
+        $value: map-get($map, $key);
+    }
+    @return $value;
+}
