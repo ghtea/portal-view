@@ -11,6 +11,7 @@
 
     position: fixed;
     top: 0px;
+    left: 0px;
     
     z-index: 599;
 } 
@@ -19,7 +20,8 @@
 
 .modal {
 
-    width: calc(100vw - 20px); max-width: $device-xs__min-width - 20px;
+    width: calc(100vw - 20px); max-width: $device-xs__min-width - 20px; min-width: $modal__min-width;
+    // width: $device-xs__min-width - 20px;
     height: auto; max-height: 90vh;  min-height: 100px;
 
     @include color-each-theme(background-color, modal__background-color);
@@ -33,7 +35,10 @@
     position: fixed;
     z-index: 600;
     top: 5vh;
-} 
+    left: 50%;
+    transform: translateX(-50%);
+
+}
 
 
 .header {

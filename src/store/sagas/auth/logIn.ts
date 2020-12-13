@@ -20,9 +20,11 @@ interface BodyRequest {
 
 const requestLogIn = (bodyRequest: BodyRequest) => {
     
+    const suffix:string = '?nocache=' + new Date().getTime();
+
     return axios({
         method: 'post',
-        url: `${process.env.REACT_APP_URL_BACK}/auth/log-in`, 
+        url: `${process.env.REACT_APP_URL_BACK}/auth/log-in${suffix}`, 
         data: bodyRequest, 
         withCredentials: true
     })
