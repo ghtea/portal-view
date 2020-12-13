@@ -12,35 +12,35 @@ $modal__map-color-assignment: (
 
     modal__background-color___light: $light__front__background,
     modal__background-color___dark: $dark__front__background,
-    modal__font-color___light: hsl($h-basic,$s-basic,25%),
-    modal__font-color___dark: hsl($h-basic,$s-basic,75%),
-    modal__border-color___light: hsl($h-basic,$s-basic,75%),
-    modal__border-color___dark: hsl($h-basic,$s-basic,15%),
-    modal__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,60%), 0.5),
-    modal__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.5),
+    modal__font-color___light: $light__front__basic__normal,
+    modal__font-color___dark: $dark__front__basic__normal,
+    modal__border-color___light: $light__front__basic__weak-very,
+    modal__border-color___dark: $dark__front__basic__weak-very,
+    modal__box-shadow-color___light: $light__shadow__normal,
+    modal__box-shadow-color___dark: $dark__shadow__normal,
     
-    modal--shadow__background-color___light: rgba(hsl($h-basic,$s-basic,10%), 0.3),
-    modal--shadow__background-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.3),
+    modal--shadow__background-color___light: $light__shadow__weak-very,
+    modal--shadow__background-color___dark: $dark__shadow__weak-very,
 
-    modal--header__icon-color___light: hsl($h-basic,$s-basic,70%),
-    modal--header__icon-color___dark: hsl($h-basic,$s-basic,30%),
-    modal--header__icon-color__hover___light: hsl($h-basic,$s-basic,50%),
-    modal--header__icon-color__hover___dark: hsl($h-basic,$s-basic,50%),
+    modal--header__icon-color___light: $light__front__basic__strong,
+    modal--header__icon-color___dark: $dark__front__basic__strong,
+    modal--header__icon-color__hover___light: $light__front__basic__weak,
+    modal--header__icon-color__hover___dark: $dark__front__basic__weak,
 
-    modal--header__border-color___light: hsl($h-basic,$s-basic,90%),
-    modal--header__border-color___dark: hsl($h-basic,$s-basic,20%),
+    modal--header__border-color___light: $light__front__basic__weak-most,
+    modal--header__border-color___dark: $dark__front__basic__weak-most,
 
 
     
-    setting--option-behind__background-color___light: hsl($h-basic,$s-basic,90%),
-    setting--option-behind__background-color___dark: hsl($h-basic,$s-basic,4%),
+    setting--option-behind__background-color___light: $light__back__background,
+    setting--option-behind__background-color___dark: $dark__back__background,
 
-    setting--option-off__font-color___light: hsl($h-basic,$s-basic,50%),
-    setting--option-off__font-color___dark: hsl($h-basic,$s-basic,50%),
+    setting--option-off__font-color___light: $light__front__basic__weak,
+    setting--option-off__font-color___dark: $dark__front__basic__weak,
     setting--option-on__background-color___light: $light__front__background,
     setting--option-on__background-color___dark: $dark__front__background,
-    setting--option-on__font-color___light: hsl($h-basic,$s-basic,30%),
-    setting--option-on__font-color___dark: hsl($h-basic,$s-basic,70%),
-    setting--option-on__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,65%), 0.5),
-    setting--option-on__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic, 3%), 0.5)
+    setting--option-on__font-color___light: $light__front__basic__strong,
+    setting--option-on__font-color___dark: $dark__front__basic__strong,
+    setting--option-on__box-shadow-color___light: $light__shadow__weak-very,
+    setting--option-on__box-shadow-color___dark: $dark__shadow__weak-very
 );

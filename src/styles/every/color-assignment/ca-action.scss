@@ -12,38 +12,38 @@ $action__map-color-assignment: (
 
     action--main-closed__background-color___light: $light__front__active__normal,
     action--main-closed__background-color___dark: $dark__front__active__normal,
-    action--main-open__background-color___light: hsl($h-basic,$s-basic,50%),
-    action--main-open__background-color___dark: hsl($h-basic,$s-basic,50%),
+    action--main-open__background-color___light: $light__front__basic__weak,
+    action--main-open__background-color___dark: $dark__front__basic__weak,
 
-    action--main-closed__icon-color___light: hsl($h-basic,$s-basic,100%),
-    action--main-closed__icon-color___dark: hsl($h-basic,$s-basic,0%),
-    action--main-open__icon-color___light: hsl($h-basic,$s-basic,50%),
-    action--main-open__icon-color___dark: hsl($h-basic,$s-basic,50%),
+    action--main-closed__icon-color___light: $light__front__background,
+    action--main-closed__icon-color___dark: $dark__front__background,
+    action--main-open__icon-color___light: $light__front__basic__weak,
+    action--main-open__icon-color___dark: $light__front__basic__weak,
 
     //action--main__border-color___light: hsl($h-basic,$s-basic,75%),
     //action--main__border-color___dark: hsl($h-basic,$s-basic,15%),
-    action--main__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,50%), 0.7),
-    action--main__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.7),
+    action--main__box-shadow-color___light: $light__shadow__normal,
+    action--main__box-shadow-color___dark: $dark__shadow__normal,
     
     action--menu__background-color___light: $light__front__background,
     action--menu__background-color___dark: $dark__front__background,
-    action--menu__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,50%), 0.7),
-    action--menu__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,0%), 0.7),
+    action--menu__box-shadow-color___light: $light__shadow__normal,
+    action--menu__box-shadow-color___dark: $dark__shadow__normal,
 
 
     // not worked below it
-    action--option-behind__background-color___light: hsl($h-basic,$s-basic,90%),
-    action--option-behind__background-color___dark: hsl($h-basic,$s-basic,4%),
+    action--option-behind__background-color___light: $light__front__basic__weak-most,
+    action--option-behind__background-color___dark: $dark__front__basic__weak-most,
 
-    action--option-off__font-color___light: hsl($h-basic,$s-basic,50%),
-    action--option-off__font-color___dark: hsl($h-basic,$s-basic,50%),
+    action--option-off__font-color___light: $light__front__basic__weak,
+    action--option-off__font-color___dark: $dark__front__basic__weak,
 
     action--option-on__background-color___light: $light__front__background,
     action--option-on__background-color___dark: $dark__front__background,
-    action--option-on__font-color___light: hsl($h-basic,$s-basic,30%),
-    action--option-on__font-color___dark: hsl($h-basic,$s-basic,70%),
-    action--option-on__icon-color___light: hsl($h-basic,$s-basic,30%),
-    action--option-on__icon-color___dark: hsl($h-basic,$s-basic,70%),
-    action--option-on__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,65%), 0.5),
-    action--option-on__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic, 3%), 0.5)
+    action--option-on__font-color___light: $light__front__basic__strong,
+    action--option-on__font-color___dark: $dark__front__basic__strong,
+    action--option-on__icon-color___light: $light__front__basic__strong,
+    action--option-on__icon-color___dark: $dark__front__basic__strong,
+    action--option-on__box-shadow-color___light: $light__shadow__weak,
+    action--option-on__box-shadow-color___dark: $dark__shadow__weak
 );

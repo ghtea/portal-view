@@ -10,8 +10,8 @@
 
 $notification__map-color-assignment: (
 
-    banner__box-shadow-color___light: rgba(hsl($h-basic,$s-basic,60%), 0.3),
-    banner__box-shadow-color___dark: rgba(hsl($h-basic,$s-basic,40%), 0.3),
+    banner__box-shadow-color___light: $light__shadow__weak-very,
+    banner__box-shadow-color___dark: $dark__shadow__weak-very,
 
     banner-success__background-color___light: hsl($h-success,$s-success,90%),
     banner-success__background-color___dark: hsl($h-success,$s-success,10%),

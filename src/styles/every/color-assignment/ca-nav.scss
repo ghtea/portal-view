@@ -15,27 +15,27 @@ $nav__map-color-assignment: (
     nav--bar__background-color___dark: $dark__front__background,
     nav--border-top__border-color___light: $light__front__active__normal,
     nav--border-top__border-color___dark: $dark__front__active__normal,
-    nav--border-bottom__border-color___light: hsl($h-basic,$s-basic,83%),
-    nav--border-bottom__border-color___dark: hsl($h-basic,$s-basic,12%),
+    nav--border-bottom__border-color___light: $light__front__basic__weak-very,
+    nav--border-bottom__border-color___dark: $dark__front__basic__weak-very,
 
     nav--logo-app__icon-color___light: $light__front__active__normal,
     nav--logo-app__icon-color___dark: $dark__front__active__normal,
-    nav--logo-app__font-color___light: hsl($h-basic,$s-basic,20%),
-    nav--logo-app__font-color___dark: hsl($h-basic,$s-basic,80%),
+    nav--logo-app__font-color___light: $light__front__basic__strong-very,
+    nav--logo-app__font-color___dark: $dark__front__basic__strong-very,
 
-    nav--tool__font-color___light: hsl($h-basic,$s-basic,50%),
-    nav--tool__font-color___dark: hsl($h-basic,$s-basic,60%),
-    nav--tool__icon-color___light: hsl($h-basic,$s-basic,40%),
-    nav--tool__icon-color___dark: hsl($h-basic,$s-basic,70%),
-    nav--tool__border-color___light: hsl($h-basic,$s-basic,70%),
-    nav--tool__border-color___dark: hsl($h-basic,$s-basic,40%),
+    nav--tool__font-color___light: $light__front__basic__normal,
+    nav--tool__font-color___dark: $dark__front__basic__normal,
+    nav--tool__icon-color___light: $light__front__basic__strong,
+    nav--tool__icon-color___dark: $dark__front__basic__strong,
+    nav--tool__border-color___light: $light__front__basic__normal,
+    nav--tool__border-color___dark: $dark__front__basic__normal,
 
     nav--log-in__font-color___light: $light__front__active__normal,
     nav--log-in__font-color___dark: $dark__front__active__normal,
     nav--log-in__border-color___light: $light__front__active__normal,
     nav--log-in__border-color___dark: $dark__front__active__normal,
-    nav--user__icon-color___light: hsl($h-basic,$s-basic,60%),
-    nav--user__icon-color___dark: hsl($h-basic,$s-basic,40%)
+    nav--user__icon-color___light: $light__front__basic__weak,
+    nav--user__icon-color___dark: $dark__front__basic__weak
 
 );
 
