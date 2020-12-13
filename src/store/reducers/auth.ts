@@ -18,13 +18,11 @@ const stateInitial = {
   user: {
     _id: '',
     email: '',
-    twitter: '',
-    google: '',
     
-    type: 'normal',
+    kind: '',
     
-    joined: Date.now,
-    accessed: Date.now,
+    joined: Date.now(),
+    accessed: Date.now(),
   
   }
   

@@ -14,16 +14,10 @@ import * as actionsPortal from "store/actions/portal";
 
 
 interface BodyRequest {
-    _id: string;
-    kind: string;   //  basic, search, both
-    user: string;   // 이 링크 이용 하는 유저 
-    
-    name: string;
-    url: string;  
-    tags: string[];
+    idUser: string;  
 }
 
-const requestCreatePortal = (bodyRequest: BodyRequest) => {
+const requestGetListPortal = (bodyRequest: BodyRequest) => {
     
     return axios.post(`${process.env.REACT_APP_URL_BACK}/portal`, bodyRequest)
     
@@ -38,7 +32,7 @@ const requestCreatePortal = (bodyRequest: BodyRequest) => {
 };
 
 
-function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
+function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
 
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     
@@ -48,36 +42,27 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             console.log("should log in first");
 
         }
-        else if (action.payload.name === "") {
-            console.log('type email address');
-            
-        }
-        else if (action.payload.url === "" ) {
-            console.log('type url');
-            
-        }
-        
         else {
             
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user._id); 
 
             const bodyRequest = {
-                _id: uuidv4(),
-                kind: action.payload.kind,
-                user: idUser,
-                
-                name: action.payload.name,
-                url: action.payload.url,
-                tags: action.payload.tags
+                idUser: idUser
             };
             
            
-            const {response, error} = yield call( requestCreatePortal, bodyRequest );
+            const {response, error} = yield call( requestGetListPortal, bodyRequest );
 
-            if (response && response.data.codeSituation === 'CreatePortal_Succeeded'){
+            if (response && response.data.codeSituation === 'GetListPortal_Succeeded'){
+                
                 yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'CreatePortal_Succeeded'
+                    codeSituation: 'GetListPortal_Succeeded'
                 }))
+
+                yield put( actionsPortal.return__REPLACE({
+                    listKey: ['listPortal'],
+                    replacement: response.data.payload
+                }) );
 
             }
             else {   
@@ -102,12 +87,12 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
     } catch (error) {
         
         console.log(error);
-        console.log('createPortal has been failed');
+        console.log('getListPortal has been failed');
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
-            codeSituation: 'CreatePortal_UnknownError'
+            codeSituation: 'GetListPortal_UnknownError'
         }) );
     }
 }
 
-export default createPortal;
+export default getListPortal;

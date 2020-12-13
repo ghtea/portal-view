@@ -15,7 +15,7 @@ export type State = typeof stateInitial;
 
 const stateInitial = {
   
-  
+  listPortal: []
   
 };
 

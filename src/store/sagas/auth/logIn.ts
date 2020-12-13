@@ -20,11 +20,11 @@ interface BodyRequest {
 
 const requestLogIn = (bodyRequest: BodyRequest) => {
     
-    const suffix:string = '?nocache=' + new Date().getTime();
+    // const suffix:string = '?nocache=' + new Date().getTime();  // not work
 
     return axios({
         method: 'post',
-        url: `${process.env.REACT_APP_URL_BACK}/auth/log-in${suffix}`, 
+        url: `${process.env.REACT_APP_URL_BACK}/auth/log-in`, 
         data: bodyRequest, 
         withCredentials: true
     })
@@ -86,8 +86,6 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
             if (response && response.data.codeSituation === 'LogIn_Succeeded'){
 
-                alert(response.data.codeSituation);
-
                 Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
                 
                 yield put( actionsStatus.return__REPLACE({
@@ -98,6 +96,19 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['ready', 'user'],
                     replacement: true
+                }) );
+
+                yield put( actionsAuth.return__REPLACE({
+                    listKey: ['user'],
+                    replacement: {
+                        _id: response.data.payload._id,
+                        email: response.data.payload.email,
+                        
+                        kind: response.data.payload.kind,
+                        
+                        joined: response.data.payload.joined,
+                        accessed: response.data.payload.accessed,
+                    }
                 }) );
 
                 history.push('/');

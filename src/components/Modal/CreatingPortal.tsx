@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import history from 'historyApp';
 import { useLocation } from "react-router-dom";
@@ -36,7 +36,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
         },[]
     );
 
-
+    const [kind, setKind] = useState("normal")
     const inputName = useInput(""); // {value, setValue, onChange};
     const inputUrl = useInput(""); // {value, setValue, onChange};
     const inputTags = useInput(""); // {value, setValue, onChange};
@@ -46,7 +46,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
         () => {
         
             dispatch(actionsPortal.return__CREATE_PORTAL({
-                kind: 'kind',
+                kind: kind,
                 name: inputName.value,
                 url: inputUrl.value,
                 tags: inputTags.value,

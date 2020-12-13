@@ -29,3 +29,15 @@ export const return__CREATE_PORTAL = (payload: any) => {
 
 export type type__CREATE_PORTAL = ReturnType<typeof return__CREATE_PORTAL>;
 
+
+
+export const name__GET_LIST_PORTAL = 'portal/GET_LIST_PORTAL';
+
+export const return__GET_LIST_PORTAL = (payload: any) => {
+    return {
+        type: name__GET_LIST_PORTAL,
+        payload: payload
+    }
+};
+
+export type type__GET_LIST_PORTAL = ReturnType<typeof return__GET_LIST_PORTAL>;

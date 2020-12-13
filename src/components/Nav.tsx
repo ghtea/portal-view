@@ -1,5 +1,6 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import history from 'historyApp';
+import { useLocation } from "react-router-dom";
 import { FormattedMessage } from 'react-intl';
 
 import {useSelector, useDispatch} from "react-redux";
@@ -20,27 +21,45 @@ type PropsNav = {};
 function Nav({}: PropsNav) {
   
     const dispatch = useDispatch();
+    const location = useLocation();
     
     const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']);
     
     const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
     const loadingUser:boolean = useSelector((state: StateRoot) => state['status']['loading']['user']);
-  
-// event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 
-  const onClick_LinkInsideApp = useCallback(
-    (destination:string) => {
-      history.push(destination);
-    },[history]
-  );
-  
-  const onClick_ShowModal = useCallback(
-    (idModal:string) => {
-      dispatch(actionsStatus.return__REPLACE({ 
-        listKey: ['showing', 'modal', idModal],
-        replacement: true
-      }));
-    },[]
-  );
+    
+
+    useEffect(() => {
+        if (  (/^\/log-in/).test(location.pathname) || (/^\/sign-up/).test(location.pathname)  ) {
+            dispatch(actionsStatus.return__REPLACE({
+                listKey:['showing', 'nav'],
+                replacement: false
+            }))
+        }
+        else {
+            dispatch(actionsStatus.return__REPLACE({
+                listKey:['showing', 'nav'],
+                replacement: true
+            }))
+        }
+    }, [location]);
+
+
+    // event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, 
+    const onClick_LinkInsideApp = useCallback(
+        (destination:string) => {
+        history.push(destination);
+        },[history]
+    );
+    
+    const onClick_ShowModal = useCallback(
+        (idModal:string) => {
+        dispatch(actionsStatus.return__REPLACE({ 
+            listKey: ['showing', 'modal', idModal],
+            replacement: true
+        }));
+        },[]
+    );
   
   
   return (
