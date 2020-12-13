@@ -44,8 +44,11 @@
     "Notification.SignUp_DuplicateEmail": "That email is already existing",
     "Notification.SignUp_Succeeded": "Successfully signed up!",
     
+    "Notification.CreatePortal_Succeeded": "Successfully created portal!",
+    "Notification.CreatePortal_UnknownError": "An unknown error has occurred",
+    "Notification.GetListPortal_UnknownError": "An unknown error has occurred",
     
-    
+
     "Page.Home_Welcome": "Welcome!",
     
     "Page.LogIn_LogIn": "LogIn",

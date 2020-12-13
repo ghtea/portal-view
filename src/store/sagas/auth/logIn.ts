@@ -83,36 +83,42 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
             const {response, error}  = yield call( requestLogIn, bodyRequest );
             
+            console.log(response);
+            console.log(error);
 
-            if (response && response.data.codeSituation === 'LogIn_Succeeded'){
-
-                Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
+            if (response) {
+                const codeSituation = response.data.codeSituation;
+                console.log(codeSituation);
                 
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['loading', 'user'],
-                    replacement: false
-                }) );
-                
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['ready', 'user'],
-                    replacement: true
-                }) );
+                if ( codeSituation === 'LogIn_Succeeded') {
 
-                yield put( actionsAuth.return__REPLACE({
-                    listKey: ['user'],
-                    replacement: {
-                        _id: response.data.payload._id,
-                        email: response.data.payload.email,
-                        
-                        kind: response.data.payload.kind,
-                        
-                        joined: response.data.payload.joined,
-                        accessed: response.data.payload.accessed,
-                    }
-                }) );
+                    Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
+                    
+                    yield put( actionsStatus.return__REPLACE({
+                        listKey: ['loading', 'user'],
+                        replacement: false
+                    }) );
+                    
+                    yield put( actionsStatus.return__REPLACE({
+                        listKey: ['ready', 'user'],
+                        replacement: true
+                    }) );
 
-                history.push('/');
+                    yield put( actionsAuth.return__REPLACE({
+                        listKey: ['user'],
+                        replacement: {
+                            _id: response.data.payload._id,
+                            email: response.data.payload.email,
+                            
+                            kind: response.data.payload.kind,
+                            
+                            joined: response.data.payload.joined,
+                            accessed: response.data.payload.accessed,
+                        }
+                    }) );
 
+                    history.push('/');
+                }
             }
             else {   
                 alert(JSON.stringify(error, null,4));

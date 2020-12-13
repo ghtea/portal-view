@@ -1,6 +1,8 @@
 
 import catalogSituationAuth from './catalogSituation/auth';
 import catalogSituationStatus from './catalogSituation/status';
+import catalogSituationPortal from './catalogSituation/portal';
+
 import {LevelTimeBanner} from 'store/actions/notification';
 
 
@@ -16,7 +18,9 @@ export interface CatalogSituation {
 const catalogSituation: CatalogSituation = {
     
     ...catalogSituationAuth,
-    ...catalogSituationStatus
+    ...catalogSituationStatus,
+    ...catalogSituationPortal
+
     
 }
 

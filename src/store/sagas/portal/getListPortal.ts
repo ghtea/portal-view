@@ -17,11 +17,11 @@ const requestGetListPortal = (queryRequestBefore: any) => {
     return axios.get(`${process.env.REACT_APP_URL_BACK}/portal/?${queryString.stringify(queryRequestBefore)}`)
         .then(response => { 
         	//console.log(response)
-        	return response;
+        	return {response};
         })
         .catch(error => {
             //console.log(error.response)
-            return error;
+            return {error};
         });
 };
 
@@ -46,24 +46,26 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             
            
             const {response, error} = yield call( requestGetListPortal, queryRequestBefore );
+            
+            console.log(response);
+            console.log(error);
 
-            if (response && response.data.codeSituation === 'GetListPortal_Succeeded'){
+            if (response){
+                const codeSituation = response.data.codeSituation;
+                console.log(codeSituation);
                 
-                yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'GetListPortal_Succeeded'
-                }))
-
-                yield put( actionsPortal.return__REPLACE({
-                    listKey: ['listPortal'],
-                    replacement: response.data.payload
-                }) );
+                if (codeSituation === 'GetListPortal_Succeeded') {
+                    yield put( actionsPortal.return__REPLACE({
+                        listKey: ['listPortal'],
+                        replacement: response.data.payload
+                    }) );
+                }
 
             }
             else {   
-                
-                console.log(error)
-                const codeSituation = error.response.data.codeSituation;
-                
+
+                //console.log(error)
+                const codeSituation = error.reponse.data.codeSituation;
                 console.log(codeSituation);
 
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({

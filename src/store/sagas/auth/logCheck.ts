@@ -21,15 +21,8 @@ interface BodyRequest {
 const requestLogCheck = () => {
     
     return axios.get(`${process.env.REACT_APP_URL_BACK}/auth/log-check`, {withCredentials: true})
-    
-        .then(response => { 
-        	//console.log(response)
-        	return response;
-        })
-        .catch(error => {
-            //console.log(error.response)
-            return error.response;
-        });
+        .then(response => ({ response }))
+        .catch(error => ({ error }))
     
 };
 
@@ -76,30 +69,35 @@ function* logCheck(action: actionsAuth.type__LOG_CHECK) {
         else {
             
     
-            const res = yield call( requestLogCheck );
-            
-            console.log(res);
-            
-            const codeSituation = res.data.codeSituation;
-            
-            if (codeSituation === 'LogCheck_Succeeded') {
+            const {response, error}  = yield call( requestLogCheck );
+
+            console.log(response);
+            console.log(error);
+
+            if (response){
+
+                const codeSituation = response.data.codeSituation;
+                console.log(codeSituation);
                 
-                //Cookies.remove('logged');
-                console.log(res.data.payload)
-                
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['loading', 'user'],
-                    replacement: false
-                }) );
-                
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['ready', 'user'],
-                    replacement: true
-                }) );
-            
+                if (codeSituation === 'LogCheck_Succeeded') {
+
+                    //Cookies.remove('logged');
+                    console.log(response.data.payload)
+                    
+                    yield put( actionsStatus.return__REPLACE({
+                        listKey: ['loading', 'user'],
+                        replacement: false
+                    }) );
+                    
+                    yield put( actionsStatus.return__REPLACE({
+                        listKey: ['ready', 'user'],
+                        replacement: true
+                    }) );
+                }
             }
             else {
                 
+                const codeSituation = error.response.data.codeSituation;
                 console.log(codeSituation);
                 
                 // SignUp_UnknownError, SignUp_DuplicateEmail

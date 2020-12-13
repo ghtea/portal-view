@@ -26,15 +26,14 @@ interface BodyRequest {
 const requestCreatePortal = (bodyRequest: BodyRequest) => {
     
     return axios.post(`${process.env.REACT_APP_URL_BACK}/portal`, bodyRequest)
-    
-        .then(response => { 
-        	//console.log(response)
-        	return response;
-        })
-        .catch(error => {
-            //console.log(error.response)
-            return error;
-        });
+    .then(response => { 
+        //console.log(response)
+        return ({response});
+    })
+    .catch(error => {
+        //console.log(error.response)
+        return ({error});
+    });
 };
 
 
@@ -74,14 +73,20 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
            
             const {response, error} = yield call( requestCreatePortal, bodyRequest );
 
-            if (response && response.data.codeSituation === 'CreatePortal_Succeeded'){
-                yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'CreatePortal_Succeeded'
-                }))
+            console.log(response);
+            console.log(error);
+
+            if (response){
+                const codeSituation = response.data.codeSituation;
+                
+                if (codeSituation === 'CreatePortal_Succeeded') {
+                    yield put(actionsNotification.return__ADD_DELETE_BANNER({
+                        codeSituation: 'CreatePortal_Succeeded'
+                    }))
+                }
 
             }
             else {   
-
                 const codeSituation = error.response.data.codeSituation;
                 
                 console.log(codeSituation);
