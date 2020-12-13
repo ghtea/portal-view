@@ -12,22 +12,16 @@ import * as actionsPortal from "store/actions/portal";
 //import * as actionsTheme from "../../actions/theme";
 
 
-
-interface BodyRequest {
-    idUser: string;  
-}
-
-const requestGetListPortal = (bodyRequest: BodyRequest) => {
+const requestGetListPortal = (queryRequestBefore: any) => {
     
-    return axios.post(`${process.env.REACT_APP_URL_BACK}/portal`, bodyRequest)
-    
+    return axios.get(`${process.env.REACT_APP_URL_BACK}/portal/?${queryString.stringify(queryRequestBefore)}`)
         .then(response => { 
         	//console.log(response)
         	return response;
         })
         .catch(error => {
             //console.log(error.response)
-            return error.response;
+            return error;
         });
 };
 
@@ -46,12 +40,12 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user._id); 
 
-            const bodyRequest = {
+            const queryRequestBefore = {
                 idUser: idUser
             };
             
            
-            const {response, error} = yield call( requestGetListPortal, bodyRequest );
+            const {response, error} = yield call( requestGetListPortal, queryRequestBefore );
 
             if (response && response.data.codeSituation === 'GetListPortal_Succeeded'){
                 
@@ -67,6 +61,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             }
             else {   
                 
+                console.log(error)
                 const codeSituation = error.response.data.codeSituation;
                 
                 console.log(codeSituation);

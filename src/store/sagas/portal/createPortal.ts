@@ -33,7 +33,7 @@ const requestCreatePortal = (bodyRequest: BodyRequest) => {
         })
         .catch(error => {
             //console.log(error.response)
-            return error.response;
+            return error;
         });
 };
 
@@ -81,7 +81,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
             }
             else {   
-                
+
                 const codeSituation = error.response.data.codeSituation;
                 
                 console.log(codeSituation);
