@@ -2,7 +2,7 @@
 
 .root {
 
-    @include color-each-theme(background-color, front__background);
+    @include color-each-theme(background-color, basic__0);
 
     visibility: visible;
     &:global(.active----false) {
@@ -14,8 +14,8 @@
     justify-content: space-between;
     align-items: center;
 
-    @include frame-each-theme(border-top, 3px, solid, front__active__normal);
-    @include frame-each-theme(border-bottom, 1px, solid, front__basic__weak-very);
+    @include frame-each-theme(border-top, 3px, solid, active__5);
+    @include frame-each-theme(border-bottom, 1px, solid, basic__1);
     
     width: 100%; min-width: $device-xs__min-width; 
     height: $nav__height;   /* we should let 'Content' know this value too */ 
@@ -43,7 +43,7 @@
         align-items: center;
 
         width: auto;
-        @include color-each-theme(color, front__basic__strong-most);
+        @include color-each-theme(color, basic__7);
 
         font-weight: bold;
         
@@ -53,7 +53,7 @@
         & > div:nth-child(1) {
             width: auto;
             .icon-logo {
-                @include color-each-theme(color, front__active__normal);
+                @include color-each-theme(color, active__5);
                 width: 32px;
                 height: 32px;
             }
@@ -105,8 +105,8 @@
         
         cursor: pointer;
 
-        @include color-each-theme(color, front__basic__weak);
-        @include frame-each-theme(border, 1px, solid, front__basic__weak);
+        @include color-each-theme(color, basic__4);
+        @include frame-each-theme(border, 1px, solid, basic__4);
         border-radius: 16px;
 
         padding: 0px 7px 0px 7px;
@@ -129,12 +129,12 @@
         }
 
         .icon-search {
-            @include color-each-theme(color, front__basic__normal);
+            @include color-each-theme(color, basic__5);
             width: 20px;
         }
 
         .icon-plus {
-            @include color-each-theme(color, front__basic__normal);
+            @include color-each-theme(color, basic__5);
             width: 16px;
         }
     }
@@ -158,15 +158,15 @@
 
     .setting {
         .icon-setting {
-            @include color-each-theme(color, front__basic__normal);
+            @include color-each-theme(color, basic__5);
             width: 24px;
             height: 24px;
         }
     }
 
     .log-in {
-        @include color-each-theme(color, front__active__normal);
-        @include frame-each-theme(border, 2px, solid, front__active__normal);
+        @include color-each-theme(color, active__5);
+        @include frame-each-theme(border, 2px, solid, active__5);
         font-weight: bold;
         border-radius: 15px;
 
@@ -180,7 +180,7 @@
 
     
     .user {
-        @include color-each-theme(color, front__basic__normal);
+        @include color-each-theme(color, basic__5);
         width: 30px;
         height: 30px;
         margin-right: 6px;

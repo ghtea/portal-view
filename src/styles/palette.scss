@@ -26,55 +26,66 @@ $palette: (
 // light
 light: (
 
-    back__background: hsl($h-basic,$s-basic,95%),
-    front__background: hsl($h-basic,$s-basic,100%),
+    body: hsl($h-basic,$s-basic,95%),
 
-    front__basic__weak-most: hsl($h-basic,$s-basic,95%),
-    front__basic__weak-very: hsl($h-basic,$s-basic,80%),
-    front__basic__weak: hsl($h-basic,$s-basic,60%),
-    front__basic__normal: hsl($h-basic,$s-basic,40%),
-    front__basic__strong: hsl($h-basic,$s-basic,27%),
-    front__basic__strong-very: hsl($h-basic,$s-basic,15%),
-    front__basic__strong-most: hsl($h-basic,$s-basic,0%),
+    basic__0: hsl($h-basic,$s-basic,100%),
 
-    front__active__weak: hsl($h-main,$s-main,65%),
-    front__active__normal: hsl($h-main,$s-main,50%),
+    basic__1: hsl($h-basic,$s-basic,89%),
+    basic__2: hsl($h-basic,$s-basic,78%),
+    basic__3: hsl($h-basic,$s-basic,67%),
+    basic__4: hsl($h-basic,$s-basic,56%),
+    basic__5: hsl($h-basic,$s-basic,45%),
+    basic__6: hsl($h-basic,$s-basic,34%),
+    basic__7: hsl($h-basic,$s-basic,23%),
+    basic__8: hsl($h-basic,$s-basic,12%), 
+    basic__9: hsl($h-basic,$s-basic,0%),
 
-    front__gmail__normal: hsl($h-main,$s-main,50%),
-    //$front__active__strong: hsl($h-main,$s-main,100%);
+    active__4: hsl($h-main,$s-main,60%),
+    active__5: hsl($h-main,$s-main,50%),
+    active__6: hsl($h-main,$s-main,40%),
 
-    shadow__basic__weak-very: rgba(hsl($h-basic,$s-basic,50%), 0.3),
-    shadow__basic__weak: rgba(hsl($h-basic,$s-basic,50%), 0.5),
-    shadow__basic__normal: rgba(hsl($h-basic,$s-basic,50%), 0.7),
+    shadow__basic__weak: rgba(hsl($h-basic,$s-basic,50%), 0.2),
+    shadow__basic__normal: rgba(hsl($h-basic,$s-basic,50%), 0.4),
+    shadow__basic__strong: rgba(hsl($h-basic,$s-basic,50%), 0.6),
 
-    shadow__active__strong: rgba(hsl($h-main,$s-main,50%), 0.3)
+    shadow__active__strong: rgba(hsl($h-main,$s-main,50%), 0.3),
 
+    google__bg: hsl($h-basic,$s-basic,100%),
+    google__font: hsl($h-basic,$s-basic,23%),
+    apple__bg: hsl($h-basic,$s-basic,23%),
+    apple__font: hsl($h-basic,$s-basic,100%)
 ),
 
 dark: (
     
-    back__background: hsl($h-basic,$s-basic,6%),
+    body: hsl($h-basic,$s-basic,8%),
 
-    front__background: hsl($h-basic,$s-basic,10%),
+    basic__0: hsl($h-basic,$s-basic,10%),
 
-    front__basic__weak-most: hsl($h-basic,$s-basic,16%),
-    front__basic__weak-very: hsl($h-basic,$s-basic,25%),
-    front__basic__weak: hsl($h-basic,$s-basic,40%),
-    front__basic__normal: hsl($h-basic,$s-basic,60%),
-    front__basic__strong: hsl($h-basic,$s-basic,72%),
-    front__basic__strong-very: hsl($h-basic,$s-basic,85%),
-    front__basic__strong-most: hsl($h-basic,$s-basic,100%),
+    basic__1: hsl($h-basic,$s-basic,18%),
+    basic__2: hsl($h-basic,$s-basic,27%),
+    basic__3: hsl($h-basic,$s-basic,36%),
+    basic__4: hsl($h-basic,$s-basic,50%),
+    basic__5: hsl($h-basic,$s-basic,60%),
+    basic__6: hsl($h-basic,$s-basic,70%),
+    basic__7: hsl($h-basic,$s-basic,80%),
+    basic__8: hsl($h-basic,$s-basic,90%),
+    basic__9: hsl($h-basic,$s-basic,100%),
 
-    front__active__weak: hsl($h-main,$s-main,45%),
-    front__active__normal: hsl($h-main,$s-main,50%),
-    //$front__active__strong: hsl($h-main,$s-main,100%);
+    active__4:  hsl($h-main,$s-main,50%),
+    active__5: hsl($h-main,$s-main,60%),
+    active__6: hsl($h-main,$s-main,70%),
 
-    shadow__basic__weak-very: rgba(hsl($h-basic,$s-basic,0%), 0.3),
-    shadow__basic__weak: rgba(hsl($h-basic,$s-basic,0%), 0.5),
-    shadow__basic__normal: rgba(hsl($h-basic,$s-basic,0%), 0.7),
+    
+    shadow__basic__weak: rgba(hsl($h-basic,$s-basic,0%), 0.2),
+    shadow__basic__normal: rgba(hsl($h-basic,$s-basic,0%), 0.4),
+    shadow__basic__strong: rgba(hsl($h-basic,$s-basic,0%), 0.6),
 
-    shadow__active__strong: rgba(hsl($h-main,$s-main,50%), 0.3)
+    shadow__active__strong: rgba(hsl($h-main,$s-main,50%), 0.3),
 
-
+    google__bg: hsl($h-basic,$s-basic,100%),
+    google__font: hsl($h-basic,$s-basic,18%),
+    apple__bg: hsl($h-basic,$s-basic,18%),
+    apple__font: hsl($h-basic,$s-basic,100%)
 )
 );

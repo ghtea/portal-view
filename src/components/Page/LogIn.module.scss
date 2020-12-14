@@ -4,7 +4,7 @@
 .root {
     @include linear-gradient-each-theme(background, to bottom, 
         (20%, 100%),
-        (back__background, front__background)
+        (body, basic__0)
     );
 
     height: 100vh;
@@ -27,7 +27,7 @@
   
   font-size: 1.6rem;
   font-weight: bold;
-  @include color-each-theme( color, front__basic__strong);
+  @include color-each-theme( color, basic__7);
 }
 
 
@@ -70,7 +70,7 @@
     }
 
     &:focus-within > div:nth-child(1) {
-        @include color-each-theme(color, front__active__normal);
+        @include color-each-theme(color, active__5);
     }
   
     & > input {
@@ -135,8 +135,8 @@
   
     & > button {
     
-        @include color-each-theme(background-color, front__active__normal);
-        @include color-each-theme(color, front__background);
+        @include color-each-theme(background-color, active__5);
+        @include color-each-theme(color, basic__0);
   
         width: 100%;
         height: 44px;
@@ -179,12 +179,12 @@
     
     
     &:nth-child(1){
-        @include color-each-theme(background-color, front__background);
-        @include color-each-theme(color, front__basic__strong);
+        @include color-each-theme(background-color, google__bg);
+        @include color-each-theme(color, google__font);
     }
     &:nth-child(2){
-        @include color-each-theme(background-color, front__basic__strong);
-        @include color-each-theme(color, front__background);
+        @include color-each-theme(background-color, apple__bg);
+        @include color-each-theme(color, apple__font);
         margin-top: 8px;
     }
   }

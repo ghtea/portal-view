@@ -32,7 +32,7 @@
         width: auto;
         height: 32px;
 
-        @include color-each-theme(background-color, back__background);
+        @include color-each-theme(background-color, basic__1);
         
         border-radius: 5px;
     
@@ -44,9 +44,9 @@
             justify-content: center;
 
             width: auto;
-            height: 26px;
+            height: 28px;
             border-radius: 5px;
-            padding: 1px 6px 1px 6px; /* top right bottom left */
+            padding: 2px 7px 4px 7px; /* top right bottom left */
             
             cursor: pointer;
             
@@ -62,11 +62,11 @@
 .button-option {
     
     background-color: transparent;
-    @include color-each-theme(color, front__basic__weak);
+    @include color-each-theme(color, basic__5);
 
     &:global(.active----true) {
-        @include color-each-theme(background-color, front__active__normal);
-        @include color-each-theme(color, front__background);
+        @include color-each-theme(background-color, active__5);
+        @include color-each-theme(color, basic__0);
 
         // @include shadow-each-theme(box-shadow, 0px, 0px, 2px, 2px, shadow__basic__weak);
     }

@@ -8,8 +8,8 @@ body {
     justify-content: flex-start;
     align-items: center;
 
-    @include color-body-each-theme(background-color, back__background);
-    @include color-body-each-theme(color, front__basic__weak);
+    @include color-body-each-theme(background-color, body);
+    @include color-body-each-theme(color, basic__5);
 
     // use div.app as body (about colors)
 
@@ -36,6 +36,7 @@ div {
 
     background-color: transparent;
     color: inherit;
+    //@include color-body-each-theme(color, basic__5);
 
     width: 100%;
     height: auto; 
@@ -65,7 +66,7 @@ button {
 
     background-color: transparent;
 
-    @include color-each-theme(color, front__basic__normal, $is-module: false);
+    @include color-each-theme(color, basic__5, $is-module: false);
 
     border: 0px none transparent;
     border-radius: 4px;
@@ -104,7 +105,7 @@ a {
     align-items: center;
 
     
-    @include color-each-theme(color, front__basic__normal, $is-module: false);
+    @include color-each-theme(color, basic__5, $is-module: false);
 
     border-radius: 4px;
 
@@ -135,14 +136,14 @@ input[type=text], input[type=password] {
     justify-content: center;
     align-items: center;
 
-    @include color-each-theme(background-color, back__background, $is-module: false);
-    @include color-each-theme(color, front__basic__normal, $is-module: false);
+    @include color-each-theme(background-color, basic__1, $is-module: false);
+    @include color-each-theme(color, basic__5, $is-module: false);
 
     &::placeholder {
-        @include color-each-theme(color, front__basic__weak, $is-module: false);
+        @include color-each-theme(color, basic__4, $is-module: false);
     }
 
-    @include frame-each-theme(border, 1px, solid, front__basic__weak-very, $is-module: false);
+    @include frame-each-theme(border, 1px, solid, basic__1, $is-module: false);
     border-radius: 4px;
 
     width: 100%;
@@ -163,10 +164,10 @@ input[type=text], input[type=password] {
     
 
     &:focus {
-        @include color-each-theme(background-color, front__basic__weak-most, $is-module: false);
-        @include color-each-theme(color, front__basic__strong, $is-module: false);
+        @include color-each-theme(background-color, basic__1, $is-module: false);
+        @include color-each-theme(color, basic__7, $is-module: false);
 
-        @include frame-each-theme(border, 2px, solid, front__active__normal, $is-module: false);
+        @include frame-each-theme(border, 2px, solid, active__5, $is-module: false);
         outline: 1px solid transparent;
 
         @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__active__strong, $is-module: false);
@@ -183,8 +184,8 @@ header {
     justify-content: flex-start;
     align-items: center;
 
-    @include color-each-theme(background-color, front__background, $is-module: false);
-    @include color-each-theme(color, front__basic__weak, $is-module: false);
+    @include color-each-theme(background-color, basic__0, $is-module: false);
+    @include color-each-theme(color, basic__4, $is-module: false);
 
     width: 100%;
     height: auto; 
