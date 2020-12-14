@@ -1,0 +1,81 @@
+
+// https://sandstorm.de/de/blog/post/bem-sass-scss-variable-naming.html
+
+// TYPE__MODIFY     - once between one block
+
+$h-basic: 220;   $s-basic: 14%;
+$h-main: 200;   $s-main: 100%;
+$h-sub: 335;   $s-sub: 85%;
+
+$h-success: 120;   $s-success: 45%;    
+$h-hint: 200;    $s-hint: 80%;
+$h-warning: 15;   $s-warning: 100%;
+$h-error: 0;   $s-error: 85%;
+
+/*
+$front___light: hsl($h-basic,$s-basic,100%);
+$front___dark: hsl($h-basic,$s-basic,10%);
+
+$background___light: hsl($h-basic,$s-basic,95%);
+$background___dark: hsl($h-basic,$s-basic,6%);
+*/
+
+
+
+$palette: (
+// light
+light: (
+
+    back__background: hsl($h-basic,$s-basic,95%),
+    front__background: hsl($h-basic,$s-basic,100%),
+
+    basic__1: hsl($h-basic,$s-basic,95%),
+    basic__2: ,
+    basic__3: hsl($h-basic,$s-basic,80%),
+    basic__4: hsl($h-basic,$s-basic,60%),
+    basic__5: hsl($h-basic,$s-basic,40%),
+    basic__6: hsl($h-basic,$s-basic,27%),
+    basic__7: hsl($h-basic,$s-basic,15%),
+    basic__8: , 
+    basic__9: hsl($h-basic,$s-basic,0%),
+
+    active__4: hsl($h-main,$s-main,65%),
+    active__5: hsl($h-main,$s-main,50%),
+
+    shadow__basic__1: rgba(hsl($h-basic,$s-basic,50%), 0.3),
+    shadow__basic__2: rgba(hsl($h-basic,$s-basic,50%), 0.5),
+    shadow__basic__3: rgba(hsl($h-basic,$s-basic,50%), 0.7),
+
+    shadow__active__3: rgba(hsl($h-main,$s-main,50%), 0.3)
+
+),
+
+dark: (
+    
+    back__background: hsl($h-basic,$s-basic,6%),
+
+    front__background: hsl($h-basic,$s-basic,10%),
+
+    basic__1: hsl($h-basic,$s-basic,16%),
+    basic__2:   ,
+    basic__3: hsl($h-basic,$s-basic,25%),
+    basic__4: hsl($h-basic,$s-basic,40%),
+    basic__5: hsl($h-basic,$s-basic,60%),
+    basic__6: hsl($h-basic,$s-basic,72%),
+    basic__7: hsl($h-basic,$s-basic,85%),
+    basic__8: ,
+    basic__9: hsl($h-basic,$s-basic,100%),
+
+    avtive__4:  hsl($h-main,$s-main,45%),
+    avtive__5: hsl($h-main,$s-main,50%),
+    //$front__active__strong: hsl($h-main,$s-main,100%);
+
+    shadow__basic__1: rgba(hsl($h-basic,$s-basic,0%), 0.3),
+    shadow__basic__2: rgba(hsl($h-basic,$s-basic,0%), 0.5),
+    shadow__basic__3: rgba(hsl($h-basic,$s-basic,0%), 0.7),
+
+    shadow__active__3: rgba(hsl($h-main,$s-main,50%), 0.3)
+
+
+)
+);
