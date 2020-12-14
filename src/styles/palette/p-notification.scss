@@ -1,0 +1,107 @@
+@import './color-elements.scss';
+
+$palette-success: (
+
+    light: (
+        success__1: hsl($h-success,$s-success,90%),
+
+        success__3: hsl($h-success,$s-success,70%),
+
+        success__5: hsl($h-success,$s-success,50%),
+        success__6: hsl($h-success,$s-success,40%),
+
+        shadow__success__normal: rgba(hsl($h-success,$s-success,60%), 0.3)
+    ),
+
+    dark: (
+        success__1: hsl($h-success,$s-success,10%),
+
+        success__3: hsl($h-success,$s-success,30%),
+
+        success__5: hsl($h-success,$s-success,50%),
+        success__6: hsl($h-success,$s-success,60%),
+
+        shadow__success__normal: rgba(hsl($h-success,$s-success,40%), 0.3)
+    )
+);
+
+
+$palette-hint: (
+
+    light: (
+        hint__1: hsl($h-hint,$s-hint,90%),
+
+        hint__3: hsl($h-hint,$s-hint,70%),
+
+        hint__5: hsl($h-hint,$s-hint,50%),
+        hint__6: hsl($h-hint,$s-hint,40%),
+
+        shadow__hint__normal: rgba(hsl($h-hint,$s-hint,60%), 0.3)
+    ),
+
+    dark: (
+        hint__1: hsl($h-hint,$s-hint,10%),
+
+        hint__3: hsl($h-hint,$s-hint,30%),
+
+        hint__5: hsl($h-hint,$s-hint,50%),
+        hint__6: hsl($h-hint,$s-hint,60%),
+
+        shadow__hint__normal: rgba(hsl($h-hint,$s-hint,40%), 0.3)
+    )
+);
+
+
+$palette-warning: (
+
+    light: (
+        warning__1: hsl($h-warning,$s-warning,90%),
+
+        warning__3: hsl($h-warning,$s-warning,70%),
+
+        warning__5: hsl($h-warning,$s-warning,50%),
+        warning__6: hsl($h-warning,$s-warning,40%),
+
+        shadow__warning__normal: rgba(hsl($h-warning,$s-warning,60%), 0.3)
+    ),
+
+    dark: (
+        warning__1: hsl($h-warning,$s-warning,10%),
+
+        warning__3: hsl($h-warning,$s-warning,30%),
+
+        warning__5: hsl($h-warning,$s-warning,50%),
+        warning__6: hsl($h-warning,$s-warning,60%),
+
+        shadow__warning__normal: rgba(hsl($h-warning,$s-warning,40%), 0.3)
+    )
+);
+
+
+
+$palette-error: (
+
+    light: (
+        error__1: hsl($h-error,$s-error,90%),
+
+        error__3: hsl($h-error,$s-error,70%),
+
+        error__5: hsl($h-error,$s-error,50%),
+        error__6: hsl($h-error,$s-error,40%),
+
+        shadow__error__normal: rgba(hsl($h-error,$s-error,60%), 0.3)
+    ),
+
+    dark: (
+        error__1: hsl($h-error,$s-error,10%),
+
+        error__3: hsl($h-error,$s-error,30%),
+
+        error__5: hsl($h-error,$s-error,50%),
+        error__6: hsl($h-error,$s-error,60%),
+
+        shadow__error__normal: rgba(hsl($h-error,$s-error,40%), 0.3)
+    )
+);
+
+

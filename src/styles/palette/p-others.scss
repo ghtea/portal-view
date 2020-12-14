@@ -1,0 +1,33 @@
+@import './color-elements.scss';
+
+
+$palette-others: (
+
+    light: (
+
+        main__4: hsl($h-main,$s-main,60%),
+        main__5: hsl($h-main,$s-main,50%),
+        main__6: hsl($h-main,$s-main,40%),
+
+        shadow__main__strong: rgba(hsl($h-main,$s-main,50%), 0.3),
+
+        google__bg: hsl($h-basic,$s-basic,100%),
+        google__font: hsl($h-basic,$s-basic,23%),
+        apple__bg: hsl($h-basic,$s-basic,23%),
+        apple__font: hsl($h-basic,$s-basic,100%)
+    ),
+
+    dark: (
+        
+        main__4:  hsl($h-main,$s-main,50%),
+        main__5: hsl($h-main,$s-main,60%),
+        main__6: hsl($h-main,$s-main,70%),
+
+        shadow__main__strong: rgba(hsl($h-main,$s-main,50%), 0.3),
+
+        google__bg: hsl($h-basic,$s-basic,100%),
+        google__font: hsl($h-basic,$s-basic,18%),
+        apple__bg: hsl($h-basic,$s-basic,18%),
+        apple__font: hsl($h-basic,$s-basic,100%)
+    )
+);

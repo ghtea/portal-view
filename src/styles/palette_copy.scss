@@ -1,0 +1,89 @@
+
+// https://sandstorm.de/de/blog/post/bem-sass-scss-variable-naming.html
+
+// TYPE__MODIFY     - once between one block
+
+$h-basic: 220;   $s-basic: 14%;
+$h-main: 200;   $s-main: 100%;
+$h-sub: 335;   $s-sub: 85%;
+
+$h-success: 120;   $s-success: 45%;    
+$h-hint: 200;    $s-hint: 80%;
+$h-warning: 15;   $s-warning: 100%;
+$h-error: 0;   $s-error: 85%;
+
+/*
+$front___light: hsl($h-basic,$s-basic,100%);
+$front___dark: hsl($h-basic,$s-basic,10%);
+
+$background___light: hsl($h-basic,$s-basic,95%);
+$background___dark: hsl($h-basic,$s-basic,6%);
+*/
+
+
+
+$palette: (
+// light
+light: (
+
+    body: hsl($h-basic,$s-basic,95%),
+
+    basic__0: hsl($h-basic,$s-basic,100%),
+    basic__1: hsl($h-basic,$s-basic,89%),
+    basic__2: hsl($h-basic,$s-basic,78%),
+    basic__3: hsl($h-basic,$s-basic,67%),
+    basic__4: hsl($h-basic,$s-basic,56%),
+    basic__5: hsl($h-basic,$s-basic,45%),
+    basic__6: hsl($h-basic,$s-basic,34%),
+    basic__7: hsl($h-basic,$s-basic,23%),
+    basic__8: hsl($h-basic,$s-basic,12%), 
+    basic__9: hsl($h-basic,$s-basic,0%),
+
+    active__4: hsl($h-main,$s-main,60%),
+    active__5: hsl($h-main,$s-main,50%),
+    active__6: hsl($h-main,$s-main,40%),
+
+    shadow__basic__weak: rgba(hsl($h-basic,$s-basic,50%), 0.2),
+    shadow__basic__normal: rgba(hsl($h-basic,$s-basic,50%), 0.4),
+    shadow__basic__strong: rgba(hsl($h-basic,$s-basic,50%), 0.6),
+
+    shadow__active__strong: rgba(hsl($h-main,$s-main,50%), 0.3),
+
+    google__bg: hsl($h-basic,$s-basic,100%),
+    google__font: hsl($h-basic,$s-basic,23%),
+    apple__bg: hsl($h-basic,$s-basic,23%),
+    apple__font: hsl($h-basic,$s-basic,100%)
+),
+
+dark: (
+    
+    body: hsl($h-basic,$s-basic,8%),
+
+    basic__0: hsl($h-basic,$s-basic,10%),
+    basic__1: hsl($h-basic,$s-basic,18%),
+    basic__2: hsl($h-basic,$s-basic,27%),
+    basic__3: hsl($h-basic,$s-basic,36%),
+    basic__4: hsl($h-basic,$s-basic,50%),
+    basic__5: hsl($h-basic,$s-basic,60%),
+    basic__6: hsl($h-basic,$s-basic,70%),
+    basic__7: hsl($h-basic,$s-basic,80%),
+    basic__8: hsl($h-basic,$s-basic,90%),
+    basic__9: hsl($h-basic,$s-basic,100%),
+
+    active__4:  hsl($h-main,$s-main,50%),
+    active__5: hsl($h-main,$s-main,60%),
+    active__6: hsl($h-main,$s-main,70%),
+
+    
+    shadow__basic__weak: rgba(hsl($h-basic,$s-basic,0%), 0.2),
+    shadow__basic__normal: rgba(hsl($h-basic,$s-basic,0%), 0.4),
+    shadow__basic__strong: rgba(hsl($h-basic,$s-basic,0%), 0.6),
+
+    shadow__active__strong: rgba(hsl($h-main,$s-main,50%), 0.3),
+
+    google__bg: hsl($h-basic,$s-basic,100%),
+    google__font: hsl($h-basic,$s-basic,18%),
+    apple__bg: hsl($h-basic,$s-basic,18%),
+    apple__font: hsl($h-basic,$s-basic,100%)
+)
+);

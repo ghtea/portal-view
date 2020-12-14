@@ -37,39 +37,39 @@
   
     
     &.success {
-        @include color-each-theme(background-color, banner-success__background-color);
-        @include color-each-theme(color, banner-success__font-color);
+        @include color-each-theme(background-color, success__1);
+        @include color-each-theme(color, success__5);
 
-        @include frame-each-theme(border, 2px, solid, banner-success__border-color);
+        @include frame-each-theme(border, 2px, solid, success__3);
 
-        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, banner-success__box-shadow-color);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__success__normal);
     }
 
     &.hint {
-        @include color-each-theme(background-color, banner-hint__background-color);
-        @include color-each-theme(color, banner-hint__font-color);
+        @include color-each-theme(background-color, hint__1);
+        @include color-each-theme(color, hint__5);
 
-        @include frame-each-theme(border, 2px, solid, banner-hint__border-color);
+        @include frame-each-theme(border, 2px, solid, hint__3);
 
-        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, banner-hint__box-shadow-color);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__hint__normal);
     }
 
     &.error {
-        @include color-each-theme(background-color, banner-error__background-color);
-        @include color-each-theme(color, banner-error__font-color);
+        @include color-each-theme(background-color, error__1);
+        @include color-each-theme(color, error__5);
 
-        @include frame-each-theme(border, 2px, solid, banner-error__border-color);
+        @include frame-each-theme(border, 2px, solid, error__3);
 
-        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, banner-error__box-shadow-color);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__error__normal);
     }
 
     &.warning {
-        @include color-each-theme(background-color, banner-warning__background-color);
-        @include color-each-theme(color, banner-warning__font-color);
+        @include color-each-theme(background-color, warning__1);
+        @include color-each-theme(color, warning__5);
 
-        @include frame-each-theme(border, 2px, solid, banner-warning__border-color);
+        @include frame-each-theme(border, 2px, solid, warning__3);
 
-        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, banner-warning__box-shadow-color);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__warning__normal);
     }
   
     .icon-success, .icon-hint, .icon-error, .icon-warning {
@@ -78,16 +78,16 @@
     }
 
     .icon-success {
-        @include color-each-theme(color, banner__icon__success);
+        @include color-each-theme(color, success__7);
     }
     .icon-hint {
-        @include color-each-theme(color, banner__icon__hint);
+        @include color-each-theme(color, hint__7);
     }
     .icon-error {
-        @include color-each-theme(color, banner__icon__error);
+        @include color-each-theme(color, error__7);
     }
     .icon-warning {
-        @include color-each-theme(color, banner__icon__warning);
+        @include color-each-theme(color, warning__7);
     }
 
 
@@ -152,21 +152,21 @@
     }
     
     .icon-x-circle {
-        @include color-each-theme(color, banner__icon__warning);
+
         width: 20px;
         height: 20px;
 
         .success & {
-            @include color-each-theme(color, banner__icon__success);
+            @include color-each-theme(color, success__5);
         }
         .hint & {
-            @include color-each-theme(color, banner__icon__hint);
+            @include color-each-theme(color, hint__5);
         }
         .error & {
-            @include color-each-theme(color, banner__icon__error);
+            @include color-each-theme(color, error__5);
         }
-        warning & {
-            @include color-each-theme(color, banner__icon__warning);
+        .warning & {
+            @include color-each-theme(color, warning__5);
         }
     }
 }

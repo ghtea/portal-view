@@ -1,3 +1,12 @@
+
+@function map-set($map, $key, $value) {
+    $new: (
+        $key: $value,
+    );
+    @return map-merge($map, $new);
+}
+
+
 @function map-pairs($value, $order: normal) {
 // $order: normal 'key value', opposite 'value key'
 
@@ -38,4 +47,21 @@
         $map: map-get($map, $key);
     }
     @return $map;
+}
+
+
+
+// https://medium.com/@pentzzsolt/a-non-destructive-map-merge-function-for-sass-f91637f87b2e
+// merges nested maps while keeping their sturctures
+@function map-merge-nested($map-a, $map-b) {
+	$result: $map-a;
+	@each $key, $value in $map-b {
+		@if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
+			$result: map-merge($result, ($key: $value));
+		}
+		@else {
+			$result: map-merge($result, ($key: map-merge-nested(map-get($result, $key), $value)));
+		}
+	}
+	@return $result;
 }
