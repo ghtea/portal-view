@@ -4,7 +4,7 @@
 .root {
     @include linear-gradient-each-theme(background, to bottom, 
         (20%, 100%),
-        (page--log-in__gradient-color-1, page--log-in__gradient-color-2)
+        (back__background, front__background)
     );
 
     height: 100vh;
@@ -27,6 +27,7 @@
   
   font-size: 1.6rem;
   font-weight: bold;
+  @include color-each-theme( color, front__basic__strong);
 }
 
 
@@ -49,7 +50,7 @@
         height: 24px;
 
         font-size: 0.9rem;
-        @include color-each-theme(color, page--log-in--input--label__font-color);
+        // @include color-each-theme(color, front__basic__weak);
         
         left: 5px;
         font-weight: normal;
@@ -69,7 +70,7 @@
     }
 
     &:focus-within > div:nth-child(1) {
-        @include color-each-theme(color, page--log-in--input--label__font-color__focus);
+        @include color-each-theme(color, front__active__normal);
     }
   
     & > input {
@@ -81,7 +82,7 @@
 
         padding-left: 8px;
         
-        @include frame-each-theme(border, 2px, solid, page--log-in--input__border-color);
+        // @include frame-each-theme(border, 2px, solid, page--log-in--input__border-color);
 
         &:focus {
 
@@ -103,7 +104,7 @@
 
     display: flex;
     flex-flow: row nowrap;
-    justify-page--log-in: flex-end;
+    justify-content: flex-end;
     align-items: center;
   
     width: 100%; 
@@ -125,7 +126,7 @@
 
     display: flex;
     flex-flow: column nowrap;
-    justify-page--log-in: center;
+    justify-content: center;
     align-items: center;
 
 
@@ -134,8 +135,8 @@
   
     & > button {
     
-        @include color-each-theme(background-color, button-main__background-color);
-        @include color-each-theme(color, button-main__font-color);
+        @include color-each-theme(background-color, front__active__normal);
+        @include color-each-theme(color, front__background);
   
         width: 100%;
         height: 44px;
@@ -150,7 +151,7 @@
 .division {
     display: flex;
     flex-flow: row nowrap;
-    justify-page--log-in: center;
+    justify-content: center;
     align-items: center;
 
     height: 40px;
@@ -159,8 +160,8 @@
 .collection-social {
 
     display: flex;
-    flex-flow: row nowrap;
-    justify-page--log-in: space-around;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
     align-items: center;
 
     margin: 10px 0px 0px 0px; /* top right bottom left */
@@ -169,22 +170,22 @@
 
     & > button {
     
-        width: 90px;
+        width: 100%;
         height: 44px;
         
-        @include color-each-theme(color, button-social__font-color);
+        font-weight: normal;
         border-radius: 4px;
-        font-weight: bold;
-        
+        font-size: 1.1rem;
+    
     
     &:nth-child(1){
-        @include color-each-theme(background-color, button-google__background-color);
+        @include color-each-theme(background-color, front__background);
+        @include color-each-theme(color, front__basic__strong);
     }
     &:nth-child(2){
-        @include color-each-theme(background-color, button-facebook__background-color);
-    }
-    &:nth-child(3){
-        @include color-each-theme(background-color, button-twitter__background-color);
+        @include color-each-theme(background-color, front__basic__strong);
+        @include color-each-theme(color, front__background);
+        margin-top: 8px;
     }
   }
   

@@ -158,7 +158,7 @@ $name-theme-default: light;
         @each $key-color in $list-key-color {
             $list-color: append($list-color, map-get-deep(
                 $map: $palette,
-                $listKey: ($name-theme-default, $key-color)
+                $listKey: ($name-theme, $key-color)
             ));
         }
 

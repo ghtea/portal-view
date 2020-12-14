@@ -32,7 +32,7 @@
         width: auto;
         height: 32px;
 
-        @include color-each-theme(background-color, setting--option-behind__background-color);
+        @include color-each-theme(background-color, back__background);
         
         border-radius: 5px;
     
@@ -62,13 +62,13 @@
 .button-option {
     
     background-color: transparent;
-    @include color-each-theme(color, setting--option-off__font-color);
+    @include color-each-theme(color, front__basic__weak);
 
     &:global(.active----true) {
-        @include color-each-theme(background-color, setting--option-on__background-color);
-        @include color-each-theme(color, setting--option-on__font-color);
+        @include color-each-theme(background-color, front__active__normal);
+        @include color-each-theme(color, front__background);
 
-        @include shadow-each-theme(box-shadow, 0px, 0px, 2px, 2px, setting--option-on__box-shadow-color);
+        // @include shadow-each-theme(box-shadow, 0px, 0px, 2px, 2px, shadow__basic__weak);
     }
 
 }

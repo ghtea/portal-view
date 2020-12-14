@@ -7,7 +7,7 @@
     width: 100vw;
     height: 100vh;
 
-    @include color-each-theme(background-color, modal--shadow__background-color);
+    @include color-each-theme(background-color, shadow__basic__weak-very);
 
     position: fixed;
     top: 0px;
@@ -24,11 +24,11 @@
     // width: $device-xs__min-width - 20px;
     height: auto; max-height: 90vh;  min-height: 100px;
 
-    @include color-each-theme(background-color, modal__background-color);
-    @include color-each-theme(color, modal__font-color);
+    @include color-each-theme(background-color, front__background);
+    @include color-each-theme(color, front__basic__normal);
 
-    @include frame-each-theme(border, 1px, solid, modal__border-color);
-    @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, modal__box-shadow-color);
+    @include frame-each-theme(border, 1px, solid, front__basic__weak-very);
+    @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__basic__weak);
 
     border-radius: 12px;
 
@@ -68,7 +68,7 @@
 
     
     .icon-x {
-        @include color-each-theme(color, modal--header__icon-color);
+        @include color-each-theme(color, front__basic__weak);
         width: 24px;
         height: 24px;
     }
@@ -88,7 +88,7 @@
     width: calc(100% - 20px);
     height: auto;  min-height: 50px;
     
-    @include frame-each-theme(border-top, 2px, solid, modal--header__border-color);
+    @include frame-each-theme(border-top, 2px, solid, front__basic__weak-most);
 
     margin: 0px 0px 0px 0px; /* top right bottom left */
     padding: 0px 0px 10px 0px; /* top right bottom left */

@@ -135,8 +135,7 @@ function LogIn() {
             
             <div className={`${styles['collection-social']}`} >
                 <button> Google </button>
-                <button> Facebook </button>
-                <button> Twitter </button>
+                <button> Apple </button>
             </div> 
             
             <div className={`${styles['collection-link']}`} >

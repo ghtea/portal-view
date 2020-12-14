@@ -8,8 +8,8 @@ body {
     justify-content: flex-start;
     align-items: center;
 
-    @include color-body-each-theme(background-color, body__background-color);
-    @include color-body-each-theme(color, body__font-color);
+    @include color-body-each-theme(background-color, back__background);
+    @include color-body-each-theme(color, front__basic__weak);
 
     // use div.app as body (about colors)
 
@@ -34,8 +34,8 @@ div {
     justify-content: flex-start;
     align-items: center;
 
-    @include color-each-theme(background-color, div__background-color, $is-module: false);
-    @include color-each-theme(color, div__font-color, $is-module: false);
+    background-color: transparent;
+    color: inherit;
 
     width: 100%;
     height: auto; 
@@ -63,11 +63,11 @@ button {
     justify-content: center;
     align-items: center;
 
-    
-    @include color-each-theme(background-color, button__background-color, $is-module: false);
-    @include color-each-theme(color, button__font-color, $is-module: false);
+    background-color: transparent;
 
-    @include frame-each-theme(border, 1px, solid, button__border-color, $is-module: false);
+    @include color-each-theme(color, front__basic__normal, $is-module: false);
+
+    border: 0px none transparent;
     border-radius: 4px;
 
     width: auto;
@@ -89,7 +89,8 @@ button {
 
     &:focus {
         border-style: none;
-        @include frame-each-theme(outline, 2px, solid, button__outline-color__focus, $is-module: false);
+        outline: 0px none transparent;
+        // @include frame-each-theme(outline, 1px, solid, front__basic__weak, $is-module: false);
     }
 }
 
@@ -103,7 +104,7 @@ a {
     align-items: center;
 
     
-    @include color-each-theme(color, a__font-color, $is-module: false);
+    @include color-each-theme(color, front__basic__normal, $is-module: false);
 
     border-radius: 4px;
 
@@ -134,14 +135,14 @@ input[type=text], input[type=password] {
     justify-content: center;
     align-items: center;
 
-    @include color-each-theme(background-color, input-text__background-color, $is-module: false);
-    @include color-each-theme(color, input-text__font-color, $is-module: false);
+    @include color-each-theme(background-color, back__background, $is-module: false);
+    @include color-each-theme(color, front__basic__normal, $is-module: false);
 
     &::placeholder {
-        @include color-each-theme(color, input-text--placeholder__font-color, $is-module: false);
+        @include color-each-theme(color, front__basic__weak, $is-module: false);
     }
 
-    @include frame-each-theme(border, 1px, solid, input-text__border-color, $is-module: false);
+    @include frame-each-theme(border, 1px, solid, front__basic__weak-very, $is-module: false);
     border-radius: 4px;
 
     width: 100%;
@@ -162,13 +163,13 @@ input[type=text], input[type=password] {
     
 
     &:focus {
-        @include color-each-theme(background-color, input-text__background-color__focus, $is-module: false);
-        @include color-each-theme(color, input-text__font-color__focus, $is-module: false);
+        @include color-each-theme(background-color, front__basic__weak-most, $is-module: false);
+        @include color-each-theme(color, front__basic__strong, $is-module: false);
 
-        @include frame-each-theme(border, 2px, solid, input-text__border-color__focus, $is-module: false);
+        @include frame-each-theme(border, 2px, solid, front__active__normal, $is-module: false);
         outline: 1px solid transparent;
 
-        @include shadow-each-theme(box-shadow, 0px, 0px, 15px, 2px, input-text--box-shadow-color__focus, $is-module: false);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__active__strong, $is-module: false);
         border-radius: 4px;
     }
 }
@@ -182,8 +183,8 @@ header {
     justify-content: flex-start;
     align-items: center;
 
-    @include color-each-theme(background-color, header__background-color, $is-module: false);
-    @include color-each-theme(color, header__font-color, $is-module: false);
+    @include color-each-theme(background-color, front__background, $is-module: false);
+    @include color-each-theme(color, front__basic__weak, $is-module: false);
 
     width: 100%;
     height: auto; 
