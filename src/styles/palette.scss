@@ -1,0 +1,71 @@
+
+// https://sandstorm.de/de/blog/post/bem-sass-scss-variable-naming.html
+
+// TYPE__MODIFY     - once between one block
+
+$h-basic: 220;   $s-basic: 14%;
+$h-main: 200;   $s-main: 100%;
+$h-sub: 335;   $s-sub: 85%;
+
+$h-success: 120;   $s-success: 45%;    
+$h-hint: 200;    $s-hint: 80%;
+$h-warning: 15;   $s-warning: 100%;
+$h-error: 0;   $s-error: 85%;
+
+/*
+$front___light: hsl($h-basic,$s-basic,100%);
+$front___dark: hsl($h-basic,$s-basic,10%);
+
+$background___light: hsl($h-basic,$s-basic,95%);
+$background___dark: hsl($h-basic,$s-basic,6%);
+*/
+
+
+
+$palette: (
+// light
+light: (
+
+    back__background: hsl($h-basic,$s-basic,95%),
+    front__background: hsl($h-basic,$s-basic,100%),
+
+    front__basic__weak-most: hsl($h-basic,$s-basic,95%),
+    front__basic__weak-very: hsl($h-basic,$s-basic,80%),
+    front__basic__weak: hsl($h-basic,$s-basic,60%),
+    front__basic__normal: hsl($h-basic,$s-basic,40%),
+    front__basic__strong: hsl($h-basic,$s-basic,27%),
+    front__basic__strong-very: hsl($h-basic,$s-basic,15%),
+    front__basic__strong-most: hsl($h-basic,$s-basic,0%),
+
+    front__active__weak: hsl($h-main,$s-main,65%),
+    front__active__normal: hsl($h-main,$s-main,50%),
+    //$front__active__strong: hsl($h-main,$s-main,100%);
+
+    shadow__weak-very: rgba(hsl($h-basic,$s-basic,50%), 0.3),
+    shadow__weak: rgba(hsl($h-basic,$s-basic,50%), 0.5),
+    shadow__normal: rgba(hsl($h-basic,$s-basic,50%), 0.7),
+),
+
+dark: (
+    back__background: hsl($h-basic,$s-basic,6%),
+
+    front__background: hsl($h-basic,$s-basic,10%),
+
+    front__basic__weak-most: hsl($h-basic,$s-basic,16%),
+    front__basic__weak-very: hsl($h-basic,$s-basic,25%),
+    front__basic__weak: hsl($h-basic,$s-basic,40%),
+    front__basic__normal: hsl($h-basic,$s-basic,60%),
+    front__basic__strong: hsl($h-basic,$s-basic,72%),
+    front__basic__strong-very: hsl($h-basic,$s-basic,85%),
+    front__basic__strong-most: hsl($h-basic,$s-basic,100%),
+
+    front__active__weak: hsl($h-main,$s-main,45%),
+    front__active__normal: hsl($h-main,$s-main,50%),
+    //$front__active__strong: hsl($h-main,$s-main,100%);
+
+    shadow__weak-very: rgba(hsl($h-basic,$s-basic,0%), 0.3),
+    shadow__weak: rgba(hsl($h-basic,$s-basic,0%), 0.5),
+    shadow__normal: rgba(hsl($h-basic,$s-basic,0%), 0.7)
+
+)
+);
