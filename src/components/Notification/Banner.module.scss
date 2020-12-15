@@ -38,36 +38,36 @@
     
     &.success {
         @include color-each-theme(background-color, success__1);
-        @include color-each-theme(color, success__5);
+        @include color-each-theme(color, success__6);
 
-        @include frame-each-theme(border, 2px, solid, success__3);
+        @include frame-each-theme(border, 2px, solid, success__4);
 
         @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__success__normal);
     }
 
     &.hint {
         @include color-each-theme(background-color, hint__1);
-        @include color-each-theme(color, hint__5);
+        @include color-each-theme(color, hint__6);
 
-        @include frame-each-theme(border, 2px, solid, hint__3);
+        @include frame-each-theme(border, 2px, solid, hint__4);
 
         @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__hint__normal);
     }
 
     &.error {
         @include color-each-theme(background-color, error__1);
-        @include color-each-theme(color, error__5);
+        @include color-each-theme(color, error__6);
 
-        @include frame-each-theme(border, 2px, solid, error__3);
+        @include frame-each-theme(border, 2px, solid, error__4);
 
         @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__error__normal);
     }
 
     &.warning {
         @include color-each-theme(background-color, warning__1);
-        @include color-each-theme(color, warning__5);
+        @include color-each-theme(color, warning__6);
 
-        @include frame-each-theme(border, 2px, solid, warning__3);
+        @include frame-each-theme(border, 2px, solid, warning__4);
 
         @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__warning__normal);
     }
@@ -78,16 +78,16 @@
     }
 
     .icon-success {
-        @include color-each-theme(color, success__7);
+        @include color-each-theme(color, success__6);
     }
     .icon-hint {
-        @include color-each-theme(color, hint__7);
+        @include color-each-theme(color, hint__6);
     }
     .icon-error {
-        @include color-each-theme(color, error__7);
+        @include color-each-theme(color, error__6);
     }
     .icon-warning {
-        @include color-each-theme(color, warning__7);
+        @include color-each-theme(color, warning__6);
     }
 
 
@@ -157,16 +157,16 @@
         height: 20px;
 
         .success & {
-            @include color-each-theme(color, success__5);
+            @include color-each-theme(color, success__4);
         }
         .hint & {
-            @include color-each-theme(color, hint__5);
+            @include color-each-theme(color, hint__4);
         }
         .error & {
-            @include color-each-theme(color, error__5);
+            @include color-each-theme(color, error__4);
         }
         .warning & {
-            @include color-each-theme(color, warning__5);
+            @include color-each-theme(color, warning__4);
         }
     }
 }

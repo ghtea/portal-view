@@ -4,9 +4,9 @@
 
     @include color-each-theme(background-color, basic__0);
 
-    visibility: visible;
-    &:global(.active----false) {
-        visibility: hidden;
+    visibility: hidden;
+    &:global(.showing----true) {
+        visibility: visible;
     }
 
     display: flex;
@@ -43,7 +43,7 @@
         align-items: center;
 
         width: auto;
-        @include color-each-theme(color, basic__7);
+        @include color-each-theme(color, basic__8);
 
         font-weight: bold;
         
@@ -105,8 +105,8 @@
         
         cursor: pointer;
 
-        @include color-each-theme(color, basic__4);
-        @include frame-each-theme(border, 1px, solid, basic__4);
+        @include color-each-theme(color, basic__6);
+        @include frame-each-theme(border, 2px, solid, basic__2);
         border-radius: 16px;
 
         padding: 0px 7px 0px 7px;
@@ -129,12 +129,12 @@
         }
 
         .icon-search {
-            @include color-each-theme(color, basic__5);
+            @include color-each-theme(color, basic__6);
             width: 20px;
         }
 
         .icon-plus {
-            @include color-each-theme(color, basic__5);
+            @include color-each-theme(color, basic__6);
             width: 16px;
         }
     }

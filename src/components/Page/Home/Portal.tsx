@@ -29,27 +29,27 @@ function Portal({
 }: PropsPortal) {
   
   // const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['Portal']['setting']);
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-    /*
-    const onClick_ShowModal = useCallback(
-        (idModal:string) => {
-        dispatch(actionsStatus.return__REPLACE({ 
-            listKey: ['showing', 'modal', idModal],
-            replacement: true
-        }))
+    
+    const onClick_Face = useCallback(
+        (url:string) => {
+            window.location.href = url;
         },[]
     );
-    */
+    
 
   return (
       
     <div className={`${styles['root']}`} >
         
-        <div> {_id} </div>
-        <div> {kind} </div>
-        <div> {name} </div>
-        <div> {url} </div>
+        <div 
+            className={`${styles['face']}`}
+            
+        >
+            <div> {name} </div>
+        </div>
+        
 
     </div>
       

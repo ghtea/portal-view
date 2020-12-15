@@ -1,0 +1,38 @@
+@import './color-elements.scss';
+
+@function make-palette($name, $h, $s){
+    @return (
+        light: (
+            #{$name}__0: hsl($h,$s,100%),
+
+            #{$name}__1: hsl($h,$s,90%),
+            #{$name}__2: hsl($h,$s,80%),
+            #{$name}__3: hsl($h,$s,70%),
+            #{$name}__4: hsl($h,$s,60%),
+            #{$name}__5: hsl($h,$s,50%),
+            #{$name}__6: hsl($h,$s,40%),
+            #{$name}__7: hsl($h,$s,30%),
+            #{$name}__8: hsl($h,$s,20%),
+            #{$name}__9: hsl($h,$s,10%),
+
+            shadow__#{$name}__normal: rgba(hsl($h,$s,60%), 0.3)
+        ),
+        dark: (
+            #{$name}__0: hsl($h,$s, 0%),
+
+            #{$name}__1: hsl($h,$s,10%),
+            #{$name}__2: hsl($h,$s,20%),
+            #{$name}__3: hsl($h,$s,30%),
+            #{$name}__4: hsl($h,$s,40%),
+            #{$name}__5: hsl($h,$s,50%),
+            #{$name}__6: hsl($h,$s,60%),
+            #{$name}__7: hsl($h,$s,70%),
+            #{$name}__8: hsl($h,$s,80%),
+            #{$name}__9: hsl($h,$s,90%),
+
+            shadow__#{$name}__normal: rgba(hsl($h,$s,40%), 0.3)
+        )
+    );
+}
+
+$palette-portal-h270: make-palette(portal-h270, 270, 70);

@@ -15,23 +15,23 @@
 
     box-sizing: border-box;
 
-    @include color(background-color, div__background-color);
-    @include color(color, div__font-color);
+    @include color(background-color, basic__0);
+    @include color(color, basic__5);
 
-    @include frame(border, 1px, solid, div__border-color);
+    @include frame(border, 1px, solid, basic__4);
     // https://developer.mozilla.org/ko/docs/Web/CSS/border
     // border-width: 1px;
     // border-style: solid;
     // @include color(border-color, div__border-color);
     border-radius: 0px;
 
-    @include frame(outline, 0px, none, div__border-color);
+    @include frame(outline, 0px, none, basic__4);
     // https://developer.mozilla.org/ko/docs/Web/CSS/outline
     // border-width: 0px;
     // border-style: none;
     // @include color(border-color, div__border-color);
 
-    @include shadow(box-shadow, 0px, 0px, 15px, 2px, input-text--box-shadow-color__focus);
+    @include shadow(box-shadow, 0px, 0px, 15px, 2px, shadow__basic__normal);
 
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1rem;

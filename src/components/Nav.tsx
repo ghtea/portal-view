@@ -30,6 +30,7 @@ function Nav({}: PropsNav) {
     
 
     useEffect(() => {
+        console.log(location.pathname);
         if (  (/^\/log-in/).test(location.pathname) || (/^\/sign-up/).test(location.pathname)  ) {
             dispatch(actionsStatus.return__REPLACE({
                 listKey:['showing', 'nav'],

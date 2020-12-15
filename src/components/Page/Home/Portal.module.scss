@@ -3,4 +3,16 @@
 
 .root {
 
+    width: 140px;
+    height: 80px;
+
+    border-radius: 8px;
+
+
+}
+
+
+
+:global(.color----10) {
+    // @include color-each-theme(background-color, )
 }

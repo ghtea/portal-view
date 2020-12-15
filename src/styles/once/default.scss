@@ -104,8 +104,8 @@ a {
     justify-content: center;
     align-items: center;
 
-    
-    @include color-each-theme(color, basic__5, $is-module: false);
+    color: inherit;
+    // @include color-each-theme(color, basic__5, $is-module: false);
 
     border-radius: 4px;
 
