@@ -44,6 +44,17 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 idUser: idUser
             };
             
+
+            yield put( actionsStatus.return__REPLACE({
+                listKey: ['ready', 'listPortal'],
+                replacement: false
+            }) );
+            
+            yield put( actionsStatus.return__REPLACE({
+                listKey: ['loading', 'listPortal'],
+                replacement: true
+            }) );
+
            
             const {response, error} = yield call( requestGetListPortal, queryRequestBefore );
             
@@ -57,12 +68,32 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 if (codeSituation === 'GetListPortal_Succeeded') {
                     yield put( actionsPortal.return__REPLACE({
                         listKey: ['listPortal'],
-                        replacement: response.data.payload
+                        replacement: response.data.payload.listPortal
                     }) );
                 }
 
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['loading', 'listPortal'],
+                    replacement: false
+                }) );
+                
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['ready', 'listPortal'],
+                    replacement: true
+                }) );
+
             }
             else {   
+
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['loading', 'listPortal'],
+                    replacement: false
+                }) );
+                
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['ready', 'listPortal'],
+                    replacement: false
+                }) );
 
                 //console.log(error)
                 const codeSituation = error.reponse.data.codeSituation;

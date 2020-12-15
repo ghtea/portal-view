@@ -16,11 +16,13 @@ export type State = typeof stateInitial;
 const stateInitial = {
   
   loading: {
-    user: false
+    user: false,
+    listPortal: false
   },
   
   ready: {
-    user: false
+    user: false,
+    listPortal: false
   },
   
   current: {

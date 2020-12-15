@@ -24,11 +24,15 @@ function Home({}: PropsHome) {
     const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
     const idUser:string = useSelector((state: StateRoot) => state['auth']['user']['_id']);
 
+    const readyListPortal:any = useSelector((state: StateRoot) => state['status']['ready']['listPortal']);
+    const loadingListPortal:any = useSelector((state: StateRoot) => state['status']['loading']['listPortal']);
+    const listPortal:any = useSelector((state: StateRoot) => state['portal']['listPortal']);
+
     useEffect(()=>{
-        if (readyUser){
+        if ('readyUser'){
             
             dispatch(actionsPortal.return__GET_LIST_PORTAL({
-                idUser: idUser
+                idUser: 'idUser'
             }))
         }
     },[readyUser, idUser]);
@@ -39,7 +43,16 @@ function Home({}: PropsHome) {
 
         <div className={`${styles['content']}`} >
 
-
+            {loadingListPortal && !readyListPortal && <div>loading</div>}
+            {readyListPortal && 
+                listPortal.map( (portal:any, index:number) =>(
+                    <div
+                        key={`portal-${index}`}
+                    >
+                        portal {index}
+                    </div>
+                ))
+            }
 
 
         </div>
