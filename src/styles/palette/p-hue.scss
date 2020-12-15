@@ -18,21 +18,57 @@
             shadow__#{$name}__normal: rgba(hsl($h,$s,60%), 0.3)
         ),
         dark: (
-            #{$name}__0: hsl($h,$s, 0%),
+            #{$name}__0: hsl($h,$s, 10%),
 
-            #{$name}__1: hsl($h,$s,10%),
-            #{$name}__2: hsl($h,$s,20%),
-            #{$name}__3: hsl($h,$s,30%),
-            #{$name}__4: hsl($h,$s,40%),
-            #{$name}__5: hsl($h,$s,50%),
-            #{$name}__6: hsl($h,$s,60%),
-            #{$name}__7: hsl($h,$s,70%),
-            #{$name}__8: hsl($h,$s,80%),
-            #{$name}__9: hsl($h,$s,90%),
+            #{$name}__1: hsl($h,$s,20%),
+            #{$name}__2: hsl($h,$s,30%),
+            #{$name}__3: hsl($h,$s,40%),
+            #{$name}__4: hsl($h,$s,50%),
+            #{$name}__5: hsl($h,$s,60%),
+            #{$name}__6: hsl($h,$s,70%),
+            #{$name}__7: hsl($h,$s,80%),
+            #{$name}__8: hsl($h,$s,90%),
+            #{$name}__9: hsl($h,$s,100%),
 
             shadow__#{$name}__normal: rgba(hsl($h,$s,40%), 0.3)
         )
     );
 }
 
-$palette-hue-260: make-palette(hue-260, 260, 80);
+
+$palette-hue-000: make-palette(hue-000, 260, 60);
+$palette-hue-010: make-palette(hue-010, 260, 60);
+$palette-hue-020: make-palette(hue-020, 260, 60);
+$palette-hue-030: make-palette(hue-030, 260, 60);
+$palette-hue-040: make-palette(hue-040, 40, 60);
+$palette-hue-050: make-palette(hue-050, 260, 60);
+$palette-hue-060: make-palette(hue-060, 260, 60);
+$palette-hue-070: make-palette(hue-070, 260, 60);
+$palette-hue-080: make-palette(hue-080, 260, 60);
+$palette-hue-090: make-palette(hue-090, 260, 60);
+$palette-hue-100: make-palette(hue-100, 260, 60);
+$palette-hue-110: make-palette(hue-110, 260, 60);
+$palette-hue-120: make-palette(hue-120, 260, 60);
+$palette-hue-130: make-palette(hue-130, 260, 60);
+$palette-hue-140: make-palette(hue-140, 260, 60);
+$palette-hue-150: make-palette(hue-150, 260, 60);
+$palette-hue-160: make-palette(hue-160, 260, 60);
+$palette-hue-170: make-palette(hue-170, 260, 60);
+$palette-hue-180: make-palette(hue-180, 260, 60);
+$palette-hue-190: make-palette(hue-190, 260, 60);
+$palette-hue-200: make-palette(hue-200, 260, 60);
+$palette-hue-210: make-palette(hue-210, 260, 60);
+$palette-hue-220: make-palette(hue-220, 260, 60);
+$palette-hue-230: make-palette(hue-230, 260, 60);
+$palette-hue-240: make-palette(hue-240, 260, 60);
+$palette-hue-250: make-palette(hue-250, 260, 60);
+$palette-hue-260: make-palette(hue-260, 260, 60);
+$palette-hue-270: make-palette(hue-270, 260, 60);
+$palette-hue-280: make-palette(hue-280, 260, 60);
+$palette-hue-290: make-palette(hue-290, 260, 60);
+$palette-hue-300: make-palette(hue-300, 260, 60);
+$palette-hue-310: make-palette(hue-310, 260, 60);
+$palette-hue-320: make-palette(hue-320, 260, 60);
+$palette-hue-330: make-palette(hue-330, 260, 60);
+$palette-hue-340: make-palette(hue-340, 260, 60);
+$palette-hue-350: make-palette(hue-350, 260, 60);

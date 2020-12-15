@@ -4,24 +4,80 @@
 .root {
 
     width: 140px;
-    height: 80px;
+    height: 70px;
+    position: relative;
 
-    border-radius: 8px;
+    margin: 20px 20px 0px 0px;
 
-    .face {
+    .center {
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
 
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+
+        @include color-each-theme(background-color, basic__0);
+
+        cursor: pointer;  
+        
         & > div:nth-child(1){
             font-size: 1.1rem;
         }
+    }
+
+
+    .top, .bottom, .left, .right {        
+        display: none;
+    }
+
+    &:global(.open----true) {
+        .top, .bottom, .left, .right {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+
+    .top {
+        width: 100%;
+        height: 20px;
+        position: absolute;
+        top: 0px;
+        transform: translateY(-100%);
+    }
+    .bottom {
+        width: 100%;
+        height: 80px;
+        position: absolute;
+        bottom: 0px;
+        transform: translateY(100%);
+    }
+    .left {
+        width: 40px;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        transform: translateX(-100%);
+    }
+    .right {
+        width: 40px;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        transform: translateX(100%);
     }
 }
 
 
 
-:global(.hue----260) {
-    @include color-each-theme(background-color, hue-260__3);
+:global(.hue----260) .center {
+    
+    @include frame-each-theme(border, 1px, solid, hue-260__3);
+    @include color-each-theme(color, hue-260__5);
+    @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-260__normal);
 }

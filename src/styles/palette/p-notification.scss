@@ -55,17 +55,17 @@ $palette-hint: (
     ),
 
     dark: (
-        hint__0: hsl($h-hint,$s-hint,0%),
+        hint__0: hsl($h-hint,$s-hint,10%),
         
-        hint__1: hsl($h-hint,$s-hint,10%),
-        hint__2: hsl($h-hint,$s-hint,20%),
-        hint__3: hsl($h-hint,$s-hint,30%),
-        hint__4: hsl($h-hint,$s-hint,40%),
-        hint__5: hsl($h-hint,$s-hint,50%),
-        hint__6: hsl($h-hint,$s-hint,60%),
-        hint__7: hsl($h-hint,$s-hint,70%),
-        hint__8: hsl($h-hint,$s-hint,80%),
-        hint__9: hsl($h-hint,$s-hint,90%),
+        hint__1: hsl($h-hint,$s-hint,20%),
+        hint__2: hsl($h-hint,$s-hint,30%),
+        hint__3: hsl($h-hint,$s-hint,40%),
+        hint__4: hsl($h-hint,$s-hint,50%),
+        hint__5: hsl($h-hint,$s-hint,60%),
+        hint__6: hsl($h-hint,$s-hint,70%),
+        hint__7: hsl($h-hint,$s-hint,80%),
+        hint__8: hsl($h-hint,$s-hint,90%),
+        hint__9: hsl($h-hint,$s-hint,100%),
 
         shadow__hint__normal: rgba(hsl($h-hint,$s-hint,40%), 0.3)
     )

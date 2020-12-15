@@ -32,7 +32,8 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
     
     try {
 
-        if (!readyUser){
+        // !readyUser
+        if (false){
             console.log("should log in first");
 
         }

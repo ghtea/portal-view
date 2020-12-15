@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useEffect} from 'react';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -32,28 +32,68 @@ function Portal({
     hue
 }: PropsPortal) {
   
-  // const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['Portal']['setting']);
     const dispatch = useDispatch();
 
+    const idPortalOpen:string = useSelector((state: StateRoot) => state['status']['current']['portal']['open']);
+    const [open, setOpen] = useState(false); 
     
+    useEffect(()=>{
+        if(idPortalOpen !== _id){
+            setOpen(false);
+        }
+    },[idPortalOpen]);
+
     const onClick_Face = useCallback(
-        (url:string) => {
-            window.location.href = url;
-        },[]
+        () => {
+            if(open===false){
+                setOpen(true);
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'portal', 'open'],
+                    replacement: _id
+                }));
+            }
+            else {
+                window.open(url, "_blank");
+                setOpen(false);
+            }
+        },[_id, url]
     );
     
 
   return (
       
-    <div className={`${styles['root']} hue----${hue}`} >
+    <div className={`${styles['root']} open----${open} hue----${hue}`} >
         
         <div 
-            className={`${styles['face']}`}
-            
+            className={`${styles['center']}`}
+            onClick={()=>onClick_Face()}
         >
             <div> {name} </div>
         </div>
         
+        <div
+            className={`${styles['top']}`}
+        >
+            top
+        </div>
+
+        <div
+            className={`${styles['left']}`}
+        >
+            move
+        </div>
+
+        <div
+            className={`${styles['right']}`}
+        >
+            edit
+        </div>
+
+        <div
+            className={`${styles['bottom']}`}
+        >
+            bottom
+        </div>
 
     </div>
       

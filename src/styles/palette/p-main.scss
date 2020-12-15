@@ -24,17 +24,17 @@ $palette-main: (
 
     dark: (
 
-        main__0: hsl($h-main,$s-main,0%),
+        main__0: hsl($h-main,$s-main,10%),
 
-        main__1: hsl($h-main,$s-main,10%),
-        main__2: hsl($h-main,$s-main,20%),
-        main__3: hsl($h-main,$s-main,30%),
-        main__4: hsl($h-main,$s-main,40%),
-        main__5: hsl($h-main,$s-main,50%),
-        main__6: hsl($h-main,$s-main,60%),
-        main__7: hsl($h-main,$s-main,70%),
-        main__8: hsl($h-main,$s-main,80%),
-        main__9: hsl($h-main,$s-main,90%),
+        main__1: hsl($h-main,$s-main,20%),
+        main__2: hsl($h-main,$s-main,30%),
+        main__3: hsl($h-main,$s-main,40%),
+        main__4: hsl($h-main,$s-main,50%),
+        main__5: hsl($h-main,$s-main,60%),
+        main__6: hsl($h-main,$s-main,70%),
+        main__7: hsl($h-main,$s-main,80%),
+        main__8: hsl($h-main,$s-main,90%),
+        main__9: hsl($h-main,$s-main,100%),
 
         shadow__main__normal: rgba(hsl($h-main,$s-main,40%), 0.4),
         shadow__main__strong: rgba(hsl($h-main,$s-main,40%), 0.6)

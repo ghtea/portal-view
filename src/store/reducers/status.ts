@@ -33,6 +33,10 @@ const stateInitial = {
     theme: {
       option: 'always-light',
       name: 'light'
+    },
+
+    portal: {
+        open: ''
     }
   },
   
