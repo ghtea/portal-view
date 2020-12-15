@@ -4,9 +4,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 
-// import Setting from "./Action/Setting";
+// import Setting from "./Portal/Setting";
 
-import styles from './Action.module.scss';
+import styles from './Portal.module.scss';
 
 import IconThreeDots from 'svgs/basic/IconThreeDots';
 import IconPlus from 'svgs/basic/IconPlus';
@@ -14,70 +14,49 @@ import IconCopy from 'svgs/basic/IconCopy';
 import IconShare from 'svgs/basic/IconShare';
 
 
-type PropsAction = {};
+type PropsPortal = {
+    _id:string,
+    kind:string,
+    name:string,
+    url:string
+};
 
-function Action({}: PropsAction) {
+function Portal({
+    _id,
+    kind,
+    name,
+    url
+}: PropsPortal) {
   
-  // const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['Action']['setting']);
+  // const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['Portal']['setting']);
   const dispatch = useDispatch();
 
-  const [isOpenAction, setIsOpenAction] = useState(false)
-  
-
-  const onClick_OpenCloseAction = useCallback(
-    (decision?:boolean) => {
-        if (decision === true || decision === false){
-            setIsOpenAction(decision);
-        }
-        setIsOpenAction(!isOpenAction);
-    },[isOpenAction]
-  );
-
-  const onClick_ShowModal = useCallback(
-    (idModal:string) => {
-      dispatch(actionsStatus.return__REPLACE({ 
-        listKey: ['showing', 'modal', idModal],
-        replacement: true
-      }))
-    },[]
-  );
-  
+    /*
+    const onClick_ShowModal = useCallback(
+        (idModal:string) => {
+        dispatch(actionsStatus.return__REPLACE({ 
+            listKey: ['showing', 'modal', idModal],
+            replacement: true
+        }))
+        },[]
+    );
+    */
 
   return (
       
-    <div className={`${styles['root']} is-open----${isOpenAction}`} >
-
-        <div className={`${styles['main']}`} >
-            <button
-                onClick={()=>onClick_OpenCloseAction()}
-            > <IconThreeDots className={`${styles['icon-three-dots']}`} /> 
-            </button>
-        </div>
-
+    <div className={`${styles['root']}`} >
         
-        <div className={`${styles['menu']}`} >
-
-            <button
-                
-            > <IconCopy className={`${styles['icon-copy']}`} /> 
-            </button>
-            <button
-                
-            > <IconShare className={`${styles['icon-share']}`} /> 
-            </button>
-        </div>
-        
-        <div 
-            className={`${styles['shadow-of-action']}`} 
-            onClick={()=>onClick_OpenCloseAction(false)}
-        />
+        <div> {_id} </div>
+        <div> {kind} </div>
+        <div> {name} </div>
+        <div> {url} </div>
 
     </div>
       
   );
 }
 
-export default Action;
+export default Portal;
 
 /*
 <Route path="/sign-up" >

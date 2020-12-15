@@ -9,8 +9,9 @@ import {StateRoot} from 'store/reducers';
 
 import * as actionsStatus from 'store/actions/status';
 import * as actionsAuth from 'store/actions/auth';
-
 import * as actionsPortal from 'store/actions/portal';
+
+import Portal from './Home/Portal';
 
 import styles from './Home.module.scss';
 
@@ -44,13 +45,16 @@ function Home({}: PropsHome) {
         <div className={`${styles['content']}`} >
 
             {loadingListPortal && !readyListPortal && <div>loading</div>}
+
             {readyListPortal && 
                 listPortal.map( (portal:any, index:number) =>(
-                    <div
+                    <Portal
                         key={`portal-${index}`}
-                    >
-                        portal {index}
-                    </div>
+                        _id={portal._id}
+                        kind={portal.kind}
+                        name={portal.name}
+                        url={portal.url}
+                    />
                 ))
             }
 
