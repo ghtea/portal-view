@@ -1,7 +1,10 @@
 
 @import './palette/p-basic.scss';
 @import './palette/p-main.scss';
+
 @import './palette/p-notification.scss';
+@import './palette/p-hue.scss';
+
 @import './palette/p-others.scss';
 
 $h-basic: 220;   $s-basic: 14%;
@@ -23,11 +26,16 @@ $list-name-theme: (light, dark);
     $value: map-merge-all(
         map-get($palette-basic, $name-theme),
         map-get($palette-main, $name-theme),
+
         map-get($palette-success, $name-theme),
         map-get($palette-hint, $name-theme),
         map-get($palette-warning, $name-theme),
         map-get($palette-error, $name-theme),
-        map-get($palette-others, $name-theme)
+
+        map-get($palette-others, $name-theme),
+
+        map-get($palette-hue-260, $name-theme)
+
     );
 
     $palette-before: map-set($palette-before, $name-theme, $value);

@@ -18,14 +18,18 @@ type PropsPortal = {
     _id:string,
     kind:string,
     name:string,
-    url:string
+    url:string,
+    tags: string[],
+    hue: string
 };
 
 function Portal({
     _id,
     kind,
     name,
-    url
+    url,
+    tags,
+    hue
 }: PropsPortal) {
   
   // const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['Portal']['setting']);
@@ -41,7 +45,7 @@ function Portal({
 
   return (
       
-    <div className={`${styles['root']}`} >
+    <div className={`${styles['root']} hue----${hue}`} >
         
         <div 
             className={`${styles['face']}`}

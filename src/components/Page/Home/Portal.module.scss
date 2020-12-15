@@ -8,11 +8,20 @@
 
     border-radius: 8px;
 
+    .face {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
 
+        & > div:nth-child(1){
+            font-size: 1.1rem;
+        }
+    }
 }
 
 
 
-:global(.color----10) {
-    // @include color-each-theme(background-color, )
+:global(.hue----260) {
+    @include color-each-theme(background-color, hue-260__3);
 }

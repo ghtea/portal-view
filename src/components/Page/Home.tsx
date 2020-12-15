@@ -54,6 +54,8 @@ function Home({}: PropsHome) {
                         kind={portal.kind}
                         name={portal.name}
                         url={portal.url}
+                        tags={portal.tags}
+                        hue={portal.hue}
                     />
                 ))
             }
