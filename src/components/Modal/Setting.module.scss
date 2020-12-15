@@ -13,6 +13,13 @@
 
     width: auto;
     height: auto;
+
+    &:first-child{
+        margin-top: 5px;
+    }
+    &:nth-child(n+2){
+        margin-top: 8px;
+    }
   
     & > div:nth-child(1){ /* title */
         justify-content: center;
@@ -65,7 +72,7 @@
     @include color-each-theme(color, basic__5);
 
     &:global(.active----true) {
-        @include color-each-theme(background-color, active__5);
+        @include color-each-theme(background-color, main__5);
         @include color-each-theme(color, basic__0);
 
         // @include shadow-each-theme(box-shadow, 0px, 0px, 2px, 2px, shadow__basic__weak);

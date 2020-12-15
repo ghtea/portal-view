@@ -70,7 +70,7 @@
     }
 
     &:focus-within > div:nth-child(1) {
-        @include color-each-theme(color, active__5);
+        @include color-each-theme(color, main__5);
     }
   
     & > input {
@@ -135,7 +135,7 @@
   
     & > button {
     
-        @include color-each-theme(background-color, active__5);
+        @include color-each-theme(background-color, main__5);
         @include color-each-theme(color, basic__0);
   
         width: 100%;

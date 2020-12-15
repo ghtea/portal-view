@@ -3,23 +3,33 @@
 $palette-success: (
 
     light: (
+        success__0: hsl($h-success,$s-success,100%),
+
         success__1: hsl($h-success,$s-success,90%),
-
+        success__2: hsl($h-success,$s-success,80%),
         success__3: hsl($h-success,$s-success,70%),
-
+        success__4: hsl($h-success,$s-success,60%),
         success__5: hsl($h-success,$s-success,50%),
         success__6: hsl($h-success,$s-success,40%),
+        success__7: hsl($h-success,$s-success,30%),
+        success__8: hsl($h-success,$s-success,20%),
+        success__9: hsl($h-success,$s-success,10%),
 
         shadow__success__normal: rgba(hsl($h-success,$s-success,60%), 0.3)
     ),
 
     dark: (
+        success__0: hsl($h-success,$s-success, 0%),
+
         success__1: hsl($h-success,$s-success,10%),
-
+        success__2: hsl($h-success,$s-success,20%),
         success__3: hsl($h-success,$s-success,30%),
-
+        success__4: hsl($h-success,$s-success,40%),
         success__5: hsl($h-success,$s-success,50%),
         success__6: hsl($h-success,$s-success,60%),
+        success__7: hsl($h-success,$s-success,70%),
+        success__8: hsl($h-success,$s-success,80%),
+        success__9: hsl($h-success,$s-success,90%),
 
         shadow__success__normal: rgba(hsl($h-success,$s-success,40%), 0.3)
     )
@@ -29,23 +39,33 @@ $palette-success: (
 $palette-hint: (
 
     light: (
+        hint__0: hsl($h-hint,$s-hint,100%),
+        
         hint__1: hsl($h-hint,$s-hint,90%),
-
+        hint__2: hsl($h-hint,$s-hint,80%),
         hint__3: hsl($h-hint,$s-hint,70%),
-
+        hint__4: hsl($h-hint,$s-hint,60%),
         hint__5: hsl($h-hint,$s-hint,50%),
         hint__6: hsl($h-hint,$s-hint,40%),
+        hint__7: hsl($h-hint,$s-hint,30%),
+        hint__8: hsl($h-hint,$s-hint,20%),
+        hint__9: hsl($h-hint,$s-hint,10%),
 
         shadow__hint__normal: rgba(hsl($h-hint,$s-hint,60%), 0.3)
     ),
 
     dark: (
+        hint__0: hsl($h-hint,$s-hint,0%),
+        
         hint__1: hsl($h-hint,$s-hint,10%),
-
+        hint__2: hsl($h-hint,$s-hint,20%),
         hint__3: hsl($h-hint,$s-hint,30%),
-
+        hint__4: hsl($h-hint,$s-hint,40%),
         hint__5: hsl($h-hint,$s-hint,50%),
         hint__6: hsl($h-hint,$s-hint,60%),
+        hint__7: hsl($h-hint,$s-hint,70%),
+        hint__8: hsl($h-hint,$s-hint,80%),
+        hint__9: hsl($h-hint,$s-hint,90%),
 
         shadow__hint__normal: rgba(hsl($h-hint,$s-hint,40%), 0.3)
     )
@@ -55,23 +75,33 @@ $palette-hint: (
 $palette-warning: (
 
     light: (
+        warning__0: hsl($h-warning,$s-warning,100%),
+
         warning__1: hsl($h-warning,$s-warning,90%),
-
+        warning__2: hsl($h-warning,$s-warning,80%),
         warning__3: hsl($h-warning,$s-warning,70%),
-
+        warning__4: hsl($h-warning,$s-warning,60%),
         warning__5: hsl($h-warning,$s-warning,50%),
         warning__6: hsl($h-warning,$s-warning,40%),
+        warning__7: hsl($h-warning,$s-warning,30%),
+        warning__8: hsl($h-warning,$s-warning,20%),
+        warning__9: hsl($h-warning,$s-warning,10%),
 
         shadow__warning__normal: rgba(hsl($h-warning,$s-warning,60%), 0.3)
     ),
 
     dark: (
+        warning__0: hsl($h-warning,$s-warning,0%),
+
         warning__1: hsl($h-warning,$s-warning,10%),
-
+        warning__2: hsl($h-warning,$s-warning,20%),
         warning__3: hsl($h-warning,$s-warning,30%),
-
+        warning__4: hsl($h-warning,$s-warning,40%),
         warning__5: hsl($h-warning,$s-warning,50%),
         warning__6: hsl($h-warning,$s-warning,60%),
+        warning__7: hsl($h-warning,$s-warning,70%),
+        warning__8: hsl($h-warning,$s-warning,80%),
+        warning__9: hsl($h-warning,$s-warning,90%),
 
         shadow__warning__normal: rgba(hsl($h-warning,$s-warning,40%), 0.3)
     )
@@ -82,23 +112,33 @@ $palette-warning: (
 $palette-error: (
 
     light: (
+        error__0: hsl($h-error,$s-error,100%),
+
         error__1: hsl($h-error,$s-error,90%),
-
+        error__2: hsl($h-error,$s-error,80%),
         error__3: hsl($h-error,$s-error,70%),
-
+        error__4: hsl($h-error,$s-error,60%),
         error__5: hsl($h-error,$s-error,50%),
         error__6: hsl($h-error,$s-error,40%),
+        error__7: hsl($h-error,$s-error,30%),
+        error__8: hsl($h-error,$s-error,20%),
+        error__9: hsl($h-error,$s-error,10%),
 
         shadow__error__normal: rgba(hsl($h-error,$s-error,60%), 0.3)
     ),
 
     dark: (
+        error__0: hsl($h-error,$s-error,0%),
+
         error__1: hsl($h-error,$s-error,10%),
-
+        error__2: hsl($h-error,$s-error,20%),
         error__3: hsl($h-error,$s-error,30%),
-
+        error__4: hsl($h-error,$s-error,40%),
         error__5: hsl($h-error,$s-error,50%),
         error__6: hsl($h-error,$s-error,60%),
+        error__7: hsl($h-error,$s-error,70%),
+        error__8: hsl($h-error,$s-error,80%),
+        error__9: hsl($h-error,$s-error,90%),
 
         shadow__error__normal: rgba(hsl($h-error,$s-error,40%), 0.3)
     )

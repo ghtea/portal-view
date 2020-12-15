@@ -7,7 +7,7 @@
     width: 100vw;
     height: 100vh;
 
-    @include color-each-theme(background-color, shadow__basic__weak);
+    @include color-each-theme(background-color, shadow__basic__normal);
 
     position: fixed;
     top: 0px;
@@ -94,4 +94,16 @@
     margin: 0px 0px 0px 0px; /* top right bottom left */
     padding: 0px 0px 10px 0px; /* top right bottom left */
   
+
+
+
+
+    
+    .button-main {
+        width: 100%;
+        height: 36px;
+        @include color-each-theme(background-color, main__5);
+        @include color-each-theme(color, basic__0);
+    }
+
 }

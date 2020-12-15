@@ -43,10 +43,4 @@
     }
 
 
-    .button-create {
-        width: 100%;
-        height: 36px;
-        @include color-each-theme(background-color, active__5);
-        @include color-each-theme(color, basic__0);
-    }
 }

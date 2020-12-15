@@ -132,7 +132,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
 
         <div className={`${styles['content__section']}`} >
             <button
-                className={`${styles['button-create']}`}
+                className={`${stylesModalA['button-main']}`}
                 onClick={()=>onClick_CreatePortal()}
             > <FormattedMessage id={`Modal.CreatingPortal_Create`} /> </button>
         </div>

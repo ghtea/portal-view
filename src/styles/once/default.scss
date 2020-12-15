@@ -167,10 +167,10 @@ input[type=text], input[type=password] {
         @include color-each-theme(background-color, basic__1, $is-module: false);
         @include color-each-theme(color, basic__7, $is-module: false);
 
-        @include frame-each-theme(border, 2px, solid, active__5, $is-module: false);
+        @include frame-each-theme(border, 2px, solid, main__5, $is-module: false);
         outline: 1px solid transparent;
 
-        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__active__strong, $is-module: false);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__main__normal, $is-module: false);
         border-radius: 4px;
     }
 }
