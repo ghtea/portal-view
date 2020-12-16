@@ -16,7 +16,7 @@
     .center {
         display: flex;
         flex-flow: row nowrap;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
 
         width: 100%;
@@ -34,7 +34,7 @@
             width: $height-center;
             height: 100%;
             border-radius: $border-radius-center;
-            font-weight: bold;
+            font-weight: 900;
 
             &:global(.length-initials----1){
                 font-size: 2rem;
@@ -48,7 +48,7 @@
         }
 
         .body {
-            width: calc(100% - #{$height-center});
+            width: calc(100% - #{$height-center} - 8px);
             height: 70%;
 
             display: flex;
@@ -56,7 +56,8 @@
             justify-content: space-around;
             align-items: center;
 
-            border-radius: 0 $border-radius-center $border-radius-center 0;
+            border-radius: $border-radius-center * 0.6 ;
+            //border-radius: 0 $border-radius-center $border-radius-center 0;
 
             & > div{
                 font-size: 1.1rem;
@@ -85,8 +86,8 @@
             justify-content: center;
             align-items: center;
         }
-        /*
-        .center {
+        
+        .body {
             display: flex;
             flex-flow: row nowrap;
             justify-content: center;
@@ -104,7 +105,7 @@
                 margin-left: 8px;
             }
         }
-        */
+        
     }
 
 
@@ -220,14 +221,16 @@ $list-hue: (
             // @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-#{$hue}__normal);
 
             .face {
-                @include frame-each-theme(border, 2px, solid, hue-#{$hue}__4);
+                @include frame-each-theme(border, 2px, solid, hue-#{$hue}__5);
                 @include color-each-theme(background-color, basic__0);
-                @include color-each-theme(color, hue-#{$hue}__7);
+                @include color-each-theme(color, hue-#{$hue}__6);
                 @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-#{$hue}__normal);
             }
             .body {
-                @include color-each-theme(color, hue-#{$hue}__5);
-                @include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
+                @include color-each-theme(color, hue-#{$hue}__6);
+                @include color-each-theme(background-color, hue-#{$hue}__1, 0.8);
+                //@include color-each-theme(background-color, basic__1);
+                //@include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
             }
         }
         .top, .left, .right, .bottom > *:nth-child(1), .bottom > *:nth-child(2) {
