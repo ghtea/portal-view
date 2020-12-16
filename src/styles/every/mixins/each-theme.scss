@@ -26,13 +26,18 @@ $name-theme-default: light;
 }
 
 
-@mixin color-each-theme($property, $key-color, $is-module: true) {
+@mixin color-each-theme($property, $key-color, $opacity: 1, $is-module: true) {
 
     @each $name-theme in $list-name-theme {
-        $color: map-get-deep(
+        $color-1: map-get-deep(
             $map: $palette, 
             $listKey: ($name-theme, $key-color)
         );
+
+        $color: $color-1;
+        @if ($opacity != 1){
+            $color: rgba($color-1, $opacity);
+        }
 
         @if ($name-theme == $name-theme-default) {
             #{$property}: $color;

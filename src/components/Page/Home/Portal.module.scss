@@ -26,6 +26,10 @@
         & > div:nth-child(1){
             font-size: 1.1rem;
         }
+        .icon-link-external {
+            width: 30px;
+            height: 30px;
+        }
     }
 
 
@@ -40,44 +44,152 @@
             justify-content: center;
             align-items: center;
         }
+        .center {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            &>*:nth-child(1) {
+                width: 30%;
+            }
+            &>*:nth-child(2) {
+                width: 40%;
+            }
+        }
     }
 
 
     .top {
-        width: 100%;
-        height: 20px;
+        width: 160%;
+        height: 60px;
         position: absolute;
-        top: 0px;
+        top: -10px;
+        border-radius: 8px;
         transform: translateY(-100%);
+        font-size: 1.1rem;
     }
     .bottom {
         width: 100%;
-        height: 80px;
+        height: auto;
         position: absolute;
-        bottom: 0px;
+        bottom: -10px;
         transform: translateY(100%);
+
+        & > *:nth-child(1){
+            width: 100%;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        & > *:nth-child(2){
+            width: 160%;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
     }
     .left {
         width: 40px;
-        height: 100%;
+        height: 40px;
         position: absolute;
-        left: 0px;
-        transform: translateX(-100%);
+        left: -10px;
+        top: 50%;
+        border-radius: 8px;
+        transform: translate(-100%, -50%);
+        .icon-move {
+            width: 24px;
+            height: 24px;
+        }
     }
     .right {
         width: 40px;
-        height: 100%;
+        height: 40px;
         position: absolute;
-        right: 0px;
-        transform: translateX(100%);
+        right: -10px;
+        top: 50%;
+        border-radius: 8px;
+        transform: translate(100%, -50%);
+        .icon-edit {
+            width: 26px;
+            height: 26px;
+        }
     }
 }
 
 
 
-:global(.hue----260) .center {
-    
-    @include frame-each-theme(border, 1px, solid, hue-260__3);
-    @include color-each-theme(color, hue-260__5);
-    @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-260__normal);
+:global(.hue----260) {
+    .center {
+        @include frame-each-theme(border, 1px, solid, hue-260__3);
+        @include color-each-theme(color, hue-260__5);
+        @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-260__normal);
+    }
+    .top, .left, .right, .bottom > *:nth-child(1), .bottom > *:nth-child(2) {
+        @include color-each-theme(background-color, hue-260__1);
+    }
+    .left, .right {
+        //@include color-each-theme(background-color, hue-260__1);
+        @include color-each-theme(color, hue-260__6);
+        @include frame-each-theme(border, 1px, solid, hue-260__2);
+    }
+    .top {
+        //@include color-each-theme(background-color, hue-260__1);
+        @include color-each-theme(color, hue-260__7);
+        @include frame-each-theme(border, 1px, solid, hue-260__4);
+    } 
+    .bottom {
+        & > *:nth-child(1) {
+            //@include color-each-theme(background-color, hue-260__1);
+            @include color-each-theme(color, hue-260__6);
+            @include frame-each-theme(border, 1px, solid, hue-260__2);
+        }
+        & > *:nth-child(2) {
+            //@include color-each-theme(background-color, hue-260__1);
+            @include color-each-theme(color, hue-260__5);
+            @include frame-each-theme(border, 1px, solid, hue-260__4);
+        }
+    }
+}
+
+$list-hue: (120, 260);
+
+@each $hue in $list-hue {
+
+
+    :global(.hue----#{$hue}) {
+        .center {
+            @include frame-each-theme(border, 1px, solid, hue-#{$hue}__3);
+            @include color-each-theme(color, hue-#{$hue}__5);
+            @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-#{$hue}__normal);
+        }
+        .top, .left, .right, .bottom > *:nth-child(1), .bottom > *:nth-child(2) {
+            @include color-each-theme(background-color, hue-#{$hue}__1);
+        }
+        .left, .right {
+            //@include color-each-theme(background-color, hue-260__1);
+            @include color-each-theme(color, hue-#{$hue}__6);
+            @include frame-each-theme(border, 1px, solid, hue-#{$hue}__2);
+        }
+        .top {
+            //@include color-each-theme(background-color, hue-260__1);
+            @include color-each-theme(color, hue-#{$hue}__7);
+            @include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
+        } 
+        .bottom {
+            & > *:nth-child(1) {
+                //@include color-each-theme(background-color, hue-260__1);
+                @include color-each-theme(color, hue-#{$hue}__6);
+                @include frame-each-theme(border, 1px, solid, hue-#{$hue}__2);
+            }
+            & > *:nth-child(2) {
+                //@include color-each-theme(background-color, hue-260__1);
+                @include color-each-theme(color, hue-#{$hue}__5);
+                @include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
+            }
+        }
+    }
+
+
 }

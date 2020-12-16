@@ -8,10 +8,10 @@ import * as actionsStatus from 'store/actions/status';
 
 import styles from './Portal.module.scss';
 
-import IconThreeDots from 'svgs/basic/IconThreeDots';
-import IconPlus from 'svgs/basic/IconPlus';
-import IconCopy from 'svgs/basic/IconCopy';
-import IconShare from 'svgs/basic/IconShare';
+import IconEdit from 'svgs/basic/IconEdit';
+import IconMove from 'svgs/basic/IconFourArrows';
+import IconPortalEnter from 'svgs/others/IconPortalEnter';
+import IconLinkExternal from 'svgs/basic/IconLinkExternal';
 
 
 type PropsPortal = {
@@ -53,10 +53,17 @@ function Portal({
                 }));
             }
             else {
+                console.log('hi');
                 window.open(url, "_blank");
                 setOpen(false);
             }
-        },[_id, url]
+        },[_id, url, open]
+    );
+
+    const onClick_Close = useCallback(
+        () => {
+            setOpen(false);
+        },[]
     );
     
 
@@ -68,31 +75,42 @@ function Portal({
             className={`${styles['center']}`}
             onClick={()=>onClick_Face()}
         >
-            <div> {name} </div>
+            { !open && <div> {name} </div> }
+            { open && 
+                <>
+                    <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
+                    <div> Enter </div>
+                </> 
+            }
         </div>
         
         <div
             className={`${styles['top']}`}
         >
-            top
+            {name}
         </div>
 
-        <div
+        <button
             className={`${styles['left']}`}
         >
-            move
-        </div>
+            <IconMove className={`${styles['icon-move']}`} kind='light' />
+        </button>
 
-        <div
+        <button
             className={`${styles['right']}`}
         >
-            edit
-        </div>
+            <IconEdit className={`${styles['icon-edit']}`} kind='light' />
+        </button>
 
         <div
             className={`${styles['bottom']}`}
-        >
-            bottom
+            onClick={()=>onClick_Close()}
+        >   
+            <button>Close</button>
+            <div>
+                <div> bar graph 1</div>
+                <div> bar graph 2</div>
+            </div>
         </div>
 
     </div>
