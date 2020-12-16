@@ -43,20 +43,28 @@ function Home({}: PropsHome) {
 
         <div className={`${styles['content']}`} >
 
+            <div className={`${styles['filters']}`} >
+                <div>  importance  </div>
+                <div>  hp  </div>
+                <div>  tags  </div>
+            </div>
+
             {loadingListPortal && !readyListPortal && <div>loading</div>}
 
             {readyListPortal && 
-                listPortal.map( (portal:any, index:number) =>(
-                    <Portal
-                        key={`portal-${index}`}
-                        _id={portal._id}
-                        kind={portal.kind}
-                        name={portal.name}
-                        url={portal.url}
-                        tags={portal.tags}
-                        hue={portal.hue}
-                    />
-                ))
+                <div className={`${styles['container']}`} >
+                    {listPortal.map( (portal:any, index:number)=>(
+                        <Portal
+                            key={`portal-${index}`}
+                            _id={portal._id}
+                            kind={portal.kind}
+                            name={portal.name}
+                            url={portal.url}
+                            tags={portal.tags}
+                            hue={portal.hue}
+                        />
+                    ))}
+                </div>
             }
 
 

@@ -17,8 +17,7 @@ type PropsPage = {};
 function Page({}: PropsPage) {
   return (
     
-    <div className={`${styles['root']}`} >
-      
+    <>
           <Switch>
             
             <Route exact path="/" >
@@ -43,7 +42,7 @@ function Page({}: PropsPage) {
 
           </Switch>
         
-      </div>
+      </>
   );
 }
 

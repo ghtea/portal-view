@@ -34,7 +34,7 @@ $list-name-theme: (light, dark);
 
         map-get($palette-others, $name-theme),
 
-        map-get($palette-hue-260, $name-theme)
+        map-get($palette-hue, $name-theme)
 
     );
 

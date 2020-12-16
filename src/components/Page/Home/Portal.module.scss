@@ -8,7 +8,7 @@
     position: relative;
 
     margin: 20px 20px 0px 0px;
-
+    z-index: 20;
     .center {
         display: flex;
         flex-flow: column nowrap;
@@ -22,14 +22,15 @@
         @include color-each-theme(background-color, basic__0);
 
         cursor: pointer;  
-        
+
+        .name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
         & > div:nth-child(1){
             font-size: 1.1rem;
         }
-        .icon-link-external {
-            width: 30px;
-            height: 30px;
-        }
+        
     }
 
 
@@ -38,6 +39,9 @@
     }
 
     &:global(.open----true) {
+
+        z-index: 50;
+
         .top, .bottom, .left, .right {
             display: flex;
             flex-flow: column nowrap;
@@ -49,11 +53,17 @@
             flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
+            
             &>*:nth-child(1) {
-                width: 30%;
+                width: auto;
+                .icon-link-external {
+                    width: 30px;
+                    height: 30px;
+                }
             }
             &>*:nth-child(2) {
-                width: 40%;
+                width: auto;
+                margin-left: 8px;
             }
         }
     }
@@ -119,7 +129,7 @@
 }
 
 
-
+/*
 :global(.hue----260) {
     .center {
         @include frame-each-theme(border, 1px, solid, hue-260__3);
@@ -152,8 +162,14 @@
         }
     }
 }
+*/
 
-$list-hue: (120, 260);
+$list-hue: (
+    0,10,20,30,40,50,60,70,80,90,
+    100,110,120,130,140,150,160,170,180,190,
+    200,210,220,230,240,250,260,270,280,290,
+    300,310,320,330,340,350
+);
 
 @each $hue in $list-hue {
 
@@ -161,7 +177,7 @@ $list-hue: (120, 260);
     :global(.hue----#{$hue}) {
         .center {
             @include frame-each-theme(border, 1px, solid, hue-#{$hue}__3);
-            @include color-each-theme(color, hue-#{$hue}__5);
+            @include color-each-theme(color, hue-#{$hue}__7);
             @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-#{$hue}__normal);
         }
         .top, .left, .right, .bottom > *:nth-child(1), .bottom > *:nth-child(2) {

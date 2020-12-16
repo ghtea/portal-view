@@ -75,7 +75,11 @@ function Portal({
             className={`${styles['center']}`}
             onClick={()=>onClick_Face()}
         >
-            { !open && <div> {name} </div> }
+            { !open && 
+                <div className={`${styles['name']}`}
+                > {name} 
+                </div> 
+            }
             { open && 
                 <>
                     <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
