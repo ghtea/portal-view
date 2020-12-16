@@ -36,38 +36,53 @@ function CreatingPortal({}: PropsCreatingPortal) {
         },[]
     );
 
-    const [kind, setKind] = useState("normal")
-    const inputName = useInput(""); // {value, setValue, onChange};
-    const inputUrl = useInput(""); // {value, setValue, onChange};
-    const inputTags = useInput(""); // {value, setValue, onChange};
 
+    const [kind, setKind] = useState("normal");
+
+    const inputName = useInput(""); // {value, setValue, onChange};
+    const inputInitials = useInput(""); // {value, setValue, onChange};
+    const inputUrl = useInput(""); // {value, setValue, onChange};
+    
+    const inputLife = useInput(15); // {value, setValue, onChange};
+    
+    const inputTagCurrent = useInput("");
+    const [tags, setTags] = useState([]);
+    const [hue, setHue] = useState("random");  // 0, 10, ..., 350   grey   random
 
     const onClick_CreatePortal = useCallback(
         () => {
         
             dispatch(actionsPortal.return__CREATE_PORTAL({
+                
                 kind: kind,
+                
                 name: inputName.value,
+                initials: inputInitials.value,
                 url: inputUrl.value,
-                tags: inputTags.value,
+                
+                life: inputLife.value,
+
+                tags: tags,
+                hue: hue
+
             }));
         
         },
-        [inputName, inputUrl, inputTags]
+        [kind, inputName, inputInitials, inputUrl, inputLife, tags, hue]
     );
   
   // ~ template
   
   /*
-  const onClick_ChangeOptionTheme = useCallback(
-    (replacement:string) => {
-      dispatch(actionsStatus.return__REPLACE({
-        listKey: ['current', 'theme', 'option'],
-        replacement: replacement
-      }) );
-      Cookies.set('optionTheme', replacement, { expires: 14});
-    }, []
-  );
+    const onClick_ChangeOptionTheme = useCallback(
+        (replacement:string) => {
+            dispatch(actionsStatus.return__REPLACE({
+                listKey: ['current', 'theme', 'option'],
+                replacement: replacement
+            }) );
+            Cookies.set('optionTheme', replacement, { expires: 14});
+        }, []
+    );
   */
   
   return (
@@ -79,8 +94,6 @@ function CreatingPortal({}: PropsCreatingPortal) {
     
         <div className={`${styles['modal']} ${stylesModalA['modal']}`} >
 
-
-
         <div className={`${stylesModalA['header']}`} >
             <div>  <FormattedMessage id={`Modal.CreatingPortal_Title`} /> </div>
             <div
@@ -89,7 +102,6 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 <IconX className={`${stylesModalA['icon-x']}`} />
             </div>
         </div>
-    
       
       <div className={`${stylesModalA['content']}`} >
         
@@ -101,6 +113,18 @@ function CreatingPortal({}: PropsCreatingPortal) {
                     placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Name'})}
                     value={inputName.value}
                     onChange={inputName.onChange} 
+                /> 
+          </div>
+        </div>
+
+        <div className={`${styles['content__section']}`} >
+          <div> <FormattedMessage id={`Modal.CreatingPortal_Initials`} /> </div>
+          <div className={`${styles['input-initials']}`} >
+                <input 
+                    type='text'
+                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Initials'})}
+                    value={inputInitials.value}
+                    onChange={inputInitials.onChange} 
                 /> 
           </div>
         </div>
@@ -118,15 +142,22 @@ function CreatingPortal({}: PropsCreatingPortal) {
         </div>
 
         <div className={`${styles['content__section']}`} >
-          <div>  <FormattedMessage id={`Modal.CreatingPortal_Tags`} /></div>
-          <div className={`${styles['input-tags']}`} >
+            <div>  <FormattedMessage id={`Modal.CreatingPortal_Tags`} /></div>
+
+            <div className={`${styles['list-tag']}`} > 
+                {tags.map((tag)=><div>{tag}</div>)}
+            </div>
+
+            <div className={`${styles['input-tag-current']}`} >
                 <input 
                     type='text'
                     placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Tags'})}
-                    value={inputTags.value}
-                    onChange={inputTags.onChange} 
-                /> 
-          </div>
+                    value={inputTagCurrent.value}
+                    onChange={inputTagCurrent.onChange} 
+                />
+                <div> choose or create </div>
+            </div>
+
         </div>
         
 

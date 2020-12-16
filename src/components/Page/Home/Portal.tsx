@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useMemo, useState, useEffect} from 'react';
 
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
@@ -15,19 +15,35 @@ import IconLinkExternal from 'svgs/basic/IconLinkExternal';
 
 
 type PropsPortal = {
-    _id:string,
-    kind:string,
-    name:string,
-    url:string,
+    _id: string,
+    user: string,   //  normal, search
+    kind: string,
+             
+    name: string,
+    initials: string,
+    url: string,
+    
+    life: number,
+    listBooleanVisited: boolean[],  // [true, false, ...(30days)] 
+    dateVisitedLast: Date, 
+
     tags: string[],
     hue: string
 };
 
 function Portal({
     _id,
+    user,   //  normal, search
     kind,
+             
     name,
+    initials,
     url,
+    
+    life,
+    listBooleanVisited,  // [true, false, ...(30days)] 
+    dateVisitedLast, 
+
     tags,
     hue
 }: PropsPortal) {
@@ -74,18 +90,23 @@ function Portal({
         <div 
             className={`${styles['center']}`}
             onClick={()=>onClick_Face()}
-        >
-            { !open && 
-                <div className={`${styles['name']}`}
-                > {name} 
-                </div> 
-            }
-            { open && 
-                <>
-                    <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
-                    <div> Enter </div>
-                </> 
-            }
+        >   
+            <div className={`${styles['face']} length-initials----${initials.length}`}>
+                {initials}
+            </div>
+
+            <div className={`${styles['body']}`}>
+                { !open && 
+                    <div className={`${styles['name']}`} > {name} </div> 
+                }
+                { open && 
+                    <>
+                        <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
+                        <div> Enter </div>
+                    </> 
+                }
+            </div>
+
         </div>
         
         <div

@@ -14,14 +14,21 @@ import * as actionsPortal from "store/actions/portal";
 
 
 interface BodyRequest {
-    _id: string;
-    kind: string;   //  basic, search, both
-    user: string;   // 이 링크 이용 하는 유저 
     
+    _id: string;
+    user: string;   //  normal, search
+    kind: string;
+             
     name: string;
-    url: string;  
+    initials: string;
+    url: string;
+    
+    life: number;
+
     tags: string[];
+    hue: string;
 }
+
 
 const requestCreatePortal = (bodyRequest: BodyRequest) => {
     
@@ -43,6 +50,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
     
     try {
 
+        
         if (!readyUser){
             console.log("should log in first");
 
@@ -51,23 +59,47 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             console.log('type email address');
             
         }
+        
         else if (action.payload.url === "" ) {
             console.log('type url');
-            
         }
         
         else {
+
+            // initials
+            let initials = action.payload.initials;
+            if (initials === "" ) {
+                initials = action.payload.name[0];
+            }
+
+            // hue
+            let hue = action.payload.hue;
+            if (hue === 'random'){
+                const listHue = [
+                    '0', '10', '20', '30', '40', '50', '60', '70', '80', '90',
+                    '100', '110', '120', '130', '140', '150', '160', '170', '180', '190',
+                    '200', '210', '220', '230', '240', '250', '260', '270', '280', '290',
+                    '300', '310', '320', '330', '340', '350', 'grey'
+                ]
+                hue = listHue[Math.floor(Math.random() * listHue.length)]; 
+            }
             
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user._id); 
 
             const bodyRequest = {
                 _id: uuidv4(),
-                kind: action.payload.kind,
                 user: idUser,
                 
+                kind: action.payload.kind,
+                        
                 name: action.payload.name,
+                initials: initials,
                 url: action.payload.url,
-                tags: action.payload.tags
+                
+                life: action.payload.life,
+
+                tags: action.payload.tags,
+                hue: hue
             };
             
            

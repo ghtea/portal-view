@@ -44,3 +44,23 @@
 
 
 }
+
+
+.input-tag-current {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    & > *:nth-child(1){
+        width: 45%;
+    }
+    & > *:nth-child(2){
+        width: 45%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
