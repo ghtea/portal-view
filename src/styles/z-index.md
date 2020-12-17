@@ -20,4 +20,6 @@ Nav  200
 
 Page  0
     Portal   20
-        Portal-open   50 
+        open
+            face   50
+            body 30 

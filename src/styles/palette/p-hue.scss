@@ -36,6 +36,7 @@
     );
 }
 
+$palette-hue-grey: make-palette(hue-grey, $h-basic, $s-basic, 1);
 
 $palette-hue-0: make-palette(hue-0, 0, 60);
 $palette-hue-10: make-palette(hue-10, 10, 60);
@@ -50,7 +51,7 @@ $palette-hue-90: make-palette(hue-90, 90, 60);
 $palette-hue-100: make-palette(hue-100, 100, 60);
 $palette-hue-110: make-palette(hue-110, 110, 60);
 $palette-hue-120: make-palette(hue-120, 120, 60);
-$palette-hue-130: make-palette(hue-130, 130, 90, 1);
+$palette-hue-130: make-palette(hue-130, 130, 70, 1);
 $palette-hue-140: make-palette(hue-140, 140, 60);
 $palette-hue-150: make-palette(hue-150, 150, 60);
 $palette-hue-160: make-palette(hue-160, 160, 60);
@@ -84,6 +85,7 @@ $list-name-theme: (light, dark);
 
     $value: map-merge-all(
 
+        map-get($palette-hue-grey, $name-theme),
         map-get($palette-hue-0, $name-theme),
         map-get($palette-hue-10, $name-theme),
         map-get($palette-hue-20, $name-theme),

@@ -60,7 +60,7 @@ function Portal({
     },[idPortalOpen]);
 
     const onClick_Face = useCallback(
-        () => {
+        (side: string) => {
             if(open===false){
                 setOpen(true);
                 dispatch(actionsStatus.return__REPLACE({
@@ -69,9 +69,13 @@ function Portal({
                 }));
             }
             else {
-                console.log('hi');
-                window.open(url, "_blank");
-                setOpen(false);
+                if (side === 'left'){
+                    window.open(url, "_blank");
+                    setOpen(false);
+                }
+                else {  /// 'right'
+                    setOpen(false);
+                }
             }
         },[_id, url, open]
     );
@@ -88,53 +92,53 @@ function Portal({
     <div className={`${styles['root']} open----${open} hue----${hue}`} >
         
         <div 
-            className={`${styles['center']}`}
-            onClick={()=>onClick_Face()}
+            className={`${styles['face']}`}
         >   
-            <div className={`${styles['face']} length-initials----${initials.length}`}>
-                {initials}
+            <div 
+                className={`${styles['left']}`}
+                onClick={()=>onClick_Face('left')}
+            >
+                <div className={`length-initials----${initials.length}`} >   {initials}   </div>
+                <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
             </div>
-
-            <div className={`${styles['body']}`}>
-                { !open && 
-                    <div className={`${styles['name']}`} > {name} </div> 
-                }
-                { open && 
-                    <>
-                        <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
-                        <div> Enter </div>
-                    </> 
-                }
+ 
+            <div 
+                className={`${styles['right']}`}
+                onClick={()=>onClick_Face('right')}
+            >
+                <div className={`${styles['name']}`} > {name} </div> 
+                <div> Close </div>
             </div>
 
         </div>
         
-        <div className={`${styles['top']}`} >   
-            <div> {name}</div>
-        </div>
+        
+        <div className={`${styles['body']}`}>
 
-        <div
-            className={`${styles['bottom']}`}
-        >   
+            <div className={`${styles['name']}`} >   
+                <div> {name}</div>
+            </div>
+
+            <div className={`${styles['empty']}`} >   
+            </div>
+
             <div className={`${styles['actions']}`}>
                 <button 
                     
                 >   <IconMove className={`${styles['icon-move']}`} kind='light' />
                 </button>
-                <button 
-                    onClick={()=>onClick_Close()} 
-                >   Close
-                </button>
+                
                 <button 
                     
                 >   <IconEdit className={`${styles['icon-edit']}`} kind='light' />
                 </button>
             </div>
 
-            <div className={`${styles['info']}`}>
+            <div className={`${styles['status']}`}>
                 <div> bar graph 1</div>
                 <div> bar graph 2</div>
             </div>
+
         </div>
 
     </div>
