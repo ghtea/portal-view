@@ -3,7 +3,7 @@
 
 .root {
 
-    width: 170px;
+    width: 180px;
     $height-center: 60px;
     height: $height-center;
     position: relative;
@@ -49,14 +49,14 @@
 
         .body {
             width: calc(100% - #{$height-center} - 8px);
-            height: 70%;
+            height: 80%;
 
             display: flex;
             flex-flow: column nowrap;
             justify-content: space-around;
             align-items: center;
 
-            border-radius: $border-radius-center * 0.6 ;
+            border-radius: $border-radius-center * 0.7 ;
             //border-radius: 0 $border-radius-center $border-radius-center 0;
 
             & > div{
@@ -72,7 +72,7 @@
     }
 
 
-    .top, .bottom, .left, .right {        
+    .top, .bottom {        
         display: none;
     }
 
@@ -80,7 +80,7 @@
 
         z-index: 50;
 
-        .top, .bottom, .left, .right {
+        .top, .bottom  {
             display: flex;
             flex-flow: column nowrap;
             justify-content: center;
@@ -110,8 +110,8 @@
 
 
     .top {
-        width: 160%;
-        height: 60px;
+        width: 100%;
+        height: 50px;
         position: absolute;
         top: -10px;
         border-radius: 8px;
@@ -125,47 +125,46 @@
         bottom: -10px;
         transform: translateY(100%);
 
-        & > *:nth-child(1){
+        & > .actions {
             width: 100%;
-            height: 32px;
+            $height-bottom-1: 32px;
+            height: $height-bottom-1;
             border-radius: 8px;
+
             display: flex;
             flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
+
+            & > *:nth-child(n+2){
+                margin-left: 7px;
+            }
+            & > *:nth-child(1), & > *:nth-child(3) {
+                width: $height-bottom-1;
+                height: 100%;
+            }
+            & > *:nth-child(2) {
+                width: calc(100% - #{$height-bottom-1} - #{$height-bottom-1} - 40px);
+                height: 100%;
+            }
+
+            .icon-move {
+                width: 24px;
+                height: 24px;
+            }
+
+            .icon-edit {
+                width: 23px;
+                height: 23px;
+            }
         }
-        & > *:nth-child(2){
-            width: 160%;
+        & > .info {
+            width: 100%;
             margin-top: 10px;
             border-radius: 8px;
         }
     }
-    .left {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        border-radius: 8px;
-        transform: translate(-100%, -50%);
-        .icon-move {
-            width: 24px;
-            height: 24px;
-        }
-    }
-    .right {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        right: -10px;
-        top: 50%;
-        border-radius: 8px;
-        transform: translate(100%, -50%);
-        .icon-edit {
-            width: 26px;
-            height: 26px;
-        }
-    }
+    
 }
 
 
@@ -228,34 +227,27 @@ $list-hue: (
             }
             .body {
                 @include color-each-theme(color, hue-#{$hue}__6);
-                @include color-each-theme(background-color, hue-#{$hue}__1, 0.8);
+                @include color-each-theme(background-color, hue-#{$hue}__1, 0.5);
                 //@include color-each-theme(background-color, basic__1);
                 //@include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
             }
         }
-        .top, .left, .right, .bottom > *:nth-child(1), .bottom > *:nth-child(2) {
-            @include color-each-theme(background-color, hue-#{$hue}__1, 0.8);
-        }
-        .left, .right {
-            //@include color-each-theme(background-color, hue-260__1);
-            @include color-each-theme(color, hue-#{$hue}__5);
-            @include frame-each-theme(border, 1px, solid, hue-#{$hue}__2);
-        }
+
         .top {
-            //@include color-each-theme(background-color, hue-260__1);
-            @include color-each-theme(color, hue-#{$hue}__7);
+            @include color-each-theme(background-color, hue-#{$hue}__1, 0.8);
+            @include color-each-theme(color, hue-#{$hue}__6);
             @include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
         } 
         .bottom {
-            & > *:nth-child(1) {
-                //@include color-each-theme(background-color, hue-260__1);
-                @include color-each-theme(color, hue-#{$hue}__5);
-                @include frame-each-theme(border, 1px, solid, hue-#{$hue}__2);
+            .actions > * {
+                @include color-each-theme(background-color, basic__0);
+                @include color-each-theme(color, basic__6);
+                @include frame-each-theme(border, 1px, solid, basic__1);
             }
-            & > *:nth-child(2) {
-                //@include color-each-theme(background-color, hue-260__1);
-                @include color-each-theme(color, hue-#{$hue}__5);
-                @include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
+            .info {
+                @include color-each-theme(background-color, basic__0, 0.8);
+                @include color-each-theme(color, basic__6);
+                @include frame-each-theme(border, 1px, solid, basic__1);
             }
         }
     }

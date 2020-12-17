@@ -109,30 +109,29 @@ function Portal({
 
         </div>
         
-        <div
-            className={`${styles['top']}`}
-        >
-            {name}
+        <div className={`${styles['top']}`} >   
+            <div> {name}</div>
         </div>
-
-        <button
-            className={`${styles['left']}`}
-        >
-            <IconMove className={`${styles['icon-move']}`} kind='light' />
-        </button>
-
-        <button
-            className={`${styles['right']}`}
-        >
-            <IconEdit className={`${styles['icon-edit']}`} kind='light' />
-        </button>
 
         <div
             className={`${styles['bottom']}`}
-            onClick={()=>onClick_Close()}
         >   
-            <button>Close</button>
-            <div>
+            <div className={`${styles['actions']}`}>
+                <button 
+                    
+                >   <IconMove className={`${styles['icon-move']}`} kind='light' />
+                </button>
+                <button 
+                    onClick={()=>onClick_Close()} 
+                >   Close
+                </button>
+                <button 
+                    
+                >   <IconEdit className={`${styles['icon-edit']}`} kind='light' />
+                </button>
+            </div>
+
+            <div className={`${styles['info']}`}>
                 <div> bar graph 1</div>
                 <div> bar graph 2</div>
             </div>
