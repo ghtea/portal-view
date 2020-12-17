@@ -28,6 +28,7 @@
     "Modal.CreatingPortal_Name": "이름",
     "Modal.CreatingPortal_Initials": "이니셜 (1~3 글자)",
     "Modal.CreatingPortal_Url": "URL",
+    "Modal.CreatingPortal_Hue": "색상",
     "Modal.CreatingPortal_Tags": "태그",
     "Modal.CreatingPortal_Create": "만들기",
 

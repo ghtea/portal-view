@@ -84,16 +84,16 @@ function Setting({}: PropsSetting) {
         
         <div className={`${styles['content__section']}`} >
           <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
-          <div>
-            <div className={`${styles['button-option']} active----${optionThemeCurrent === 'auto'}`}
+          <div className={`${stylesModalA['group-option']}`}>
+            <div className={`active----${optionThemeCurrent === 'auto'}`}
                 onClick={()=>onClick_ChangeOptionTheme('auto')}
             > auto
             </div>
-            <div className={`${styles['button-option']} active----${optionThemeCurrent === 'always-light'}`}
+            <div className={`active----${optionThemeCurrent === 'always-light'}`}
                 onClick={()=>onClick_ChangeOptionTheme('always-light')}
             > light
             </div>
-            <div className={`${styles['button-option']} active----${optionThemeCurrent === 'always-dark'}`}
+            <div className={`active----${optionThemeCurrent === 'always-dark'}`}
                 onClick={()=>onClick_ChangeOptionTheme('always-dark')}
             > dark
             </div>
@@ -102,12 +102,12 @@ function Setting({}: PropsSetting) {
         
         <div className={`${styles['content__section']}`} >
           <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
-          <div>
-            <div className={`${styles['button-option']} active----${languageCurrent === 'en'}`}
+          <div className={`${stylesModalA['group-option']}`}>
+            <div className={`active----${languageCurrent === 'en'}`}
               onClick={()=>onClick_ChangeLanguage('en')}
             > English
             </div>
-            <div className={`${styles['button-option']} active----${languageCurrent === 'ko'}`}
+            <div className={`active----${languageCurrent === 'ko'}`}
               onClick={()=>onClick_ChangeLanguage('ko')}
             > 한국어
             </div>

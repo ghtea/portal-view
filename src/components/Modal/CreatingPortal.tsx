@@ -47,11 +47,16 @@ function CreatingPortal({}: PropsCreatingPortal) {
     
     const inputTagCurrent = useInput("");
     const [tags, setTags] = useState([]);
-    const [hue, setHue] = useState("random");  // 0, 10, ..., 350   grey   random
+
+    const [hueOption, setHueOption] = useState("random");  // 0, 10, ..., 350   grey   random
+    const inputHueNumber = useInput(180);
 
     const onClick_CreatePortal = useCallback(
         () => {
-        
+            let hue = hueOption;
+            if (hueOption === 'choose' ){
+                hue = (inputHueNumber.value).toString();
+            }
             dispatch(actionsPortal.return__CREATE_PORTAL({
                 
                 kind: kind,
@@ -68,7 +73,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
             }));
         
         },
-        [kind, inputName, inputInitials, inputUrl, inputLife, tags, hue]
+        [kind, inputName, inputInitials, inputUrl, inputLife, tags, hueOption, inputHueNumber]
     );
   
   // ~ template
@@ -139,6 +144,35 @@ function CreatingPortal({}: PropsCreatingPortal) {
                     onChange={inputUrl.onChange} 
                 /> 
           </div>
+        </div>
+
+        <div className={`${styles['content__section']}`} >
+            <div>  <FormattedMessage id={`Modal.CreatingPortal_Hue`} /></div>
+
+            <div className={`${stylesModalA['group-option']}`} > 
+                <div className={`${styles['button-option']} active----${hueOption === 'random'}`}
+                    onClick={()=>setHueOption('random')}
+                > random
+                </div>
+                <div className={`${styles['button-option']} active----${hueOption === 'choose'}`}
+                    onClick={()=>setHueOption('choose')}
+                > choose
+                </div>
+                <div className={`${styles['button-option']} active----${hueOption === 'grey'}`}
+                    onClick={()=>setHueOption('grey')}
+                > grey
+                </div>
+            </div>
+
+            <div className={`${styles['input-hue']}`} >
+                <input   
+                    type='range'
+                    value={inputHueNumber.value}
+                    min="0" max="360"  step="10"
+                    onChange={inputHueNumber.onChange} 
+                />
+            </div>
+
         </div>
 
         <div className={`${styles['content__section']}`} >
