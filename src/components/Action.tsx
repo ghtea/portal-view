@@ -29,7 +29,9 @@ function Action({}: PropsAction) {
         if (decision === true || decision === false){
             setIsOpenAction(decision);
         }
-        setIsOpenAction(!isOpenAction);
+        else {
+            setIsOpenAction(!isOpenAction);
+        }
     },[isOpenAction]
   );
 
@@ -67,10 +69,12 @@ function Action({}: PropsAction) {
             </button>
         </div>
         
-        <div 
-            className={`${styles['shadow-of-action']}`} 
-            onClick={()=>onClick_OpenCloseAction(false)}
-        />
+        {isOpenAction &&
+            <div 
+                className={`${styles['shadow-of-action']}`} 
+                onClick={()=>onClick_OpenCloseAction(false)}
+            />
+        }
 
     </div>
       

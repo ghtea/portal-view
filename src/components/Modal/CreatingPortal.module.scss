@@ -13,7 +13,6 @@
 
     width: 100%;
     height: auto;
-    margin-top: 5px;
   
     & > div:nth-child(1){ /* title */
         justify-content: center;
@@ -171,7 +170,7 @@
         background-color: transparent;
         
         border: $border-width__pointer solid #ffffff;
-        border-radius: 3px;
+        border-radius: 4px;
         box-sizing: border-box;
     }
 }
@@ -184,14 +183,60 @@
     align-items: center;
 
     & > *:nth-child(1){
-        width: 45%;
+        width: 63%;
     }
     & > *:nth-child(2){
-        width: 45%;
+        width: 33%;
 
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
+        @include frame-each-theme(color, 2px, solid, basic__5);
+        @include frame-each-theme(border, 2px, solid, basic__4);
+        border-radius: 4px;
+    }
+}
+
+
+.list-tag {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    
+    height: auto !important; 
+    margin: 3px 0px 3px 0px;
+    overflow: auto;
+
+    & > *:nth-child(n+2){
+        margin-left: 6px;
+    }
+    & > * {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+
+        width: auto;
+        height: 30px; 
+
+        padding: 0px 4px 0px 4px;
+
+        @include frame-each-theme(color, 2px, solid, basic__4);
+        @include frame-each-theme(border, 2px, solid, basic__1);
+        border-radius: 4px;
+
+        & > *:nth-child(n+2){
+            margin-left: 4px;
+        }
+
+        & > *:nth-child(1){
+            word-break: keep-all;
+        }
+        .icon-x {
+            width: 20px;
+            height: 20px;
+        }
     }
 }

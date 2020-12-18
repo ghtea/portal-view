@@ -138,9 +138,17 @@ function Portal({
                 </button>
             </div>
 
-            <div className={`${styles['status']}`}>
-                <div> bar graph 1</div>
-                <div> bar graph 2</div>
+            <div className={`${styles['others']}`}>
+                <div className={`${styles['list-tag']}`}>
+                    {tags.map((tag, index)=>(
+                        <div>
+                            {tag}
+                        </div>
+                    ))}
+                </div>
+                <div> {life}</div>
+                <div> last visit </div>
+                <div> created </div>
             </div>
 
         </div>

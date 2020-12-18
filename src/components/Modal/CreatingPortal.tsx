@@ -46,10 +46,26 @@ function CreatingPortal({}: PropsCreatingPortal) {
     const inputLife = useInput(15); // {value, setValue, onChange};
     
     const inputTagCurrent = useInput("");
-    const [tags, setTags] = useState([]);
+    const [tags, setTags] = useState<string[]>([]);
 
     const [hueOption, setHueOption] = useState("random");  // 0, 10, ..., 350   grey   random
     const inputHueNumber = useInput(180);
+
+
+    const onClick_AddTagCurrent = useCallback(
+        () => {
+            if ( inputTagCurrent.value !== "" && !tags.includes(inputTagCurrent.value) ){
+                const tagsNew = [...tags, inputTagCurrent.value];
+                setTags(tagsNew);
+            }
+        },[inputTagCurrent, tags]
+    );
+    const onClick_DeleteTag = useCallback(
+        (tagDeleting:string) => {
+            const tagsNew = tags.filter(tagEach => tagEach !== tagDeleting);
+            setTags(tagsNew);
+        },[inputTagCurrent, tags]
+    );
 
     const onClick_CreatePortal = useCallback(
         () => {
@@ -180,7 +196,17 @@ function CreatingPortal({}: PropsCreatingPortal) {
             <div>  <FormattedMessage id={`Modal.CreatingPortal_Tags`} /></div>
 
             <div className={`${styles['list-tag']}`} > 
-                {tags.map((tag)=><div>{tag}</div>)}
+                {tags.map((tag, index)=>
+                    <div
+                        key={`tag-${index}`}
+                    >
+                        <div> 
+                            {tag}
+                        </div>
+                        <div
+                            onClick={()=>onClick_DeleteTag(tag)}
+                        > <IconX className={`${styles['icon-x']}`} /> </div>
+                    </div>)}
             </div>
 
             <div className={`${styles['container__input-tag-current']}`} >
@@ -190,7 +216,9 @@ function CreatingPortal({}: PropsCreatingPortal) {
                     value={inputTagCurrent.value}
                     onChange={inputTagCurrent.onChange} 
                 />
-                <div> choose or create </div>
+                <button
+                    onClick={()=>onClick_AddTagCurrent()}
+                > Add </button>
             </div>
 
         </div>
