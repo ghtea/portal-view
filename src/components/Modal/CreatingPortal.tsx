@@ -16,7 +16,7 @@ import useInput from 'tools/hooks/useInput';
 import IconX from 'svgs/basic/IconX';
 
 import styles from './CreatingPortal.module.scss';
-import stylesModalA from 'components/Modal/Template/ModalA.module.scss';
+import stylesModal from 'components/Modal.module.scss';
 
 
 type PropsCreatingPortal = {};
@@ -107,136 +107,150 @@ function CreatingPortal({}: PropsCreatingPortal) {
   */
   
   return (
-    <>
-    <div 
-        className={`${stylesModalA['background-shadow']}`} 
-        onClick={()=>onClick_HideModal()}
-    />
-    
-        <div className={`${styles['modal']} ${stylesModalA['modal']}`} >
+    <div className={`${styles['root']} ${stylesModal['root']}`} >
 
-        <div className={`${stylesModalA['header']}`} >
-            <div>  <FormattedMessage id={`Modal.CreatingPortal_Title`} /> </div>
-            <div
-                onClick={()=>onClick_HideModal()}
-            > 
-                <IconX className={`${stylesModalA['icon-x']}`} />
-            </div>
-        </div>
-      
-      <div className={`${stylesModalA['content']}`} >
-        
-        <div className={`${styles['content__section']}`} >
-          <div> <FormattedMessage id={`Modal.CreatingPortal_Name`} /> </div>
-          <div className={`${styles['input-name']}`} >
-                <input 
-                    type='text'
-                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Name'})}
-                    value={inputName.value}
-                    onChange={inputName.onChange} 
-                /> 
-          </div>
-        </div>
+        <div 
+            className={`${stylesModal['outside']}`} 
+            onClick={()=>onClick_HideModal()}
+        />
 
-        <div className={`${styles['content__section']}`} >
-          <div> <FormattedMessage id={`Modal.CreatingPortal_Initials`} /> </div>
-          <div className={`${styles['input-initials']}`} >
-                <input 
-                    type='text'
-                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Initials'})}
-                    value={inputInitials.value}
-                    onChange={inputInitials.onChange} 
-                /> 
-          </div>
-        </div>
-        
-        <div className={`${styles['content__section']}`} >
-          <div>  <FormattedMessage id={`Modal.CreatingPortal_Url`} /></div>
-          <div className={`${styles['input-url']}`} >
-                <input 
-                    type='text'
-                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Url'})}
-                    value={inputUrl.value}
-                    onChange={inputUrl.onChange} 
-                /> 
-          </div>
-        </div>
-
-        <div className={`${styles['content__section']}`} >
-            <div>  <FormattedMessage id={`Modal.CreatingPortal_Hue`} /></div>
-
-            <div className={`${stylesModalA['group-option']}`} > 
-                <div className={`${styles['button-option']} active----${hueOption === 'random'}`}
-                    onClick={()=>setHueOption('random')}
-                > random
-                </div>
-                <div className={`${styles['button-option']} active----${hueOption === 'choose'}`}
-                    onClick={()=>setHueOption('choose')}
-                > choose
-                </div>
-                <div className={`${styles['button-option']} active----${hueOption === 'grey'}`}
-                    onClick={()=>setHueOption('grey')}
-                > grey
+        <div 
+            className={`${stylesModal['modal']}`} 
+        >
+            <div className={`${stylesModal['header']}`} >
+                <div>  <FormattedMessage id={`Modal.CreatingPortal_Title`} /> </div>
+                <div
+                    onClick={()=>onClick_HideModal()}
+                > 
+                    <IconX className={`${stylesModal['icon-x']}`} />
                 </div>
             </div>
-            {hueOption === 'choose' &&
-                <div className={`${styles['container__input-hue']}`} >
-                    <input   
-                        type='range'
-                        value={inputHueNumber.value}
-                        min="0" max="360"  step="10"
-                        onChange={inputHueNumber.onChange} 
-                    />
+        
+            <div className={`${stylesModal['content']}`} >
+                
+                <div className={`${stylesModal['content__section']}`} >
+                    <div> <FormattedMessage id={`Modal.CreatingPortal_Name`} /> </div>
+                    <div className={`${styles['input-name']}`} >
+                            <input 
+                                type='text'
+                                placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Name'})}
+                                value={inputName.value}
+                                onChange={inputName.onChange} 
+                            /> 
+                    </div>
                 </div>
-            }   
 
-        </div>
+                <div className={`${stylesModal['content__section']}`} >
+                    <div> <FormattedMessage id={`Modal.CreatingPortal_Initials`} /> </div>
+                    <div className={`${styles['input-initials']}`} >
+                            <input 
+                                type='text'
+                                placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Initials'})}
+                                value={inputInitials.value}
+                                onChange={inputInitials.onChange} 
+                            /> 
+                    </div>
+                </div>
+                
+                <div className={`${stylesModal['content__section']}`} >
+                    <div>  <FormattedMessage id={`Modal.CreatingPortal_Url`} /></div>
+                    <div className={`${styles['container__input-url']}`} >
+                            <input 
+                                type='text'
+                                placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Url'})}
+                                value={inputUrl.value}
+                                onChange={inputUrl.onChange} 
+                            /> 
+                    </div>
+                </div>
 
-        <div className={`${styles['content__section']}`} >
-            <div>  <FormattedMessage id={`Modal.CreatingPortal_Tags`} /></div>
+                <div className={`${stylesModal['content__section']}`} >
+                    <div>  <FormattedMessage id={`Modal.CreatingPortal_Life`} /></div>
+                    <div className={`${styles['container__input-life']}`} >
+                        <input   
+                            type='range'
+                            value={inputLife.value}
+                            min="1" max="30"  step="1"
+                            onChange={inputLife.onChange} 
+                        />
+                        <div> {`${inputLife.value} days`} </div>
+                    </div>
+                </div>
 
-            <div className={`${styles['list-tag']}`} > 
-                {tags.map((tag, index)=>
-                    <div
-                        key={`tag-${index}`}
-                    >
-                        <div> 
-                            {tag}
+                <div className={`${stylesModal['content__section']}`} >
+                    <div>  <FormattedMessage id={`Modal.CreatingPortal_Hue`} /></div>
+
+                    <div className={`${stylesModal['group-option']}`} > 
+                        <div className={`${styles['button-option']} active----${hueOption === 'random'}`}
+                            onClick={()=>setHueOption('random')}
+                        > random
                         </div>
-                        <div
-                            onClick={()=>onClick_DeleteTag(tag)}
-                        > <IconX className={`${styles['icon-x']}`} /> </div>
-                    </div>)}
+                        <div className={`${styles['button-option']} active----${hueOption === 'choose'}`}
+                            onClick={()=>setHueOption('choose')}
+                        > choose
+                        </div>
+                        <div className={`${styles['button-option']} active----${hueOption === 'grey'}`}
+                            onClick={()=>setHueOption('grey')}
+                        > grey
+                        </div>
+                    </div>
+                    {hueOption === 'choose' &&
+                        <div className={`${styles['container__input-hue']}`} >
+                            <input   
+                                type='range'
+                                value={inputHueNumber.value}
+                                min="0" max="360"  step="10"
+                                onChange={inputHueNumber.onChange} 
+                            />
+                        </div>
+                    }   
+
+                </div>
+
+                <div className={`${stylesModal['content__section']}`} >
+                    <div>  <FormattedMessage id={`Modal.CreatingPortal_Tags`} /></div>
+
+                    <div className={`${styles['list-tag']}`} > 
+                        {tags.map((tag, index)=>
+                            <div
+                                key={`tag-${index}`}
+                            >
+                                <div> 
+                                    {tag}
+                                </div>
+                                <div
+                                    onClick={()=>onClick_DeleteTag(tag)}
+                                > <IconX className={`${styles['icon-x']}`} /> </div>
+                            </div>)}
+                    </div>
+
+                    <div className={`${styles['container__input-tag-current']}`} >
+                        <input 
+                            type='text'
+                            placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Tags'})}
+                            value={inputTagCurrent.value}
+                            onChange={inputTagCurrent.onChange} 
+                        />
+                        <button
+                            onClick={()=>onClick_AddTagCurrent()}
+                        > Add </button>
+                    </div>
+
+                </div>
+                
+
+                <div className={`${stylesModal['content__section']}`} >
+                    <button
+                        className={`${stylesModal['button-main']}`}
+                        onClick={()=>onClick_CreatePortal()}
+                    > <FormattedMessage id={`Modal.CreatingPortal_Create`} /> </button>
+                </div>
+
+
             </div>
-
-            <div className={`${styles['container__input-tag-current']}`} >
-                <input 
-                    type='text'
-                    placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Tags'})}
-                    value={inputTagCurrent.value}
-                    onChange={inputTagCurrent.onChange} 
-                />
-                <button
-                    onClick={()=>onClick_AddTagCurrent()}
-                > Add </button>
-            </div>
-
         </div>
-        
-
-        <div className={`${styles['content__section']}`} >
-            <button
-                className={`${stylesModalA['button-main']}`}
-                onClick={()=>onClick_CreatePortal()}
-            > <FormattedMessage id={`Modal.CreatingPortal_Create`} /> </button>
-        </div>
-
-
-      </div>
-        
 
     </div>
-    </>
   );
 }
 

@@ -92,7 +92,7 @@ function Portal({
       
     <div className={`${styles['root']} open----${open} hue----${hue}`} >
         <div 
-            className={`${styles['blank']}`} 
+            className={`${styles['outside']}`} 
             onClick={()=>onClick_Close()}
         />
         <div 

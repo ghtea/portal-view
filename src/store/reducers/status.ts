@@ -46,7 +46,8 @@ const stateInitial = {
 
     modal: {
       setting: false,
-      creatingPortal: false
+      creatingPortal: false,
+      editingPortal: false
     }
   }
   

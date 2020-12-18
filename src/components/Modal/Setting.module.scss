@@ -1,34 +1,8 @@
 @import 'styles/every.scss';
 
-.modal {
-
-}
-
-.content__section {
-
+.root {
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    width: auto;
-    height: auto;
-
-    &:first-child{
-        margin-top: 5px;
-    }
-    &:nth-child(n+2){
-        margin-top: 8px;
-    }
-  
-    & > div:nth-child(1){ /* title */
-        justify-content: center;
-
-        width: auto;
-        height: 24px;
-        font-size: 0.9rem;
-    }
-  
 }
+
 
 

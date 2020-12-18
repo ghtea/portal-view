@@ -13,7 +13,7 @@ import {pascalToCamel} from 'tools/vanilla/convertName';
 import IconX from 'svgs/basic/IconX';
 
 import styles from './Setting.module.scss';
-import stylesModalA from 'components/Modal/Template/ModalA.module.scss';
+import stylesModal from 'components/Modal.module.scss';
 
 
 type PropsSetting = {};
@@ -61,63 +61,67 @@ function Setting({}: PropsSetting) {
   
   
   return (
-    <>
-
-    <div 
-        className={`${stylesModalA['background-shadow']}`} 
-        onClick={()=>onClick_HideModal()}
-    />
-
-    <div className={`${styles['modal']} ${stylesModalA['modal']}`} >
-
-        <div className={`${stylesModalA['header']}`} >
-            <div>  <FormattedMessage id={`Modal.Setting_Title`} /> </div>
-            <div
-                onClick={()=>onClick_HideModal()}
-            > 
-                <IconX className={`${stylesModalA['icon-x']}`} />
-            </div>
-        </div>
     
-      
-      <div className={`${stylesModalA['content']}`} >
+    <div className={`${styles['root']} ${stylesModal['root']}`} >
         
-        <div className={`${styles['content__section']}`} >
-          <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
-          <div className={`${stylesModalA['group-option']}`}>
-            <div className={`active----${optionThemeCurrent === 'auto'}`}
-                onClick={()=>onClick_ChangeOptionTheme('auto')}
-            > auto
+        <div 
+            className={`${stylesModal['outside']}`} 
+            onClick={()=>onClick_HideModal()}
+        />
+
+        <div 
+            className={`${stylesModal['modal']}`} 
+        >
+            
+            <div className={`${stylesModal['header']}`} >
+                <div>  <FormattedMessage id={`Modal.Setting_Title`} /> </div>
+                <div
+                    onClick={()=>onClick_HideModal()}
+                > 
+                    <IconX className={`${stylesModal['icon-x']}`} />
+                </div>
             </div>
-            <div className={`active----${optionThemeCurrent === 'always-light'}`}
-                onClick={()=>onClick_ChangeOptionTheme('always-light')}
-            > light
+        
+        
+            <div className={`${stylesModal['content']}`} >
+                
+                <div className={`${stylesModal['content__section']}`} >
+                <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
+                <div className={`${stylesModal['group-option']}`}>
+                    <div className={`active----${optionThemeCurrent === 'auto'}`}
+                        onClick={()=>onClick_ChangeOptionTheme('auto')}
+                    > auto
+                    </div>
+                    <div className={`active----${optionThemeCurrent === 'always-light'}`}
+                        onClick={()=>onClick_ChangeOptionTheme('always-light')}
+                    > light
+                    </div>
+                    <div className={`active----${optionThemeCurrent === 'always-dark'}`}
+                        onClick={()=>onClick_ChangeOptionTheme('always-dark')}
+                    > dark
+                    </div>
+                </div>
+                </div>
+                
+                <div className={`${stylesModal['content__section']}`} >
+                <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
+                <div className={`${stylesModal['group-option']}`}>
+                    <div className={`active----${languageCurrent === 'en'}`}
+                    onClick={()=>onClick_ChangeLanguage('en')}
+                    > English
+                    </div>
+                    <div className={`active----${languageCurrent === 'ko'}`}
+                    onClick={()=>onClick_ChangeLanguage('ko')}
+                    > 한국어
+                    </div>
+                </div>
             </div>
-            <div className={`active----${optionThemeCurrent === 'always-dark'}`}
-                onClick={()=>onClick_ChangeOptionTheme('always-dark')}
-            > dark
-            </div>
-          </div>
+                
         </div>
         
-        <div className={`${styles['content__section']}`} >
-          <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
-          <div className={`${stylesModalA['group-option']}`}>
-            <div className={`active----${languageCurrent === 'en'}`}
-              onClick={()=>onClick_ChangeLanguage('en')}
-            > English
-            </div>
-            <div className={`active----${languageCurrent === 'ko'}`}
-              onClick={()=>onClick_ChangeLanguage('ko')}
-            > 한국어
-            </div>
-          </div>
         </div>
-        
-      </div>
-        
     </div>
-    </>
+    
   );
 }
 

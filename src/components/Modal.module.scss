@@ -2,20 +2,23 @@
 
 
 
-.background-shadow {
+.root {
+    display: flex;
+    z-index: 600;
+    //overflow: auto;
+}
+
+
+
+.outside {
+    @include color-each-theme(background-color, shadow__basic__normal);
 
     width: 100vw;
     height: 100vh;
-
-    @include color-each-theme(background-color, shadow__basic__normal);
-
     position: fixed;
-    top: 0px;
-    left: 0px;
-    
-    z-index: 599;
+    top: 0; bottom: 0; left: 0; right: 0; // without it, automatically some top/bottom/left/right values are added, idk
+    // z-index: 599;
 } 
-
 
 
 .modal {
@@ -33,24 +36,28 @@
     border-radius: 12px;
 
     position: fixed;
-    z-index: 600;
+    
     top: 5vh;
     left: 50%;
     transform: translateX(-50%);
 
     overflow-y: auto;
 
-    & > *:first-child{  // header
+    & > .header{  // header
         margin-top: 8px;
     }
     
     // overflow 에서 스크롤 모드일때 아래 여백이 보이지 않는데 해결방법이 지저분해서 우선 나둠
     // https://d0gf00t.tistory.com/28
-    & > *:last-child{   // content
+    & > .content {   // content
         margin-bottom: 8px;
     }  
     
 }
+
+
+
+
 
 
 .header {
@@ -108,6 +115,35 @@
         margin-top: 5px;
     }
 
+    
+    .content__section {
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        width: 100%;
+        height: auto;
+
+        &:first-child{
+            margin-top: 5px;
+        }
+        &:nth-child(n+2){
+            margin-top: 8px;
+        }
+    
+        & > div:nth-child(1){ /* title */
+            justify-content: center;
+
+            width: auto;
+            height: 24px;
+            font-size: 0.9rem;
+        }
+    
+    }
+
+
     .button-main {
         width: 100%;
         height: 36px;
@@ -117,8 +153,6 @@
         margin-top: 12px;
     }
 
-
-    
     .group-option { /* options */
         
         display: flex;
