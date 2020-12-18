@@ -64,7 +64,13 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
         else if (action.payload.url === "" ) {
             console.log('type url');
         }
-        
+
+        else if (action.payload.initials.length > 3) {
+            yield put( actionsNotification.return__ADD_DELETE_BANNER({
+                codeSituation: 'Portal_InitialsTooLong'
+            }) );
+        }
+
         else {
 
             // initials

@@ -33,7 +33,8 @@
     
     "Notification.Test1": "Succuessfully tested 1 !",
     "Notification.Test2": "Succuessfully tested 2 !",
-    
+    "Notification.NotLoggedIn": "You should log in first",
+
     "Notification.LogIn_UnknownError": "An unknown error has occurred",
     "Notification.LogIn_NoEmail": "Please enter email address",
     "Notification.LogIn_NoPassword": "Please enter password",
@@ -47,6 +48,7 @@
     "Notification.SignUp_DuplicateEmail": "That email is already existing",
     "Notification.SignUp_Succeeded": "Successfully signed up!",
     
+    "Notification.Portal_InitialsTooLong": "Initials must be between 1 and 3 letters",
     "Notification.CreatePortal_Succeeded": "Successfully created portal!",
     "Notification.CreatePortal_UnknownError": "An unknown error has occurred",
     "Notification.GetListPortal_UnknownError": "An unknown error has occurred",

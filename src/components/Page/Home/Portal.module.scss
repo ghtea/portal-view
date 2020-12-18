@@ -2,20 +2,24 @@
 
 
 .root {
+    display: flex;
+    width: auto;
+    height: aut0;
+}
+
+$height__face: 60px;
+$border-radius__face: 12px;
+
+
+.portal {
 
     width: 180px;
-    $height__face: 60px;
     height: $height__face;
     position: relative;
 
     margin: 20px 20px 0px 0px;
     // z-index: 20;   // should not set    https://stackoverflow.com/questions/32677697/stacking-with-z-index-child-element-on-top-over-parent-sibling
 
-    $border-radius__face: 12px;
-
-    .blank {
-        display: none;
-    }
     .face {
         display: flex;
         flex-flow: row nowrap;
@@ -69,9 +73,20 @@
             border-radius: $border-radius__face * 0.7 ;
             //border-radius: 0 $border-radius__face $border-radius__face 0;
 
-            & > div{
-                font-size: 1.1rem;
+            & > *{
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+
+                font-size: 1rem;
                 font-weight: bold;
+                
+                width: auto;
+                height: calc(100% - 8px);
+                margin: 0px 6px 0px 6px;
+                
+                overflow-y: auto;
             }
 
             & > *:nth-child(1) {
@@ -84,133 +99,136 @@
         
     }
 
-
     .body {
         display: none;
     }
+}
 
 
+.root:global(.open----true) {
 
-    &:global(.open----true) {
+    .outside {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0; bottom: 0; left: 0; right: 0; // without it, automatically some top/bottom/left/right values are added, idk
+        // z-index: 599;
+        background: transparent;
+    }
 
-        .outside {
+    .face {
+        z-index: 50;
+
+        .left {
+            & > *:nth-child(1){
+                display: none;
+            }
+            & > *:nth-child(2){
+                display: flex;
+                .icon-link-external {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+        .right {
+            & > *:nth-child(1){
+                display: none;
+            }
+            & > *:nth-child(2){
+                display: flex;
+            }
+        }
+    }
+
+    @keyframes openBody {
+        from { transform: scale(0.7); }
+        to { transform: scale(1); }
+    }
+    
+    .body {
+        $margin-top__child: 10px;
+        $height__name: 50px;
+
+        transform-origin: 50% #{$height__name};
+        animation: openBody 0.2s ease-out;
+
+        display: flex;
+        width: 110%;
+        height: 250px;
+
+        border-radius: $border-radius__face;
+        position: absolute;
+        z-index: 30;
+
+        
+
+        top: - $height__name - $margin-top__child;
+
+        & > *:nth-child(n+2){
+            margin-top: $margin-top__child;
+        }
+
+        .name {
+            width: auto;
+            height: $height__name;
+            
             display: flex;
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            background: red;
-            top: 0; bottom: 0; left: 0; right: 0; // without it, automatically some top/bottom/left/right values are added, idk
-        }
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
 
-        .face {
-            z-index: 50;
+            font-size: 1.1rem;
+            font-weight: bold;
 
-            .left {
-                & > *:nth-child(1){
-                    display: none;
-                }
-                & > *:nth-child(2){
-                    display: flex;
-                    .icon-link-external {
-                        width: 30px;
-                        height: 30px;
-                    }
-                }
-            }
-            .right {
-                & > *:nth-child(1){
-                    display: none;
-                }
-                & > *:nth-child(2){
-                    display: flex;
-                }
-            }
-        }
-
-        @keyframes openBody {
-            from { transform: scale(0.7); }
-            to { transform: scale(1); }
+            padding: 0px 6px 0px 6px;
+            overflow-y: auto;
         }
         
-        .body {
-            $margin-top__child: 10px;
-            $height__name: 50px;
+        .empty {
+            height: $height__face;
+        }
 
-            transform-origin: 50% #{$height__name};
-            animation: openBody 0.2s ease-out;
+        .actions {
+
+            height: 32px;
+            border-radius: 8px;
 
             display: flex;
-            width: 110%;
-            height: 250px;
-
-            border-radius: $border-radius__face;
-            position: absolute;
-            z-index: 30;
-
-            
-
-            top: - $height__name - $margin-top__child;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
 
             & > *:nth-child(n+2){
-                margin-top: $margin-top__child;
+                margin-left: 7px;
+            }
+            & > * {
+                width: 50px;
+                height: 100%;
             }
 
-            .name {
-                height: $height__name;
-                
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: center;
-                align-items: center;
-
-                font-size: 1.1rem;
-                font-weight: bold;
-            }
-            
-            .empty {
-                height: $height__face;
+            .icon-move {
+                width: 24px;
+                height: 24px;
             }
 
-            .actions {
-
-                height: 32px;
-                border-radius: 8px;
-
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: center;
-                align-items: center;
-
-                & > *:nth-child(n+2){
-                    margin-left: 7px;
-                }
-                & > * {
-                    width: 50px;
-                    height: 100%;
-                }
-
-                .icon-move {
-                    width: 24px;
-                    height: 24px;
-                }
-
-                .icon-edit {
-                    width: 23px;
-                    height: 23px;
-                }
+            .icon-edit {
+                width: 23px;
+                height: 23px;
             }
-            
-            .others {
-                margin-top: 10px;
-                border-radius: 8px;
-            }
-
         }
-    
         
+        .others {
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
     }
     
 }
+    
+
 
 
 

@@ -48,16 +48,18 @@ function Banner({
     
     <div className={`${styles['root']} ${styles[banner['kindSituation']]}`} >
 
-      <div>
-        {banner['kindSituation'] === 'success' &&  <IconSuccess className={`${styles['icon-success']}`}  /> }
-        {banner['kindSituation'] === 'hint' &&  <IconHint className={`${styles['icon-hint']}`}  /> }
-        {banner['kindSituation'] === 'error' &&  <IconError className={`${styles['icon-error']}`}  /> }
-        {banner['kindSituation'] === 'warning' &&  <IconWarning className={`${styles['icon-warning']}`}  /> }
-      </div>
-        
-      <div> <FormattedMessage id={banner.idMessage} /> </div>
+        <div className={`${styles['left']}`}>
+            {banner['kindSituation'] === 'success' &&  <IconSuccess className={`${styles['icon-success']}`}  /> }
+            {banner['kindSituation'] === 'hint' &&  <IconHint className={`${styles['icon-hint']}`}  /> }
+            {banner['kindSituation'] === 'error' &&  <IconError className={`${styles['icon-error']}`}  /> }
+            {banner['kindSituation'] === 'warning' &&  <IconWarning className={`${styles['icon-warning']}`}  /> }
+        </div>
+            
+        <div className={`${styles['middle']}`}>
+            <div><FormattedMessage id={banner.idMessage} /> </div>
+        </div>
       
-        <div> 
+        <div className={`${styles['right']}`}>
             <button className={`${styles['button-delete']}`} 
                 onClick={()=>onClick_DeleteBanner(banner['id'])}
             >

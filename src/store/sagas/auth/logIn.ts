@@ -121,17 +121,16 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 }
             }
             else {   
+                /*
                 alert(JSON.stringify(error, null,4));
                 
                 alert(JSON.stringify(error.response,null,4));
                 alert(JSON.stringify(error.request,null,4));
                 alert(JSON.stringify(error.config,null,4));
                 alert(JSON.stringify(error.message,null,4));   
-
+                */
                 const codeSituation = error.response.data.codeSituation;
                 
-                alert(codeSituation);
-
                 console.log(codeSituation);
 
                 yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({

@@ -2,8 +2,12 @@
 import {CatalogSituation} from 'language/catalogSituation';
 
 
-const catalogSituationAuth: CatalogSituation = {
+const catalogSituationPortal: CatalogSituation = {
     
+    'Portal_InitialsTooLong': {
+       kind: 'error'
+    },
+
     'CreatePortal_UnknownError': {
         kind: 'error'
     },
@@ -18,4 +22,4 @@ const catalogSituationAuth: CatalogSituation = {
     
 }
 
-export default catalogSituationAuth;
+export default catalogSituationPortal;

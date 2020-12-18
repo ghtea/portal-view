@@ -6,6 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
+import * as actionsNotification from 'store/actions/notification';
 
 import styles from './Nav.module.scss';
 
@@ -35,13 +36,13 @@ function Nav({}: PropsNav) {
             dispatch(actionsStatus.return__REPLACE({
                 listKey:['showing', 'nav'],
                 replacement: false
-            }))
+            }));
         }
         else {
             dispatch(actionsStatus.return__REPLACE({
                 listKey:['showing', 'nav'],
                 replacement: true
-            }))
+            }));
         }
     }, [location]);
 
@@ -55,11 +56,21 @@ function Nav({}: PropsNav) {
     
     const onClick_ShowModal = useCallback(
         (idModal:string) => {
-        dispatch(actionsStatus.return__REPLACE({ 
-            listKey: ['showing', 'modal', idModal],
-            replacement: true
-        }));
-        },[]
+
+        if (idModal === 'creatingPortal' && !readyUser){
+            dispatch(actionsNotification.return__ADD_DELETE_BANNER({
+                codeSituation: 'NotLoggedIn'
+            }) );
+            history.push('/log-in');
+        }
+        else {
+            dispatch(actionsStatus.return__REPLACE({ 
+                listKey: ['showing', 'modal', idModal],
+                replacement: true
+            }));
+        }
+        
+        },[history, readyUser]
     );
   
   

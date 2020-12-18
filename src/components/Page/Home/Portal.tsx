@@ -91,64 +91,70 @@ function Portal({
   return (
       
     <div className={`${styles['root']} open----${open} hue----${hue}`} >
+
         <div 
             className={`${styles['outside']}`} 
             onClick={()=>onClick_Close()}
         />
-        <div 
-            className={`${styles['face']}`}
-        >   
+
+        <div className={`${styles['portal']}`} >
+
             <div 
-                className={`${styles['left']}`}
-                onClick={()=>onClick_Face('left')}
-            >
-                <div className={`length-initials----${initials.length}`} >   {initials}   </div>
-                <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
-            </div>
- 
-            <div 
-                className={`${styles['right']}`}
-                onClick={()=>onClick_Face('right')}
-            >
-                <div className={`${styles['name']}`} > {name} </div> 
-                <div> Close </div>
-            </div>
-
-        </div>
-        
-        
-        <div className={`${styles['body']}`}>
-
-            <div className={`${styles['name']}`} >   
-                <div> {name}</div>
-            </div>
-
-            <div className={`${styles['empty']}`} >   
-            </div>
-
-            <div className={`${styles['actions']}`}>
-                <button 
-                    
-                >   <IconMove className={`${styles['icon-move']}`} kind='light' />
-                </button>
-                
-                <button 
-                    
-                >   <IconEdit className={`${styles['icon-edit']}`} kind='light' />
-                </button>
-            </div>
-
-            <div className={`${styles['others']}`}>
-                <div className={`${styles['list-tag']}`}>
-                    {tags.map((tag, index)=>(
-                        <div>
-                            {tag}
-                        </div>
-                    ))}
+                className={`${styles['face']}`}
+            >   
+                <div 
+                    className={`${styles['left']}`}
+                    onClick={()=>onClick_Face('left')}
+                >
+                    <div className={`length-initials----${initials.length}`} >   {initials}   </div>
+                    <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
                 </div>
-                <div> {life}</div>
-                <div> last visit </div>
-                <div> created </div>
+    
+                <div 
+                    className={`${styles['right']}`}
+                    onClick={()=>onClick_Face('right')}
+                >
+                    <div className={`${styles['name']}`} > {name} </div> 
+                    <div> Close </div>
+                </div>
+
+            </div>
+            
+            
+            <div className={`${styles['body']}`}>
+
+                <div className={`${styles['name']}`} >   
+                    <div> {name}</div>
+                </div>
+
+                <div className={`${styles['empty']}`} >   
+                </div>
+
+                <div className={`${styles['actions']}`}>
+                    <button 
+                        
+                    >   <IconMove className={`${styles['icon-move']}`} kind='light' />
+                    </button>
+                    
+                    <button 
+                        
+                    >   <IconEdit className={`${styles['icon-edit']}`} kind='light' />
+                    </button>
+                </div>
+
+                <div className={`${styles['others']}`}>
+                    <div className={`${styles['list-tag']}`}>
+                        {tags.map((tag, index)=>(
+                            <div>
+                                {tag}
+                            </div>
+                        ))}
+                    </div>
+                    <div> {life}</div>
+                    <div> last visit </div>
+                    <div> created </div>
+                </div>
+
             </div>
 
         </div>

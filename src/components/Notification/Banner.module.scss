@@ -13,6 +13,8 @@
     }
 }
 
+$width__side: 50px;
+
 .root {
 
     display: flex;
@@ -91,8 +93,8 @@
     }
 
 
-    & > div:nth-child(1){
-        width: 50px;
+    .left {
+        width: $width__side;
         
         border-right-width: 2px;
         border-right-style: solid;
@@ -106,8 +108,8 @@
   
   
   
-    & > div:nth-child(2){
-        width: calc(100% - 100px);
+    .middle{
+        width: calc(100% - #{$width__side} - #{$width__side} - 20px);
     }
     &:nth-child(n+2) { 
         & > div:nth-child(2){
@@ -115,8 +117,8 @@
         }
     }
     
-    & > div:nth-child(3){
-        width: 50px;
+    .right{
+        width: $width__side;
         border-left-width: 2px;
         border-left-style: solid;
         border-left-color: inherit;

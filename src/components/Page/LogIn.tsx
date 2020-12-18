@@ -77,11 +77,13 @@ function LogIn() {
 
   const onKeyPress_LogIn = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === "Enter") {
-        onClick_LogIn();
-      }
+        if (event.key === "Enter") {
+            console.log('hero!')
+            console.log(inputEmail.value)
+            onClick_LogIn();
+        }
     },
-    []
+    [inputEmail, inputPassword]
   );
 
   
