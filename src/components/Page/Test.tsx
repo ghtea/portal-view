@@ -22,13 +22,21 @@ function Test({}: PropsTest) {
     const dispatch = useDispatch();     
 
 
-  const onClick_AddTestingBanner = useCallback(
-    (codeSituation:string) => {
-      dispatch(actionsNotification.return__ADD_DELETE_BANNER({
-        codeSituation: codeSituation
-      }) );
-    }, []
-  );
+    const onClick_AddTestingBanner = useCallback(
+        (codeSituation:string) => {
+        dispatch(actionsNotification.return__ADD_DELETE_BANNER({
+            codeSituation: codeSituation
+        }) );
+        }, []
+    );
+
+    useEffect(()=>{
+            
+        const res = axios.get('https://gorest.co.in/public-api/posts');
+        alert(res);
+        
+    },[]);
+
 
   const onClick_TestAxios = useCallback(
     async () => {
