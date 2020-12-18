@@ -115,12 +115,12 @@
         justify-content: flex-start;
         align-items: center;
     
-        width: auto;
-        height: 32px;
+        width: auto !important;
+        height: 32px !important;
 
         @include color-each-theme(background-color, basic__1);
         
-        border-radius: 5px;
+        border-radius: 5px !important;
     
         padding: 0px 3px 0px 3px; /* top right bottom left */
     

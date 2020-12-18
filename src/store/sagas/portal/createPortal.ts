@@ -1,4 +1,4 @@
-import { call, select, put } from "redux-saga/effects";
+import { call, select, put, getContext } from "redux-saga/effects";
 import axios from "axios";
 import queryString from 'query-string';
 import { v4 as uuidv4 } from 'uuid';
@@ -47,6 +47,7 @@ const requestCreatePortal = (bodyRequest: BodyRequest) => {
 function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
+    const history = yield getContext('history');
     
     try {
 
@@ -114,9 +115,20 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 if (codeSituation === 'CreatePortal_Succeeded') {
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
                         codeSituation: 'CreatePortal_Succeeded'
-                    }))
-                }
+                    }));
 
+                    yield put(actionsStatus.return__REPLACE({ 
+                        listKey: ['showing', 'modal', 'creatingPortal'], 
+                        replacement: false
+                    }));
+
+                    history.push('/');
+                    
+                    yield put(actionsPortal.return__GET_LIST_PORTAL({
+                        idUser: idUser
+                    }));
+                    // window.location.reload();
+                }
             }
             else {   
                 const codeSituation = error.response.data.codeSituation;

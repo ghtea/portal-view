@@ -32,7 +32,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
         dispatch(actionsStatus.return__REPLACE({ 
             listKey: ['showing', 'modal', pascalToCamel('CreatingPortal')],
             replacement: false
-        }))
+        }));
         },[]
     );
 
@@ -163,15 +163,16 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 > grey
                 </div>
             </div>
-
-            <div className={`${styles['input-hue']}`} >
-                <input   
-                    type='range'
-                    value={inputHueNumber.value}
-                    min="0" max="360"  step="10"
-                    onChange={inputHueNumber.onChange} 
-                />
-            </div>
+            {hueOption === 'choose' &&
+                <div className={`${styles['container__input-hue']}`} >
+                    <input   
+                        type='range'
+                        value={inputHueNumber.value}
+                        min="0" max="360"  step="10"
+                        onChange={inputHueNumber.onChange} 
+                    />
+                </div>
+            }   
 
         </div>
 
@@ -182,7 +183,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 {tags.map((tag)=><div>{tag}</div>)}
             </div>
 
-            <div className={`${styles['input-tag-current']}`} >
+            <div className={`${styles['container__input-tag-current']}`} >
                 <input 
                     type='text'
                     placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Tags'})}

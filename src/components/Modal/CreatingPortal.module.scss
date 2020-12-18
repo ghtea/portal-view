@@ -45,8 +45,139 @@
 
 }
 
+.container__input-hue {
 
-.input-tag-current {
+    $height__board: 24px;
+    $border-radius__board: 4px;
+
+    $width__pointer: 16px;
+    $border-width__pointer: 3px;
+
+    $background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%) !important;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 40px;
+  
+    position: relative;
+
+    input[type=range] {
+        -webkit-appearance: none;
+        border: none;
+        
+        width: calc(100% - #{$border-width__pointer * 2});
+        height: $height__board;
+        
+        background: transparent;
+    }
+    input[type=range]:focus {
+        outline: none;
+    }
+
+
+    /* chrome */
+    input[type=range]::-webkit-slider-runnable-track {
+        
+        width: calc(100% - #{$border-width__pointer * 2});
+        height: $height__board;
+        
+        border-radius: $border-radius__board;
+        cursor: pointer;
+        
+        background: $background;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        /*margin-top: -14px;*/
+        
+        width: $width__pointer;
+        height: $height__board + $border-width__pointer * 2;
+        
+        box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
+        background-color: transparent;
+        
+        border: $border-width__pointer solid #ffffff;
+        border-radius: 3px;
+        box-sizing: border-box;
+        
+        margin-top: -$border-width__pointer;   /* important! */
+        
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        /*background: #367ebd;*/
+    }
+
+
+    /* Firefox */
+    input[type=range]::-moz-range-track {
+
+        width: calc(100% - #{$border-width__pointer * 2});
+        height: $height__board;
+        border-radius: $border-radius__board;
+        
+        cursor: pointer;
+        
+        background: $background;
+    }
+    input[type=range]::-moz-range-thumb {
+        
+        width: $width__pointer;
+        height: $height__board + $border-width__pointer * 2;
+        
+        box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
+        background-color: transparent;
+        
+        border: $border-width__pointer solid #ffffff;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+
+    /* Edge */
+    input[type=range]::-ms-track {
+        width: calc(100% - #{$border-width__pointer * 2});
+        height: $height__board;
+        border-radius: $border-radius__board;
+        cursor: pointer;
+        
+        background: $background;
+    }
+    input[type=range]::-ms-fill-lower {
+        background: transparent;
+        border-color: transparent;
+    }
+    input[type=range]::-ms-fill-upper {
+        background: transparent;
+        border-color: transparent;
+    }
+    
+    input[type=range]:focus::-ms-fill-lower {
+        /*background: #3071a9; */
+    }
+    input[type=range]:focus::-ms-fill-upper {
+        /*background: #367ebd; */
+    }
+    
+    input[type=range]::-ms-thumb {
+        
+        width: $width__pointer;
+        height: $height__board + $border-width__pointer * 2;
+        
+        box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
+        background-color: transparent;
+        
+        border: $border-width__pointer solid #ffffff;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+}
+
+
+.container__input-tag-current {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;

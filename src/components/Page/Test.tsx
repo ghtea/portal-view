@@ -26,7 +26,7 @@ function Test({}: PropsTest) {
     (codeSituation:string) => {
       dispatch(actionsNotification.return__ADD_DELETE_BANNER({
         codeSituation: codeSituation
-      }) )
+      }) );
     }, []
   );
 

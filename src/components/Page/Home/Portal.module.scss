@@ -4,15 +4,18 @@
 .root {
 
     width: 180px;
-    $height-face: 60px;
-    height: $height-face;
+    $height__face: 60px;
+    height: $height__face;
     position: relative;
 
     margin: 20px 20px 0px 0px;
     // z-index: 20;   // should not set    https://stackoverflow.com/questions/32677697/stacking-with-z-index-child-element-on-top-over-parent-sibling
 
-    $border-radius-center: 12px;
+    $border-radius__face: 12px;
 
+    .blank {
+        display: none;
+    }
     .face {
         display: flex;
         flex-flow: row nowrap;
@@ -21,7 +24,7 @@
 
         width: 100%;
         height: 100%;
-        border-radius: $border-radius-center;
+        border-radius: $border-radius__face;
 
         cursor: pointer;  
 
@@ -31,9 +34,9 @@
             justify-content: center;
             align-items: center;
 
-            width: $height-face;
+            width: $height__face;
             height: 100%;
-            border-radius: $border-radius-center;
+            border-radius: $border-radius__face;
             font-weight: 900;
 
             & > *:nth-child(1) {
@@ -55,7 +58,7 @@
         }
 
         .right {
-            width: calc(100% - #{$height-face} - 8px);
+            width: calc(100% - #{$height__face} - 8px);
             height: 80%;
 
             display: flex;
@@ -63,8 +66,8 @@
             justify-content: space-around;
             align-items: center;
 
-            border-radius: $border-radius-center * 0.7 ;
-            //border-radius: 0 $border-radius-center $border-radius-center 0;
+            border-radius: $border-radius__face * 0.7 ;
+            //border-radius: 0 $border-radius__face $border-radius__face 0;
 
             & > div{
                 font-size: 1.1rem;
@@ -90,7 +93,14 @@
 
     &:global(.open----true) {
 
-
+        .blank {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: transparent;
+            top: 0; bottom: 0; left: 0; right: 0; // without it, automatically some top/bottom/left/right values are added, idk
+        }
         .face {
             z-index: 50;
 
@@ -122,30 +132,30 @@
         }
         
         .body {
-            $margin-top-child: 10px;
-            $height-name: 50px;
+            $margin-top__child: 10px;
+            $height__name: 50px;
 
-            transform-origin: 50% #{$height-name};
+            transform-origin: 50% #{$height__name};
             animation: openBody 0.2s ease-out;
 
             display: flex;
             width: 110%;
             height: 280px;
 
-            border-radius: $border-radius-center;
+            border-radius: $border-radius__face;
             position: absolute;
             z-index: 30;
 
             
 
-            top: - $height-name - $margin-top-child;
+            top: - $height__name - $margin-top__child;
 
             & > *:nth-child(n+2){
-                margin-top: $margin-top-child;
+                margin-top: $margin-top__child;
             }
 
             .name {
-                height: $height-name;
+                height: $height__name;
                 
                 display: flex;
                 flex-flow: row nowrap;
@@ -157,7 +167,7 @@
             }
             
             .empty {
-                height: $height-face;
+                height: $height__face;
             }
 
             .actions {

@@ -80,6 +80,7 @@ function Portal({
         },[_id, url, open]
     );
 
+
     const onClick_Close = useCallback(
         () => {
             setOpen(false);
@@ -90,7 +91,10 @@ function Portal({
   return (
       
     <div className={`${styles['root']} open----${open} hue----${hue}`} >
-        
+        <div 
+            className={`${styles['blank']}`} 
+            onClick={()=>onClick_Close()}
+        />
         <div 
             className={`${styles['face']}`}
         >   
