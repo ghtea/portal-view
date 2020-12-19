@@ -33,9 +33,15 @@ function Test({}: PropsTest) {
     useEffect( ()=>{
 
         const root = async () => {
-            const res = await axios.get(`${process.env.REACT_APP_URL_BACK}/portal/`);
-            alert(JSON.stringify(res.data, null,4));
-            alert(JSON.stringify(res, null,4));
+            try {
+                const res = await axios.get(`${process.env.REACT_APP_URL_BACK}/portal/`);
+                alert(JSON.stringify(res.data, null,4));
+                console.log(res.data);
+            }
+            catch (error){
+                alert(JSON.stringify(error, null,4));
+                console.log(error);
+            }
 
             //alert(res.data);
         }
