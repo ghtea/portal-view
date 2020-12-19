@@ -3,6 +3,7 @@ import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
+import * as actionsPortal from 'store/actions/portal';
 
 // import Setting from "./Portal/Setting";
 
@@ -23,7 +24,7 @@ type PropsPortal = {
     initials: string,
     url: string,
     
-    life: number,
+    lifespan: number,
     listBooleanVisited: boolean[],  // [true, false, ...(30days)] 
     dateVisitedLast: Date, 
 
@@ -40,7 +41,7 @@ function Portal({
     initials,
     url,
     
-    life,
+    lifespan,
     listBooleanVisited,  // [true, false, ...(30days)] 
     dateVisitedLast, 
 
@@ -53,6 +54,26 @@ function Portal({
     const idPortalOpen:string = useSelector((state: StateRoot) => state['status']['current']['portal']['open']);
     const [open, setOpen] = useState(false); 
     
+    const hpMax:number = useMemo(()=>{
+        let temp:number = 0;
+        for (var i = 0; i < listBooleanVisited.length; i++){
+            const numberToAdd = (30-i);
+            temp += numberToAdd;
+        }
+        return temp;
+    },[listBooleanVisited]);
+
+    const hpCurrent = useMemo(()=>{
+        let temp:number = 0;
+        for (var i = 0; i < listBooleanVisited.length; i++){
+            if (listBooleanVisited[i] === true){
+                const numberToAdd = (30-i);
+                temp += numberToAdd;
+            }
+        }
+        return temp;
+    },[listBooleanVisited]);
+
     useEffect(()=>{
         if(idPortalOpen !== _id){
             setOpen(false);
@@ -69,8 +90,13 @@ function Portal({
                 }));
             }
             else {
-                if (side === 'left'){
+                if (side === 'left') {
                     window.open(url, "_blank");
+
+                    dispatch(actionsPortal.return__VISIT_PORTAL({
+                        idPortal: _id
+                    }));
+
                     setOpen(false);
                 }
                 else {  /// 'right'
@@ -145,12 +171,14 @@ function Portal({
                 <div className={`${styles['others']}`}>
                     <div className={`${styles['list-tag']}`}>
                         {tags.map((tag, index)=>(
-                            <div>
+                            <div
+                                key={`tag-${index}`}
+                            >
                                 {tag}
                             </div>
                         ))}
                     </div>
-                    <div> {life}</div>
+                    <div> {hpCurrent} / {hpMax}</div>
                     <div> last visit </div>
                     <div> created </div>
                 </div>

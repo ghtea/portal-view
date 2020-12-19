@@ -36,7 +36,8 @@
     "Notification.Test1": "테스트에 성공하였습니다 1 !",
     "Notification.Test2": "테스트에 성공하였습니다 2 !",
     "Notification.NotLoggedIn": "먼저 로그인해야 합니다",
-    
+    "Notification.UnknownError": "알수 없는 에러가 발생했습니다",
+
     "Notification.LogIn_UnknownError": "알수 없는 에러가 발생했습니다",
     "Notification.LogIn_NoEmail": "이메일 주소를 입력해주세요",
     "Notification.LogIn_NoPassword": "비밀번호를 입력해주세요",
@@ -54,6 +55,7 @@
     "Notification.CreatePortal_Succeeded": "성공적으로 포털을 만들었습니다!",
     "Notification.CreatePortal_UnknownError": "알수 없는 에러가 발생했습니다",
     "Notification.GetListPortal_UnknownError": "알수 없는 에러가 발생했습니다",
+    "Notification.VisitPortal_UnknownError": "알수 없는 에러가 발생했습니다",
 
     
     "Page.Home_Welcome": "환영합니다!",

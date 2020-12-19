@@ -34,6 +34,7 @@
     "Notification.Test1": "Succuessfully tested 1 !",
     "Notification.Test2": "Succuessfully tested 2 !",
     "Notification.NotLoggedIn": "You should log in first",
+    "Notification.UnknownError": "An unknown error has occurred",
 
     "Notification.LogIn_UnknownError": "An unknown error has occurred",
     "Notification.LogIn_NoEmail": "Please enter email address",
@@ -52,7 +53,8 @@
     "Notification.CreatePortal_Succeeded": "Successfully created portal!",
     "Notification.CreatePortal_UnknownError": "An unknown error has occurred",
     "Notification.GetListPortal_UnknownError": "An unknown error has occurred",
-    
+    "Notification.VisitPortal_UnknownError": "An unknown error has occurred",
+
 
     "Page.Home_Welcome": "Welcome!",
     

@@ -23,7 +23,8 @@ interface BodyRequest {
     initials: string;
     url: string;
     
-    life: number;
+    lifespan: number;
+    listBooleanVisited: boolean[];
 
     tags: string[];
     hue: string;
@@ -53,8 +54,9 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
         
         if (!readyUser){
-            console.log("should log in first");
-
+            yield put(actionsNotification.return__ADD_DELETE_BANNER({
+                codeSituation: 'NotLoggedIn'
+            }) );
         }
         else if (action.payload.name === "") {
             console.log('type email address');
@@ -90,7 +92,9 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 ]
                 hue = listHue[Math.floor(Math.random() * listHue.length)]; 
             }
-            
+            //let listBooleanVisited:boolean[] = Array(action.payload.lifespan-1).fill(false);
+            //listBooleanVisited.unshift(true);
+            const listBooleanVisited:boolean[] = [true]; 
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user._id); 
 
             const bodyRequest = {
@@ -103,8 +107,9 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 initials: initials,
                 url: action.payload.url,
                 
-                life: action.payload.life,
-
+                lifespan: action.payload.lifespan,
+                listBooleanVisited: listBooleanVisited,
+            
                 tags: action.payload.tags,
                 hue: hue
             };

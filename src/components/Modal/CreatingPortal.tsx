@@ -43,7 +43,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
     const inputInitials = useInput(""); // {value, setValue, onChange};
     const inputUrl = useInput(""); // {value, setValue, onChange};
     
-    const inputLife = useInput(15); // {value, setValue, onChange};
+    const inputLifespan = useInput(15); // {value, setValue, onChange};
     
     const inputTagCurrent = useInput("");
     const [tags, setTags] = useState<string[]>([]);
@@ -81,7 +81,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 initials: inputInitials.value,
                 url: inputUrl.value,
                 
-                life: inputLife.value,
+                lifespan: inputLifespan.value,
 
                 tags: tags,
                 hue: hue
@@ -89,7 +89,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
             }));
         
         },
-        [kind, inputName, inputInitials, inputUrl, inputLife, tags, hueOption, inputHueNumber]
+        [kind, inputName, inputInitials, inputUrl, inputLifespan, tags, hueOption, inputHueNumber]
     );
   
   // ~ template
@@ -169,11 +169,11 @@ function CreatingPortal({}: PropsCreatingPortal) {
                     <div className={`${styles['container__input-life']}`} >
                         <input   
                             type='range'
-                            value={inputLife.value}
+                            value={inputLifespan.value}
                             min="1" max="30"  step="1"
-                            onChange={inputLife.onChange} 
+                            onChange={inputLifespan.onChange} 
                         />
-                        <div> {`${inputLife.value} days`} </div>
+                        <div> {`${inputLifespan.value} days`} </div>
                     </div>
                 </div>
 

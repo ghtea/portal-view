@@ -14,6 +14,9 @@ const catalogSituationPortal: CatalogSituation = {
     'GetListPortal_UnknownError': {
         kind: 'error'
     },
+    'VisitPortal_UnknownError': {
+        kind: 'error'
+    },
     
     
     'CreatePortal_Succeeded': {

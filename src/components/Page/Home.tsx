@@ -69,7 +69,7 @@ function Home({}: PropsHome) {
                             tags={portal.tags}
                             hue={portal.hue}
 
-                            life={portal.life}
+                            lifespan={portal.lifespan}
                             listBooleanVisited={portal.listBooleanVisited}
                             dateVisitedLast={portal.dateVisitedLast}
 
