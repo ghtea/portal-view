@@ -34,7 +34,7 @@ function Test({}: PropsTest) {
 
         const root = async () => {
             const res = await axios.get('https://gorest.co.in/public-api/posts');
-            console.log(res.data);
+            console.log(JSON.stringify(res.data));
             alert(res.data);
         }
         root();
