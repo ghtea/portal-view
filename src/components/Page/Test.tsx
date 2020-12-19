@@ -30,10 +30,14 @@ function Test({}: PropsTest) {
         }, []
     );
 
-    useEffect(()=>{
-            
-        const res = axios.get('https://gorest.co.in/public-api/posts');
-        alert(res);
+    useEffect( ()=>{
+
+        const root = async () => {
+            const res = await axios.get('https://gorest.co.in/public-api/posts');
+            console.log(res.data);
+            alert(res.data);
+        }
+        root();
         
     },[]);
 

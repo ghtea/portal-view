@@ -37,7 +37,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     
     try {
-
+        
         if (!readyUser){
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'NotLoggedIn'
