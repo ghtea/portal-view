@@ -35,8 +35,9 @@ function Test({}: PropsTest) {
         const root = async () => {
             const res = await axios.get(`${process.env.REACT_APP_URL_BACK}/portal/`);
             alert(JSON.stringify(res.data, null,4));
+            alert(JSON.stringify(res, null,4));
 
-            alert(res.data);
+            //alert(res.data);
         }
         root();
         
