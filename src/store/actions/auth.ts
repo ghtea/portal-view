@@ -1,5 +1,7 @@
 //const department: string = 'auth';
 
+// ap-northeast-2_FwCEb6QCh
+//  24ealdh09hfu5npai98cf4eqo2
 
 export const name__REPLACE: string = `auth/REPLACE`;    // 뒤에 as const 를 붙이면 reducer 에서 auth.REPLACE 로 쓸때 오류 뜬다. 아직 이해못
 
