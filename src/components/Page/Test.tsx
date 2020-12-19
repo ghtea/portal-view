@@ -33,7 +33,7 @@ function Test({}: PropsTest) {
     useEffect( ()=>{
 
         const root = async () => {
-            const res = await axios.get('https://gorest.co.in/public-api/posts');
+            const res = await axios.get(`${process.env.REACT_APP_URL_BACK}/portal/`);
             alert(JSON.stringify(res.data, null,4));
 
             alert(res.data);
