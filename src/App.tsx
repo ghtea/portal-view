@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { useHistory, useLocation } from "react-router-dom";
+import { authService } from 'firebaseApp';
 
 import { IntlProvider } from 'react-intl'
 import translationEn from 'language/translation/en.json';
@@ -13,11 +14,11 @@ import * as actionsStatus from 'store/actions/status';
 import * as actionsAuth from 'store/actions/auth';
 import 'styles/once.scss';
 
-import Nav from "./components/Nav";
-import Page from "./components/Page";
-import Modal from "./components/Modal";
-import Notification from "./components/Notification";
-import Action from "./components/Action";
+import Nav from "components/Nav";
+import Page from "components/Page";
+import Modal from "components/Modal";
+import Notification from "components/Notification";
+import Action from "components/Action";
 
 // TS  https://velog.io/@velopert/create-typescript-react-component
 type PropsApp = {};
