@@ -1,6 +1,7 @@
 import { call, spawn, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 import queryString from 'query-string';
+import { firebaseAuth } from "firebaseApp";
 
 import Cookies from 'js-cookie';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,23 +16,8 @@ import * as actionsAuth from "store/actions/auth";
 
 
 
-interface BodyRequest {
-    email: string;
-    password: string;
-}
-
-const requestSignUp = (bodyRequest: BodyRequest) => {
-    
-    return axios.post(`${process.env.REACT_APP_URL_BACK}/auth/sign-up`, bodyRequest, {withCredentials: true})
-    
-        .then(response => { 
-        	//console.log(response)
-        	return response;
-        })
-        .catch(error => {
-            //console.log(error.response)
-            return error.response;
-        });
+const requestSignUp = (email:string, password:string) => {
+    return firebaseAuth.createUserWithEmailAndPassword(email, password)  
 };
 
 
@@ -51,6 +37,7 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
             }) );
             //addDeleteNotification("auth01", language);
         }
+        /*
         else if ( !(/\S+@\S+\.\S+/).test(action.payload.email) ){
             console.log('type valid email address');
             yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
@@ -58,7 +45,7 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
             }) );
             //addDeleteNotification("auth021", language);
         }
-        
+        */
         else if (action.payload.password1 === "" || action.payload.password2 === "") {
             console.log('type both passwords');
             yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
@@ -73,6 +60,7 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
             }) );
             //addDeleteNotification("auth04", language);
         }
+        /*
         else if (action.payload.password1.length < 6) {
             console.log('password is too short');
             yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
@@ -80,44 +68,46 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
             }) );
             //addDeleteNotification("auth04", language);
         }
-        
+        */
         else {
             
-            const bodyRequest = {
-                _id: uuidv4(),
-                email: action.payload.email, 
-                password: action.payload.password1
-            };
+            const email:string = action.payload.email; 
+            const password:string = action.payload.password1;
             
-           
-            
-            const res = yield call( requestSignUp, bodyRequest );
-            console.log(res);
-            
-            const codeSituation = res.data.codeSituation;
-            
-            if (codeSituation === 'SignUp_Succeeded') {
-                
-                //Cookies.remove('logged');
-                console.log(res.data.payload)
-                // const user = res.data.payload;
-                Cookies.set('logged_in', 'yes', { expires: 7, path: '/' });  
-                
+            try {
+                const res = yield call( requestSignUp, email, password );
+                console.log(res);
+
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['ready', 'user'],
                     replacement: true
                 }) );
-            
-            }
-            else {
+            } 
+            catch (error){
+                console.log(error);
+                if (error.code === 'auth/email-already-in-use'){
+                    yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                        codeSituation: 'SignUp_DuplicateEmail'
+                    }) );
+                }
+                else if (error.code === 'auth/invalid-email'){
+                    console.log(error.message);
+                }
+                else if (error.code === 'auth/weak-password'){
+                    console.log(error.message);
+                }
+                else if (error.code === 'auth/operation-not-allowed'){
+                    console.log(error.message);
+                }
+                else {
+                    yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                        codeSituation: 'SignUp_UnknownError'
+                    }) );
+                }
                 
-                console.log(codeSituation);
-                // SignUp_UnknownError, SignUp_DuplicateEmail
-                yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                    codeSituation: codeSituation
-                }) );
-            
+                
             }
+            
               
             
         } // higher else

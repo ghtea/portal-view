@@ -31,20 +31,27 @@ type typeAction =
 
 
 export const name__LOG_IN = 'auth/LOG_IN';
-
 interface Payload__LOG_IN {
     email: string;
     password: string;
 }
-
 export const return__LOG_IN = (payload: Payload__LOG_IN) => {
     return {
         type: name__LOG_IN,
         payload: payload
     }
 };
-
 export type type__LOG_IN = ReturnType<typeof return__LOG_IN>;
+
+
+export const name__LOG_OUT = 'auth/LOG_OUT';
+export const return__LOG_OUT = () => {
+    return {
+        type: name__LOG_IN
+    }
+};
+export type type__LOG_OUT = ReturnType<typeof return__LOG_OUT>;
+
 
 
 
@@ -68,12 +75,19 @@ export type type__SIGN_UP = ReturnType<typeof return__SIGN_UP>;
 
 
 
-export const name__LOG_CHECK = 'auth/LOG_CHECKP';
-
-export const return__LOG_CHECK = () => {
+export const name__LOG_CHECK_SUCCEEDED = 'auth/LOG_CHECK_SUCCEEDED';
+export const return__LOG_CHECK_SUCCEEDED = () => {
     return {
-        type: name__LOG_CHECK
+        type: name__LOG_CHECK_SUCCEEDED
     }
 };
+export type type__LOG_CHECK_SUCCEEDED = ReturnType<typeof return__LOG_CHECK_SUCCEEDED>;
 
-export type type__LOG_CHECK = ReturnType<typeof return__LOG_CHECK>;
+
+export const name__LOG_CHECK_FAILED = 'auth/LOG_CHECK_FAILED';
+export const return__LOG_CHECK_FAILED = () => {
+    return {
+        type: name__LOG_CHECK_FAILED
+    }
+};
+export type type__LOG_CHECK_FAILED = ReturnType<typeof return__LOG_CHECK_FAILED>;

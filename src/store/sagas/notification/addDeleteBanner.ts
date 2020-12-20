@@ -27,7 +27,21 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
     
     const codeSituation: string = action.payload.codeSituation;
     
-    const kindSituation: KindSituation = catalogSituation[codeSituation]['kind'];
+    let kindSituation: KindSituation = 'error';
+    if (codeSituation.match(/^__S/)){
+        kindSituation = 'success';
+    }
+    else if (codeSituation.match(/^__H/)){
+        kindSituation = 'hint';
+    }
+    else if (codeSituation.match(/^__W/)){
+        kindSituation = 'warning';
+    }
+    else if (codeSituation.match(/^__E/)){
+        kindSituation = 'error';
+    }
+    
+    //catalogSituation[codeSituation]['kind'];
     
     const idMessage: string = `Notification.${codeSituation}`;
     //console.log(message);
@@ -37,16 +51,16 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
     
     
     if ( kindSituation === 'success'){
-      levelTimeBanner = catalogSituation[codeSituation]['levelTimeBanner'] || 'short';
+      levelTimeBanner = 'short';
     }
     else if ( kindSituation === 'hint'){
-      levelTimeBanner = catalogSituation[codeSituation]['levelTimeBanner'] || 'normal';
+      levelTimeBanner = 'normal';
     }
     else if ( kindSituation === 'error'){
-      levelTimeBanner = catalogSituation[codeSituation]['levelTimeBanner'] || 'long';
+      levelTimeBanner = 'long';
     }
     else if ( kindSituation === 'warning'){
-      levelTimeBanner = catalogSituation[codeSituation]['levelTimeBanner'] || 'normal';
+      levelTimeBanner = 'normal';
     }
     
     let msTime: actionsNotification.MsTimeBanner = actionsNotification.MsTimeBanner[levelTimeBanner];
@@ -67,13 +81,13 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
         replacement: listBannerNew
     }) );
     
-    if (levelTimeBanner !== 'lasting'){
-      yield delay( msTime );
     
-      yield put( actionsNotification.return__DELETE_BANNER({
-          id: id
-      }) );
-    }
+    yield delay( msTime );
+
+    yield put( actionsNotification.return__DELETE_BANNER({
+        id: id
+    }) );
+    
     
 }
 

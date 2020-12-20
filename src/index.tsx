@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, Router} from "react-router-dom";  // BrowserRouter
 import history from 'historyApp';
 import Cookies from 'js-cookie';
-import { authService } from 'firebaseApp';
+import { firebaseAuth } from 'firebaseApp';
 
 
 import App from './App';

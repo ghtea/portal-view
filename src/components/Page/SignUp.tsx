@@ -61,7 +61,7 @@ function SignUp({}: PropsSignUp) {
         onClick_SignUp();
       }
     },
-    []
+    [inputEmail, inputPassword1, inputPassword2]
   );
   
   

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-
+import firebaseApp, { firebaseAuth } from 'firebaseApp';
 import { useLocation } from "react-router-dom";
 import history from 'historyApp';
 
@@ -85,7 +85,30 @@ function LogIn() {
     },
     [inputEmail, inputPassword]
   );
-
+    
+    const onClick_LogInSocial = useCallback(
+        async (event) => {
+            const {target: {name}} = event;
+            let provider;
+            if (name === 'google'){
+                provider = new firebaseApp.auth.GoogleAuthProvider();
+            }
+            else if (name === 'github'){
+                provider = new firebaseApp.auth.GithubAuthProvider();
+            }
+            if (provider) {
+                try {
+                    const data = await firebaseAuth.signInWithPopup(provider);
+                    
+                    dispatch(actionsAuth.return__LOG_CHECK_SUCCEEDED() );
+                }
+                catch (error){
+                    console.log(error);
+                    dispatch(actionsAuth.return__LOG_CHECK_FAILED() );
+                } 
+            }
+        }, []
+    );
   
   return (
     <div className={`${styles['root']}`} >
@@ -103,9 +126,10 @@ function LogIn() {
                 <div> <FormattedMessage id={`Page.LogIn_EmailAddress`} /> </div>
                 <div> { codeSituationEmail && <FormattedMessage id={`Notification.${codeSituationEmail}`} /> }  </div>
                 <input 
-                    type='text'
+                    type='email'
                     placeholder={intl.formatMessage({ id: 'Page.LogIn_EmailAddress'})}
                     value={inputEmail.value}
+                    required
                     onChange={inputEmail.onChange} 
                 /> 
             </div> 
@@ -117,6 +141,7 @@ function LogIn() {
                     type='password'
                     placeholder={intl.formatMessage({ id: 'Page.LogIn_Password'})}
                     value={inputPassword.value}
+                    required
                     onChange={inputPassword.onChange}
                     onKeyPress={onKeyPress_LogIn}
                 /> 
@@ -136,8 +161,18 @@ function LogIn() {
             </div> 
             
             <div className={`${styles['collection-social']}`} >
-                <button> Google </button>
-                <button> Apple </button>
+                <button 
+                    name='google'
+                    onClick={(event)=>onClick_LogInSocial(event)}
+                > Google </button>
+                <button 
+                    name='apple'
+                    onClick={(event)=>onClick_LogInSocial(event)}
+                > Apple </button>
+                <button 
+                    name='github'
+                    onClick={(event)=>onClick_LogInSocial(event)}
+                > GitHub </button>
             </div> 
             
             <div className={`${styles['collection-link']}`} >

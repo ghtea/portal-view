@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { useHistory, useLocation } from "react-router-dom";
-import { authService } from 'firebaseApp';
+import { firebaseAuth } from 'firebaseApp';
 
 import { IntlProvider } from 'react-intl'
 import translationEn from 'language/translation/en.json';
@@ -76,12 +76,31 @@ function App({}: PropsApp) {
     }, [nameThemeCurrent])
     
   
-  // log check
-  useEffect(() => {
-    dispatch(actionsAuth.return__LOG_CHECK() );
-  }, []);
+    // log check
+    useEffect(() => {
+
+        dispatch( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'user'],
+            replacement: true
+        }) );
+
+        try {
+            firebaseAuth.onAuthStateChanged((user) => {
+                if (user) {
+                    dispatch(actionsAuth.return__LOG_CHECK_SUCCEEDED() );
+                } 
+                else {
+                    dispatch(actionsAuth.return__LOG_CHECK_FAILED() );
+                }
+            });
+        }
+        catch (error){
+            console.log(error);
+        }
+    }, []);
   
   
+
   // https://dev.to/cmcwebcode40/simple-react-dark-mode-with-scss-lae
   return ( 
     <>

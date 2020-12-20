@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from "react";
+import { firebaseAuth } from "firebaseApp";
 
 import history from 'historyApp';
 import { useLocation } from "react-router-dom";
@@ -46,19 +47,24 @@ function Setting({}: PropsSetting) {
     }, []
   );
   
-  const onClick_ChangeLanguage = useCallback(
-    (replacement:string) => {
+    const onClick_ChangeLanguage = useCallback(
+        (replacement:string) => {
 
-      dispatch(actionsStatus.return__REPLACE({
-        listKey: ['current', 'language'],
-        replacement: replacement
-      }) );
+        dispatch(actionsStatus.return__REPLACE({
+            listKey: ['current', 'language'],
+            replacement: replacement
+        }) );
 
-    }, []
-  );
+        }, []
+    );
 
-  
-  
+    const onClick_LogOut = useCallback(
+        () => {
+            firebaseAuth.signOut();
+            // history
+        }, []
+    );
+
   
   return (
     
@@ -86,38 +92,46 @@ function Setting({}: PropsSetting) {
             <div className={`${stylesModal['content']}`} >
                 
                 <div className={`${stylesModal['content__section']}`} >
-                <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
-                <div className={`${stylesModal['group-option']}`}>
-                    <div className={`active----${optionThemeCurrent === 'auto'}`}
-                        onClick={()=>onClick_ChangeOptionTheme('auto')}
-                    > auto
+                    <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
+                    <div className={`${stylesModal['group-option']}`}>
+                        <div className={`active----${optionThemeCurrent === 'auto'}`}
+                            onClick={()=>onClick_ChangeOptionTheme('auto')}
+                        > auto
+                        </div>
+                        <div className={`active----${optionThemeCurrent === 'always-light'}`}
+                            onClick={()=>onClick_ChangeOptionTheme('always-light')}
+                        > light
+                        </div>
+                        <div className={`active----${optionThemeCurrent === 'always-dark'}`}
+                            onClick={()=>onClick_ChangeOptionTheme('always-dark')}
+                        > dark
+                        </div>
                     </div>
-                    <div className={`active----${optionThemeCurrent === 'always-light'}`}
-                        onClick={()=>onClick_ChangeOptionTheme('always-light')}
-                    > light
-                    </div>
-                    <div className={`active----${optionThemeCurrent === 'always-dark'}`}
-                        onClick={()=>onClick_ChangeOptionTheme('always-dark')}
-                    > dark
-                    </div>
-                </div>
                 </div>
                 
                 <div className={`${stylesModal['content__section']}`} >
-                <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
-                <div className={`${stylesModal['group-option']}`}>
-                    <div className={`active----${languageCurrent === 'en'}`}
-                    onClick={()=>onClick_ChangeLanguage('en')}
-                    > English
-                    </div>
-                    <div className={`active----${languageCurrent === 'ko'}`}
-                    onClick={()=>onClick_ChangeLanguage('ko')}
-                    > 한국어
+                    <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
+                    <div className={`${stylesModal['group-option']}`}>
+                        <div className={`active----${languageCurrent === 'en'}`}
+                            onClick={()=>onClick_ChangeLanguage('en')}
+                        > English
+                        </div>
+                        <div className={`active----${languageCurrent === 'ko'}`}
+                            onClick={()=>onClick_ChangeLanguage('ko')}
+                        > 한국어
+                        </div>
                     </div>
                 </div>
+
+
+                <div className={`${stylesModal['content__section']}`} >
+                    <button
+                        className={`${stylesModal['button-normal']}`}
+                        onClick={()=>onClick_LogOut()}
+                    > <FormattedMessage id={`Modal.Setting_LogOut`} /> </button>
+                </div>
+                    
             </div>
-                
-        </div>
         
         </div>
     </div>
