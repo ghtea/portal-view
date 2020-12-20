@@ -28,16 +28,20 @@ function* logCheckSucceeded(action: actionsAuth.type__LOG_CHECK_SUCCEEDED) {
     const user = firebaseAuth.currentUser;
     console.log(user);
 
+
     if (user) {   // 이미 성공했다는 걸 알고 있을 거니깐 왠만하면 있을것이다
+
+        const replacement = {
+            id: user.uid,
+            email: user.email,
+
+            joined: user.metadata.creationTime,
+            accessed: user.metadata.lastSignInTime
+        };
+
         yield put( actionsAuth.return__REPLACE({
             listKey: ['user'],
-            replacement: {
-                id: user.uid,
-                email: user.email,
-
-                joined: user.metadata.creationTime,
-                accessed: user.metadata.lastSignInTime
-            }
+            replacement: replacement
         }) );
     }
     

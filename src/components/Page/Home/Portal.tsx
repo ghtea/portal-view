@@ -17,7 +17,7 @@ import IconLinkExternal from 'svgs/basic/IconLinkExternal';
 
 type PropsPortal = {
     _id: string,
-    user: string,   //  normal, search
+    idUser: string,   //  normal, search
     kind: string,
              
     name: string,
@@ -34,7 +34,7 @@ type PropsPortal = {
 
 function Portal({
     _id,
-    user,   //  normal, search
+    idUser,   //  normal, search
     kind,
              
     name,

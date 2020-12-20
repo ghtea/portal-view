@@ -1,4 +1,6 @@
 import { call, select, put } from "redux-saga/effects";
+import { firebaseFs } from "firebaseApp";
+
 import axios from "axios";
 import queryString from 'query-string';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,20 +11,12 @@ import * as actionsStatus from "store/actions/status";
 import * as actionsNotification from "store/actions/notification";
 
 import * as actionsPortal from "store/actions/portal";
-//import * as actionsTheme from "../../actions/theme";
+import { isArray } from "util";
 
 
-const requestGetListPortal = (queryRequestBefore: any) => {
+const requestGetListPortal = () => {
     
-    return axios.get(`${process.env.REACT_APP_URL_BACK}/portal/?${queryString.stringify(queryRequestBefore)}`)
-        .then(response => { 
-        	//console.log(response)
-        	return {response};
-        })
-        .catch(error => {
-            //console.log(error.response)
-            return {error};
-        });
+    return firebaseFs.collection("Portal_").get()
 };
 
 
@@ -56,22 +50,25 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 replacement: true
             }) );
 
-           
-            const {response, error} = yield call( requestGetListPortal, queryRequestBefore );
             
-            console.log(response);
-            console.log(error);
-
-            if (response){
-                const codeSituation = response.data.codeSituation;
-                console.log(codeSituation);
+            try {
+                const data =  yield call( requestGetListPortal );
                 
-                if (codeSituation === 'GetListPortal_Succeeded__S') {
-                    yield put( actionsPortal.return__REPLACE({
-                        listKey: ['listPortal'],
-                        replacement: response.data.payload.listPortal
-                    }) );
-                }
+                const listPortal:any[] = data.docs.map((document: any)=>(
+                    {
+                        ...document.data(),
+                        id: document.id
+                    }
+                ));
+               
+                    // data.map 으로 하면 잘 안된다...
+                
+                console.log(listPortal);
+
+                yield put( actionsPortal.return__REPLACE({
+                    listKey: ['listPortal'],
+                    replacement: listPortal
+                }) );
 
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['loading', 'listPortal'],
@@ -84,7 +81,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 }) );
 
             }
-            else {   
+            catch (error) {   
 
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['loading', 'listPortal'],
@@ -96,23 +93,20 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                     replacement: false
                 }) );
 
-                //console.log(error)
-                const codeSituation = error.reponse.data.codeSituation;
-                console.log(codeSituation);
-
+                console.log(error)
+                console.log('error occurred in firebase server')
+                
+                /*
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({
                     codeSituation: codeSituation
                 }) );
-                
+                */
             }
               
-            
+        
         } // higher else
     
 
-    // go to home
-        
-        
     } catch (error) {
         
         console.log(error);

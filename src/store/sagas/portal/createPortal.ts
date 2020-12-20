@@ -3,7 +3,6 @@ import { firebaseFs } from "firebaseApp";
 
 import axios from "axios";
 import queryString from 'query-string';
-import { v4 as uuidv4 } from 'uuid';
 
 // import * as config from 'config';
 import {StateRoot} from 'store/reducers';
@@ -16,29 +15,30 @@ import * as actionsPortal from "store/actions/portal";
 
 
 interface Portal {
-    
-    name: string;
-    /*
-    _id: string;
-    user: string;   //  normal, search
+
+    idUser: string;   //  normal, search
     kind: string;
              
     name: string;
     initials: string;
     url: string;
     
-    lifespan: number;
-    listBooleanVisited: boolean[];
-
+    lifespan: number; 
+    listBooleanVisited: boolean[];  
+    dateVisitedLast: number; 
+    
     tags: string[];
     hue: string;
-    */
+
+    dateCreated: number;
+    dateUpdated: number;
+    
 }
 
 
 const requestCreatePortal = (portal: Portal) => {
     
-    return firebaseFs.collection("Portal_").add(portal);
+    return firebaseFs.collection("Portal_").add(portal) 
 };
 
 
@@ -55,7 +55,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             }) );
         }
         else if (action.payload.name === "") {
-            console.log('type email address');
+            console.log('type name');
             
         }
         
@@ -93,37 +93,32 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             const listBooleanVisited:boolean[] = [true]; 
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
 
-            /*
+            const date = Date.now();
             const portal = {
-                _id: uuidv4(),
-                user: idUser,
-                
+
+                idUser: idUser,
                 kind: action.payload.kind,
-                        
+                     
                 name: action.payload.name,
                 initials: initials,
                 url: action.payload.url,
                 
                 lifespan: action.payload.lifespan,
-                listBooleanVisited: listBooleanVisited,
-            
-                tags: action.payload.tags,
-                hue: hue
-            };
-            */
-            const portal = {
-                name: 'name1'
-            }
-            try {
-                const data =  yield call( requestCreatePortal, portal );
-
-            console.log(response);
-            console.log(error);
-
-            if (response){
-                const codeSituation = response.data.codeSituation;
+                listBooleanVisited: listBooleanVisited, 
+                dateVisitedLast: date,  
                 
-                if (codeSituation === 'CreatePortal_Succeeded__S') {
+                tags: action.payload.tags,
+                hue: hue,
+
+                dateCreated: date,
+                dateUpdated: date 
+            };
+            
+            try {
+                const data =  yield call( requestCreatePortal , portal );
+
+                console.log(data);
+
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
                         codeSituation: 'CreatePortal_Succeeded__S'
                     }));
@@ -139,30 +134,21 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                         idUser: idUser
                     }));
                     // window.location.reload();
-                }
             }
-            else {   
-                const codeSituation = error.response.data.codeSituation;
-                
-                console.log(codeSituation);
 
+            catch (error){ 
+                
+                console.log(error);
+                console.log('error occurred in firebase server')
+                /*
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({
                     codeSituation: codeSituation
                 }) );
-                
+                */
             }
               
         }
-        catch(error){
-            
-        }
-            
-        } // higher else
-    
 
-    // go to home
-        
-        
     } catch (error) {
         
         console.log(error);

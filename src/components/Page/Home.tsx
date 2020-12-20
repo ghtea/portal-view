@@ -58,7 +58,7 @@ function Home({}: PropsHome) {
                             key={`portal-${index}`}
 
                             _id={portal._id}
-                            user={portal.user}
+                            idUser={portal.idUser}
                         
                             kind={portal.kind}
 
@@ -73,6 +73,7 @@ function Home({}: PropsHome) {
                             listBooleanVisited={portal.listBooleanVisited}
                             dateVisitedLast={portal.dateVisitedLast}
 
+                        
                         />
                     ))}
                 </div>

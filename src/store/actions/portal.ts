@@ -1,6 +1,6 @@
 
 
-export const name__REPLACE: string = `auth/REPLACE`;    // 뒤에 as const 를 붙이면 reducer 에서 auth.REPLACE 로 쓸때 오류 뜬다. 아직 이해못
+export const name__REPLACE: string = `portal/REPLACE`;    // 뒤에 as const 를 붙이면 reducer 에서 auth.REPLACE 로 쓸때 오류 뜬다. 아직 이해못
 
 interface Payload__REPLACE {
     listKey: (string | number)[];

@@ -42,7 +42,7 @@ function Banner({
   );
   
   
-  console.log(banner);
+  // console.log(banner);
   
   return (
     
