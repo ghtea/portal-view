@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
+import * as actionsAuth from 'store/actions/auth';
 
 import {pascalToCamel} from 'tools/vanilla/convertName';
 import IconX from 'svgs/basic/IconX';
@@ -60,8 +61,7 @@ function Setting({}: PropsSetting) {
 
     const onClick_LogOut = useCallback(
         () => {
-            firebaseAuth.signOut();
-            // history
+            dispatch(actionsAuth.return__LOG_OUT());
         }, []
     );
 

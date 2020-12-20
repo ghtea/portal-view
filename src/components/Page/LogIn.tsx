@@ -44,17 +44,21 @@ function LogIn() {
   const [codeSituationPassword, setCodeSituationPassword] = useState('');
   
     useEffect(()=>{
-        if(listCodeSituationOthers.includes('LogIn_NoEmail')){
-            setCodeSituationEmail('LogIn_NoEmail');
+        if(listCodeSituationOthers.includes('LogIn_NoEmail__E')){
+            setCodeSituationEmail('LogIn_NoEmail__E');
             setCodeSituationPassword('');
         }
-        else if(listCodeSituationOthers.includes('LogIn_NoPassword')){
-            setCodeSituationPassword('LogIn_NoPassword');
-            setCodeSituationEmail('');
-        }
-        else if (listCodeSituationOthers.includes('LogIn_UnknownError')) {
-            setCodeSituationEmail('');
+        else if(listCodeSituationOthers.includes('LogIn_InvalidEmail__E')){
+            setCodeSituationEmail('LogIn_InvalidEmail__E');
             setCodeSituationPassword('');
+        }
+        else if (listCodeSituationOthers.includes('LogIn_NoPassword__E')) {
+            setCodeSituationEmail('');
+            setCodeSituationPassword('LogIn_NoPassword__E');
+        }
+        else if (listCodeSituationOthers.includes('LogIn_WrongPassword__E')) {
+            setCodeSituationEmail('');
+            setCodeSituationPassword('LogIn_WrongPassword__E');
         }
         else {
             setCodeSituationEmail('');
@@ -63,50 +67,41 @@ function LogIn() {
 
     },[listCodeSituationOthers])
 
-  const onClick_LogIn = useCallback(
-    () => {
-      
-      dispatch(actionsAuth.return__LOG_IN({
-        email: inputEmail.value,
-        password: inputPassword.value
-      }));
-      
-    },
-    [inputEmail, inputPassword]
-  );
+    const onClick_LogIn = useCallback(
+        () => {
+        
+        dispatch(actionsAuth.return__LOG_IN({
+            email: inputEmail.value,
+            password: inputPassword.value
+        }));
+        
+        },
+        [inputEmail, inputPassword]
+    );
 
-  const onKeyPress_LogIn = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter") {
-            console.log('hero!')
-            console.log(inputEmail.value)
-            onClick_LogIn();
-        }
-    },
-    [inputEmail, inputPassword]
-  );
+    const onKeyPress_LogIn = useCallback(
+        (event: React.KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === "Enter") {
+                console.log('hero!')
+                console.log(inputEmail.value)
+                onClick_LogIn();
+            }
+        },
+        [inputEmail, inputPassword]
+    );
     
+
     const onClick_LogInSocial = useCallback(
-        async (event) => {
+        (event) => {
             const {target: {name}} = event;
-            let provider;
+            
             if (name === 'google'){
-                provider = new firebaseApp.auth.GoogleAuthProvider();
+                dispatch(actionsAuth.return__LOG_IN_GOOGLE() );
             }
             else if (name === 'github'){
-                provider = new firebaseApp.auth.GithubAuthProvider();
+                dispatch(actionsAuth.return__LOG_IN_GITHUB() );
             }
-            if (provider) {
-                try {
-                    const data = await firebaseAuth.signInWithPopup(provider);
-                    
-                    dispatch(actionsAuth.return__LOG_CHECK_SUCCEEDED() );
-                }
-                catch (error){
-                    console.log(error);
-                    dispatch(actionsAuth.return__LOG_CHECK_FAILED() );
-                } 
-            }
+                
         }, []
     );
   

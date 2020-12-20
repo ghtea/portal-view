@@ -59,7 +59,7 @@ function Nav({}: PropsNav) {
 
         if (idModal === 'creatingPortal' && !readyUser){
             dispatch(actionsNotification.return__ADD_DELETE_BANNER({
-                codeSituation: 'NotLoggedIn'
+                codeSituation: 'NotLoggedIn__E'
             }) );
             history.push('/log-in');
         }

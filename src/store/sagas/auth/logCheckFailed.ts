@@ -26,7 +26,7 @@ function* logCheckFailed(action: actionsAuth.type__LOG_CHECK_FAILED) {
     }) );
     
     yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-        codeSituation: 'LogCheck_UnknownError'
+        codeSituation: 'LogCheck_UnknownError__E'
     }) );
     console.log('log check failed');
 }

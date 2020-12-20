@@ -23,7 +23,7 @@ function Home({}: PropsHome) {
   
     const dispatch = useDispatch();     
     const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
-    const idUser:string = useSelector((state: StateRoot) => state['auth']['user']['_id']);
+    const idUser:string = useSelector((state: StateRoot) => state['auth']['user']['id']);
 
     const readyListPortal:any = useSelector((state: StateRoot) => state['status']['ready']['listPortal']);
     const loadingListPortal:any = useSelector((state: StateRoot) => state['status']['loading']['listPortal']);

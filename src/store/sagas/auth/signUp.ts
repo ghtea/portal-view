@@ -1,4 +1,6 @@
 import { call, spawn, put, takeEvery } from "redux-saga/effects";
+import history from 'historyApp';
+
 import axios from "axios";
 import queryString from 'query-string';
 import { firebaseAuth } from "firebaseApp";
@@ -29,11 +31,21 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
             replacement: []
         }) );
         
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'user'],
+            replacement: true
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['ready', 'user'],
+            replacement: false
+        }) );
+
 
         if (action.payload.email === "") {
             console.log('type email address');
             yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                codeSituation: 'SignUp_NoEmail'
+                codeSituation: 'SignUp_NoEmail__E'
             }) );
             //addDeleteNotification("auth01", language);
         }
@@ -49,14 +61,14 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
         else if (action.payload.password1 === "" || action.payload.password2 === "") {
             console.log('type both passwords');
             yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                codeSituation: 'SignUp_NoPassword'
+                codeSituation: 'SignUp_NoPassword__E'
             }) );
             //addDeleteNotification("auth03", language);
         }
         else if (action.payload.password1 !== action.payload.password2) {
             console.log('two passwords are different');
             yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                codeSituation: 'SignUp_PasswordsDifferent'
+                codeSituation: 'SignUp_PasswordsDifferent__E'
             }) );
             //addDeleteNotification("auth04", language);
         }
@@ -75,33 +87,77 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
             const password:string = action.payload.password1;
             
             try {
-                const res = yield call( requestSignUp, email, password );
-                console.log(res);
+                const user = yield call( requestSignUp, email, password );
+                console.log(user);
+
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['loading', 'user'],
+                    replacement: false
+                }) );
 
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['ready', 'user'],
                     replacement: true
                 }) );
+
+                yield put( actionsNotification.return__ADD_DELETE_BANNER({
+                    codeSituation: 'SignUp_Succeeded__S'
+                }) );
+
+                yield put( actionsAuth.return__REPLACE({
+                    listKey: ['user'],
+                    replacement: {
+                        id: user.uid,
+                        email: user.email,
+
+                        joined: user.metadata.creationTime,
+                        accessed: user.metadata.lastSignInTime
+                    }
+                }) );
+                
+                history.push('/');
             } 
             catch (error){
+
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['ready', 'user'],
+                    replacement: false
+                }) );
+
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['loading', 'user'],
+                    replacement: false
+                }) );
+
                 console.log(error);
                 if (error.code === 'auth/email-already-in-use'){
+                    console.log(error.message);
                     yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                        codeSituation: 'SignUp_DuplicateEmail'
+                        codeSituation: 'SignUp_DuplicateEmail__E'
                     }) );
                 }
                 else if (error.code === 'auth/invalid-email'){
                     console.log(error.message);
+                    yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                        codeSituation: 'SignUp_InvalidEmail__E'
+                    }) );
                 }
                 else if (error.code === 'auth/weak-password'){
                     console.log(error.message);
+                    yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
+                        codeSituation: 'SignUp_WeakPassword__E'
+                    }) );
                 }
                 else if (error.code === 'auth/operation-not-allowed'){
                     console.log(error.message);
+                    yield put( actionsNotification.return__ADD_DELETE_BANNER({
+                        codeSituation: 'SignUp_UnknownError__E'
+                    }) );
                 }
                 else {
-                    yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                        codeSituation: 'SignUp_UnknownError'
+                    console.log(error);
+                    yield put( actionsNotification.return__ADD_DELETE_BANNER({
+                        codeSituation: 'SignUp_UnknownError__E'
                     }) );
                 }
                 
@@ -117,9 +173,19 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
         
         
     } catch (error) {
-        
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['ready', 'user'],
+            replacement: false
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'user'],
+            replacement: false
+        }) );
+
         console.log(error);
-        console.log('sign up has been failed');
+        console.log('signUp has been failed');
         
         yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
             codeSituation: 'SignUp_UnknownError'

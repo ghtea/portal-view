@@ -39,7 +39,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
         }
         else {
             
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user._id); 
+            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
 
             const queryRequestBefore = {
                 idUser: idUser
@@ -66,7 +66,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 const codeSituation = response.data.codeSituation;
                 console.log(codeSituation);
                 
-                if (codeSituation === 'GetListPortal_Succeeded') {
+                if (codeSituation === 'GetListPortal_Succeeded__S') {
                     yield put( actionsPortal.return__REPLACE({
                         listKey: ['listPortal'],
                         replacement: response.data.payload.listPortal
@@ -119,7 +119,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
         console.log('getListPortal has been failed');
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
-            codeSituation: 'GetListPortal_UnknownError'
+            codeSituation: 'GetListPortal_UnknownError__E'
         }) );
     }
 }

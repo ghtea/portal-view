@@ -40,13 +40,13 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
         
         if (!readyUser){
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                codeSituation: 'NotLoggedIn'
+                codeSituation: 'NotLoggedIn__E'
             }) );
         }
         
         else {
 
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user._id); 
+            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
 
             const bodyRequest = {
                 idPortal: action.payload.idPortal
@@ -62,7 +62,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                 const codeSituation = response.data.codeSituation;
                 
         
-                if (codeSituation === 'VisitPortal_Succeeded') {
+                if (codeSituation === 'VisitPortal_Succeeded__S') {
                     /*
                         yield put(actionsNotification.return__ADD_DELETE_BANNER({
                             codeSituation: 'VisitPortal_Succeeded'
@@ -99,7 +99,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
         console.log('visitPortal has been failed');
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
-            codeSituation: 'VisitPortal_UnknownError'
+            codeSituation: 'VisitPortal_UnknownError__E'
         }) );
     }
 }

@@ -9,21 +9,17 @@ import putValueToNestedObject from 'tools/vanilla/putValueToNestedObject';
 
 // https://react-etc.vlpt.us/07.typescript-redux.html
 
-export type State = typeof stateInitial;
+export type State = typeof stateInitial;   // 아직 불확실
 
 
 
 const stateInitial = {
-  
+    
   user: {
-    _id: '',
-    email: '',
-    
-    kind: '',
-    
-    joined: Date.now(),
-    accessed: Date.now(),
-  
+      id: '',
+      email: '',
+      joined: Date.now(),
+      accessed: Date.now()
   }
   
 };
@@ -33,7 +29,7 @@ const stateInitial = {
 const reducerAuth = handleActions<State, any>({
   
   [actionsAuth.name__REPLACE]: (statePrevious, action: actionsAuth.type__REPLACE) => {
-    
+
     return produce(statePrevious, stateNew => {
       if (action.payload === undefined) { 
         return;

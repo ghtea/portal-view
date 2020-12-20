@@ -98,7 +98,18 @@ function App({}: PropsApp) {
             console.log(error);
         }
     }, []);
-  
+    
+
+    // whenever log out, clear user information 
+    const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
+    useEffect(()=>{
+        if (!readyUser){
+            dispatch( actionsAuth.return__REPLACE({
+                listKey: ['user'],
+                replacement: {}
+            }) );
+        }
+    },[readyUser])
   
 
   // https://dev.to/cmcwebcode40/simple-react-dark-mode-with-scss-lae

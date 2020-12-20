@@ -97,14 +97,14 @@ function Test({}: PropsTest) {
         
         <div> 
           <button
-            onClick={event=>onClick_AddTestingBanner('Test1')}
+            onClick={event=>onClick_AddTestingBanner('Test1__S')}
           > test 1 
           </button>
         </div>
         
         <div> 
           <button
-            onClick={event=>onClick_AddTestingBanner('Test2')}
+            onClick={event=>onClick_AddTestingBanner('Test2__H')}
           > test 2 
           </button>
         </div>

@@ -6,8 +6,6 @@ import {StateRoot} from 'store/reducers';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import catalogSituation, {KindSituation} from 'language/catalogSituation';
-
 
 function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
     
@@ -27,17 +25,17 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
     
     const codeSituation: string = action.payload.codeSituation;
     
-    let kindSituation: KindSituation = 'error';
-    if (codeSituation.match(/^__S/)){
+    let kindSituation: actionsNotification.KindSituation = 'warning';
+    if (codeSituation.match(/__S$/)){
         kindSituation = 'success';
     }
-    else if (codeSituation.match(/^__H/)){
+    else if (codeSituation.match(/__H$/)){
         kindSituation = 'hint';
     }
-    else if (codeSituation.match(/^__W/)){
+    else if (codeSituation.match(/__W$/)){
         kindSituation = 'warning';
     }
-    else if (codeSituation.match(/^__E/)){
+    else if (codeSituation.match(/__E$/)){
         kindSituation = 'error';
     }
     

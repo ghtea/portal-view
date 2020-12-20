@@ -65,7 +65,7 @@
         top: 77px;
 
         font-size: 0.9rem;
-        @include color-each-theme(color, page--log-in--input--label-error__font-color);
+        @include color-each-theme(color, error__5);
         
     }
 

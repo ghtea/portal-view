@@ -3,7 +3,6 @@ import {handleActions} from 'redux-actions';
 
 
 import * as actionsNotification from 'store/actions/notification';
-import {CatalogSituation, KindSituation} from 'language/catalogSituation';
 
 //import { v4 as uuidv4 } from 'uuid';
 import putValueToNestedObject from 'tools/vanilla/putValueToNestedObject';
@@ -20,7 +19,7 @@ import putValueToNestedObject from 'tools/vanilla/putValueToNestedObject';
 export type Banner = {
   id: string,  
   codeSituation: string, 
-  kindSituation: KindSituation,
+  kindSituation: actionsNotification.KindSituation,
   idMessage: string,
   msTime: number 
 }

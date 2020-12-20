@@ -20,6 +20,7 @@
     "Modal.Setting_Title": "Setting",
     "Modal.Setting_Theme": "Theme",
     "Modal.Setting_Language": "Language",
+    "Modal.Setting_LogOut": "Log Out",
     
     "Modal.CreatingPortal_Title": "Create Portal",
     "Modal.CreatingPortal_Name": "Name",
@@ -31,29 +32,39 @@
     "Modal.CreatingPortal_Create": "Create",
 
     
-    "Notification.Test1": "Succuessfully tested 1 !",
-    "Notification.Test2": "Succuessfully tested 2 !",
-    "Notification.NotLoggedIn": "You should log in first",
-    "Notification.UnknownError": "An unknown error has occurred",
+    "Notification.Test1__S": "Succuessfully tested 1 !",
+    "Notification.Test2__H": "Succuessfully tested 2 !",
+    "Notification.NotLoggedIn__E": "You should log in first",
+    "Notification.UnknownError__E": "An unknown error has occurred",
 
-    "Notification.LogIn_UnknownError": "An unknown error has occurred",
-    "Notification.LogIn_NoEmail": "Please enter email address",
-    "Notification.LogIn_NoPassword": "Please enter password",
+    "Notification.LogIn_UnknownError__E": "An unknown error has occurred",
+    "Notification.LogIn_UserNotFound__E": "No user was found from this email address",
+    "Notification.LogIn_UserDisabled__E": "This user has been disabled",
 
-    "Notification.SignUp_UnknownError": "An unknown error has occurred",
-    "Notification.SignUp_NoEmail": "Please enter email address",
-    "Notification.SignUp_NotValidEmail": "The email address is not valid",
-    "Notification.SignUp_NoPassword": "Please enter both passwords",
-    "Notification.SignUp_PasswordsDifferent": "The two passwords are different",
-    "Notification.SignUp_WeakPassword": "Password should be at least 6 characters long",
-    "Notification.SignUp_DuplicateEmail": "That email is already existing",
-    "Notification.SignUp_Succeeded": "Successfully signed up!",
+    "Notification.LogIn_NoEmail__E": "Please enter email address",
+    "Notification.LogIn_InvalidEmail__E": "The email address is not valid",
+    "Notification.LogIn_NoPassword__E": "Please enter password",
+    "Notification.LogIn_WrongPassword__E": "Password is wrong",
+
+    "Notification.LogInGoogle_UnknownError__E": "An unknown error has occurred",
+    "Notification.LogInGithub_UnknownError__E": "An unknown error has occurred",
+
+    "Notification.SignUp_UnknownError__E": "An unknown error has occurred",
+    "Notification.SignUp_Succeeded__S": "Successfully signed up!",
+
+    "Notification.SignUp_NoEmail__E": "Please enter email address",
+    "Notification.SignUp_InvalidEmail__E": "The email address is not valid",
+    "Notification.SignUp_DuplicateEmail__E": "That email is already existing",
+    "Notification.SignUp_NoPassword__E": "Please enter both passwords",
+    "Notification.SignUp_PasswordsDifferent__E": "The two passwords are different",
+    "Notification.SignUp_WeakPassword__E": "Password should be at least 6 characters long",
+
     
-    "Notification.Portal_InitialsTooLong": "Initials must be between 1 and 3 letters",
-    "Notification.CreatePortal_Succeeded": "Successfully created portal!",
-    "Notification.CreatePortal_UnknownError": "An unknown error has occurred",
-    "Notification.GetListPortal_UnknownError": "An unknown error has occurred",
-    "Notification.VisitPortal_UnknownError": "An unknown error has occurred",
+    "Notification.Portal_InitialsTooLong__E": "Initials must be between 1 and 3 letters",
+    "Notification.CreatePortal_Succeeded__S": "Successfully created portal!",
+    "Notification.CreatePortal_UnknownError__E": "An unknown error has occurred",
+    "Notification.GetListPortal_UnknownError__E": "An unknown error has occurred",
+    "Notification.VisitPortal_UnknownError__E": "An unknown error has occurred",
 
 
     "Page.Home_Welcome": "Welcome!",

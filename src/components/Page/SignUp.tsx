@@ -26,13 +26,46 @@ function SignUp({}: PropsSignUp) {
     const dispatch = useDispatch();
     const intl = useIntl();
 
+    const listCodeSituationOthers:string[] = useSelector((state: StateRoot) => state['notification']['listCodeSituationOthers']);
+    
     const inputEmail = useInput(""); // {value, setValue, onChange};
     const inputPassword1 = useInput(""); // {value, setValue, onChange};
     const inputPassword2 = useInput(""); // {value, setValue, onChange};
   
-  const [codeSituationEmail, setCodeSituationEmail] = useState('');
-  const [codeSituationPassword, setCodeSituationPassword] = useState('');
-  // 나머지는 나중에... LogIn 참고...
+    const [codeSituationEmail, setCodeSituationEmail] = useState('');
+    const [codeSituationPassword, setCodeSituationPassword] = useState('');
+    
+    useEffect(()=>{
+        if(listCodeSituationOthers.includes('SignUp_NoEmail__E')){
+            setCodeSituationEmail('SignUp_NoEmail__E');
+            setCodeSituationPassword('');
+        }
+        else if(listCodeSituationOthers.includes('SignUp_InvalidEmail__E')){
+            setCodeSituationEmail('SignUp_InvalidEmail__E');
+            setCodeSituationPassword('');
+        }
+        else if(listCodeSituationOthers.includes('SignUp_DuplicateEmail__E')){
+            setCodeSituationEmail('SignUp_DuplicateEmail__E');
+            setCodeSituationPassword('');
+        }
+        else if (listCodeSituationOthers.includes('LogIn_NoPassword__E')) {
+            setCodeSituationEmail('');
+            setCodeSituationPassword('LogIn_NoPassword__E');
+        }
+        else if (listCodeSituationOthers.includes('SignUp_PasswordsDifferent__E')) {
+            setCodeSituationEmail('');
+            setCodeSituationPassword('SignUp_PasswordsDifferent__E');
+        }
+        else if (listCodeSituationOthers.includes('SignUp_WeakPassword__E')) {
+            setCodeSituationEmail('');
+            setCodeSituationPassword('SignUp_WeakPassword__E');
+        }
+        else {
+            setCodeSituationEmail('');
+            setCodeSituationPassword('');
+        }
+
+    },[listCodeSituationOthers]);
   
   const onClick_LinkInsideApp = useCallback(
     (destination:string) => {

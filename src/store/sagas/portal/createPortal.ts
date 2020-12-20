@@ -55,7 +55,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
         
         if (!readyUser){
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                codeSituation: 'NotLoggedIn'
+                codeSituation: 'NotLoggedIn__E'
             }) );
         }
         else if (action.payload.name === "") {
@@ -69,7 +69,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
         else if (action.payload.initials.length > 3) {
             yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                codeSituation: 'Portal_InitialsTooLong'
+                codeSituation: 'Portal_InitialsTooLong__E'
             }) );
         }
 
@@ -95,7 +95,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             //let listBooleanVisited:boolean[] = Array(action.payload.lifespan-1).fill(false);
             //listBooleanVisited.unshift(true);
             const listBooleanVisited:boolean[] = [true]; 
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user._id); 
+            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
 
             const bodyRequest = {
                 _id: uuidv4(),
@@ -123,9 +123,9 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             if (response){
                 const codeSituation = response.data.codeSituation;
                 
-                if (codeSituation === 'CreatePortal_Succeeded') {
+                if (codeSituation === 'CreatePortal_Succeeded__S') {
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'CreatePortal_Succeeded'
+                        codeSituation: 'CreatePortal_Succeeded__S'
                     }));
 
                     yield put(actionsStatus.return__REPLACE({ 
@@ -165,7 +165,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
         console.log('createPortal has been failed');
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
-            codeSituation: 'CreatePortal_UnknownError'
+            codeSituation: 'CreatePortal_UnknownError__E'
         }) );
     }
 }

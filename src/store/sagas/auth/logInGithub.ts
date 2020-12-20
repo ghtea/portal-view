@@ -3,7 +3,7 @@ import history from 'historyApp';
 
 import axios from "axios";
 import queryString from 'query-string';
-import { firebaseAuth } from "firebaseApp";
+import firebaseApp, { firebaseAuth } from "firebaseApp";
 
 import Cookies from 'js-cookie';
 import { v4 as uuidv4 } from 'uuid';
@@ -18,38 +18,25 @@ import * as actionsAuth from "store/actions/auth";
 
 
 
-const requestLogIn = (email:string, password:string) => {
-    return firebaseAuth.signInWithEmailAndPassword(email, password)  
+
+const requestLogInGithub = (provider:any) => {
+    return firebaseAuth.signInWithPopup(provider)
 };
 
 
-function* logIn(action: actionsAuth.type__LOG_IN) {
+function* logInGithub(action: actionsAuth.type__LOG_IN_GITHUB) {
     try {
 
+        const provider = new firebaseApp.auth.GithubAuthProvider();
+        
         yield put( actionsNotification.return__REPLACE({
             listKey: ['listCodeSituationOthers'],
             replacement: []
         }) );
         
-        if (action.payload.email === "") {
-            console.log('type email address');
-            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                codeSituation: 'LogIn_NoEmail__E'
-            }) );
-        }
-        else if (action.payload.password === "") {
-            console.log('type password');
-            yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                codeSituation: 'LogIn_NoPassword__E'
-            }) );
-        }
-        else {
-            
-            const email:string = action.payload.email; 
-            const password:string = action.payload.password;
             
             try {
-                const data = yield call( requestLogIn, email, password );
+                const data = yield call( requestLogInGithub, provider );
                 console.log(data.user);
 
                 yield put( actionsStatus.return__REPLACE({
@@ -73,8 +60,6 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                     }
                 }) );
 
-
-
                 history.push('/');
             } 
             catch (error){
@@ -96,44 +81,22 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
 
 
                 console.log(error);
-                if (error.code === 'auth/wrong-password'){
-                    console.log(error.message);
-                    yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                        codeSituation: 'LogIn_WrongPassword__E'
-                    }) );
-                }
-                else if (error.code === 'auth/invalid-email'){
-                    console.log(error.message);
-                    yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-                        codeSituation: 'LogIn_InvalidEmail__E'
-                    }) );
-                }
-                else if (error.code === 'auth/user-disabled'){
+                if (error.code === 'auth/account-exists-with-different-credential'){
                     console.log(error.message);
                     yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'LogIn_UserDisabled__E'
-                    }) );
-                }
-                else if (error.code === 'auth/user-not-found'){
-                    console.log(error.message);
-                    yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'LogIn_UserNotFound__E'
+                        codeSituation: 'LogInGithub_UnknownError__E'
                     }) );
                 }
                 else {
                     console.log(error);
                     yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'LogIn_UnknownError__E'
+                        codeSituation: 'LogInGithub_UnknownError__E'
                     }) );
                 }
                 
                 
             }
-            
-              
-            
-        } // higher else
-    
+                
 
     // go to home
         
@@ -151,12 +114,12 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
         }) );
 
         console.log(error);
-        console.log('logIn has been failed');
+        console.log('logInGithub has been failed');
         
         yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({
-            codeSituation: 'LogIn_UnknownError__E'
+            codeSituation: 'LogInGithub_UnknownError__E'
         }) );
     }
 }
 
-export default logIn;
+export default logInGithub;

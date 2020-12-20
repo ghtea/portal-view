@@ -1,10 +1,9 @@
 import { call, spawn, put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
-import queryString from 'query-string';
+import history from 'historyApp';
+
 import { firebaseAuth } from "firebaseApp";
 
 import Cookies from 'js-cookie';
-import { v4 as uuidv4 } from 'uuid';
 
 // import * as config from 'config';
 
@@ -23,6 +22,11 @@ function* logOut(action: actionsAuth.type__LOG_OUT) {
         listKey: ['ready', 'user'],
         replacement: false
     }) );
+
+    // history.push('/');
+
+    window.location.reload(false);
+    //window.location.href = window.location.href;
 
 }
 

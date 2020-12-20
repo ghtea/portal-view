@@ -1,4 +1,7 @@
 
+
+export type KindSituation = 'success' | 'hint'| 'error' | 'warning';
+
 export enum MsTimeBanner {
   normal = 3000,
   short = 2000,
