@@ -1,4 +1,6 @@
 import { call, select, put, getContext } from "redux-saga/effects";
+import { firebaseFs } from "firebaseApp";
+
 import axios from "axios";
 import queryString from 'query-string';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,8 +15,10 @@ import * as actionsPortal from "store/actions/portal";
 
 
 
-interface BodyRequest {
+interface Portal {
     
+    name: string;
+    /*
     _id: string;
     user: string;   //  normal, search
     kind: string;
@@ -28,20 +32,13 @@ interface BodyRequest {
 
     tags: string[];
     hue: string;
+    */
 }
 
 
-const requestCreatePortal = (bodyRequest: BodyRequest) => {
+const requestCreatePortal = (portal: Portal) => {
     
-    return axios.post(`${process.env.REACT_APP_URL_BACK}/portal`, bodyRequest)
-    .then(response => { 
-        //console.log(response)
-        return ({response});
-    })
-    .catch(error => {
-        //console.log(error.response)
-        return ({error});
-    });
+    return firebaseFs.collection("Portal_").add(portal);
 };
 
 
@@ -52,7 +49,6 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
     
     try {
 
-        
         if (!readyUser){
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'NotLoggedIn__E'
@@ -97,7 +93,8 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             const listBooleanVisited:boolean[] = [true]; 
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
 
-            const bodyRequest = {
+            /*
+            const portal = {
                 _id: uuidv4(),
                 user: idUser,
                 
@@ -113,9 +110,12 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 tags: action.payload.tags,
                 hue: hue
             };
-            
-           
-            const {response, error} = yield call( requestCreatePortal, bodyRequest );
+            */
+            const portal = {
+                name: 'name1'
+            }
+            try {
+                const data =  yield call( requestCreatePortal, portal );
 
             console.log(response);
             console.log(error);
@@ -152,6 +152,10 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 
             }
               
+        }
+        catch(error){
+            
+        }
             
         } // higher else
     
