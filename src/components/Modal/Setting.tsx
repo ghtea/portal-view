@@ -37,27 +37,24 @@ function Setting({}: PropsSetting) {
   );
   
   // ~ template
-  
-  const onClick_ChangeOptionTheme = useCallback(
-    (replacement:string) => {
-      dispatch(actionsStatus.return__REPLACE({
-        listKey: ['current', 'theme', 'option'],
-        replacement: replacement
-      }) );
-      Cookies.set('optionTheme', replacement, { expires: 14});
-    }, []
-  );
-  
-    const onClick_ChangeLanguage = useCallback(
-        (replacement:string) => {
-
-        dispatch(actionsStatus.return__REPLACE({
-            listKey: ['current', 'language'],
-            replacement: replacement
-        }) );
-
-        }, []
-    );
+  const onChange_InputNormal = useCallback(
+        (event:React.ChangeEvent<HTMLInputElement>) => {
+            const {currentTarget : {name, value}} = event;
+            if (name === 'optionTheme'){
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'theme', 'option'],
+                    replacement: value
+                }) );
+                Cookies.set('optionTheme', value, { expires: 14});
+            }
+            else if (name === 'language'){
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'language'],
+                    replacement: value
+                }) );
+            }
+        },[]
+    ); 
 
     const onClick_LogOut = useCallback(
         () => {
@@ -93,34 +90,41 @@ function Setting({}: PropsSetting) {
                 
                 <div className={`${stylesModal['content__section']}`} >
                     <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
-                    <div className={`${stylesModal['group-option']}`}>
-                        <div className={`active----${optionThemeCurrent === 'auto'}`}
-                            onClick={()=>onClick_ChangeOptionTheme('auto')}
-                        > auto
-                        </div>
-                        <div className={`active----${optionThemeCurrent === 'always-light'}`}
-                            onClick={()=>onClick_ChangeOptionTheme('always-light')}
-                        > light
-                        </div>
-                        <div className={`active----${optionThemeCurrent === 'always-dark'}`}
-                            onClick={()=>onClick_ChangeOptionTheme('always-dark')}
-                        > dark
-                        </div>
-                    </div>
+
+                    <form className={`form-radio`} > 
+                        <input type="radio" name="optionTheme" value="auto" defaultChecked
+                            id="optionTheme----auto"
+                            onChange={onChange_InputNormal} 
+                        /> <label htmlFor="optionTheme----auto"> auto </label>
+
+                        <input type="radio" name="optionTheme" value="always-light"
+                            id="optionTheme----always-light"
+                            onChange={onChange_InputNormal} 
+                        /> <label htmlFor="optionTheme----always-light"> light</label>
+
+                        <input type="radio" name="optionTheme" value="always-dark"
+                            id="optionTheme----always-dark"
+                            onChange={onChange_InputNormal} 
+                        /> <label htmlFor="optionTheme----always-dark"> dark </label>
+                    </form>
                 </div>
                 
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
-                    <div className={`${stylesModal['group-option']}`}>
-                        <div className={`active----${languageCurrent === 'en'}`}
-                            onClick={()=>onClick_ChangeLanguage('en')}
-                        > English
-                        </div>
-                        <div className={`active----${languageCurrent === 'ko'}`}
-                            onClick={()=>onClick_ChangeLanguage('ko')}
-                        > 한국어
-                        </div>
-                    </div>
+
+                    <form className={`form-radio`} > 
+                        <input type="radio" name="language" value="en" defaultChecked
+                            id="language----en"
+                            onChange={onChange_InputNormal} 
+                        /> <label htmlFor="language----en"> English </label>
+
+                        <input type="radio" name="language" value="ko"
+                            id="language----ko"
+                            onChange={onChange_InputNormal} 
+                        /> <label htmlFor="language----ko"> 한국어 </label>
+
+                    </form>
+
                 </div>
 
 

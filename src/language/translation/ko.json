@@ -26,6 +26,7 @@
     "Modal.Setting_LogOut": "로그아웃",
 
     "Modal.CreatingPortal_Title": "포털 만들기",
+    "Modal.CreatingPortal_Kind": "종류",
     "Modal.CreatingPortal_Name": "이름",
     "Modal.CreatingPortal_Initials": "이니셜 (1~3 글자)",
     "Modal.CreatingPortal_Url": "URL",
@@ -33,6 +34,7 @@
     "Modal.CreatingPortal_Hue": "색상",
     "Modal.CreatingPortal_Tags": "태그",
     "Modal.CreatingPortal_Create": "만들기",
+    "Modal.EditingPortal_Update": "업데이트",
 
     "Notification.Test1__S": "테스트에 성공하였습니다 1 !",
     "Notification.Test2__H": "테스트에 성공하였습니다 2 !",

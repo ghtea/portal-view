@@ -15,42 +15,47 @@ import useInput from 'tools/hooks/useInput';
 
 import IconX from 'svgs/basic/IconX';
 
-import styles from './CreatingPortal.module.scss';
+import stylesCreatingPortal from './CreatingPortal.module.scss';
 import stylesModal from 'components/Modal.module.scss';
 
 
-type PropsCreatingPortal = {};
+type PropsEditingPortal = {};
 
-function CreatingPortal({}: PropsCreatingPortal) {
+function EditingPortal({}: PropsEditingPortal) {
   
     const dispatch = useDispatch();
     const intl = useIntl();
 
-    const idUser:string = useSelector((state: StateRoot) => state['auth']['user']['id']);
+    const idPortalEditing:string = useSelector((state: StateRoot) => state['status']['current']['portal']['editing']);
+    const listPortal:any[] = useSelector((state: StateRoot) => state['portal']['listPortal']);
 
+    const portalEditing: any = useMemo(()=>{
+        return listPortal.find(portalEach => portalEach.id === idPortalEditing);
+    },[idPortalEditing, listPortal])
 
     const onClick_HideModal = useCallback(
         () => {
             dispatch(actionsStatus.return__REPLACE({ 
-                listKey: ['showing', 'modal', pascalToCamel('CreatingPortal')],
+                listKey: ['showing', 'modal', pascalToCamel('EditingPortal')],
                 replacement: false
             }));
         },[]
     );
 
     const [draft,setDraft] = useState({
-        // idUser 는 saga에서!
-        
-        kind: "normal",
-        name: "",
-        initials: "",
-        url: "",
-        lifespan: "15",  // input.value is (maybe) always string!
-        listTag: [] as string[],
-        hue: "180",
 
-        tagCurrent: "",
-        hueOption: "random"
+        idUser: portalEditing.idUser as string,
+
+        kind: portalEditing.kind as string,
+        name: portalEditing.name as string,
+        initials: portalEditing.initials as string,
+        url: portalEditing.url as string,
+        lifespan: portalEditing.lifespan as string,  // input.value is (maybe) always string!
+        listTag: portalEditing.listTag as string[],
+        hue: portalEditing.hue as string,
+
+        tagCurrent: portalEditing.tagCurrent as string,
+        hueOption: portalEditing.hueOption as string,
     })
 
     // const [tagCurrent, setTagCurrent] = useState("");
@@ -92,16 +97,17 @@ function CreatingPortal({}: PropsCreatingPortal) {
         },[draft]
     );
     
-    const onClick_CreatePortal = useCallback(
+    const onClick_EditPortal = useCallback(
         (draft) => {
-            dispatch(actionsPortal.return__CREATE_PORTAL({
-                ...draft
+            dispatch(actionsPortal.return__EDIT_PORTAL({
+                ...draft,
+                id: idPortalEditing
             }));
         }, []
     );
   
   return (
-    <div className={`${styles['root']} ${stylesModal['root']}`} >
+    <div className={`${stylesCreatingPortal['root']} ${stylesModal['root']}`} >
 
         <div 
             className={`${stylesModal['outside']}`} 
@@ -142,7 +148,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
 
                 <div className={`${stylesModal['content__section']}`} >
                     <div> <FormattedMessage id={`Modal.CreatingPortal_Name`} /> </div>
-                    <div className={`${styles['container__input-name']}`} >
+                    <div className={`${stylesCreatingPortal['container__input-name']}`} >
                         <input 
                             type='text'
                             placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Name'})}
@@ -155,7 +161,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
 
                 <div className={`${stylesModal['content__section']}`} >
                     <div> <FormattedMessage id={`Modal.CreatingPortal_Initials`} /> </div>
-                    <div className={`${styles['container__input-initials']}`} >
+                    <div className={`${stylesCreatingPortal['container__input-initials']}`} >
                         <input 
                             type='text'
                             placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Initials'})}
@@ -168,7 +174,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Url`} /></div>
-                    <div className={`${styles['container__input-url']}`} >
+                    <div className={`${stylesCreatingPortal['container__input-url']}`} >
                         <input 
                             type='text'
                             placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Url'})}
@@ -181,7 +187,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
 
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Life`} /></div>
-                    <div className={`${styles['container__input-life']}`} >
+                    <div className={`${stylesCreatingPortal['container__input-life']}`} >
                         <input   
                             type='range'
                             name='lifespan'
@@ -214,7 +220,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
                     </form>
 
                     {draft.hueOption === 'choose' &&
-                        <div className={`${styles['container__input-hue']}`} >
+                        <div className={`${stylesCreatingPortal['container__input-hue']}`} >
                             <input   
                                 type='range'
                                 name='hue'
@@ -229,7 +235,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Tags`} /></div>
 
-                    <div className={`${styles['list-tag']}`} > 
+                    <div className={`${stylesCreatingPortal['list-tag']}`} > 
                         {draft.listTag.map((tag, index)=>
                             <div
                                 key={`tag-${index}`}
@@ -239,11 +245,11 @@ function CreatingPortal({}: PropsCreatingPortal) {
                                 </div>
                                 <div
                                     onClick={()=>onClick_DeleteTag(tag)}
-                                > <IconX className={`${styles['icon-x']}`} /> </div>
+                                > <IconX className={`${stylesCreatingPortal['icon-x']}`} /> </div>
                             </div>)}
                     </div>
 
-                    <div className={`${styles['container__input-tag-current']}`} >
+                    <div className={`${stylesCreatingPortal['container__input-tag-current']}`} >
                         <input 
                             type='text'
                             placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Tags'})}
@@ -262,10 +268,9 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 <div className={`${stylesModal['content__section']}`} >
                     <button
                         className={`${stylesModal['button-main']}`}
-                        onClick={()=>onClick_CreatePortal(draft)}
-                    > <FormattedMessage id={`Modal.CreatingPortal_Create`} /> </button>
+                        onClick={()=>onClick_EditPortal(draft)}
+                    > <FormattedMessage id={`Modal.EditingPortal_Update`} /> </button>
                 </div>
-
 
             </div>
         </div>
@@ -274,8 +279,8 @@ function CreatingPortal({}: PropsCreatingPortal) {
   );
 }
 
-CreatingPortal.defaultProps = {};
+EditingPortal.defaultProps = {};
 
-export default CreatingPortal;
+export default EditingPortal;
 
 

@@ -16,7 +16,7 @@ import IconLinkExternal from 'svgs/basic/IconLinkExternal';
 
 
 type PropsPortal = {
-    _id: string,
+    id: string,
     idUser: string,   //  normal, search
     kind: string,
              
@@ -26,14 +26,15 @@ type PropsPortal = {
     
     lifespan: number,
     listBooleanVisited: boolean[],  // [true, false, ...(30days)] 
-    dateVisitedLast: Date, 
+    dateVisitedLast: number, 
+    dateCreated: number
 
-    tags: string[],
+    listTag: string[],
     hue: string
 };
 
 function Portal({
-    _id,
+    id,
     idUser,   //  normal, search
     kind,
              
@@ -44,8 +45,9 @@ function Portal({
     lifespan,
     listBooleanVisited,  // [true, false, ...(30days)] 
     dateVisitedLast, 
+    dateCreated,
 
-    tags,
+    listTag,
     hue
 }: PropsPortal) {
   
@@ -75,7 +77,7 @@ function Portal({
     },[listBooleanVisited]);
 
     useEffect(()=>{
-        if(idPortalOpen !== _id){
+        if(idPortalOpen !== id){
             setOpen(false);
         }
     },[idPortalOpen]);
@@ -86,7 +88,7 @@ function Portal({
                 setOpen(true);
                 dispatch(actionsStatus.return__REPLACE({
                     listKey: ['current', 'portal', 'open'],
-                    replacement: _id
+                    replacement: id
                 }));
             }
             else {
@@ -94,7 +96,13 @@ function Portal({
                     window.open(url, "_blank");
 
                     dispatch(actionsPortal.return__VISIT_PORTAL({
-                        idPortal: _id
+                        id,
+                        idUser,   //  normal, search
+                        
+                        lifespan,
+                        listBooleanVisited,  // [true, false, ...(30days)] 
+                        dateVisitedLast,
+                        dateCreated
                     }));
 
                     setOpen(false);
@@ -103,13 +111,32 @@ function Portal({
                     setOpen(false);
                 }
             }
-        },[_id, url, open]
+        },[id, url, open]
     );
 
 
     const onClick_Close = useCallback(
         () => {
             setOpen(false);
+        },[]
+    );
+
+    const onClick_Action = useCallback(
+        (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            const {currentTarget: { value }} = event;
+            if (value === 'edit'){
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'portal', 'editing'],
+                    replacement: id
+                }));
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['showing', 'modal', 'editingPortal'],
+                    replacement: true
+                }));
+            }
+            else if (value === 'move'){
+                // move
+            }
         },[]
     );
     
@@ -158,19 +185,21 @@ function Portal({
 
                 <div className={`${styles['actions']}`}>
                     <button 
-                        
+                        value='move'
+                        onClick={onClick_Action}
                     >   <IconMove className={`${styles['icon-move']}`} kind='light' />
                     </button>
                     
                     <button 
-                        
+                        value='edit'
+                        onClick={onClick_Action}
                     >   <IconEdit className={`${styles['icon-edit']}`} kind='light' />
                     </button>
                 </div>
 
                 <div className={`${styles['others']}`}>
                     <div className={`${styles['list-tag']}`}>
-                        {tags.map((tag, index)=>(
+                        {listTag.map((tag, index)=>(
                             <div
                                 key={`tag-${index}`}
                             >

@@ -129,53 +129,6 @@ a {
 
 
 
-input[type=text], input[type=email], input[type=password] {
-
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-
-    @include color-each-theme(background-color, basic__1, $is-module: false);
-    @include color-each-theme(color, basic__5, $is-module: false);
-
-    &::placeholder {
-        @include color-each-theme(color, basic__4, $is-module: false);
-    }
-
-    @include frame-each-theme(border, 1px, solid, basic__1, $is-module: false);
-    border-radius: 4px;
-
-    width: 100%;
-    height: 36px; 
-
-    box-sizing: border-box;
-
-    font-size: 1rem;
-    
-    
-    position: static;
-
-    overflow: visible;
-    cursor: pointer;
-    
-    margin: 0px 0px 0px 0px; 
-    padding: 0px 0px 0px 4px; 
-    
-
-    &:focus {
-        @include color-each-theme(background-color, basic__1, $is-module: false);
-        @include color-each-theme(color, basic__7, $is-module: false);
-
-        @include frame-each-theme(border, 2px, solid, main__5, $is-module: false);
-        outline: 1px solid transparent;
-
-        @include shadow-each-theme(box-shadow, 0px, 0px, 10px, 2px, shadow__main__normal, $is-module: false);
-        border-radius: 4px;
-    }
-}
-
-
 
 header {
 

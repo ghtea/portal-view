@@ -19,15 +19,22 @@ export type type__REPLACE = ReturnType<typeof return__REPLACE>;  // 리덕스에
 
 
 export const name__CREATE_PORTAL = 'portal/CREATE_PORTAL';
-
 export const return__CREATE_PORTAL = (payload: any) => {
     return {
         type: name__CREATE_PORTAL,
         payload: payload
     }
 };
-
 export type type__CREATE_PORTAL = ReturnType<typeof return__CREATE_PORTAL>;
+
+export const name__EDIT_PORTAL = 'portal/EDIT_PORTAL';
+export const return__EDIT_PORTAL = (payload: any) => {
+    return {
+        type: name__EDIT_PORTAL,
+        payload: payload
+    }
+};
+export type type__EDIT_PORTAL = ReturnType<typeof return__EDIT_PORTAL>;
 
 
 
@@ -46,11 +53,7 @@ export type type__GET_LIST_PORTAL = ReturnType<typeof return__GET_LIST_PORTAL>;
 
 export const name__VISIT_PORTAL: string = `portal/VISIT_PORTAL`;    // 뒤에 as const 를 붙이면 reducer 에서 auth.REPLACE 로 쓸때 오류 뜬다. 아직 이해못
 
-interface Payload__VISIT_PORTAL {
-    idPortal: string
-}
-
-export const return__VISIT_PORTAL = (payload: Payload__VISIT_PORTAL) => {
+export const return__VISIT_PORTAL = (payload: any) => {
     return {
         type: name__VISIT_PORTAL,
         payload: payload

@@ -14,9 +14,8 @@ import * as actionsPortal from "store/actions/portal";
 
 
 
-interface Portal {
+interface Update {
 
-    idUser: string;   //  normal, search
     kind: string;
              
     name: string;
@@ -24,27 +23,28 @@ interface Portal {
     url: string;
     
     lifespan: number; 
-    listBooleanVisited: boolean[];  
-    dateVisitedLast: number; 
     
     listTag: string[];
     hue: string;
 
-    dateCreated: number;
     dateUpdated: number;
     
 }
 
 
-const requestCreatePortal = (portal: Portal) => {
+const requestEditPortal = (id:string, update:any) => {
     
-    return firebaseFs.collection("Portal_").add(portal) 
+    return firebaseFs.doc(`Portal_/${id}`).update({
+      ...update
+    });
 };
 
 
-function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
+function* editPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
+    const idUserInApp: boolean =  yield select( (state:StateRoot) => state.auth.user.id); 
+
     const history = yield getContext('history');
     
     try {
@@ -53,6 +53,9 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'NotLoggedIn__E'
             }) );
+        }
+        else if (idUserInApp !== action.payload.idUser){
+            console.log('your are not author of this portal');
         }
         else if (action.payload.name === "") {
             console.log('type name');
@@ -90,13 +93,10 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             }
             //let listBooleanVisited:boolean[] = Array(action.payload.lifespan-1).fill(false);
             //listBooleanVisited.unshift(true);
-            const listBooleanVisited:boolean[] = [true]; 
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
 
             const date = Date.now();
-            const portal = {
+            const update = {
 
-                idUser: idUser,
                 kind: action.payload.kind,
                      
                 name: action.payload.name,
@@ -104,34 +104,31 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 url: action.payload.url,
                 
                 lifespan: parseInt(action.payload.lifespan),
-                listBooleanVisited: listBooleanVisited, 
-                dateVisitedLast: date,  
                 
                 listTag: action.payload.listTag,
                 hue: hue,
 
-                dateCreated: date,
                 dateUpdated: date 
             };
             
             try {
-                const data =  yield call( requestCreatePortal , portal );
+                const data =  yield call( requestEditPortal , action.payload.id, update );
 
                 console.log(data);
 
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'CreatePortal_Succeeded__S'
+                        codeSituation: 'EditPortal_Succeeded__S'
                     }));
 
                     yield put(actionsStatus.return__REPLACE({ 
-                        listKey: ['showing', 'modal', 'creatingPortal'], 
+                        listKey: ['showing', 'modal', 'editingPortal'], 
                         replacement: false
                     }));
 
-                    history.push('/');
+                    // history.push('/');
                     
                     yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: idUser
+                        idUser: action.payload.idUser
                     }));
                     // window.location.reload();
             }
@@ -152,12 +149,12 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
     } catch (error) {
         
         console.log(error);
-        console.log('createPortal has been failed');
+        console.log('editPortal has been failed');
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
-            codeSituation: 'CreatePortal_UnknownError__E'
+            codeSituation: 'EditPortal_UnknownError__E'
         }) );
     }
 }
 
-export default createPortal;
+export default editPortal;

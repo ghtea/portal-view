@@ -1,7 +1,8 @@
 import { call, select, put, getContext } from "redux-saga/effects";
+import { firebaseFs } from "firebaseApp";
+
 import axios from "axios";
 import queryString from 'query-string';
-import { v4 as uuidv4 } from 'uuid';
 
 // import * as config from 'config';
 import {StateRoot} from 'store/reducers';
@@ -13,86 +14,127 @@ import * as actionsPortal from "store/actions/portal";
 
 
 
-interface BodyRequest {
-   idPortal: string
+interface Update {
+
+    kind: string;
+             
+    name: string;
+    initials: string;
+    url: string;
+    
+    lifespan: number; 
+    
+    listTag: string[];
+    hue: string;
+
+    dateUpdated: number;
+    
 }
 
 
-const requestVisitPortal = (bodyRequest: BodyRequest) => {
+const requestVisitPortal = (id:string, update:any) => {
     
-    return axios.put(`${process.env.REACT_APP_URL_BACK}/portal/visit`, bodyRequest)
-    .then(response => { 
-        //console.log(response)
-        return ({response});
-    })
-    .catch(error => {
-        //console.log(error.response)
-        return ({error});
+    return firebaseFs.doc(`Portal_/${id}`).update({
+      ...update
     });
 };
 
 
-function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
+function* visitPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
-    const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
-    
-    try {
+    const {
+        id,
+        idUser,   //  normal, search
         
+        lifespan,
+        listBooleanVisited,  // [true, false, ...(30days)] 
+        dateVisitedLast,
+        dateCreated
+    } = action.payload;
+    const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
+    const idUserInApp: boolean =  yield select( (state:StateRoot) => state.auth.user.id); 
+
+    try {
+
         if (!readyUser){
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'NotLoggedIn__E'
             }) );
         }
-        
+        else if (idUserInApp !== action.payload.idUser){
+            console.log('your are not author of this portal');
+        }
+
         else {
 
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
+            const date = Date.now();
+            const dateLast = dateVisitedLast || dateCreated;
+            const hoursBetween = (date - dateLast) / (1000);
 
-            const bodyRequest = {
-                idPortal: action.payload.idPortal
+            let listBooleanVisitedReplacement:boolean[] = listBooleanVisited;
+            const hoursGapStandard = 10;
+            if (hoursBetween > hoursGapStandard) {   
+                let listToAdd:boolean[] = [];
+                listToAdd.push(true);
+                
+                let hoursBetweenRemaining = hoursBetween - 24;
+                
+                for (var i = 0; i < lifespan; i++ ) {
+                    if (hoursBetweenRemaining > hoursGapStandard){
+                        
+                        hoursBetweenRemaining -= 24;
+                        
+                        listToAdd.push(false);
+                    }
+                }
+                listBooleanVisitedReplacement = listToAdd.concat(listBooleanVisited);
+                console.log(listBooleanVisitedReplacement);
+                for (var i = 0; i < lifespan; i++ ) {
+                    if (listBooleanVisitedReplacement.length > lifespan){
+                        listBooleanVisitedReplacement.pop();
+                    }
+                }
+            };
+
+            const update = {
+                listBooleanVisited: listBooleanVisitedReplacement,
+                dateVisitedLast: date
             };
             
-           
-            const {response, error} = yield call( requestVisitPortal, bodyRequest );
+            try {
+                const data =  yield call( requestVisitPortal , id, update );
 
-            console.log(response);
-            console.log(error);
+                console.log(data);
 
-            if (response){
-                const codeSituation = response.data.codeSituation;
-                
-        
-                if (codeSituation === 'VisitPortal_Succeeded__S') {
-                    /*
-                        yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                            codeSituation: 'VisitPortal_Succeeded'
-                        }));
-                    */
+                    yield put(actionsNotification.return__ADD_DELETE_BANNER({
+                        codeSituation: 'VisitPortal_Succeeded__S'
+                    }));
 
+                    yield put(actionsStatus.return__REPLACE({ 
+                        listKey: ['showing', 'modal', 'editingPortal'], 
+                        replacement: false
+                    }));
+
+                    // history.push('/');
+                    
                     yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: idUser
+                        idUser: action.payload.idUser
                     }));
                     // window.location.reload();
-                }
             }
-            else {   
-                const codeSituation = error.response.data.codeSituation;
-                
-                console.log(codeSituation);
 
+            catch (error){ 
+                
+                console.log(error);
+                console.log('error occurred in firebase server')
+                /*
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({
                     codeSituation: codeSituation
                 }) );
-                
+                */
             }
               
-            
-        } // higher else
-    
-
-    // go to home
-        
-        
+        }
     } catch (error) {
         
         console.log(error);

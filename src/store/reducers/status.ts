@@ -36,7 +36,8 @@ const stateInitial = {
     },
 
     portal: {
-        open: ''
+        open: '',
+        editing: ''
     }
   },
   

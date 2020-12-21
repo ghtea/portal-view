@@ -6,6 +6,7 @@ import * as actionsStatus from 'store/actions/status';
 
 import Setting from "./Modal/Setting";
 import CreatingPortal from "./Modal/CreatingPortal";
+import EditingPortal from "./Modal/EditingPortal";
 
 // import styles from './Modal.module.scss';
 
@@ -16,18 +17,17 @@ function Modal({}: PropsModal) {
   
     const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['setting']);
     const showingCreatingPortal:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['creatingPortal']);
-
+    const showingEditingPortal:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['editingPortal']);
   
-  return (
-      
-    <>
-      
-      {showingSetting && <Setting />}
-      {showingCreatingPortal && <CreatingPortal />}
-
-    </>
-      
-  );
+    return (
+        
+        <>
+            {showingSetting && <Setting />}
+            {showingCreatingPortal && <CreatingPortal />}
+            {showingEditingPortal && <EditingPortal />}
+        </>
+        
+    );
 }
 
 export default Modal;

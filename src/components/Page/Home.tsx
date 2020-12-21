@@ -57,7 +57,7 @@ function Home({}: PropsHome) {
                         <Portal
                             key={`portal-${index}`}
 
-                            _id={portal._id}
+                            id={portal.id}
                             idUser={portal.idUser}
                         
                             kind={portal.kind}
@@ -66,13 +66,13 @@ function Home({}: PropsHome) {
                             initials={portal.initials}
                             url={portal.url}
 
-                            tags={portal.tags}
+                            listTag={portal.listTag}
                             hue={portal.hue}
 
                             lifespan={portal.lifespan}
                             listBooleanVisited={portal.listBooleanVisited}
                             dateVisitedLast={portal.dateVisitedLast}
-
+                            dateCreated={portal.dateCreated}
                         
                         />
                     ))}
