@@ -69,10 +69,10 @@ function* visitPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
             const date = Date.now();
             const dateLast = dateVisitedLast || dateCreated;
-            const hoursBetween = (date - dateLast) / (1000);
+            const hoursBetween = (date - dateLast) / (1000 * 60 * 60 * 24);
 
             let listBooleanVisitedReplacement:boolean[] = listBooleanVisited;
-            const hoursGapStandard = 10;
+            const hoursGapStandard = 20;
             if (hoursBetween > hoursGapStandard) {   
                 let listToAdd:boolean[] = [];
                 listToAdd.push(true);
@@ -102,25 +102,27 @@ function* visitPortal(action: actionsPortal.type__CREATE_PORTAL) {
             };
             
             try {
-                const data =  yield call( requestVisitPortal , id, update );
+                
+                yield call( requestVisitPortal , id, update );
 
-                console.log(data);
+                console.log('requestVisitPortal worked well');
 
-                    yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'VisitPortal_Succeeded__S'
-                    }));
+                /*
+                yield put(actionsNotification.return__ADD_DELETE_BANNER({
+                    codeSituation: 'VisitPortal_Succeeded__S'
+                }));
+                */
+                yield put(actionsStatus.return__REPLACE({ 
+                    listKey: ['showing', 'modal', 'editingPortal'], 
+                    replacement: false
+                }));
 
-                    yield put(actionsStatus.return__REPLACE({ 
-                        listKey: ['showing', 'modal', 'editingPortal'], 
-                        replacement: false
-                    }));
-
-                    // history.push('/');
-                    
-                    yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: action.payload.idUser
-                    }));
-                    // window.location.reload();
+                // history.push('/');
+                
+                yield put(actionsPortal.return__GET_LIST_PORTAL({
+                    idUser: action.payload.idUser
+                }));
+                // window.location.reload();
             }
 
             catch (error){ 

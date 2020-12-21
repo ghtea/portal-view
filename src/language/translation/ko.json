@@ -68,8 +68,9 @@
     "Notification.CreatePortal_UnknownError__E": "알수 없는 에러가 발생했습니다",
     "Notification.GetListPortal_UnknownError__E": "알수 없는 에러가 발생했습니다",
     "Notification.VisitPortal_UnknownError__E": "알수 없는 에러가 발생했습니다",
-
+    "Notification.EditPortal_Succeeded__S": "성공적으로 포털을 수정했습니다!",
     
+
     "Page.Home_Welcome": "환영합니다!",
     
     "Page.LogIn_LogIn": "로그인",

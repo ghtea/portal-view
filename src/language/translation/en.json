@@ -67,6 +67,7 @@
     "Notification.CreatePortal_UnknownError__E": "An unknown error has occurred",
     "Notification.GetListPortal_UnknownError__E": "An unknown error has occurred",
     "Notification.VisitPortal_UnknownError__E": "An unknown error has occurred",
+    "Notification.EditPortal_Succeeded__S": "Successfully edited portal!",
 
 
     "Page.Home_Welcome": "Welcome!",

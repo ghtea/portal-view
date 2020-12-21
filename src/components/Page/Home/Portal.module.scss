@@ -143,8 +143,8 @@ $border-radius__face: 12px;
     }
 
     @keyframes openBody {
-        from { transform: scale(0.7); }
-        to { transform: scale(1); }
+        from { transform: scale(1, 0.7); }
+        to { transform: scale(1, 1); }
     }
     
     .body {
@@ -222,6 +222,46 @@ $border-radius__face: 12px;
         .others {
             margin-top: 10px;
             border-radius: 8px;
+
+
+
+            .hp {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+
+                height: 30px;
+
+                & > *:nth-child(1) {
+                    width: 15%;
+                }
+                & > *:nth-child(2) {
+                    width: 50%;
+                    height: 14px;
+                    border-radius: 3px;
+                    background-color: grey;
+
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    & > div {
+                        background-color: rgb(55, 216, 33); 
+                        height: 12px;
+                        border-radius: 3px;
+                    }
+                }
+                & > *:nth-child(3) {
+                    width: 20%;
+                }
+               
+            }
+
+            .last-visit {
+                height: 30px;
+            }
         }
 
     }
@@ -256,29 +296,42 @@ $list-hue: (
                 @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-#{$hue}__normal);
             }
             .right {
-                @include color-each-theme(background-color, hue-#{$hue}__1, 0.5);
-                @include color-each-theme(color, hue-#{$hue}__6);
+                @include color-each-theme(background-color, hue-#{$hue}__1, 0.3);
+                @include color-each-theme(color, hue-#{$hue}__7);
             }
         }
 
         &:global(.open----true){
 
             .face {
+                .left {
+                    @include frame-each-theme(border, 2px, solid, basic__3);
+                    @include color-each-theme(color, basic__6);
+                    //background-color: transparent;
+                    box-shadow: none;
+                    //@include color-each-theme(background-color, basic__0);
+                }
                 .right {
                     background-color: transparent;
-                    @include frame-each-theme(border, 2px, solid, hue-#{$hue}__3);
-                    @include color-each-theme(color, hue-#{$hue}__6);
+                    @include frame-each-theme(border, 2px, solid, basic__2);
+                    @include color-each-theme(color, basic__7);
                 }
             }
 
             .body {
-                @include color-each-theme(background-color, hue-#{$hue}__1, 0.8);
+                @include color-each-theme(background-color, basic__0, 0.8);
                 backdrop-filter: blur(1px);
 
-                @include color-each-theme(color, hue-#{$hue}__6);
-                @include frame-each-theme(border, 1px, solid, hue-#{$hue}__4);
-                @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-#{$hue}__normal);
+                @include color-each-theme(color, basic__5);
+                @include frame-each-theme(border, 1px, solid, basic__1);
+                @include frame-each-theme(border-top, 4px, solid, hue-#{$hue}__5);
+                @include frame-each-theme(border-bottom, 4px, solid, hue-#{$hue}__5);
 
+                @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__basic__weak);
+
+                .name {
+                    @include color-each-theme(color, basic__8);
+                }
                 .actions > * {
                     @include color-each-theme(background-color, basic__0);
                     @include color-each-theme(color, basic__6);

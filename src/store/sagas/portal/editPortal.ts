@@ -116,21 +116,21 @@ function* editPortal(action: actionsPortal.type__CREATE_PORTAL) {
 
                 console.log(data);
 
-                    yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'EditPortal_Succeeded__S'
-                    }));
+                yield put(actionsNotification.return__ADD_DELETE_BANNER({
+                    codeSituation: 'EditPortal_Succeeded__S'
+                }));
 
-                    yield put(actionsStatus.return__REPLACE({ 
-                        listKey: ['showing', 'modal', 'editingPortal'], 
-                        replacement: false
-                    }));
+                yield put(actionsStatus.return__REPLACE({ 
+                    listKey: ['showing', 'modal', 'editingPortal'], 
+                    replacement: false
+                }));
 
-                    // history.push('/');
-                    
-                    yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: action.payload.idUser
-                    }));
-                    // window.location.reload();
+                // history.push('/');
+                
+                yield put(actionsPortal.return__GET_LIST_PORTAL({
+                    idUser: action.payload.idUser
+                }));
+                // window.location.reload();
             }
 
             catch (error){ 

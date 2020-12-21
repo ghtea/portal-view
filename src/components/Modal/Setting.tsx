@@ -130,7 +130,7 @@ function Setting({}: PropsSetting) {
 
                 <div className={`${stylesModal['content__section']}`} >
                     <button
-                        className={`${stylesModal['button-normal']}`}
+                        className={`${styles['button-log-out']}`}
                         onClick={()=>onClick_LogOut()}
                     > <FormattedMessage id={`Modal.Setting_LogOut`} /> </button>
                 </div>

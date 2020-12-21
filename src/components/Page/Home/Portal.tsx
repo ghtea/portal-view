@@ -56,25 +56,37 @@ function Portal({
     const idPortalOpen:string = useSelector((state: StateRoot) => state['status']['current']['portal']['open']);
     const [open, setOpen] = useState(false); 
     
-    const hpMax:number = useMemo(()=>{
-        let temp:number = 0;
+    const {ratioHp, hpMax, hpCurrent} = useMemo(()=>{
+
+        let hpMax:number = 0;
         for (var i = 0; i < listBooleanVisited.length; i++){
             const numberToAdd = (30-i);
-            temp += numberToAdd;
+            hpMax += numberToAdd;
         }
-        return temp;
-    },[listBooleanVisited]);
-
-    const hpCurrent = useMemo(()=>{
-        let temp:number = 0;
+        
+        let hpCurrent:number = 0;
         for (var i = 0; i < listBooleanVisited.length; i++){
             if (listBooleanVisited[i] === true){
                 const numberToAdd = (30-i);
-                temp += numberToAdd;
+                hpCurrent += numberToAdd;
             }
         }
-        return temp;
+        const ratioHp = Math.round((hpCurrent / hpMax) * 100) / 100;
+        
+        return {hpCurrent, hpMax, ratioHp}
+
     },[listBooleanVisited]);
+
+
+    const stringVisitedLast = useMemo(()=>{
+        const date = new Date(dateVisitedLast); 
+
+        var month = date.getUTCMonth() + 1; //months from 1-12
+        var day = date.getUTCDate();
+        var year = date.getUTCFullYear();
+
+        return `${year}.${month}.${day}`
+    },[dateVisitedLast]);
 
     useEffect(()=>{
         if(idPortalOpen !== id){
@@ -207,9 +219,18 @@ function Portal({
                             </div>
                         ))}
                     </div>
-                    <div> {hpCurrent} / {hpMax}</div>
-                    <div> last visit </div>
-                    <div> created </div>
+                    <div className={`${styles['hp']}`}>
+                        <div> HP </div>
+                        <div 
+                            className={`${styles['bar']}`}
+                        >   <div style={{width: `${ratioHp * 100}%`}}/>
+                        </div>
+                        <div>  {`${ratioHp * 100}%`} </div>
+                    </div>
+                    <div
+                        className={`${styles['last-visit']}`}
+                    >  <div> last visit {stringVisitedLast} </div>
+                    </div>
                 </div>
 
             </div>

@@ -6,3 +6,12 @@
 
 
 
+.button-log-out {
+    width: 100%;
+    height: 36px;
+
+    @include color-each-theme(background-color, error__5);
+    @include color-each-theme(color, basic__0);
+
+    margin-top: 12px;
+}
