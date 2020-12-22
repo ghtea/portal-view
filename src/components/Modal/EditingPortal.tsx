@@ -132,7 +132,7 @@ function EditingPortal({}: PropsEditingPortal) {
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Kind`} /></div>
 
-                    <form className={`form-radio`} > 
+                    <div className={'container__input-radio'} > 
                         <input type="radio" name="kind" value="normal" defaultChecked
                             id="kind----normal"
                             onChange={onChange_InputNormal} 
@@ -142,7 +142,7 @@ function EditingPortal({}: PropsEditingPortal) {
                             id="kind----search"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="kind----search">search</label>
-                    </form>
+                    </div>
                 </div>
 
 
@@ -202,7 +202,7 @@ function EditingPortal({}: PropsEditingPortal) {
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Hue`} /></div>
 
-                    <form className={`form-radio`} > 
+                    <div className={'container__input-radio'} > 
                         <input type="radio" name="hueOption" value="random" defaultChecked
                             id="hueOption----random"
                             onChange={onChange_InputNormal} 
@@ -217,7 +217,7 @@ function EditingPortal({}: PropsEditingPortal) {
                             id="hueOption----grey"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="hueOption----grey">grey</label>
-                    </form>
+                    </div>
 
                     {draft.hueOption === 'choose' &&
                         <div className={`${stylesCreatingPortal['container__input-hue']}`} >

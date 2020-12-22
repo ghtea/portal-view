@@ -25,7 +25,6 @@ input[type=text], input[type=email], input[type=password] {
 
     font-size: 1rem;
     
-    
     position: static;
 
     overflow: visible;
@@ -48,8 +47,82 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 
-.form-radio {
 
+input[type=submit] {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    @include color-each-theme(background-color, main__5);
+    @include color-each-theme(color, basic__0);
+    border-style: none;
+
+    width: 100%;
+    height: 36px;
+
+    margin-top: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    position: static;
+    overflow: visible;
+    cursor: pointer;
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 4px; 
+    
+    &:focus {
+        
+    }
+}
+
+
+.container__input-file {
+
+    input[type=file]  {
+        display: none !important;
+    }
+
+    label {
+        width: 100%;
+        height: 36px; 
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+
+        @include color-each-theme(background-color, basic__1, $is-module: false);
+        @include color-each-theme(color, basic__5, $is-module: false);
+
+
+        @include frame-each-theme(border, 1px, solid, basic__1, $is-module: false);
+        
+        border-radius: 4px;
+
+        box-sizing: border-box;
+
+        font-size: 1rem;
+        
+        position: static;
+
+        overflow: visible;
+        cursor: pointer;
+        
+        margin: 0px 0px 0px 0px; 
+        padding: 0px 0px 0px 4px; 
+
+    }
+
+    label + * {
+        width: 25%;
+        height: 100%;
+    }
+}
+
+.container__input-radio {
+    
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;

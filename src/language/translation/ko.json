@@ -29,6 +29,7 @@
     "Modal.MyProfile_EmailAddress": "이메일 주소",
     "Modal.MyProfile_Name": "이름",
     "Modal.MyProfile_Photo": "사진",
+    "Modal.MyProfile_Update": "업데이트",
 
     "Modal.CreatingPortal_Title": "포털 만들기",
     "Modal.CreatingPortal_Kind": "종류",

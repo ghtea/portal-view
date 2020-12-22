@@ -26,6 +26,7 @@
     "Modal.MyProfile_EmailAddress": "Email Address",
     "Modal.MyProfile_Name": "Name",
     "Modal.MyProfile_Photo": "Photo",
+    "Modal.MyProfile_Update": "Update",
 
     "Modal.CreatingPortal_Title": "Create Portal",
     "Modal.CreatingPortal_Kind": "Kind",

@@ -91,7 +91,7 @@ function Setting({}: PropsSetting) {
                 <div className={`${stylesModal['content__section']}`} >
                     <div> <FormattedMessage id={`Modal.Setting_Theme`} /> </div>
 
-                    <form className={`form-radio`} > 
+                    <div className={'container__input-radio'} > 
                         <input type="radio" name="optionTheme" value="auto" defaultChecked
                             id="optionTheme----auto"
                             onChange={onChange_InputNormal} 
@@ -106,13 +106,13 @@ function Setting({}: PropsSetting) {
                             id="optionTheme----always-dark"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="optionTheme----always-dark"> dark </label>
-                    </form>
+                    </div>
                 </div>
                 
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.Setting_Language`} /></div>
 
-                    <form className={`form-radio`} > 
+                    <div className={'container__input-radio'} > 
                         <input type="radio" name="language" value="en" defaultChecked
                             id="language----en"
                             onChange={onChange_InputNormal} 
@@ -123,7 +123,7 @@ function Setting({}: PropsSetting) {
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="language----ko"> 한국어 </label>
 
-                    </form>
+                    </div>
 
                 </div>
 

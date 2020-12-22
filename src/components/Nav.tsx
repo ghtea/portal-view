@@ -126,7 +126,7 @@ function Nav({}: PropsNav) {
         
         { readyUser &&
             <button className={`${styles['user']}`} 
-                
+                onClick={()=>onClick_ShowModal('myProfile')}
             >
             <div> <IconUserCircle className={`${styles['icon-user-circle']}`} kind="solid"/> </div>
             </button>

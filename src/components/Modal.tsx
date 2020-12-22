@@ -5,8 +5,10 @@ import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 
 import Setting from "./Modal/Setting";
+import MyProfile from "./Modal/MyProfile";
+
 import CreatingPortal from "./Modal/CreatingPortal";
-import EditingPortal from "./Modal/MyProfile";
+import EditingPortal from "./Modal/EditingPortal";
 
 // import styles from './Modal.module.scss';
 
@@ -16,6 +18,7 @@ type PropsModal = {};
 function Modal({}: PropsModal) {
   
     const showingSetting:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['setting']);
+    const showingMyProfile:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['myProfile']); 
     const showingCreatingPortal:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['creatingPortal']);
     const showingEditingPortal:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['editingPortal']);
   
@@ -23,6 +26,7 @@ function Modal({}: PropsModal) {
         
         <>
             {showingSetting && <Setting />}
+            {showingMyProfile && <MyProfile />}
             {showingCreatingPortal && <CreatingPortal />}
             {showingEditingPortal && <EditingPortal />}
         </>

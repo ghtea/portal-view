@@ -49,14 +49,34 @@ function MyProfile({}: PropsMyProfile) {
             
         },[]
     ); 
+    
+    const onChange_InputFile = useCallback( (event:React.ChangeEvent<HTMLInputElement>) => {
+        const { currentTarget: { files } } = event;
+        const theFile = files && files[0];
+        if (theFile){
+            const reader = new FileReader();
 
-    const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+            reader.onloadend = (finishedEvent) => {
+                const result = finishedEvent?.target?.result
+                //const { currentTarget: { result }} = finishedEvent;
+                setAttachment(result as string);
+            };
+            reader.readAsDataURL(theFile);  // then onloadend is triggered
+        }
+    },[]);
+
+    const onClick_ClearAttachment = useCallback( (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        setAttachment('');
+    },[]);
+
+    const onSubmit = useCallback( (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         let attachmentUrl = "";
         if (attachment !== "") {
             console.log('do update user info');
         }
-    };
+    },[]);
+
     /*
     const onClick_EditProfile = useCallback(
         (draft) => {
@@ -101,50 +121,23 @@ function MyProfile({}: PropsMyProfile) {
                     <div> {user.displayName} </div>
                 </div>
 
-
                 <div className={`${stylesModal['content__section']}`} >
                     <div> <FormattedMessage id={`Modal.MyProfile_Photo`} /> </div>
 
-                    <input type="file" accept="image/*" onChange={onFileChange} />
-        <input type="submit" value="Nweet" />
-        {attachment && (
-          <div>
-            <img src={attachment} width="50px" height="50px" />
-            <button onClick={onClearAttachment}>Clear</button>
-          </div>
-        )}
-
-                    <div className={`${stylesCreatingProfile['container__input-name']}`} >
-                        <input 
-                            type='text'
-                            placeholder={intl.formatMessage({ id: 'Modal.CreatingProfile_Name'})}
-                            name='name'
-                            value={draft.name}
-                            onChange={onChange_InputNormal} 
-                        /> 
-                    </div>
-                </div>
-
-                <div className={`${stylesModal['content__section']}`} >
-                    <div> <FormattedMessage id={`Modal.CreatingProfile_Initials`} /> </div>
-                    <div className={`${stylesCreatingProfile['container__input-initials']}`} >
-                        <input 
-                            type='text'
-                            placeholder={intl.formatMessage({ id: 'Modal.CreatingProfile_Initials'})}
-                            name='initials'
-                            value={draft.initials}
-                            onChange={onChange_InputNormal} 
-                        /> 
-                    </div>
+                    <div className={`${styles['container__input-file']}`} > 
+                        <input type="file" accept="image/*" id='file-photo' 
+                            onChange={onChange_InputFile} 
+                        />
+                        <label htmlFor='file-photo' > Upload Photo </label>
+                        <button onClick={onClick_ClearAttachment}> Clear </button>
+                    </div> 
                 </div>
                 
-                <input type="submit" value="Nweet" />
-
                 <div className={`${stylesModal['content__section']}`} >
                     <input
                         type="submit"
-                        className={`${stylesModal['submit']}`}
-                    > <FormattedMessage id={`Modal.MyProfile_Update`} /> </input>
+                        value={intl.formatMessage({ id: 'Modal.MyProfile_Update'})}
+                    />
                 </div>
 
             </form>
@@ -159,3 +152,14 @@ MyProfile.defaultProps = {};
 export default MyProfile;
 
 
+
+
+/*
+{attachment && (
+    <div>
+        <img src={attachment} width="50px" height="50px" />
+        <button onClick={onClick_ClearAttachment}>Clear</button>
+    </div>
+)}
+
+*/
