@@ -49,8 +49,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
             const password:string = action.payload.password;
             
             try {
-                const data = yield call( requestLogIn, email, password );
-                console.log(data.user);
+                const {user} = yield call( requestLogIn, email, password );
+                //console.log(data.user);
 
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['loading', 'user'],
@@ -65,11 +65,14 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                 yield put( actionsAuth.return__REPLACE({
                     listKey: ['user'],
                     replacement: {
-                        id: data.user.uid,
-                        email: data.user.email,
-
-                        joined: data.user.metadata.creationTime,
-                        accessed: data.user.metadata.lastSignInTime
+                        id: user.uid,
+                        email: user.email,
+                        
+                        urlPhoto: user.photoURL,
+                        displayName: user.displayName,
+            
+                        joined: user.metadata.creationTime,
+                        accessed: user.metadata.lastSignInTime
                     }
                 }) );
 

@@ -6,7 +6,7 @@ import * as actionsStatus from 'store/actions/status';
 
 import Setting from "./Modal/Setting";
 import CreatingPortal from "./Modal/CreatingPortal";
-import EditingPortal from "./Modal/EditingPortal";
+import EditingPortal from "./Modal/MyProfile";
 
 // import styles from './Modal.module.scss';
 

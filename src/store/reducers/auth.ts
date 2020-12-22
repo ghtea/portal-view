@@ -16,10 +16,14 @@ export type State = typeof stateInitial;   // 아직 불확실
 const stateInitial = {
     
   user: {
-      id: '',
-      email: '',
-      joined: Date.now(),
-      accessed: Date.now()
+        id: '',
+        email: '',
+
+        urlPhoto: '',
+        displayName: '',
+
+        joined: Date.now(),
+        accessed: Date.now(),
   }
   
 };

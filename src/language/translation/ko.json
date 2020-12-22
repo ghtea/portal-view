@@ -25,6 +25,11 @@
     "Modal.Setting_Language": "언어",
     "Modal.Setting_LogOut": "로그아웃",
 
+    "Modal.MyProfile_Title": "프로필",
+    "Modal.MyProfile_EmailAddress": "이메일 주소",
+    "Modal.MyProfile_Name": "이름",
+    "Modal.MyProfile_Photo": "사진",
+
     "Modal.CreatingPortal_Title": "포털 만들기",
     "Modal.CreatingPortal_Kind": "종류",
     "Modal.CreatingPortal_Name": "이름",

@@ -35,6 +35,9 @@ function* logCheckSucceeded(action: actionsAuth.type__LOG_CHECK_SUCCEEDED) {
             id: user.uid,
             email: user.email,
 
+            urlPhoto: user.photoURL,
+            displayName: user.displayName,
+
             joined: user.metadata.creationTime,
             accessed: user.metadata.lastSignInTime
         };

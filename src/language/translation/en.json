@@ -22,6 +22,11 @@
     "Modal.Setting_Language": "Language",
     "Modal.Setting_LogOut": "Log Out",
     
+    "Modal.MyProfile_Title": "My Profile",
+    "Modal.MyProfile_EmailAddress": "Email Address",
+    "Modal.MyProfile_Name": "Name",
+    "Modal.MyProfile_Photo": "Photo",
+
     "Modal.CreatingPortal_Title": "Create Portal",
     "Modal.CreatingPortal_Kind": "Kind",
     "Modal.CreatingPortal_Name": "Name",

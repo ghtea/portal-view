@@ -38,8 +38,8 @@ function* logInGoogle(action: actionsAuth.type__LOG_IN_GOOGLE) {
         
             
             try {
-                const data = yield call( requestLogInGoogle, provider );
-                console.log(data.user);
+                const {user} = yield call( requestLogInGoogle, provider );
+                //console.log(data.user);
 
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['loading', 'user'],
@@ -54,11 +54,14 @@ function* logInGoogle(action: actionsAuth.type__LOG_IN_GOOGLE) {
                 yield put( actionsAuth.return__REPLACE({
                     listKey: ['user'],
                     replacement: {
-                        id: data.user.uid,
-                        email: data.user.email,
-
-                        joined: data.user.metadata.creationTime,
-                        accessed: data.user.metadata.lastSignInTime
+                        id: user.uid,
+                        email: user.email,
+                        
+                        urlPhoto: user.photoURL,
+                        displayName: user.displayName,
+            
+                        joined: user.metadata.creationTime,
+                        accessed: user.metadata.lastSignInTime
                     }
                 }) );
 
