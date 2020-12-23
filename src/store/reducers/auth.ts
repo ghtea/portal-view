@@ -12,19 +12,20 @@ import putValueToNestedObject from 'tools/vanilla/putValueToNestedObject';
 export type State = typeof stateInitial;   // 아직 불확실
 
 
+type User = {
+    id: string;
+    email: string;
+
+    photoURL: string;
+    displayName: string;
+
+    joined: Date;
+    accessed: Date;
+} | null;
 
 const stateInitial = {
     
-  user: {
-        id: '',
-        email: '',
-
-        urlPhoto: '',
-        displayName: '',
-
-        joined: Date.now(),
-        accessed: Date.now(),
-  }
+  user: null as User
   
 };
 

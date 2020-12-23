@@ -15,6 +15,8 @@ import * as actionsNotification from "store/actions/notification";
 
 function* logCheckFailed(action: actionsAuth.type__LOG_CHECK_FAILED) {
     
+    
+
     yield put( actionsStatus.return__REPLACE({
         listKey: ['ready', 'user'],
         replacement: false
@@ -23,6 +25,10 @@ function* logCheckFailed(action: actionsAuth.type__LOG_CHECK_FAILED) {
     yield put( actionsStatus.return__REPLACE({
         listKey: ['loading', 'user'],
         replacement: false
+    }) );
+    
+    yield put( actionsAuth.return__REPLACE_USER({
+        user: null
     }) );
     
     yield put( actionsNotification.return__ADD_CODE_SITUATION_OTHERS({

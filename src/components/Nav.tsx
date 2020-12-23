@@ -24,11 +24,14 @@ function Nav({}: PropsNav) {
     const dispatch = useDispatch();
     const location = useLocation();
     
-    const showingNav:boolean = useSelector((state: StateRoot) => state['status']['showing']['nav']);
+    const showingNav = useSelector((state: StateRoot) => state['status']['showing']['nav']);
     
-    const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
-    const loadingUser:boolean = useSelector((state: StateRoot) => state['status']['loading']['user']);
+    const readyUser = useSelector((state: StateRoot) => state['status']['ready']['user']);
+    const loadingUser = useSelector((state: StateRoot) => state['status']['loading']['user']);
     
+    const user = useSelector((state: StateRoot) => state['auth']['user']);
+
+    useEffect(()=>console.log(user),[user])
 
     useEffect(() => {
         console.log(location.pathname);
@@ -128,7 +131,12 @@ function Nav({}: PropsNav) {
             <button className={`${styles['user']}`} 
                 onClick={()=>onClick_ShowModal('myProfile')}
             >
-            <div> <IconUserCircle className={`${styles['icon-user-circle']}`} kind="solid"/> </div>
+            {user?.photoURL ? 
+                <div> <img className={`${styles['photo-profile']}`} src={user.photoURL} /> </div>
+                :
+                <div> <IconUserCircle className={`${styles['icon-user-circle']}`} kind="solid"/> </div>
+            }
+
             </button>
         }
 

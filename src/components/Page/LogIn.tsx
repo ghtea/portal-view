@@ -119,7 +119,6 @@ function LogIn() {
                 
             <div className={`${styles['input-identity']}`} >
                 <div> <FormattedMessage id={`Page.LogIn_EmailAddress`} /> </div>
-                <div> { codeSituationEmail && <FormattedMessage id={`Notification.${codeSituationEmail}`} /> }  </div>
                 <input 
                     type='email'
                     placeholder={intl.formatMessage({ id: 'Page.LogIn_EmailAddress'})}
@@ -127,11 +126,11 @@ function LogIn() {
                     required
                     onChange={inputEmail.onChange} 
                 /> 
+                <div> { codeSituationEmail && <FormattedMessage id={`Notification.${codeSituationEmail}`} /> }  </div>
             </div> 
                 
             <div className={`${styles['input-password']}`} >
                 <div> <FormattedMessage id={`Page.LogIn_Password`} /> </div>
-                <div> { codeSituationPassword && <FormattedMessage id={`Notification.${codeSituationPassword}`}/>} </div>
                 <input 
                     type='password'
                     placeholder={intl.formatMessage({ id: 'Page.LogIn_Password'})}
@@ -140,6 +139,7 @@ function LogIn() {
                     onChange={inputPassword.onChange}
                     onKeyPress={onKeyPress_LogIn}
                 /> 
+                <div> { codeSituationPassword && <FormattedMessage id={`Notification.${codeSituationPassword}`}/>} </div>
             </div> 
 
             

@@ -49,18 +49,8 @@ function* logInGithub(action: actionsAuth.type__LOG_IN_GITHUB) {
                     replacement: true
                 }) );
 
-                yield put( actionsAuth.return__REPLACE({
-                    listKey: ['user'],
-                    replacement: {
-                        id: user.uid,
-                        email: user.email,
-                        
-                        urlPhoto: user.photoURL,
-                        displayName: user.displayName,
-            
-                        joined: user.metadata.creationTime,
-                        accessed: user.metadata.lastSignInTime
-                    }
+                yield put( actionsAuth.return__REPLACE_USER({
+                    user: user
                 }) );
 
                 history.push('/');
@@ -77,9 +67,8 @@ function* logInGithub(action: actionsAuth.type__LOG_IN_GITHUB) {
                     replacement: false
                 }) );
 
-                yield put( actionsAuth.return__REPLACE({
-                    listKey: ['user'],
-                    replacement: {}
+                yield put( actionsAuth.return__REPLACE_USER({
+                    user: null
                 }) );
 
 
@@ -114,6 +103,10 @@ function* logInGithub(action: actionsAuth.type__LOG_IN_GITHUB) {
         yield put( actionsStatus.return__REPLACE({
             listKey: ['loading', 'user'],
             replacement: false
+        }) );
+
+        yield put( actionsAuth.return__REPLACE_USER({
+            user: null
         }) );
 
         console.log(error);

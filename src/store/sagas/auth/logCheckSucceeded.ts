@@ -31,20 +31,8 @@ function* logCheckSucceeded(action: actionsAuth.type__LOG_CHECK_SUCCEEDED) {
 
     if (user) {   // 이미 성공했다는 걸 알고 있을 거니깐 왠만하면 있을것이다
 
-        const replacement = {
-            id: user.uid,
-            email: user.email,
-
-            urlPhoto: user.photoURL,
-            displayName: user.displayName,
-
-            joined: user.metadata.creationTime,
-            accessed: user.metadata.lastSignInTime
-        };
-
-        yield put( actionsAuth.return__REPLACE({
-            listKey: ['user'],
-            replacement: replacement
+        yield put( actionsAuth.return__REPLACE_USER({
+            user: user
         }) );
     }
     

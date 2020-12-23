@@ -91,7 +91,7 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             //let listBooleanVisited:boolean[] = Array(action.payload.lifespan-1).fill(false);
             //listBooleanVisited.unshift(true);
             const listBooleanVisited:boolean[] = [true]; 
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
+            const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
             const date = Date.now();
             const portal = {

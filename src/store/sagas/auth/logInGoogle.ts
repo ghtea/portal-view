@@ -51,18 +51,8 @@ function* logInGoogle(action: actionsAuth.type__LOG_IN_GOOGLE) {
                     replacement: true
                 }) );
 
-                yield put( actionsAuth.return__REPLACE({
-                    listKey: ['user'],
-                    replacement: {
-                        id: user.uid,
-                        email: user.email,
-                        
-                        urlPhoto: user.photoURL,
-                        displayName: user.displayName,
-            
-                        joined: user.metadata.creationTime,
-                        accessed: user.metadata.lastSignInTime
-                    }
+                yield put( actionsAuth.return__REPLACE_USER({
+                    user: user
                 }) );
 
                 history.push('/');
@@ -81,7 +71,7 @@ function* logInGoogle(action: actionsAuth.type__LOG_IN_GOOGLE) {
 
                 yield put( actionsAuth.return__REPLACE({
                     listKey: ['user'],
-                    replacement: {}
+                    replacement: null
                 }) );
 
 
@@ -118,6 +108,10 @@ function* logInGoogle(action: actionsAuth.type__LOG_IN_GOOGLE) {
             replacement: false
         }) );
 
+        yield put( actionsAuth.return__REPLACE_USER({
+            user: null
+        }) );
+        
         console.log(error);
         console.log('logInGoogle has been failed');
         

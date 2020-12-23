@@ -46,7 +46,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
         
         else {
 
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
+            const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
             const bodyRequest = {
                 idPortal: action.payload.idPortal

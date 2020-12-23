@@ -26,7 +26,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
     const dispatch = useDispatch();
     const intl = useIntl();
 
-    const idUser:string = useSelector((state: StateRoot) => state['auth']['user']['id']);
+    const idUser = useSelector((state: StateRoot) => state.auth.user?.id );
 
 
     const onClick_HideModal = useCallback(

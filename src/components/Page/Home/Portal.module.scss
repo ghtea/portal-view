@@ -240,7 +240,7 @@ $border-radius__face: 12px;
                     width: 50%;
                     height: 14px;
                     border-radius: 3px;
-                    background-color: grey;
+                    background-color: hsl(0, 0%, 80%);
 
                     display: flex;
                     flex-flow: row nowrap;
@@ -324,8 +324,8 @@ $list-hue: (
 
                 @include color-each-theme(color, basic__5);
                 @include frame-each-theme(border, 1px, solid, basic__1);
-                @include frame-each-theme(border-top, 4px, solid, hue-#{$hue}__5);
-                @include frame-each-theme(border-bottom, 4px, solid, hue-#{$hue}__5);
+                @include frame-each-theme(border-top, 4px, solid, hue-#{$hue}__4);
+                @include frame-each-theme(border-bottom, 4px, solid, hue-#{$hue}__4);
 
                 @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__basic__weak);
 

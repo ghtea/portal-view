@@ -86,6 +86,7 @@ function App({}: PropsApp) {
 
         try {
             firebaseAuth.onAuthStateChanged((user) => {
+                console.log('hello!')
                 if (user) {
                     dispatch(actionsAuth.return__LOG_CHECK_SUCCEEDED() );
                 } 

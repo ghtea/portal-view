@@ -52,7 +52,7 @@ function* visitPortal(action: actionsPortal.type__CREATE_PORTAL) {
         dateCreated
     } = action.payload;
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
-    const idUserInApp: boolean =  yield select( (state:StateRoot) => state.auth.user.id); 
+    const idUserInApp: boolean =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
     try {
 

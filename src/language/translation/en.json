@@ -52,7 +52,7 @@
     "Notification.LogIn_NoEmail__E": "Please enter email address",
     "Notification.LogIn_InvalidEmail__E": "The email address is not valid",
     "Notification.LogIn_NoPassword__E": "Please enter password",
-    "Notification.LogIn_WrongPassword__E": "Password is wrong",
+    "Notification.LogIn_WrongPassword__E": "Password is wrong, or you should use the social service you have already registered",
 
     "Notification.LogInGoogle_UnknownError__E": "An unknown error has occurred",
     "Notification.LogInGithub_UnknownError__E": "An unknown error has occurred",

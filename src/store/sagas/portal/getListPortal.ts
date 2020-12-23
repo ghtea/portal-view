@@ -33,7 +33,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
         }
         else {
             
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user.id); 
+            const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
             const queryRequestBefore = {
                 idUser: idUser

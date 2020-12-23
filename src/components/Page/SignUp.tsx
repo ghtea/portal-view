@@ -112,46 +112,46 @@ function SignUp({}: PropsSignUp) {
             
             <div className={`${stylesLogIn['input-identity']}`} >
                 <div> <FormattedMessage id={`Page.LogIn_EmailAddress`} /> </div>
+                <input 
+                    type='text' 
+                    placeholder={intl.formatMessage({ id: 'Page.LogIn_EmailAddress'})} 
+                    value={inputEmail.value}
+                    onChange={inputEmail.onChange} 
+                /> 
                 <div> { codeSituationEmail &&  <FormattedMessage id={`Notification.${codeSituationEmail}`} />} </div>
-            <input 
-                type='text' 
-                placeholder={intl.formatMessage({ id: 'Page.LogIn_EmailAddress'})} 
-                value={inputEmail.value}
-                onChange={inputEmail.onChange} 
-            /> 
             </div>
             
             
             <div className={`${stylesLogIn['input-password']}`} >
                 <div> <FormattedMessage id={`Page.LogIn_Password`} /> </div>
+                <input 
+                    type='password'
+                    placeholder={intl.formatMessage({ id: 'Page.LogIn_Password'})}
+                    value={inputPassword1.value}
+                    onChange={inputPassword1.onChange}
+                /> 
                 <div> { codeSituationPassword &&  <FormattedMessage id={`Notification.${codeSituationPassword}`} />} </div>
-            <input 
-                type='password'
-                placeholder={intl.formatMessage({ id: 'Page.LogIn_Password'})}
-                value={inputPassword1.value}
-                onChange={inputPassword1.onChange}
-            /> 
             </div>
             
             <div className={`${stylesLogIn['input-password']}`} >
                 <div> <FormattedMessage id={`Page.SignUp_PasswordAgain`} /> </div>
-            <input 
-                type='password'
-                placeholder={intl.formatMessage({ id: 'Page.SignUp_PasswordAgain'})}
-                
-                value={inputPassword2.value}
-                onChange={inputPassword2.onChange}
-                onKeyPress={onKeyPress_SignUp}
-            /> 
+                <input 
+                    type='password'
+                    placeholder={intl.formatMessage({ id: 'Page.SignUp_PasswordAgain'})}
+                    
+                    value={inputPassword2.value}
+                    onChange={inputPassword2.onChange}
+                    onKeyPress={onKeyPress_SignUp}
+                /> 
             </div> 
             
             
             
             <div className={`${stylesLogIn['button-enter']}`} >
-            <button
-                onClick={()=>onClick_SignUp()}
-            > <FormattedMessage id={`Page.LogIn_SignUp`} />
-            </button>
+                <button
+                    onClick={()=>onClick_SignUp()}
+                > <FormattedMessage id={`Page.LogIn_SignUp`} />
+                </button>
             </div>
             
             <div className={`${stylesLogIn['collection-link']}`} > 

@@ -62,18 +62,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                     replacement: true
                 }) );
 
-                yield put( actionsAuth.return__REPLACE({
-                    listKey: ['user'],
-                    replacement: {
-                        id: user.uid,
-                        email: user.email,
-                        
-                        urlPhoto: user.photoURL,
-                        displayName: user.displayName,
-            
-                        joined: user.metadata.creationTime,
-                        accessed: user.metadata.lastSignInTime
-                    }
+                yield put( actionsAuth.return__REPLACE_USER({
+                    user: user
                 }) );
 
 
@@ -92,9 +82,8 @@ function* logIn(action: actionsAuth.type__LOG_IN) {
                     replacement: false
                 }) );
 
-                yield put( actionsAuth.return__REPLACE({
-                    listKey: ['user'],
-                    replacement: {}
+                yield put( actionsAuth.return__REPLACE_USER({
+                    user: null
                 }) );
 
 

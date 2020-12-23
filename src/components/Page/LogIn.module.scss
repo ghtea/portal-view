@@ -56,30 +56,16 @@
         font-weight: normal;
     }
 
-    & > div:nth-child(2) {
-        width: auto;
-        height: 24px;
-
-        position: absolute;
-        left: 5px;
-        top: 77px;
-
-        font-size: 0.9rem;
-        @include color-each-theme(color, error__5);
-        
-    }
-
     &:focus-within > div:nth-child(1) {
         @include color-each-theme(color, main__5);
     }
-  
+
+
     & > input {
-  
         width: 100%;
         height: 48px;
         
         border-radius: 4px;
-
         padding-left: 8px;
         
         // @include frame-each-theme(border, 2px, solid, page--log-in--input__border-color);
@@ -89,12 +75,20 @@
             &::placeholder {
                 color:transparent;
             }
-            
             border-radius: 4px;
     
         }
     }
 
+
+    & > div:nth-child(3) {
+        width: auto;
+        height: auto;
+
+        font-size: 0.9rem;
+        @include color-each-theme(color, error__5);
+        padding: 4px 0 0 4px;
+    }
   
 }
 

@@ -104,18 +104,8 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
                     codeSituation: 'SignUp_Succeeded__S'
                 }) );
 
-                yield put( actionsAuth.return__REPLACE({
-                    listKey: ['user'],
-                    replacement: {
-                        id: user.uid,
-                        email: user.email,
-                        
-                        urlPhoto: user.photoURL,
-                        displayName: user.displayName,
-            
-                        joined: user.metadata.creationTime,
-                        accessed: user.metadata.lastSignInTime
-                    }
+                yield put( actionsAuth.return__REPLACE_USER({
+                    user: user
                 }) );
                 
                 history.push('/');
@@ -130,6 +120,10 @@ function* signUp(action: actionsAuth.type__SIGN_UP) {
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['loading', 'user'],
                     replacement: false
+                }) );
+
+                yield put( actionsAuth.return__REPLACE_USER({
+                    user: null
                 }) );
 
                 console.log(error);

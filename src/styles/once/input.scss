@@ -116,8 +116,17 @@ input[type=submit] {
     }
 
     label + * {
-        width: 25%;
-        height: 100%;
+        width: 60px;
+        height: 30px;
+
+        @include color-each-theme(background-color, basic__0, $is-module: false);
+        @include color-each-theme(color, basic__5, $is-module: false);
+        position: absolute;
+        
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+
     }
 }
 
