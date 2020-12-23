@@ -14,9 +14,11 @@ import * as actionsPortal from "store/actions/portal";
 import { isArray } from "util";
 
 
-const requestGetListPortal = () => {
+const requestGetListPortal = (idUser:string) => {
     
-    return firebaseFs.collection("Portal_").get()
+    return firebaseFs.collection("Portal_")
+    .where("idUser", "==", idUser)
+    .get()
 };
 
 
@@ -35,11 +37,6 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
-            const queryRequestBefore = {
-                idUser: idUser
-            };
-            
-
             yield put( actionsStatus.return__REPLACE({
                 listKey: ['ready', 'listPortal'],
                 replacement: false
@@ -52,7 +49,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
 
             
             try {
-                const data =  yield call( requestGetListPortal );
+                const data =  yield call( requestGetListPortal, idUser );
                 
                 const listPortal:any[] = data.docs.map((document: any)=>(
                     {

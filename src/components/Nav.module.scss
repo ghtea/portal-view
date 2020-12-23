@@ -187,6 +187,7 @@
     }
 
     .photo-profile {
+        @include frame-each-theme(border, 2px, solid, basic__2);
         width: 30px;
         height: 30px;
         border-radius: 50%;
