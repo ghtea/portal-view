@@ -33,7 +33,7 @@ function Home({}: PropsHome) {
         
         dispatch(actionsPortal.return__GET_LIST_PORTAL({
             idUser: 'idUser'
-        }))
+        }));
         
     },[readyUser, idUser]);
   

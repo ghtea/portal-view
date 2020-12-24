@@ -20,9 +20,13 @@ import IconUserCircle from 'svgs/basic/IconUserCircle';
 type PropsNav = {};
 
 function Nav({}: PropsNav) {
-  
+
     const dispatch = useDispatch();
     const location = useLocation();
+    
+    console.log('history');
+    console.log(history);
+
     
     const showingNav = useSelector((state: StateRoot) => state['status']['showing']['nav']);
     
@@ -34,6 +38,7 @@ function Nav({}: PropsNav) {
     useEffect(()=>console.log(user),[user])
 
     useEffect(() => {
+
         console.log(location.pathname);
         if (  (/^\/log-in/).test(location.pathname) || (/^\/sign-up/).test(location.pathname)  ) {
             dispatch(actionsStatus.return__REPLACE({

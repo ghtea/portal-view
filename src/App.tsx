@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useMemo} from 'react';
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { firebaseAuth } from 'firebaseApp';
 
 import { IntlProvider } from 'react-intl'
@@ -27,7 +27,8 @@ function App({}: PropsApp) {
   
   let location = useLocation();
   const dispatch = useDispatch();
-  
+
+    
 
     // Language
   
