@@ -33,6 +33,7 @@
     "Modal.CreatingPortal_Name": "Name",
     "Modal.CreatingPortal_Initials": "Initials (1~3 letters)",
     "Modal.CreatingPortal_Url": "URL",
+    "Modal.CreatingPortal_GuideUrlSearching": "Please replace the search keyword part with {search}",
     "Modal.CreatingPortal_Life": "Life",
     "Modal.CreatingPortal_Hue": "Hue",
     "Modal.CreatingPortal_Tags": "Tags",
@@ -69,6 +70,7 @@
 
     
     "Notification.Portal_InitialsTooLong__E": "Initials must be between 1 and 3 letters",
+    "Notification.Portal_NotValidSearchUrl__E": "URL of searching portal must include '{search}'",
     "Notification.CreatePortal_Succeeded__S": "Successfully created portal!",
     "Notification.CreatePortal_UnknownError__E": "An unknown error has occurred",
     "Notification.GetListPortal_UnknownError__E": "An unknown error has occurred",

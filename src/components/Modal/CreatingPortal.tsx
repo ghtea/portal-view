@@ -168,10 +168,11 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Url`} /></div>
+                    {draft.kind === 'search' && <p className={'hint'}> <FormattedMessage id={`Modal.CreatingPortal_GuideUrlSearching`} /> </p>}
                     <div className={`${styles['container__input-url']}`} >
                         <input 
                             type='text'
-                            placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Url'})}
+                            placeholder={draft.kind === 'search' ? '.../search?q={search}' : 'https://www.google.com'}
                             name='url'
                             value={draft.url}
                             onChange={onChange_InputNormal} 

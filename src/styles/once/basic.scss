@@ -127,6 +127,16 @@ a {
 }
 
 
+p { 
+    width: auto;
+    height: auto;
+
+    padding: 4px;
+
+    &.hint {
+        @include color-each-theme(color, hint__5);
+    }
+}
 
 
 

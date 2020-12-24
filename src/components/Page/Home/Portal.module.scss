@@ -170,6 +170,24 @@ $border-radius__face: 12px;
             margin-top: $margin-top__child;
         }
 
+
+        .search {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+
+            width: 220px;
+            height: auto;
+            padding: 6px;
+
+            border-radius: 6px;
+
+            position: absolute;
+            top: -60px;
+        }
+
+
         .name {
             width: auto;
             height: $height__name;
@@ -329,6 +347,16 @@ $list-hue: (
 
                 @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__basic__weak);
 
+                .search {
+                    @include color-each-theme(background-color, basic__0, 0.8);
+                    backdrop-filter: blur(1px);
+                    @include frame-each-theme(border, 1px, solid, basic__1);
+
+                    @include frame-each-theme(border-left, 4px, solid, hue-#{$hue}__4);
+                    @include frame-each-theme(border-right, 4px, solid, hue-#{$hue}__4);
+
+                    @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__basic__weak);               
+                }
                 .name {
                     @include color-each-theme(color, basic__8);
                 }

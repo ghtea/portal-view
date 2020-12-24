@@ -69,8 +69,15 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
             }) );
         }
 
-        else {
+        else if (action.payload.kind === 'search' && !(/{search}/).test(action.payload.url) ) {
+            yield put( actionsNotification.return__ADD_DELETE_BANNER({
+                codeSituation: 'Portal_NotValidSearchUrl__E'
+            }) );        
+        }
 
+        else {
+            console.log('test')
+            console.log((/{search}/).test(action.payload.url) )
             // initials
             let initials = action.payload.initials;
             if (initials === "" ) {

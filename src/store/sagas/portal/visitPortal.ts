@@ -40,17 +40,28 @@ const requestVisitPortal = (id:string, update:any) => {
 };
 
 
-function* visitPortal(action: actionsPortal.type__CREATE_PORTAL) {
+function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
 
     const {
         id,
         idUser,   //  normal, search
+        kind,
+                
+        name,
+        initials,
+        url,
         
         lifespan,
         listBooleanVisited,  // [true, false, ...(30days)] 
-        dateVisitedLast,
-        dateCreated
-    } = action.payload;
+        dateVisitedLast, 
+        dateCreated,
+
+        listTag,
+        hue
+    } = action.payload.portal;
+    
+    const stringSearching = action.payload.stringSearching;
+    console.log(action.payload)
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     const idUserInApp: boolean =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
@@ -61,7 +72,7 @@ function* visitPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 codeSituation: 'NotLoggedIn__E'
             }) );
         }
-        else if (idUserInApp !== action.payload.idUser){
+        else if (idUserInApp !== idUser){
             console.log('your are not author of this portal');
         }
 
@@ -112,15 +123,19 @@ function* visitPortal(action: actionsPortal.type__CREATE_PORTAL) {
                     codeSituation: 'VisitPortal_Succeeded__S'
                 }));
                 */
-                yield put(actionsStatus.return__REPLACE({ 
-                    listKey: ['showing', 'modal', 'editingPortal'], 
-                    replacement: false
-                }));
-
+                
+                if (kind === 'search'){
+                    const urlSearching= encodeURI(url.replace(/{search}/, stringSearching));
+                    console.log(urlSearching)
+                    window.open( urlSearching, "_blank");
+                }
+                else {
+                    window.open(url, "_blank");
+                }
                 // history.push('/');
                 
                 yield put(actionsPortal.return__GET_LIST_PORTAL({
-                    idUser: action.payload.idUser
+                    idUser: idUser
                 }));
                 // window.location.reload();
             }

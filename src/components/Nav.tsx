@@ -24,9 +24,6 @@ function Nav({}: PropsNav) {
     const dispatch = useDispatch();
     const location = useLocation();
     
-    console.log('history');
-    console.log(history);
-
     
     const showingNav = useSelector((state: StateRoot) => state['status']['showing']['nav']);
     

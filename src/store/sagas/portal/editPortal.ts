@@ -71,6 +71,11 @@ function* editPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 codeSituation: 'Portal_InitialsTooLong__E'
             }) );
         }
+        else if (action.payload.kind === 'search' && !(/{search}/).test(action.payload.url) ) {
+            yield put( actionsNotification.return__ADD_DELETE_BANNER({
+                codeSituation: 'Portal_NotValidSearchUrl__E'
+            }) );        
+        }
 
         else {
 
@@ -93,6 +98,7 @@ function* editPortal(action: actionsPortal.type__CREATE_PORTAL) {
             }
             //let listBooleanVisited:boolean[] = Array(action.payload.lifespan-1).fill(false);
             //listBooleanVisited.unshift(true);
+
 
             const date = Date.now();
             const update = {

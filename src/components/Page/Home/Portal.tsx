@@ -13,6 +13,7 @@ import IconEdit from 'svgs/basic/IconEdit';
 import IconMove from 'svgs/basic/IconFourArrows';
 import IconPortalEnter from 'svgs/others/IconPortalEnter';
 import IconLinkExternal from 'svgs/basic/IconLinkExternal';
+import useInput from 'tools/hooks/useInput';
 
 
 type PropsPortal = {
@@ -56,6 +57,8 @@ function Portal({
     const idPortalOpen:string = useSelector((state: StateRoot) => state['status']['current']['portal']['open']);
     const [open, setOpen] = useState(false); 
     
+    const inputSearch = useInput('');
+
     const {ratioHp, hpMax, hpCurrent} = useMemo(()=>{
 
         let hpMax:number = 0;
@@ -105,16 +108,26 @@ function Portal({
             }
             else {
                 if (side === 'left') {
-                    window.open(url, "_blank");
 
                     dispatch(actionsPortal.return__VISIT_PORTAL({
-                        id,
-                        idUser,   //  normal, search
-                        
-                        lifespan,
-                        listBooleanVisited,  // [true, false, ...(30days)] 
-                        dateVisitedLast,
-                        dateCreated
+                        portal: {
+                            id,
+                            idUser,   //  normal, search
+                            kind,
+                                    
+                            name,
+                            initials,
+                            url,
+                            
+                            lifespan,
+                            listBooleanVisited,  // [true, false, ...(30days)] 
+                            dateVisitedLast, 
+                            dateCreated,
+
+                            listTag,
+                            hue
+                        },
+                        stringSearching: inputSearch.value
                     }));
 
                     setOpen(false);
@@ -123,7 +136,7 @@ function Portal({
                     setOpen(false);
                 }
             }
-        },[id, url, open]
+        },[id, url, open, inputSearch]
     );
 
 
@@ -187,6 +200,12 @@ function Portal({
             
             
             <div className={`${styles['body']}`}>
+
+                { kind === 'search' &&
+                    <div className={`${styles['search']}`} >
+                        <input type='text' value={inputSearch.value} onChange={inputSearch.onChange}/>
+                    </div>
+                }
 
                 <div className={`${styles['name']}`} >   
                     <div> {name}</div>
