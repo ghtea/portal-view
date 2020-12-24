@@ -123,15 +123,19 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                     codeSituation: 'VisitPortal_Succeeded__S'
                 }));
                 */
-                
+                let urlUsing = url;
                 if (kind === 'search'){
-                    const urlSearching= encodeURI(url.replace(/{search}/, stringSearching));
-                    console.log(urlSearching)
-                    window.open( urlSearching, "_blank");
+                    urlUsing = encodeURI(url.replace(/{search}/, stringSearching));
+                }
+                
+                // because ios blocks window.open (sometimes maybe)
+                if (typeof (window.open) == "function") {
+                    window.open("http://www.stackoverflow.com");
                 }
                 else {
-                    window.open(url, "_blank");
+                    window.location.href = "http://www.stackoverflow.com";
                 }
+
                 // history.push('/');
                 
                 yield put(actionsPortal.return__GET_LIST_PORTAL({
