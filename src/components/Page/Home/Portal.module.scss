@@ -375,7 +375,7 @@ $list-hue: (
                     @include frame-each-theme(border, 1px, solid, basic__1);
 
                     .icon-delete {
-                        @include color-each-theme(color, error__4);
+                        @include color-each-theme(color, error__3);
                     }
                 }
                 .info {

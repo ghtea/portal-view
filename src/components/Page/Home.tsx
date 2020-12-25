@@ -30,11 +30,11 @@ function Home({}: PropsHome) {
     const listPortal:any = useSelector((state: StateRoot) => state['portal']['listPortal']);
 
     useEffect(()=>{
-        
-        dispatch(actionsPortal.return__GET_LIST_PORTAL({
-            idUser: 'idUser'
-        }));
-        
+        if (readyUser) {
+            dispatch(actionsPortal.return__GET_LIST_PORTAL({
+                idUser: idUser
+            }));
+        }
     },[readyUser, idUser]);
   
   return (

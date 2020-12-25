@@ -149,11 +149,10 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                 
                 console.log(error);
                 console.log('error occurred in firebase server')
-                /*
+                
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: codeSituation
+                    codeSituation: 'VisitPortal_UnknownError__E'
                 }) );
-                */
             }
               
         }

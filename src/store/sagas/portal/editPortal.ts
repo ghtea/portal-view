@@ -142,12 +142,11 @@ function* editPortal(action: actionsPortal.type__CREATE_PORTAL) {
             catch (error){ 
                 
                 console.log(error);
-                console.log('error occurred in firebase server')
-                /*
+                console.log('error occurred in firebase server');
+                         
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: codeSituation
+                    codeSituation: 'EditPortal_UnknownError__E'
                 }) );
-                */
             }
               
         }

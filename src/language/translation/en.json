@@ -28,6 +28,7 @@
     "Modal.MyProfile_Photo": "Photo",
     "Modal.MyProfile_Update": "Update",
 
+
     "Modal.CreatingPortal_Title": "Create Portal",
     "Modal.CreatingPortal_Kind": "Kind",
     "Modal.CreatingPortal_Name": "Name",
@@ -68,24 +69,28 @@
     "Notification.SignUp_PasswordsDifferent__E": "The two passwords are different",
     "Notification.SignUp_WeakPassword__E": "Password should be at least 6 characters long",
 
-    
+    "Notification.Portal_NotOwner__E": "You're not owner of this portal",
     "Notification.Portal_InitialsTooLong__E": "Initials must be between 1 and 4 letters",
     "Notification.Portal_NotValidSearchUrl__E": "URL of searching portal must include '{search}'",
-    "Notification.CreatePortal_Succeeded__S": "Successfully created portal!",
-    "Notification.CreatePortal_UnknownError__E": "An unknown error has occurred",
-    "Notification.GetListPortal_UnknownError__E": "An unknown error has occurred",
-    "Notification.VisitPortal_UnknownError__E": "An unknown error has occurred",
-    "Notification.EditPortal_Succeeded__S": "Successfully edited portal!",
 
+    "Notification.CreatePortal_Succeeded__S": "Successfully created portal!",
+    "Notification.CreatePortal_UnknownError__E": "Failed to delete the portal",
+    "Notification.GetListPortal_UnknownError__E": "Failed to get portals",
+    "Notification.VisitPortal_UnknownError__E": "Failed to update the portal which you visited",
+    "Notification.EditPortal_Succeeded__S": "Successfully edited portal!",
+    "Notification.EditPortal_UnknownError__E": "Failed to update the portal",
+    "Notification.DeletePortal_Succeeded__S": "Successfully deleted portal!",
+    "Notification.DeletePortal_UnknownError__E": "Failed to delete the portal",
 
     "Page.Home_Welcome": "Welcome!",
-    
     "Page.LogIn_LogIn": "LogIn",
     "Page.LogIn_EmailAddress": "Email Address",
     "Page.LogIn_Password": "Password",
     "Page.LogIn_SignUp": "Sign Up",
 
-    "Page.SignUp_PasswordAgain": "Password Again"
+    "Page.SignUp_PasswordAgain": "Password Again",
+
+    "Page.Home_ConfirmDeletingPortal": "Are you sure you want to delete this portal?"
 
 }
 

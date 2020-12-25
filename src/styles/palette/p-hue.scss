@@ -39,9 +39,9 @@
 $palette-hue-grey: make-palette(hue-grey, $h-basic, $s-basic, 1);
 
 $palette-hue-0: make-palette(hue-0, 0, 60);
-$palette-hue-10: make-palette(hue-10, 10, 60);
-$palette-hue-20: make-palette(hue-20, 20, 60);
-$palette-hue-30: make-palette(hue-30, 30, 70);
+$palette-hue-10: make-palette(hue-10, 10, 70);
+$palette-hue-20: make-palette(hue-20, 20, 70);
+$palette-hue-30: make-palette(hue-30, 30, 100);
 $palette-hue-40: make-palette(hue-40, 40, 100);
 $palette-hue-50: make-palette(hue-50, 50, 80);
 $palette-hue-60: make-palette(hue-60, 60, 70);

@@ -5,7 +5,8 @@ import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 import * as actionsPortal from 'store/actions/portal';
 
-// import Setting from "./Portal/Setting";
+import useInput from 'tools/hooks/useInput';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import styles from './Portal.module.scss';
 
@@ -15,7 +16,6 @@ import IconDelete from 'svgs/basic/IconMinusCircle';
 
 import IconPortalEnter from 'svgs/others/IconPortalEnter';
 import IconLinkExternal from 'svgs/basic/IconLinkExternal';
-import useInput from 'tools/hooks/useInput';
 
 
 type PropsPortal = {
@@ -58,7 +58,9 @@ function Portal({
 
     const idPortalOpen:string = useSelector((state: StateRoot) => state['status']['current']['portal']['open']);
     const [open, setOpen] = useState(false); 
-    
+
+    const intl = useIntl();
+
     const inputSearch = useInput('');
 
     const {ratioHp, hpMax, hpCurrent} = useMemo(()=>{
@@ -161,6 +163,15 @@ function Portal({
                     replacement: true
                 }));
             }
+            else if (value === 'delete'){
+                const ok = window.confirm(intl.formatMessage({ id: 'Page.Home_ConfirmDeletingPortal'}));
+                if (ok) {
+                    dispatch(actionsPortal.return__DELETE_PORTAL({
+                        id: id,
+                        idUser: idUser // owner of this portal
+                    }));                
+                }
+            }
             else if (value === 'move'){
                 // move
             }
@@ -252,7 +263,7 @@ function Portal({
                             className={`${styles['bar']}`}
                         >   <div style={{width: `${ratioHp * 100}%`}}/>
                         </div>
-                        <div>  {`${ratioHp * 100}%`} </div>
+                        {/*<div>  {`${ratioHp * 100}%`} </div>*/}
                     </div>
                     <div
                         className={`${styles['last-visit']}`}
