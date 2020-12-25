@@ -175,7 +175,7 @@ function Portal({
             else if (value === 'move'){
                 // move
             }
-        },[]
+        },[id, idUser]
     );
     
 
@@ -241,7 +241,7 @@ function Portal({
                     </button>
 
                     <button 
-                        value='delete'
+                        value='add-to-stack'
                         onClick={onClick_Action}
                     >   <IconDelete className={`${styles['icon-delete']}`} kind='light' />
                     </button>

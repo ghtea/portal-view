@@ -86,9 +86,9 @@ function CreatingPortal({}: PropsCreatingPortal) {
             const {listTag} = draft;
             const listTagReplacement = listTag.filter(tagEach => tagEach !== tagDeleting);
             setDraft({
-                    ...draft,
-                    listTag: listTagReplacement
-                });
+                ...draft,
+                listTag: listTagReplacement
+            });
         },[draft]
     );
     

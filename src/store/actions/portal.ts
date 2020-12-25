@@ -39,7 +39,7 @@ export type type__EDIT_PORTAL = ReturnType<typeof return__EDIT_PORTAL>;
 export const name__DELETE_PORTAL = 'portal/DELETE_PORTAL';
 interface Payload__DELETE_PORTAL {
     id: string;
-    idUser: string;
+    idUser: string | undefined;
 }
 export const return__DELETE_PORTAL = (payload: Payload__DELETE_PORTAL) => {
     return {

@@ -46,7 +46,8 @@ $border-radius__face: 12px;
 
             & > *:nth-child(1) {
                 display: flex;
-            
+                line-height: 1.2;  // it should be based on fonts
+
                 &:global(.length-initials----1){
                     font-size: 2rem;
                 }
@@ -67,7 +68,7 @@ $border-radius__face: 12px;
 
         .right {
             width: calc(100% - #{$height__face} - 8px);
-            height: 80%;
+            height: 90%;
 
             display: flex;
             flex-flow: column nowrap;
@@ -87,10 +88,11 @@ $border-radius__face: 12px;
                 font-weight: bold;
                 
                 width: auto;
-                height:auto; max-height: calc(100% - 8px);
+                height: auto; max-height: calc(100% - 12px);
                 margin: 0px 6px 0px 6px;
                 padding: 0;
-                text-overflow: ellipsis;
+
+                overflow: hidden;
             }
 
             & > *:nth-child(1) {
@@ -160,7 +162,7 @@ $border-radius__face: 12px;
 
         display: flex;
         width: 110%;
-        height: 250px;
+        //height: 250px;
 
         border-radius: $border-radius__face;
         position: absolute;
@@ -251,6 +253,23 @@ $border-radius__face: 12px;
             border-radius: 8px;
 
 
+            .list-tag {
+                & > * {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    width: auto;
+                    height: 30px; 
+
+                    padding: 0px 4px 0px 4px;
+
+                    @include frame-each-theme(color, 2px, solid, basic__4);
+                    @include frame-each-theme(border, 2px, solid, basic__1);
+                    border-radius: 4px;
+                }
+            }
 
             .hp {
                 display: flex;

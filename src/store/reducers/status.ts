@@ -49,7 +49,9 @@ const stateInitial = {
       setting: false,
       myProfile: false,
       creatingPortal: false,
-      editingPortal: false
+      editingPortal: false,
+
+      creatingStack: false,
     }
   }
   

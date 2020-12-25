@@ -11,8 +11,9 @@ import * as actionsNotification from 'store/actions/notification';
 import styles from './Nav.module.scss';
 
 import IconLogo from 'svgs/others/IconLogo';
-import IconSearch from 'svgs/basic/IconSearch';
+import IconSearch from 'svgs/basic/IconSearch'; 
 import IconPlus from 'svgs/basic/IconPlus';
+import IconAddStack from 'svgs/basic/IconLayerPlus';
 import IconSetting from 'svgs/basic/IconSetting';
 import IconUserCircle from 'svgs/basic/IconUserCircle';
 
@@ -112,7 +113,15 @@ function Nav({}: PropsNav) {
             onClick={()=>onClick_ShowModal('creatingPortal')}
           > 
             <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
-            <div> Add </div>
+            <div> Portal </div>
+          </button>
+
+          <button
+            className={`${styles['tool-main']}`}
+            onClick={()=>onClick_ShowModal('creatingStack')}
+          > 
+            <div> <IconAddStack className={`${styles['icon-add-stack']}`} kind='light' /> </div>
+            <div> Stack </div>
           </button>
 
       </div>

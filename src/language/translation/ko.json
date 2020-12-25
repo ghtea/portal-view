@@ -19,7 +19,11 @@
     "Nav.Diary": "일기",
     
 
-    
+    "Modal.Create": "만들기",
+    "Modal.Delete": "삭제",
+    "Modal.Update": "업데이트",
+
+
     "Modal.Setting_Title": "설정",
     "Modal.Setting_Theme": "테마",
     "Modal.Setting_Language": "언어",
@@ -42,6 +46,12 @@
     "Modal.CreatingPortal_Tags": "태그",
     "Modal.CreatingPortal_Create": "만들기",
     "Modal.EditingPortal_Update": "업데이트",
+
+    "Modal.CreatingStack_Title": "스택 만들기",
+    "Modal.CreatingStack_Kind": "종류",
+    "Modal.CreatingStack_Name": "이름",
+    "Modal.CreatingStack_Create": "만들기",
+
 
     "Notification.Test1__S": "테스트에 성공하였습니다 1 !",
     "Notification.Test2__H": "테스트에 성공하였습니다 2 !",

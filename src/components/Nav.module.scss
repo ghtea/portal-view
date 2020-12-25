@@ -137,6 +137,11 @@
             @include color-each-theme(color, basic__6);
             width: 16px;
         }
+
+        .icon-add-stack {
+            @include color-each-theme(color, basic__6);
+            width: 20px;
+        }
     }
 
 }

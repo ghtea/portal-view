@@ -80,7 +80,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
 
             const date = Date.now();
             const dateLast = dateVisitedLast || dateCreated;
-            const hoursBetween = (date - dateLast) / (1000 * 60 * 60 * 24);
+            const hoursBetween = (date - dateLast) / (1000 * 60 * 60);
 
             let listBooleanVisitedReplacement:boolean[] = listBooleanVisited;
             const hoursGapStandard = 20;
@@ -130,11 +130,11 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                 
                 // because ios blocks window.open (sometimes maybe)
                 if (typeof (window.open) == "function") {
-                    window.open("http://www.stackoverflow.com");
+                    window.open(urlUsing);
                 }
                 else {
                     alert('using new way')
-                    window.location.href = "http://www.stackoverflow.com";
+                    window.location.href = urlUsing;
                 }
 
                 // history.push('/');

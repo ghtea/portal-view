@@ -26,6 +26,7 @@ function EditingPortal({}: PropsEditingPortal) {
     const dispatch = useDispatch();
     const intl = useIntl();
 
+    const idUserInApp = useSelector((state: StateRoot) => state.auth.user?.id);
     const idPortalEditing:string = useSelector((state: StateRoot) => state['status']['current']['portal']['editing']);
     const listPortal:any[] = useSelector((state: StateRoot) => state['portal']['listPortal']);
 
@@ -105,6 +106,24 @@ function EditingPortal({}: PropsEditingPortal) {
             }));
         }, []
     );
+
+    const onClick_DeletePortal = useCallback(
+        () => {
+            dispatch(actionsPortal.return__DELETE_PORTAL({
+                id: idPortalEditing,
+                idUser: portalEditing.idUser
+            }));
+
+            const ok = window.confirm(intl.formatMessage({ id: 'Page.Home_ConfirmDeletingPortal'}));
+                if (ok) {
+                    dispatch(actionsPortal.return__DELETE_PORTAL({
+                        id: idPortalEditing,
+                        idUser: idUserInApp // owner of this portal
+                    }));                
+                }
+        }, [idPortalEditing, idUserInApp]
+    );
+
   
   return (
     <div className={`${stylesCreatingPortal['root']} ${stylesModal['root']}`} >
@@ -269,7 +288,14 @@ function EditingPortal({}: PropsEditingPortal) {
                     <button
                         className={`${stylesModal['button-main']}`}
                         onClick={()=>onClick_EditPortal(draft)}
-                    > <FormattedMessage id={`Modal.EditingPortal_Update`} /> </button>
+                    > <FormattedMessage id={`Modal.Update`} /> </button>
+                </div>
+
+                <div className={`${stylesModal['content__section']}`} >
+                    <button
+                        className={`${stylesModal['button-delete']}`}
+                        onClick={()=>onClick_DeletePortal()}
+                    > <FormattedMessage id={`Modal.Delete`} /> </button>
                 </div>
 
             </div>

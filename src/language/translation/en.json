@@ -16,6 +16,9 @@
     "Nav.Diary": "Diary",
     
     
+    "Modal.Create": "Create",
+    "Modal.Delete": "Delete",
+    "Modal.Update": "Update",
 
     "Modal.Setting_Title": "Setting",
     "Modal.Setting_Theme": "Theme",
@@ -40,6 +43,11 @@
     "Modal.CreatingPortal_Tags": "Tags",
     "Modal.CreatingPortal_Create": "Create",
     "Modal.EditingPortal_Update": "Update",
+
+    "Modal.CreatingStack_Title": "Create Stack",
+    "Modal.CreatingStack_Kind": "Kind",
+    "Modal.CreatingStack_Name": "Name",
+    "Modal.CreatingStack_Create": "Create",
 
     
     "Notification.Test1__S": "Succuessfully tested 1 !",
