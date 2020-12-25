@@ -9,6 +9,8 @@ import MyProfile from "./Modal/MyProfile";
 
 import CreatingPortal from "./Modal/CreatingPortal";
 import EditingPortal from "./Modal/EditingPortal";
+
+import AddingPortalToStack from "./Modal/AddingPortalToStack";
 import CreatingStack from "./Modal/CreatingStack";
 
 // import styles from './Modal.module.scss';
@@ -23,6 +25,7 @@ function Modal({}: PropsModal) {
     const showingCreatingPortal:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['creatingPortal']);
     const showingEditingPortal:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['editingPortal']);
 
+    const showingAddingPortalToStack:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['addingPortalToStack']);
     const showingCreatingStack:boolean = useSelector((state: StateRoot) => state['status']['showing']['modal']['creatingStack']);
 
     return (
@@ -32,6 +35,8 @@ function Modal({}: PropsModal) {
             {showingMyProfile && <MyProfile />}
             {showingCreatingPortal && <CreatingPortal />}
             {showingEditingPortal && <EditingPortal />}
+
+            {showingAddingPortalToStack && <AddingPortalToStack />}
             {showingCreatingStack && <CreatingStack />}
         </>
         

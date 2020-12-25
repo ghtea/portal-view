@@ -116,14 +116,6 @@ function Nav({}: PropsNav) {
             <div> Portal </div>
           </button>
 
-          <button
-            className={`${styles['tool-main']}`}
-            onClick={()=>onClick_ShowModal('creatingStack')}
-          > 
-            <div> <IconAddStack className={`${styles['icon-add-stack']}`} kind='light' /> </div>
-            <div> Stack </div>
-          </button>
-
       </div>
 
       

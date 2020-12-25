@@ -49,7 +49,14 @@
     "Modal.CreatingStack_Name": "Name",
     "Modal.CreatingStack_Create": "Create",
 
-    
+    "Modal.AddingPortalToStack_Title": "Add to Stack",
+    "Modal.AddingPortalToStack_WhichStack": "Which Stack",
+    "Modal.AddingPortalToStack_NewStack": "New Stack",
+    "Modal.AddingPortalToStack_ExistingStack": "Existing Stack",
+    "Modal.AddingPortalToStack_Choose": "Choose",
+    "Modal.AddingPortalToStack_Add": "Add",
+
+
     "Notification.Test1__S": "Succuessfully tested 1 !",
     "Notification.Test2__H": "Succuessfully tested 2 !",
     "Notification.NotLoggedIn__E": "You should log in first",

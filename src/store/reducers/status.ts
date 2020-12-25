@@ -46,12 +46,13 @@ const stateInitial = {
     nav: false,
 
     modal: {
-      setting: false,
-      myProfile: false,
-      creatingPortal: false,
-      editingPortal: false,
-
-      creatingStack: false,
+        setting: false,
+        myProfile: false,
+        creatingPortal: false,
+        editingPortal: false,
+            
+        addingPortalToStack: false,
+        creatingStack: false,
     }
   }
   

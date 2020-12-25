@@ -52,6 +52,12 @@
     "Modal.CreatingStack_Name": "이름",
     "Modal.CreatingStack_Create": "만들기",
 
+    "Modal.AddingPortalToStack_Title": "스택에 추가하기",
+    "Modal.AddingPortalToStack_WhichStack": "스택 지정",
+    "Modal.AddingPortalToStack_NewStack": "새로운 스택",
+    "Modal.AddingPortalToStack_ExistingStack": "기존 스택",
+    "Modal.AddingPortalToStack_Choose": "선택",
+    "Modal.AddingPortalToStack_Add": "추가",
 
     "Notification.Test1__S": "테스트에 성공하였습니다 1 !",
     "Notification.Test2__H": "테스트에 성공하였습니다 2 !",

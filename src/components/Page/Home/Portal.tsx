@@ -12,7 +12,7 @@ import styles from './Portal.module.scss';
 
 import IconMove from 'svgs/basic/IconFourArrows';
 import IconEdit from 'svgs/basic/IconEdit';
-import IconDelete from 'svgs/basic/IconMinusCircle';
+import IconLayerPlus from 'svgs/basic/IconLayerPlus';
 
 import IconPortalEnter from 'svgs/others/IconPortalEnter';
 import IconLinkExternal from 'svgs/basic/IconLinkExternal';
@@ -163,14 +163,15 @@ function Portal({
                     replacement: true
                 }));
             }
-            else if (value === 'delete'){
-                const ok = window.confirm(intl.formatMessage({ id: 'Page.Home_ConfirmDeletingPortal'}));
-                if (ok) {
-                    dispatch(actionsPortal.return__DELETE_PORTAL({
-                        id: id,
-                        idUser: idUser // owner of this portal
-                    }));                
-                }
+            else if (value === 'addToStack'){
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'portal', 'addingToStack'],
+                    replacement: id
+                }));
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['showing', 'modal', 'addingPortalToStack'],
+                    replacement: true
+                }));
             }
             else if (value === 'move'){
                 // move
@@ -241,9 +242,9 @@ function Portal({
                     </button>
 
                     <button 
-                        value='add-to-stack'
+                        value='addToStack'
                         onClick={onClick_Action}
-                    >   <IconDelete className={`${styles['icon-delete']}`} kind='light' />
+                    >   <IconLayerPlus className={`${styles['icon-layer-plus']}`} kind='light' />
                     </button>
                 </div>
 
