@@ -133,6 +133,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                     window.open("http://www.stackoverflow.com");
                 }
                 else {
+                    alert('using new way')
                     window.location.href = "http://www.stackoverflow.com";
                 }
 

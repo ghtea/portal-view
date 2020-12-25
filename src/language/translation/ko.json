@@ -34,7 +34,7 @@
     "Modal.CreatingPortal_Title": "포털 만들기",
     "Modal.CreatingPortal_Kind": "종류",
     "Modal.CreatingPortal_Name": "이름",
-    "Modal.CreatingPortal_Initials": "이니셜 (1~3 글자)",
+    "Modal.CreatingPortal_Initials": "이니셜 (1~4 글자)",
     "Modal.CreatingPortal_Url": "URL",
     "Modal.CreatingPortal_GuideUrlSearching": "검색 키워드 부분을 {search}로 바꿔주세요",
     "Modal.CreatingPortal_Life": "수명",
@@ -70,7 +70,7 @@
     "Notification.SignUp_PasswordsDifferent__E": "두 비밀번호가 서로 다릅니다",
     "Notification.SignUp_WeakPassword__E": "비밀번호는 6글자 이상이어야 합니다",
     
-    "Notification.Portal_InitialsTooLong__E": "이니셜은 1~3 글자이어야 합니다",
+    "Notification.Portal_InitialsTooLong__E": "이니셜은 1~4 글자이어야 합니다",
     "Notification.Portal_NotValidSearchUrl__E": "검색 포털의 URL은 '{search}'를 포함해야 합니다",
     "Notification.CreatePortal_Succeeded__S": "성공적으로 포털을 만들었습니다!",
     "Notification.CreatePortal_UnknownError__E": "알수 없는 에러가 발생했습니다",
