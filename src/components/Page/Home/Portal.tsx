@@ -9,8 +9,10 @@ import * as actionsPortal from 'store/actions/portal';
 
 import styles from './Portal.module.scss';
 
-import IconEdit from 'svgs/basic/IconEdit';
 import IconMove from 'svgs/basic/IconFourArrows';
+import IconEdit from 'svgs/basic/IconEdit';
+import IconDelete from 'svgs/basic/IconMinusCircle';
+
 import IconPortalEnter from 'svgs/others/IconPortalEnter';
 import IconLinkExternal from 'svgs/basic/IconLinkExternal';
 import useInput from 'tools/hooks/useInput';
@@ -225,6 +227,12 @@ function Portal({
                         value='edit'
                         onClick={onClick_Action}
                     >   <IconEdit className={`${styles['icon-edit']}`} kind='light' />
+                    </button>
+
+                    <button 
+                        value='delete'
+                        onClick={onClick_Action}
+                    >   <IconDelete className={`${styles['icon-delete']}`} kind='light' />
                     </button>
                 </div>
 
