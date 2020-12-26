@@ -4,13 +4,15 @@ import reducerStatus from './reducers/status';
 import reducerNotification from './reducers/notification';
 import reducerAuth from './reducers/auth';
 import reducerPortal from './reducers/portal';
+import reducerStack from './reducers/stack';
 
 
 const reducerRoot = combineReducers({
-  notification: reducerNotification,
-  status: reducerStatus,
-  auth: reducerAuth,
-  portal: reducerPortal
+    notification: reducerNotification,
+    status: reducerStatus,
+    auth: reducerAuth,
+    portal: reducerPortal,
+    stack: reducerStack,
   //theme: themeReducer
 });
 

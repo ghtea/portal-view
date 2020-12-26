@@ -1,7 +1,7 @@
 
 
 export type Portal = {
-    id: string,
+    id?: string,
     idUser: string,   //  normal, search
     kind: string,
         

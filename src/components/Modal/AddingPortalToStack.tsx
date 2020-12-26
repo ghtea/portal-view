@@ -28,6 +28,12 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
 
     const idUser = useSelector((state: StateRoot) => state.auth.user?.id );
     const idPortal = useSelector((state: StateRoot) => state.status.current.portal.addingToStack );
+    const listStackRaw = useSelector((state: StateRoot) => state.stack.listStack );
+
+    const listStackOrdered = useMemo(()=>{
+        console.log(listStackRaw)
+        return listStackRaw.sort() // a, b, c, ...
+    }, [listStackRaw])
 
     const onClick_HideModal = useCallback(
         () => {
@@ -40,7 +46,7 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
 
     const [kind, setKind] = useState<'new' | 'existing'>('existing');  // create, update   
     const [nameNew, setNameNew] = useState('');
-    const [idStack, setIdStack] = useState('');
+    const [listIdStack, setListIdStack] = useState<string[]>([]);
 
     const onChange_InputNormal = useCallback(
         (event:React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +70,19 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
         },[]
     ); 
     
+    const onChange_InputCheckbox = useCallback(
+        (event:React.ChangeEvent<HTMLInputElement>) => {
+            const idStackClicked = event.currentTarget.value;
+            let replacement = listIdStack;
+            if (listIdStack.includes(idStackClicked)){
+                replacement = listIdStack.filter(idStackEach => idStackEach !== idStackClicked);
+            }
+            else {
+                replacement.push(idStackClicked)
+            }
+            setListIdStack(replacement);
+        },[listIdStack]
+    ); 
     
     // add to stack
     const onSubmit = useCallback(
@@ -74,10 +93,10 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                 kind: kind,
                 idPortal: idPortal,
                 nameStack: nameNew,
-                idStack: idStack
+                listIdStack: listIdStack
             }));
 
-        }, [kind, idPortal, nameNew, idStack]
+        }, [kind, idPortal, nameNew, listIdStack]
     );
     
 
@@ -140,19 +159,29 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                 { (kind==='existing') && 
                     <div className={`${stylesModal['content__section']}`} >
                         <div> <FormattedMessage id={`Modal.AddingPortalToStack_Choose`} /> </div>
-                        {[{}, {}].map((stack, index)=>{
-                            return (
-                                <input
-                                    key={`stack-${index}`}
-                                    type='radio'
-                                    name='idExistingPortal'
-                                    value={nameNew}
-                                    onChange={onChange_InputNormal} 
-                                >
+                        <ul>
+                        {listStackOrdered.map(( stack, index)=>{
+                            console.log(stack?.id)
 
-                                </input>
+                            return (
+                                <li
+                                    key={`stack-${index}`}
+                                    className={'container__input-checkbox'}
+                                >   
+                                    <input 
+                                        type="checkbox" 
+                                        id={`checkbox-${stack?.id}`}
+                                        name="idStack"
+                                        value={stack?.id}
+                                        defaultChecked={ listIdStack.includes(stack?.id as string) }
+                                        onChange={onChange_InputCheckbox} 
+                                    /> 
+                                    <div/>
+                                    <label htmlFor={`checkbox-${stack?.id}`}> {stack?.name} </label>
+                                </li> 
                             )
                         })}
+                        </ul>
                     </div>
                 }
 

@@ -30,7 +30,7 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
 
     const history = yield getContext('history');
     
-    const {kind, idPortal, nameStack, idStack} = action.payload;
+    const {kind, idPortal, nameStack, listIdStack} = action.payload;
 
     try {
 
@@ -43,8 +43,8 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
         else if ( (kind === 'new') && (!nameStack) ){
             console.log('name for new stack is needed')
         }
-        else if ( (kind === 'existing') && (!idStack) ) {
-            console.log('id of stack is needed')
+        else if ( (kind === 'existing') && (!listIdStack) ) {
+            console.log('list of id of stack is needed')
         }
 
         else {
@@ -58,71 +58,40 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
                     idUser: idUserInApp, 
 
                     kind: 'manual',
-                    name: draft.name,
+                    name: nameStack as string,
                     
-                    listTag: draft.listTag,
-                    listIdPortal: draft.listIdPortal,
+                    listTag: [],
+                    listIdPortal: [idPortal],
                 };
+
                 yield put(actionsStack.return__MANIPULATE_STACK({
                     kind: 'create',
-                    draft: {
-                        name: nameStack
-                    }
+                    draft: stack
                 }))
 
-                    yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'CreateStack_Succeeded__S'
-                    }));
-                    yield put(actionsStatus.return__REPLACE({ 
-                        listKey: ['showing', 'modal', 'creatingStack'], 
-                        replacement: false
-                    }));
-                    history.push('/');
-                    yield put(actionsStack.return__GET_LIST_STACK({
-                        idUser: idUserInApp
-                    }));
-                    // window.location.reload();
-                }
-                catch (error){ 
-                    console.log(error);
-                    console.log('error occurred in firebase server');
-                    yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'CreateStack_UnknownError__E'
-                    }) );
-                }
             }
-
             else if (kind === 'existing') {
 
-                yield put(actionsStack.return__MANIPULATE_STACK({
-                    kind: 'update',
-                    draft: {},
-                    id: 'idStack'
-                }))
+                const listStack = yield select ( (state:StateRoot) => state.stack.listStack); 
+                // const stackEditing = listStack.find((stack:any) => stack.id === idStack);
+ 
+                for (var iStack = 0; iStack < listStack?.length; iStack++){
 
+                    let listIdPortal: string[] = listStack[iStack]['listIdPortal'];
+                    listIdStack?.push(idPortal);
+                    
+                    let update: any = {
+                        listIdPortal: listIdPortal
+                    };
 
-                try {
-                    yield call( requestUpdateStack, id as string, stack );
-                    yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'UpdateStack_Succeeded__S'
+                    yield put(actionsStack.return__MANIPULATE_STACK({
+                        kind: 'update',
+                        draft: update,
+                        id: listStack[iStack]['id']
                     }));
-                    yield put(actionsStatus.return__REPLACE({ 
-                        listKey: ['showing', 'modal', 'editingStack'], 
-                        replacement: false
-                    }));
-                    // history.push('/');
-                    yield put(actionsStack.return__GET_LIST_STACK({
-                        idUser: idUserInApp
-                    }));
-                    // window.location.reload();
                 }
-                catch (error){ 
-                    console.log(error);
-                    console.log('error occurred in firebase server');
-                    yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'UpdateStack_UnknownError__E'
-                    }) );
-                }
+                
+
             }
 
               

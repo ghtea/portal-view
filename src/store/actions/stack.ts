@@ -1,5 +1,6 @@
 
 export type Stack = {
+    id?: string,
 
     idUser: string;   //  normal, search
 
@@ -33,7 +34,7 @@ type Payload__ADD_PORTAL_TO_STACK = {
     kind: 'new' | 'existing',
     idPortal: string,
     nameStack?: string,
-    idStack?: string
+    listIdStack?: string[]
 }
 export const return__ADD_PORTAL_TO_STACK = (payload: Payload__ADD_PORTAL_TO_STACK) => {
     return {

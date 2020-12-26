@@ -10,6 +10,7 @@ import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 import * as actionsAuth from 'store/actions/auth';
 import * as actionsPortal from 'store/actions/portal';
+import * as actionsStack from 'store/actions/stack';
 
 import Portal from './Home/Portal';
 
@@ -32,6 +33,9 @@ function Home({}: PropsHome) {
     useEffect(()=>{
         if (readyUser) {
             dispatch(actionsPortal.return__GET_LIST_PORTAL({
+                idUser: idUser
+            }));
+            dispatch(actionsStack.return__GET_LIST_STACK({
                 idUser: idUser
             }));
         }
