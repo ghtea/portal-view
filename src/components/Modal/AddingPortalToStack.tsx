@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
-import * as actionsPortal from 'store/actions/portal';
+import * as actionsStack from 'store/actions/stack';
 
 import {pascalToCamel} from 'tools/vanilla/convertName';
 import useInput from 'tools/hooks/useInput';
@@ -27,7 +27,7 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
     const intl = useIntl();
 
     const idUser = useSelector((state: StateRoot) => state.auth.user?.id );
-
+    const idPortal = useSelector((state: StateRoot) => state.status.current.portal.addingToStack );
 
     const onClick_HideModal = useCallback(
         () => {
@@ -38,14 +38,15 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
         },[]
     );
 
-    const [kind, setKind] = useState('existing');  // 'existing'   'new'
+    const [kind, setKind] = useState<'new' | 'existing'>('existing');  // create, update   
     const [nameNew, setNameNew] = useState('');
+    const [idStack, setIdStack] = useState('');
 
     const onChange_InputNormal = useCallback(
         (event:React.ChangeEvent<HTMLInputElement>) => {
             const {value, name} = event.currentTarget;
             if (name==='kind'){
-                setKind(value);
+                setKind(value as ('existing' | 'new'));
             }
             else if (name === 'nameNew'){
                 setNameNew(value);
@@ -66,9 +67,17 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
     
     // add to stack
     const onSubmit = useCallback(
-        () => {
-            
-        }, []
+        (event:React.FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+
+            dispatch(actionsStack.return__ADD_PORTAL_TO_STACK({
+                kind: kind,
+                idPortal: idPortal,
+                nameStack: nameNew,
+                idStack: idStack
+            }));
+
+        }, [kind, idPortal, nameNew, idStack]
     );
     
 
@@ -101,25 +110,25 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                     <div>  <FormattedMessage id={`Modal.AddingPortalToStack_WhichStack`} /></div>
 
                     <div className={'container__input-radio'} > 
-                        <input type="radio" name="kind" value="new" 
-                            id="kind----new"
+                        <input type="radio" name="kind" value="create" 
+                            id="kind----create"
                             onChange={onChange_InputNormal} 
-                        /> <label htmlFor="kind----new"> <FormattedMessage id={`Modal.AddingPortalToStack_NewStack`} /> </label>
+                        /> <label htmlFor="kind----create"> <FormattedMessage id={`Modal.AddingPortalToStack_NewStack`} /> </label>
 
-                        <input type="radio" name="kind" value="existing" defaultChecked
-                            id="kind----existing"
+                        <input type="radio" name="kind" value="update" defaultChecked
+                            id="kind----update"
                             onChange={onChange_InputNormal} 
-                        /> <label htmlFor="kind----existing"> <FormattedMessage id={`Modal.AddingPortalToStack_ExistingStack`} /></label>
+                        /> <label htmlFor="kind----update"> <FormattedMessage id={`Modal.AddingPortalToStack_ExistingStack`} /></label>
                     </div>
                 </div>
 
                 { (kind === 'new') &&
                     <div className={`${stylesModal['content__section']}`} >
-                        <div> <FormattedMessage id={`Modal.AddingPortalToStack_Name`} /> </div>
+                        <div> <FormattedMessage id={'Modal.AddingPortalToStack_NameOfStack'} /> </div>
                         <div className={`${styles['container__input-name']}`} >
                             <input 
                                 type='text'
-                                placeholder={intl.formatMessage({ id: 'Modal.AddingPortalToStack_Name'})}
+                                placeholder={intl.formatMessage({ id: 'Modal.AddingPortalToStack_NameOfStack'})}
                                 name='nameNew'
                                 value={nameNew}
                                 onChange={onChange_InputNormal} 

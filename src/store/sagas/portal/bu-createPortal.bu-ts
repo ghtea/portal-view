@@ -56,19 +56,22 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
         }
         else if (action.payload.name === "") {
             console.log('type name');
-            
         }
         
         else if (action.payload.url === "" ) {
             console.log('type url');
         }
-
-        else if (action.payload.initials.length > 4) {
+        else if (action.payload.kindIcon === 'initials' && action.payload.initials == ''){
+            console.log('type initials');
+        }
+        else if (action.payload.kindIcon === 'initials' &&action.payload.initials.length > 4) {
             yield put( actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'Portal_InitialsTooLong__E'
             }) );
         }
-
+        else if (action.payload.kindIcon === 'image' && action.payload.urlImageLocal == ''){
+            console.log('upload image');
+        }
         else if (action.payload.kind === 'search' && !(/{search}/).test(action.payload.url) ) {
             yield put( actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'Portal_NotValidSearchUrl__E'
@@ -95,10 +98,16 @@ function* createPortal(action: actionsPortal.type__CREATE_PORTAL) {
                 ]
                 hue = listHue[Math.floor(Math.random() * listHue.length)]; 
             }
+
+            // image
+            if ()
+
             //let listBooleanVisited:boolean[] = Array(action.payload.lifespan-1).fill(false);
             //listBooleanVisited.unshift(true);
             const listBooleanVisited:boolean[] = [true]; 
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
+
+
 
             const date = Date.now();
             const portal = {

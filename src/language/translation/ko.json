@@ -38,13 +38,17 @@
     "Modal.CreatingPortal_Title": "포털 만들기",
     "Modal.CreatingPortal_Kind": "종류",
     "Modal.CreatingPortal_Name": "이름",
+    "Modal.CreatingPortal_KindIcon": "아이콘 종류",
     "Modal.CreatingPortal_Initials": "이니셜 (1~4 글자)",
+    "Modal.CreatingPortal_Image": "이미지",
     "Modal.CreatingPortal_Url": "URL",
     "Modal.CreatingPortal_GuideUrlSearching": "검색 키워드 부분을 {search}로 바꿔주세요",
     "Modal.CreatingPortal_Life": "수명",
     "Modal.CreatingPortal_Hue": "색상",
     "Modal.CreatingPortal_Tags": "태그",
     "Modal.CreatingPortal_Create": "만들기",
+
+    "Modal.EditingPortal_Title": "포털 수정하기",
     "Modal.EditingPortal_Update": "업데이트",
 
     "Modal.CreatingStack_Title": "스택 만들기",
@@ -56,9 +60,15 @@
     "Modal.AddingPortalToStack_WhichStack": "스택 지정",
     "Modal.AddingPortalToStack_NewStack": "새로운 스택",
     "Modal.AddingPortalToStack_ExistingStack": "기존 스택",
+    "Modal.AddingPortalToStack_NameOfStack": "스택 이름",
     "Modal.AddingPortalToStack_Choose": "선택",
     "Modal.AddingPortalToStack_Add": "추가",
 
+    "Global.Add": "추가",
+    "Global.Create": "만들기",
+    "Global.Delete": "삭제",
+    "Global.Update": "업데이트",
+    
     "Notification.Test1__S": "테스트에 성공하였습니다 1 !",
     "Notification.Test2__H": "테스트에 성공하였습니다 2 !",
     "Notification.NotLoggedIn__E": "먼저 로그인해야 합니다",
@@ -89,9 +99,10 @@
     "Notification.Portal_NotOwner__E": "이 포털의 주인이 아닙니다",
     "Notification.Portal_InitialsTooLong__E": "이니셜은 1~4 글자이어야 합니다",
     "Notification.Portal_NotValidSearchUrl__E": "검색 포털의 URL은 '{search}'를 포함해야 합니다",
+    "Notification.Portal_NoImage__E": "이미지를 업로드해주세요",
 
     "Notification.CreatePortal_Succeeded__S": "성공적으로 포털을 만들었습니다!",
-    "Notification.CreatePortal_UnknownError__E": "포털을 삭제하지 못했습니다",
+    "Notification.CreatePortal_UnknownError__E": "포털을 만들지 못했습니다",
     "Notification.GetListPortal_UnknownError__E": "포털들을 불러오지 못했습니다",
     "Notification.VisitPortal_UnknownError__E": "방문한 포털의 상태를 업데이트하지 못했습니다",
     "Notification.EditPortal_Succeeded__S": "성공적으로 포털을 수정했습니다!",
@@ -99,6 +110,15 @@
     "Notification.DeletePortal_Succeeded__S": "성공적으로 포털을 삭제했습니다!",
     "Notification.DeletePortal_UnknownError__E": "포털을 삭제하지 못했습니다",
 
+    "Notification.Stack_NotOwner__E": "이 스택의 주인이 아닙니다",
+    "Notification.CreateStack_Succeeded__S": "성공적으로 스택을 만들었습니다!",
+    "Notification.CreateStack_UnknownError__E": "스택을 만들지 못했습니다",
+    "Notification.GetListStack_UnknownError__E": "스택들을 불러오지 못했습니다",
+    "Notification.VisitStack_UnknownError__E": "방문한 포털들의 상태를 업데이트하지 못했습니다",
+    "Notification.EditStack_Succeeded__S": "성공적으로 스택을 수정했습니다!",
+    "Notification.EditStack_UnknownError__E": "스택을 수정하지 못했습니다",
+    "Notification.DeleteStack_Succeeded__S": "성공적으로 스택을 삭제했습니다!",
+    "Notification.DeleteStack_UnknownError__E": "스택을 삭제하지 못했습니다",
 
     "Page.Home_Welcome": "환영합니다!",
     

@@ -1,5 +1,5 @@
 import { call, select, put, getContext } from "redux-saga/effects";
-import { firebaseFirestore, firebaseStorage } from "firebaseApp";
+import { firebaseFirestore } from "firebaseApp";
 
 import axios from "axios";
 import queryString from 'query-string';
@@ -9,27 +9,24 @@ import {StateRoot} from 'store/reducers';
 import * as actionsStatus from "store/actions/status";
 import * as actionsNotification from "store/actions/notification";
 
-import * as actionsPortal from "store/actions/portal";
+import * as actionsStack from "store/actions/stack";
 //import * as actionsTheme from "../../actions/theme";
 
 
 
 
 
-const requestDeletePortal = (id:string) => {
-    return firebaseFirestore.collection("Portal_").doc(id).delete();
+const requestDeleteStack = (id:string) => {
+    return firebaseFirestore.collection("Stack_").doc(id).delete();
 };
-const requestDeleteImageIcon = (urlImageIcon:string) => {
-    console.log(urlImageIcon);
-    return firebaseStorage.refFromURL(urlImageIcon).delete()
-}
 
-function* deletePortal(action: actionsPortal.type__DELETE_PORTAL) {
+
+function* deleteStack(action: actionsStack.type__DELETE_STACK) {
 
     const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
     const idUserInApp =  yield select( (state:StateRoot) => state.auth.user?.id); 
     
-    const { id, idUser, urlImageIcon} = action.payload;
+    const { id, idUser} = action.payload;
     
     try {
 
@@ -40,38 +37,29 @@ function* deletePortal(action: actionsPortal.type__DELETE_PORTAL) {
         }
         else if (idUser !== idUserInApp){
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'Portal_NotOwner__E'
+                    codeSituation: 'Stack_NotOwner__E'
                 }));        }
         else {
             
             try {
                 
-
-                yield call( requestDeletePortal , id );
+                yield call( requestDeleteStack , id );
+                // await storageService.refFromURL(nweetObj.attachmentUrl).delete();
 
                 
-                if (urlImageIcon) {
-                    yield call( requestDeleteImageIcon , urlImageIcon );
-                }
-                
-
-                // dont forget these!!!
-                yield put(actionsStatus.return__REPLACE({
-                    listKey: ['showing', 'modal', 'editingPortal'], 
-                    replacement: false
-                }));            
-                yield put(actionsStatus.return__REPLACE({
-                    listKey: ['current', 'portal', 'editing'], 
-                    replacement: ''
-                })); 
-
                 yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'DeletePortal_Succeeded__S'
-                }));   
-                yield put(actionsPortal.return__GET_LIST_PORTAL({
+                    codeSituation: 'DeleteStack_Succeeded__S'
+                }));
+                /*
+                yield put(actionsStatus.return__REPLACE({ 
+                    listKey: ['showing', 'modal', 'creatingStack'], 
+                    replacement: false
+                }));
+                */      
+                yield put(actionsStack.return__GET_LIST_STACK({
                     idUser: idUser
                 }));
-            
+                // window.location.reload();
             }
 
             catch (error){ 
@@ -79,7 +67,7 @@ function* deletePortal(action: actionsPortal.type__DELETE_PORTAL) {
                 console.log(error);
                 console.log('error occurred in firebase server')
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'DeletePortal_UnknownError__E'
+                    codeSituation: 'DeleteStack_UnknownError__E'
                 }) );
             }
               
@@ -88,13 +76,12 @@ function* deletePortal(action: actionsPortal.type__DELETE_PORTAL) {
     } catch (error) {
         
         console.log(error);
-        console.log('deletePortal has been failed');
+        console.log('deleteStack has been failed');
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
-            codeSituation: 'DeletePortal_UnknownError__E'
+            codeSituation: 'DeleteStack_UnknownError__E'
         }) );
     }
 }
 
-
-export default deletePortal;
+export default deleteStack;

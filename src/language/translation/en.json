@@ -35,13 +35,17 @@
     "Modal.CreatingPortal_Title": "Create Portal",
     "Modal.CreatingPortal_Kind": "Kind",
     "Modal.CreatingPortal_Name": "Name",
+    "Modal.CreatingPortal_KindIcon": "Kind of Icon",
     "Modal.CreatingPortal_Initials": "Initials (1~4 letters)",
+    "Modal.CreatingPortal_Image": "Image",
     "Modal.CreatingPortal_Url": "URL",
     "Modal.CreatingPortal_GuideUrlSearching": "Please replace the search keyword part with {search}",
     "Modal.CreatingPortal_Life": "Life",
     "Modal.CreatingPortal_Hue": "Hue",
     "Modal.CreatingPortal_Tags": "Tags",
     "Modal.CreatingPortal_Create": "Create",
+
+    "Modal.EditingPortal_Title": "Edit Portal",
     "Modal.EditingPortal_Update": "Update",
 
     "Modal.CreatingStack_Title": "Create Stack",
@@ -53,8 +57,14 @@
     "Modal.AddingPortalToStack_WhichStack": "Which Stack",
     "Modal.AddingPortalToStack_NewStack": "New Stack",
     "Modal.AddingPortalToStack_ExistingStack": "Existing Stack",
+    "Modal.AddingPortalToStack_NameOfStack": "Name of Stack",
     "Modal.AddingPortalToStack_Choose": "Choose",
     "Modal.AddingPortalToStack_Add": "Add",
+
+    "Global.Add": "Add",
+    "Global.Create": "Create",
+    "Global.Delete": "Delete",
+    "Global.Update": "Update",
 
 
     "Notification.Test1__S": "Succuessfully tested 1 !",
@@ -87,15 +97,27 @@
     "Notification.Portal_NotOwner__E": "You're not owner of this portal",
     "Notification.Portal_InitialsTooLong__E": "Initials must be between 1 and 4 letters",
     "Notification.Portal_NotValidSearchUrl__E": "URL of searching portal must include '{search}'",
-
+    "Notification.Portal_NoImage__E": "Please Upload Image",
+    
     "Notification.CreatePortal_Succeeded__S": "Successfully created portal!",
-    "Notification.CreatePortal_UnknownError__E": "Failed to delete the portal",
+    "Notification.CreatePortal_UnknownError__E": "Failed to create the portal",
     "Notification.GetListPortal_UnknownError__E": "Failed to get portals",
     "Notification.VisitPortal_UnknownError__E": "Failed to update the portal which you visited",
     "Notification.EditPortal_Succeeded__S": "Successfully edited portal!",
     "Notification.EditPortal_UnknownError__E": "Failed to update the portal",
     "Notification.DeletePortal_Succeeded__S": "Successfully deleted portal!",
     "Notification.DeletePortal_UnknownError__E": "Failed to delete the portal",
+
+    "Notification.Stack_NotOwner__E": "You're not owner of this stack",
+
+    "Notification.CreateStack_Succeeded__S": "Successfully created stack!",
+    "Notification.CreateStack_UnknownError__E": "Failed to create the stack",
+    "Notification.GetListStack_UnknownError__E": "Failed to get stacks",
+    "Notification.VisitStack_UnknownError__E": "Failed to update the some portals which you visited",
+    "Notification.EditStack_Succeeded__S": "Successfully edited stack!",
+    "Notification.EditStack_UnknownError__E": "Failed to update the stack",
+    "Notification.DeleteStack_Succeeded__S": "Successfully deleted stack!",
+    "Notification.DeleteStack_UnknownError__E": "Failed to delete the stack",
 
     "Page.Home_Welcome": "Welcome!",
     "Page.LogIn_LogIn": "LogIn",

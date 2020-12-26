@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
-import * as actionsPortal from 'store/actions/portal';
+import * as actionsStack from 'store/actions/stack';
 
 import {pascalToCamel} from 'tools/vanilla/convertName';
 import useInput from 'tools/hooks/useInput';
@@ -41,9 +41,8 @@ function CreatingStack({}: PropsCreatingStack) {
     const [draft,setDraft] = useState({
         // idUser 는 saga에서!
         
-        kind: "manual",
+        kind: "manual",    //    'manula', 'tag'
         name: "",
-        lifespan: "15",  // input.value is (maybe) always string!
 
         listTag: [] as string[],
         listIdPortal: [] as string[]
@@ -62,10 +61,11 @@ function CreatingStack({}: PropsCreatingStack) {
         },[draft]
     ); 
 
-    const onClick_CreatePortal = useCallback(
+    const onClick_CreateStack = useCallback(
         (draft) => {
-            dispatch(actionsPortal.return__CREATE_PORTAL({
-                ...draft
+            dispatch(actionsStack.return__MANIPULATE_STACK({
+                kind: 'create',
+                draft: draft
             }));
         }, []
     );
@@ -127,7 +127,7 @@ function CreatingStack({}: PropsCreatingStack) {
                 <div className={`${stylesModal['content__section']}`} >
                     <button
                         className={`${stylesModal['button-main']}`}
-                        onClick={()=>onClick_CreatePortal(draft)}
+                        onClick={()=>onClick_CreateStack(draft)}
                     > <FormattedMessage id={`Modal.CreatingStack_Create`} /> </button>
                 </div>
 

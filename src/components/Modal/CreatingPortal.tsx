@@ -40,10 +40,13 @@ function CreatingPortal({}: PropsCreatingPortal) {
 
     const [draft,setDraft] = useState({
         // idUser 는 saga에서!
-        
         kind: "normal",
         name: "",
+
+        kindIcon: "initials",
         initials: "",
+        urlImageLocal : '' as any,
+
         url: "",
         lifespan: "15",  // input.value is (maybe) always string!
         listTag: [] as string[],
@@ -51,7 +54,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
 
         tagCurrent: "",
         hueOption: "random"
-    })
+    });
 
     // const [tagCurrent, setTagCurrent] = useState("");
 
@@ -66,6 +69,24 @@ function CreatingPortal({}: PropsCreatingPortal) {
         },[draft]
     ); 
     
+    const onChange_InputFile = useCallback( (event:React.ChangeEvent<HTMLInputElement>) => {
+        const { currentTarget: { files } } = event;
+        const theFile = files && files[0];
+        if (theFile){
+            const reader = new FileReader();
+            reader.onloadend = (finishedEvent) => {
+                const result = finishedEvent?.target?.result;
+                setDraft({...draft, urlImageLocal: result});
+            };
+            reader.readAsDataURL(theFile);  // then onloadend is triggered
+        }
+    },[draft]);
+    const onClick_InputFile = useCallback( (event:React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+        event.currentTarget.value = '';
+    },[]);
+    const onClick_ClearInputFile = useCallback( (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        setDraft({...draft, urlImageLocal: ''});
+    },[]);
 
 
     const onClick_AddTagCurrent = useCallback(
@@ -80,7 +101,6 @@ function CreatingPortal({}: PropsCreatingPortal) {
             }
         },[draft]
     );
-
     const onClick_DeleteTag = useCallback(
         (tagDeleting:string) => {
             const {listTag} = draft;
@@ -94,8 +114,9 @@ function CreatingPortal({}: PropsCreatingPortal) {
     
     const onClick_CreatePortal = useCallback(
         (draft) => {
-            dispatch(actionsPortal.return__CREATE_PORTAL({
-                ...draft
+            dispatch(actionsPortal.return__MANIPULATE_PORTAL({
+                kind: 'create',
+                draft: draft
             }));
         }, []
     );
@@ -152,20 +173,50 @@ function CreatingPortal({}: PropsCreatingPortal) {
                         /> 
                     </div>
                 </div>
-
+                
                 <div className={`${stylesModal['content__section']}`} >
-                    <div> <FormattedMessage id={`Modal.CreatingPortal_Initials`} /> </div>
-                    <div className={`${styles['container__input-initials']}`} >
-                        <input 
-                            type='text'
-                            placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Initials'})}
-                            name='initials'
-                            value={draft.initials}
+                    <div>  <FormattedMessage id={`Modal.CreatingPortal_KindIcon`} /></div>
+
+                    <div className={'container__input-radio'} > 
+                        <input type="radio" name="kindIcon" value="initials" checked={draft.kindIcon === "initials"}
+                            id="kindIcon----initials"
                             onChange={onChange_InputNormal} 
-                        /> 
+                        /> <label htmlFor="kindIcon----initials">initials</label>
+
+                        <input type="radio" name="kindIcon" value="image" checked={draft.kindIcon === "image"}
+                            id="kindIcon----image"
+                            onChange={onChange_InputNormal} 
+                        /> <label htmlFor="kindIcon----image">image</label>
                     </div>
                 </div>
-                
+                {draft.kindIcon === 'initials' &&
+                    <div className={`${stylesModal['content__section']}`} >
+                        <div> <FormattedMessage id={`Modal.CreatingPortal_Initials`} /> </div>
+                        <div className={`${styles['container__input-initials']}`} >
+                            <input 
+                                type='text'
+                                placeholder={intl.formatMessage({ id: 'Modal.CreatingPortal_Initials'})}
+                                name='initials'
+                                value={draft.initials}
+                                onChange={onChange_InputNormal} 
+                            /> 
+                        </div>
+                    </div>
+                }   
+                {draft.kindIcon === 'image' &&
+                    <div className={`${stylesModal['content__section']}`} >
+                        <div> <FormattedMessage id={`Modal.CreatingPortal_Image`} /> </div>
+                        <div className={`container__input-file`} > 
+                            <input type="file" accept="image/*" id='file-photo' 
+                                onChange={onChange_InputFile} 
+                                onClick={onClick_InputFile}
+                            />
+                            <label htmlFor='file-photo' > Upload Photo </label>
+                            { draft.urlImageLocal && <button onClick={onClick_ClearInputFile}> Clear </button> }
+                        </div> 
+                    </div>
+                }      
+
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Url`} /></div>
                     {draft.kind === 'search' && <p className={'hint'}> <FormattedMessage id={`Modal.CreatingPortal_GuideUrlSearching`} /> </p>}

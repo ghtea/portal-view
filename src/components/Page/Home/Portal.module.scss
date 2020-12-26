@@ -46,6 +46,13 @@ $border-radius__face: 12px;
 
             & > *:nth-child(1) {
                 display: flex;
+            }
+            .image-icon {
+                width: 90%;
+                height: 90%;
+            }
+
+            .initials {
                 line-height: 1.2;  // it should be based on fonts
 
                 &:global(.length-initials----1){

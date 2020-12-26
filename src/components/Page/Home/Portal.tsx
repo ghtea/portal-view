@@ -19,41 +19,35 @@ import IconLinkExternal from 'svgs/basic/IconLinkExternal';
 
 
 type PropsPortal = {
-    id: string,
-    idUser: string,   //  normal, search
-    kind: string,
-             
-    name: string,
-    initials: string,
-    url: string,
-    
-    lifespan: number,
-    listBooleanVisited: boolean[],  // [true, false, ...(30days)] 
-    dateVisitedLast: number, 
-    dateCreated: number
-
-    listTag: string[],
-    hue: string
+    portal: actionsPortal.Portal 
 };
 
 function Portal({
-    id,
-    idUser,   //  normal, search
-    kind,
-             
-    name,
-    initials,
-    url,
-    
-    lifespan,
-    listBooleanVisited,  // [true, false, ...(30days)] 
-    dateVisitedLast, 
-    dateCreated,
-
-    listTag,
-    hue
+    portal
 }: PropsPortal) {
-  
+    
+    const { 
+        id,
+        idUser,
+        kind,
+            
+        name,
+                                
+        kindIcon,
+        initials,
+        urlImageIcon,
+        
+        url,
+        
+        lifespan,
+        listBooleanVisited,
+        dateVisitedLast,
+        dateCreated,
+
+        listTag,
+        hue,
+    } = portal;
+
     const dispatch = useDispatch();
 
     const idPortalOpen:string = useSelector((state: StateRoot) => state['status']['current']['portal']['open']);
@@ -120,7 +114,11 @@ function Portal({
                             kind,
                                     
                             name,
+                            
+                            kindIcon,
                             initials,
+                            urlImageIcon,
+                            
                             url,
                             
                             lifespan,
@@ -197,8 +195,12 @@ function Portal({
                 <div 
                     className={`${styles['left']}`}
                     onClick={()=>onClick_Face('left')}
-                >
-                    <div className={`length-initials----${initials.length}`} >   {initials}   </div>
+                >   
+                    {kindIcon === 'image' ?
+                        <img className={`${styles['image-icon']}`}  src={urlImageIcon}/>
+                        :
+                        <div className={`${styles['initials']} length-initials----${initials.length}`} >   {initials}   </div>
+                    }                    
                     <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
                 </div>
     

@@ -68,11 +68,11 @@ function MyProfile({}: PropsMyProfile) {
     const onClick_InputFile = useCallback( (event:React.MouseEvent<HTMLInputElement, MouseEvent>) => {
         event.currentTarget.value = '';
     },[]);
-
     const onClick_ClearInputFile = useCallback( (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         setUrlPhotoLocal('');
     },[]);
 
+    
     const onSubmit = useCallback( (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         

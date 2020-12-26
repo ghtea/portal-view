@@ -1,28 +1,23 @@
 import { call, select, put } from "redux-saga/effects";
 import { firebaseFirestore } from "firebaseApp";
 
-import axios from "axios";
-import queryString from 'query-string';
-import { v4 as uuidv4 } from 'uuid';
-
 // import * as config from 'config';
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from "store/actions/status";
 import * as actionsNotification from "store/actions/notification";
 
-import * as actionsPortal from "store/actions/portal";
-import { isArray } from "util";
+import * as actionsStack from "store/actions/stack";
 
 
-const requestGetListPortal = (idUser:string) => {
+const requestGetListStack = (idUser:string) => {
     
-    return firebaseFirestore.collection("Portal_")
+    return firebaseFirestore.collection("Stack_")
     .where("idUser", "==", idUser)
     .get()
 };
 
 
-function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
+function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
 
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     
@@ -38,20 +33,20 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
             yield put( actionsStatus.return__REPLACE({
-                listKey: ['ready', 'listPortal'],
+                listKey: ['ready', 'listStack'],
                 replacement: false
             }) );
             
             yield put( actionsStatus.return__REPLACE({
-                listKey: ['loading', 'listPortal'],
+                listKey: ['loading', 'listStack'],
                 replacement: true
             }) );
 
             
             try {
-                const data =  yield call( requestGetListPortal, idUser );
+                const data =  yield call( requestGetListStack, idUser );
                 
-                const listPortal:any[] = data.docs.map((document: any)=>(
+                const listStack:any[] = data.docs.map((document: any)=>(
                     {
                         ...document.data(),
                         id: document.id
@@ -60,20 +55,20 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                
                     // data.map 으로 하면 잘 안된다...
                 
-                console.log(listPortal);
+                console.log(listStack);
 
-                yield put( actionsPortal.return__REPLACE({
-                    listKey: ['listPortal'],
-                    replacement: listPortal
+                yield put( actionsStack.return__REPLACE({
+                    listKey: ['listStack'],
+                    replacement: listStack
                 }) );
 
                 yield put( actionsStatus.return__REPLACE({
-                    listKey: ['loading', 'listPortal'],
+                    listKey: ['loading', 'listStack'],
                     replacement: false
                 }) );
                 
                 yield put( actionsStatus.return__REPLACE({
-                    listKey: ['ready', 'listPortal'],
+                    listKey: ['ready', 'listStack'],
                     replacement: true
                 }) );
 
@@ -81,12 +76,12 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             catch (error) {   
 
                 yield put( actionsStatus.return__REPLACE({
-                    listKey: ['loading', 'listPortal'],
+                    listKey: ['loading', 'listStack'],
                     replacement: false
                 }) );
                 
                 yield put( actionsStatus.return__REPLACE({
-                    listKey: ['ready', 'listPortal'],
+                    listKey: ['ready', 'listStack'],
                     replacement: false
                 }) );
 
@@ -94,7 +89,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 console.log('error occurred in firebase server')
                 
                 yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'GetListPortal_UnknownError__E'
+                    codeSituation: 'GetListStack_UnknownError__E'
                 }) );
             }
               
@@ -105,12 +100,12 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
     } catch (error) {
         
         console.log(error);
-        console.log('getListPortal has been failed');
+        console.log('getListStack has been failed');
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
-            codeSituation: 'GetListPortal_UnknownError__E'
+            codeSituation: 'GetListStack_UnknownError__E'
         }) );
     }
 }
 
-export default getListPortal;
+export default getListStack;

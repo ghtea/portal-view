@@ -1,5 +1,5 @@
 import { call, select, put, getContext } from "redux-saga/effects";
-import { firebaseAuth, firebaseFs, firebaseStorage } from "firebaseApp";
+import { firebaseAuth, firebaseStorage } from "firebaseApp";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -22,7 +22,7 @@ const updateProfileFirebase = (update: any) => {
     return firebaseAuth?.currentUser?.updateProfile(update)
 }
 
-function* updateProfile(action: actionsPortal.type__CREATE_PORTAL) {
+function* updateProfile(action: actionsAuth.type__UPDATE_PROFILE) {
 
     const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
     const idUserInApp =  yield select( (state:StateRoot) => state.auth.user?.id); 

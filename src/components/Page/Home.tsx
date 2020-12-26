@@ -56,24 +56,7 @@ function Home({}: PropsHome) {
                     {listPortal.map( (portal:any, index:number)=>(
                         <Portal
                             key={`portal-${index}`}
-
-                            id={portal.id}
-                            idUser={portal.idUser}
-                        
-                            kind={portal.kind}
-
-                            name={portal.name}
-                            initials={portal.initials}
-                            url={portal.url}
-
-                            listTag={portal.listTag}
-                            hue={portal.hue}
-
-                            lifespan={portal.lifespan}
-                            listBooleanVisited={portal.listBooleanVisited}
-                            dateVisitedLast={portal.dateVisitedLast}
-                            dateCreated={portal.dateCreated}
-                        
+                            portal={portal}
                         />
                     ))}
                 </div>
