@@ -3,3 +3,9 @@
 .root {
     display: flex;
 }
+
+
+.collection-checkbox {
+    height: auto; max-height: 400px;
+    overflow: auto;
+}

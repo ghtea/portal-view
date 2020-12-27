@@ -3,7 +3,7 @@ import React from "react";
 
 type PropsIcon = {
   className?: string;
-  kind?: string;  // thin, light, regular, solid, ...
+  kind?: 'regular' | 'solid' | 'light';  // thin, light, regular, solid, ...
 } & typeof propsDefault;
 
 const propsDefault = {  

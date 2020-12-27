@@ -4,7 +4,7 @@ import React, {useMemo} from "react";
 type PropsIcon = {
   
   className: string;
-  kind?: 'regular' | 'solid' | 'light';  // thin, light, regular, solid, ...
+  kind?: string; // thin, light, regular, solid, ...
   directon?: 'right' | 'left' | 'up' | 'down'; 
   
 } & typeof propsDefault;
@@ -16,7 +16,7 @@ const propsDefault = {
  
 
 
-// Template
+// Check
 const Icon = ({ className, kind, directon }: PropsIcon) => {
 
     const transform: string = useMemo(()=>{
@@ -50,10 +50,10 @@ const Icon = ({ className, kind, directon }: PropsIcon) => {
         focusable="false"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 192 512"
+        viewBox="0 0 512 512"
         transform={transform}
       >
-        <path  fill="currentColor" d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"></path>
+<path fill="currentColor" d="M435.848 83.466L172.804 346.51l-96.652-96.652c-4.686-4.686-12.284-4.686-16.971 0l-28.284 28.284c-4.686 4.686-4.686 12.284 0 16.971l133.421 133.421c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-28.284-28.284c-4.686-4.686-12.284-4.686-16.97 0z"></path>
       </svg>
     }
     {(kind === 'light') && 
@@ -66,10 +66,10 @@ const Icon = ({ className, kind, directon }: PropsIcon) => {
         focusable="false"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 192 512"
+        viewBox="0 0 448 512"
         transform={transform}
       >
-        <path  fill="currentColor" d="M166.9 264.5l-117.8 116c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17L127.3 256 25.1 155.6c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0l117.8 116c4.6 4.7 4.6 12.3-.1 17z"></path>
+<path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"></path>
       </svg>
     }
     {(kind === 'solid') && 
@@ -82,10 +82,10 @@ const Icon = ({ className, kind, directon }: PropsIcon) => {
         focusable="false"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 256 512"
+        viewBox="0 0 512 512"
         transform={transform}
       >
-        <path  fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+<path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
       </svg>
     }
       

@@ -14,6 +14,8 @@ import useInput from 'tools/hooks/useInput';
 
 
 import IconX from 'svgs/basic/IconX';
+import IconCheck from 'svgs/basic/IconCheck';
+
 
 import styles from './AddingPortalToStack.module.scss';
 import stylesModal from 'components/Modal.module.scss';
@@ -129,15 +131,15 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                     <div>  <FormattedMessage id={`Modal.AddingPortalToStack_WhichStack`} /></div>
 
                     <div className={'container__input-radio'} > 
-                        <input type="radio" name="kind" value="create" 
-                            id="kind----create"
+                        <input type="radio" name="kind" value="new" 
+                            id="kind----new"
                             onChange={onChange_InputNormal} 
-                        /> <label htmlFor="kind----create"> <FormattedMessage id={`Modal.AddingPortalToStack_NewStack`} /> </label>
+                        /> <label htmlFor="kind----new"> <FormattedMessage id={`Modal.AddingPortalToStack_NewStack`} /> </label>
 
-                        <input type="radio" name="kind" value="update" defaultChecked
-                            id="kind----update"
+                        <input type="radio" name="kind" value="existing" defaultChecked
+                            id="kind----existing"
                             onChange={onChange_InputNormal} 
-                        /> <label htmlFor="kind----update"> <FormattedMessage id={`Modal.AddingPortalToStack_ExistingStack`} /></label>
+                        /> <label htmlFor="kind----existing"> <FormattedMessage id={`Modal.AddingPortalToStack_ExistingStack`} /></label>
                     </div>
                 </div>
 
@@ -159,7 +161,7 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                 { (kind==='existing') && 
                     <div className={`${stylesModal['content__section']}`} >
                         <div> <FormattedMessage id={`Modal.AddingPortalToStack_Choose`} /> </div>
-                        <ul>
+                        <ul className={`${styles['collection-checkbox']}`} >
                         {listStackOrdered.map(( stack, index)=>{
                             console.log(stack?.id)
 
@@ -176,8 +178,10 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                                         defaultChecked={ listIdStack.includes(stack?.id as string) }
                                         onChange={onChange_InputCheckbox} 
                                     /> 
-                                    <div/>
-                                    <label htmlFor={`checkbox-${stack?.id}`}> {stack?.name} </label>
+                                    <label htmlFor={`checkbox-${stack?.id}`}>  
+                                        <div> <IconCheck className={`${styles['icon-check']}`} kind='solid' /> </div>
+                                        <div> {stack?.name} </div> 
+                                    </label>
                                 </li> 
                             )
                         })}

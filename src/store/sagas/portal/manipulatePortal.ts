@@ -12,32 +12,6 @@ import * as actionsPortal from "store/actions/portal";
 //import * as actionsTheme from "../../actions/theme";
 
 
-
-interface Portal {
-
-    idUser: string;   //  normal, search
-    kind: string;
-             
-    name: string;
-
-    kindIcon: string;
-    initials: string;
-    urlImageIcon: string;
-
-    url: string;
-    
-    lifespan: number; 
-    listBooleanVisited: boolean[];  
-    dateVisitedLast: number; 
-    
-    listTag: string[];
-    hue: string;
-
-    dateCreated?: number;
-    dateUpdated?: number;
-    
-}
-
 const uploadPhoto = (refFirebase: any, urlImageLocal: string) => {
     return refFirebase.putString(urlImageLocal, "data_url")
 }
@@ -45,10 +19,10 @@ const getUrlPhotoFirebase = (response: any) => {
     return response.ref.getDownloadURL()
 }
 
-const requestCreatePortal = (portal: Portal) => {
+const requestCreatePortal = (portal: any) => {
     return firebaseFirestore.collection("Portal_").add(portal) 
 };
-const requestUpdatePortal = (id:string, update:Portal) => {
+const requestUpdatePortal = (id:string, update:any) => {
     return firebaseFirestore.doc(`Portal_/${id}`).update(update);
 };
 
@@ -120,21 +94,10 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                     '300', '310', '320', '330', '340', '350', 'grey'
                 ]
                 hue = listHue[Math.floor(Math.random() * listHue.length)]; 
-            }
+            } 
 
-            // image
-            let urlImageIcon = '';
-            if (draft.kindIcon === 'image' && draft.urlImageLocal){
-                const refFirebase = firebaseStorage
-                .ref()
-                .child(`${idUserInApp}/${uuidv4()}`);
-
-                const response = yield call( uploadPhoto, refFirebase, draft.urlImageLocal); // upload photo
-                const urlImageFirebase = yield call (getUrlPhotoFirebase, response);
-
-                urlImageIcon = urlImageFirebase;
-            }
-
+            
+ 
             //let listBooleanVisited:boolean[] = Array(draft.lifespan-1).fill(false);
             //listBooleanVisited.unshift(true);
             const listBooleanVisited:boolean[] = [true]; 
@@ -144,7 +107,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
             const date = Date.now();
 
-            let portal:Portal = {
+            let portal:any = {
 
                 idUser: idUser,
                 kind: draft.kind,
@@ -153,8 +116,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
                 kindIcon: draft.kindIcon,
                 initials: initials,
-                urlImageIcon: urlImageIcon,
-                
+        
                 url: draft.url,
                 
                 lifespan: parseInt(draft.lifespan),
@@ -164,6 +126,18 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                 listTag: draft.listTag,
                 hue: hue,
             };
+
+            // image
+            if (draft.kindIcon === 'image' && draft.urlImageLocal){
+                const refFirebase = firebaseStorage
+                .ref()
+                .child(`${idUserInApp}/${uuidv4()}`);
+
+                const response = yield call( uploadPhoto, refFirebase, draft.urlImageLocal); // upload photo
+                const urlImageFirebase = yield call (getUrlPhotoFirebase, response);
+
+                portal['urlImageIcon'] = urlImageFirebase;
+            }
 
             if (kind === 'create'){
                 portal['dateCreated'] = date;
@@ -199,9 +173,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
             else if (kind === 'update') {
                 portal['dateUpdated'] = date;
-                console.log('debugg')
-                console.log(id);
-                console.log(portal);
+                
                 try {
                     yield call( requestUpdatePortal, id as string, portal );
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
