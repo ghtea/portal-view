@@ -42,7 +42,6 @@ $border-radius__face: 12px;
             height: 100%;
             padding: 6px;
             border-radius: $border-radius__face;
-            font-weight: 900;
 
             & > *:nth-child(1) {
                 display: flex;
@@ -57,15 +56,19 @@ $border-radius__face: 12px;
 
                 &:global(.length-initials----1){
                     font-size: 2rem;
+                    font-weight: 900;
                 }
                 &:global(.length-initials----2){
                     font-size: 1.6rem;
+                    font-weight: 900;
                 }
                 &:global(.length-initials----3){
-                    font-size: 1.3rem;
+                    font-size: 1.2rem;
+                    font-weight: 700;
                 }
                 &:global(.length-initials----4){
-                    font-size: 1.2rem;
+                    font-size: 1rem;
+                    font-weight: 700;
                 }
             }
             & > *:nth-child(2) {
@@ -323,18 +326,7 @@ $border-radius__face: 12px;
     
 
 
-
-
-$list-hue: (
-    grey,
-    0,10,20,30,40,50,60,70,80,90,
-    100,110,120,130,140,150,160,170,180,190,
-    200,210,220,230,240,250,260,270,280,290,
-    300,310,320,330,340,350
-);
-
 @each $hue in $list-hue {
-
 
     :global(.hue----#{$hue}) {
         .face {

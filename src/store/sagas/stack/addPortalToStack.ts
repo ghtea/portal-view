@@ -30,7 +30,7 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
 
     const history = yield getContext('history');
     
-    const {kind, idPortal, nameStack, listIdStack} = action.payload;
+    const {kind, idPortal, nameStack, listIdStack: listIdStackNew} = action.payload;
 
     try {
 
@@ -43,7 +43,7 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
         else if ( (kind === 'new') && (!nameStack) ){
             console.log('name for new stack is needed')
         }
-        else if ( (kind === 'existing') && (!listIdStack) ) {
+        else if ( (kind === 'existing') && (!listIdStackNew) ) {
             console.log('list of id of stack is needed')
         }
 
@@ -74,20 +74,28 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
 
                 const listStack = yield select ( (state:StateRoot) => state.stack.listStack); 
                 // const stackEditing = listStack.find((stack:any) => stack.id === idStack);
- 
+                console.log(listStack)
                 for (var iStack = 0; iStack < listStack?.length; iStack++){
 
-                    let listIdPortal: string[] = listStack[iStack]['listIdPortal'];
-                    listIdStack?.push(idPortal);
+                    const stackEach = listStack[iStack];
+                    let listIdPortalNewEach = stackEach.listIdPortal;
+
+                    if ( listIdStackNew?.includes(stackEach['id'])  ) { 
+                        listIdPortalNewEach = listIdPortalNewEach.filter((idPortalEach:string) => idPortalEach !== idPortal); // 중복입력 방지  
+                        listIdPortalNewEach.push(idPortal);
+                    }
+                    else {
+                        listIdPortalNewEach = listIdPortalNewEach.filter((idPortalEach:string) => idPortalEach !== idPortal);
+                    }
                     
                     let update: any = {
-                        listIdPortal: listIdPortal
+                        listIdPortal: listIdPortalNewEach
                     };
 
                     yield put(actionsStack.return__MANIPULATE_STACK({
                         kind: 'update',
                         draft: update,
-                        id: listStack[iStack]['id']
+                        id: stackEach['id']
                     }));
                 }
                 

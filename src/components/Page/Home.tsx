@@ -13,6 +13,7 @@ import * as actionsPortal from 'store/actions/portal';
 import * as actionsStack from 'store/actions/stack';
 
 import Portal from './Home/Portal';
+import Stack from './Home/Stack';
 
 import styles from './Home.module.scss';
 
@@ -29,6 +30,11 @@ function Home({}: PropsHome) {
     const readyListPortal:any = useSelector((state: StateRoot) => state['status']['ready']['listPortal']);
     const loadingListPortal:any = useSelector((state: StateRoot) => state['status']['loading']['listPortal']);
     const listPortal:any = useSelector((state: StateRoot) => state['portal']['listPortal']);
+
+    const readyListStack:any = useSelector((state: StateRoot) => state['status']['ready']['listStack']);
+    const loadingListStack:any = useSelector((state: StateRoot) => state['status']['loading']['listStack']);
+    const listStack:any = useSelector((state: StateRoot) => state['stack']['listStack']);
+
 
     useEffect(()=>{
         if (readyUser) {
@@ -55,8 +61,19 @@ function Home({}: PropsHome) {
 
             {loadingListPortal && !readyListPortal && <div>loading</div>}
 
+            {readyListStack && 
+                <div className={`${styles['collection-stack']}`} >
+                    {listStack.map( (stack:any, index:number)=>(
+                        <Stack
+                            key={`stack-${index}`}
+                            stack={stack}
+                        />
+                    ))}
+                </div>
+            }
+
             {readyListPortal && 
-                <div className={`${styles['container']}`} >
+                <div className={`${styles['collection-portal']}`} >
                     {listPortal.map( (portal:any, index:number)=>(
                         <Portal
                             key={`portal-${index}`}

@@ -33,8 +33,9 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
     const listStackRaw = useSelector((state: StateRoot) => state.stack.listStack );
 
     const listStackOrdered = useMemo(()=>{
-        console.log(listStackRaw)
-        return listStackRaw.sort() // a, b, c, ...
+        let listStackReplacement = [...listStackRaw] ;
+        listStackReplacement.sort();
+        return listStackReplacement // a, b, c, ...
     }, [listStackRaw])
 
     const onClick_HideModal = useCallback(
@@ -175,7 +176,7 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                                         id={`checkbox-${stack?.id}`}
                                         name="idStack"
                                         value={stack?.id}
-                                        defaultChecked={ listIdStack.includes(stack?.id as string) }
+                                        defaultChecked={ stack?.listIdPortal.includes(idPortal) }
                                         onChange={onChange_InputCheckbox} 
                                     /> 
                                     <label htmlFor={`checkbox-${stack?.id}`}>  

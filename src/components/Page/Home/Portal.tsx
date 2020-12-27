@@ -108,28 +108,8 @@ function Portal({
                 if (side === 'left') {
 
                     dispatch(actionsPortal.return__VISIT_PORTAL({
-                        portal: {
-                            id,
-                            idUser,   //  normal, search
-                            kind,
-                                    
-                            name,
-                            
-                            kindIcon,
-                            initials,
-                            urlImageIcon,
-                            
-                            url,
-                            
-                            lifespan,
-                            listBooleanVisited,  // [true, false, ...(30days)] 
-                            dateVisitedLast, 
-                            dateCreated,
-
-                            listTag,
-                            hue
-                        },
-                        stringSearching: inputSearch.value
+                        idPortal: id as string, 
+                        stringSearching: inputSearch.value,
                     }));
 
                     setOpen(false);

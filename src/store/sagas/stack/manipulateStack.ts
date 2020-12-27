@@ -25,12 +25,15 @@ const requestUpdateStack = (id:string, update:any) => {
 
 function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
 
+    const {kind, draft, id} = action.payload;
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     const idUserInApp = yield select((state:StateRoot)=>state.auth.user?.id);
 
+    const listStack = yield select ( (state:StateRoot) => state.stack.listStack); 
+    const stackEditing = listStack.find((stack:any) => stack.id === id);
+
     const history = yield getContext('history');
     
-    const {kind, draft, id} = action.payload;
 
     try {
 
@@ -42,12 +45,12 @@ function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
         else if (draft.name === "") {
             console.log('type name');
         }
-        else if ( (kind === 'update') && (idUserInApp !== draft.idUser) ){
+        else if ( (kind === 'update') && (idUserInApp !== stackEditing.idUser) ){
             yield put( actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'Stack_NotOwner__E'
             }) );  
         }
-        else if ( (kind === 'update') && (typeof id === 'string') ) {
+        else if ( (kind === 'update') && !id ) {
             console.log('id of stack needed')
         }
 
@@ -57,19 +60,20 @@ function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
 
             const date = Date.now();
 
-            let stack:actionsStack.Stack = {
-
-                idUser: idUserInApp, 
-
-                kind: draft.kind,
-                name: draft.name,
-                
-                listTag: draft.listTag,
-                listIdPortal: draft.listIdPortal,
-            };
-
             if (kind === 'create'){
-                stack['dateCreated'] = date;
+
+                let stack:any = {
+
+                    idUser: idUserInApp, 
+
+                    kind: draft.kind,
+                    name: draft.name,
+                    
+                    listTag: draft.listTag,
+                    listIdPortal: draft.listIdPortal,
+
+                    dateCreated: date,
+                };
 
                 try {
                     const data =  yield call( requestCreateStack , stack );
@@ -97,11 +101,25 @@ function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
             }
 
             else if (kind === 'update') {
-                stack['dateUpdated'] = date;
+
+                let update:any = {
+
+                    ...draft,
+                    dateCreated: date,
+                };
+
                 try {
-                    yield call( requestUpdateStack, id as string, stack );
+                    yield call( requestUpdateStack, id as string, update );
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
                         codeSituation: 'UpdateStack_Succeeded__S'
+                    }));
+                    yield put(actionsStatus.return__REPLACE({ 
+                        listKey: ['showing', 'modal', 'addingPortalToStack'], 
+                        replacement: false
+                    }));
+                    yield put(actionsStatus.return__REPLACE({ 
+                        listKey: ['showing', 'modal', 'creatingStack'], 
+                        replacement: false
                     }));
                     yield put(actionsStatus.return__REPLACE({ 
                         listKey: ['showing', 'modal', 'editingStack'], 

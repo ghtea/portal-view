@@ -41,7 +41,16 @@ const requestVisitPortal = (id:string, update:any) => {
 
 
 function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
+    
+    
+    console.log(action.payload)
+    const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
+    const idUserInApp =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
+    const listPortal =  yield select( (state:StateRoot) => state.portal.listPortal); 
+    const portalVisiting = listPortal.find((portal:actionsPortal.Portal) => portal.id === action.payload.idPortal)
+
+    const stringSearching = action.payload.stringSearching;
     const {
         id,
         idUser,   //  normal, search
@@ -58,12 +67,8 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
 
         listTag,
         hue
-    } = action.payload.portal;
+    } = portalVisiting;
     
-    const stringSearching = action.payload.stringSearching;
-    console.log(action.payload)
-    const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
-    const idUserInApp: boolean =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
     try {
 

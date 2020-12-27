@@ -156,6 +156,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                         listKey: ['current', 'portal', 'creating'], 
                         replacement: ''
                     })); 
+                    
                     history.push('/');
                     yield put(actionsPortal.return__GET_LIST_PORTAL({
                         idUser: idUser

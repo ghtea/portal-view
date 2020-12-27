@@ -17,12 +17,14 @@ const stateInitial = {
   
   loading: {
     user: false,
-    listPortal: false
+    listPortal: false,
+    listStack: false
   },
   
   ready: {
     user: false,
-    listPortal: false
+    listPortal: false,
+    listStack: false
   },
   
   current: {
@@ -39,7 +41,12 @@ const stateInitial = {
         open: '',
         editing: '',
         addingToStack: '',
-    }
+    },
+
+    stack: {
+        open: '',
+        editing: '',
+    },
   },
   
   showing: {
@@ -54,6 +61,7 @@ const stateInitial = {
             
         addingPortalToStack: false,
         creatingStack: false,
+        editingStack: false,
     }
   }
   

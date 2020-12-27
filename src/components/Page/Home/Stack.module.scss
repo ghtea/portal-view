@@ -1,0 +1,47 @@
+@import 'styles/every.scss';
+
+
+.root {
+    display: flex;
+}
+
+
+
+.icon {
+    padding: 4%;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    .icon-in-stack {
+        width: 20%;
+        height: 20%;
+        border-radius: 20%;
+    }
+    
+    &:global(.number-portal----1), &:global(.number-portal----2), &:global(.number-portal----3), &:global(.number-portal----4) {
+        .icon-in-stack {
+            width: 42%;
+            height: 42%;
+        }
+    }
+    &:global(.number-portal----5), &:global(.number-portal----6), &:global(.number-portal----7), &:global(.number-portal----8), &:global(.number-portal----9) {
+        .icon-in-stack {
+            width: 25%;
+            height: 25%;
+        }
+    }
+}
+
+
+@each $hue in $list-hue {
+
+    .icon-in-stack:global(.hue----#{$hue}) {
+        // @include frame-each-theme(border, 2px, solid, hue-#{$hue}__5);
+        @include color-each-theme(background-color, hue-#{$hue}__5);
+    }
+}
