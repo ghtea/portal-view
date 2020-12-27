@@ -14,7 +14,7 @@
 
     display: grid !important;
     
-    .icon-in-stack {
+    .icon-of-each-portal { 
         width: 100%;
         height: 100%;
         border-radius: 25%;
@@ -39,9 +39,50 @@
 }
 
 
+.collection-portal {
+
+    width: calc(100% - 10px);
+    margin-bottom: 10px;
+
+    .portal {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 20px 1fr;
+
+        & > *:nth-child(1) {
+            .icon-of-each-portal {
+                width: 12px;
+                height: 12px;
+                border-radius: 25%;
+            }
+        }
+        
+        & > *:nth-child(2) {
+             
+            display: inline;
+            width: 100%; 
+            height: auto;
+            
+            margin-left: 4px;
+
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left;
+            
+        }
+
+
+    }
+
+}
+
+
+
 @each $hue in $list-hue {
 
-    .icon-in-stack:global(.hue----#{$hue}) {
+    .icon-of-each-portal:global(.hue----#{$hue}) {
         // @include frame-each-theme(border, 2px, solid, hue-#{$hue}__5);
         
         //@include color-each-theme(background-color, hue-#{$hue}__5);

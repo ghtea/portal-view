@@ -12,19 +12,37 @@
     margin-bottom: 120px;
 
 
-    .filters {
+    .sort {
         width: auto;
         align-self: flex-end;
+
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
 
+        margin-right: 12px;
+
         & > * {
             width: auto;
         }
-        & > *:nth-child(n+2){
+
+        & > *:nth-child(1){
+            width: 16px;
+            height: 16px;
+        }
+
+        & > *:nth-child(2){
             margin-left: 8px;
+
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: center;
+
+            & > *:nth-child(n+2) {
+                margin-left: 4px;
+            }
         }
     }
 

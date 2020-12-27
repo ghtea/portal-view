@@ -139,6 +139,29 @@ p {
     }
 }
 
+ul, ol {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+li {
+    width: auto; max-width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    & > * {
+        width: auto;
+    }
+}
 
 
 header {

@@ -64,6 +64,16 @@ function Stack({
         return listPoratlAll.filter(portal => listIdPortal.includes(portal?.id as string) );
     },[listPoratlAll])
 
+
+    const [isIncludingSearching, setIsIncludingSearching] = useState(false);
+    useEffect(()=>{
+        for (const portal of listPortalInThisStack){
+            if (portal?.kind === 'search') {
+                setIsIncludingSearching(true);
+            }
+        }
+    },[listPortalInThisStack])
+
     const onClick_Face = useCallback(
         (side: string) => {
             if(open===false){
@@ -71,6 +81,10 @@ function Stack({
                 dispatch(actionsStatus.return__REPLACE({
                     listKey: ['current', 'stack', 'open'],
                     replacement: id
+                }));
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'portal', 'open'],
+                    replacement: ''
                 }));
             }
             else {
@@ -152,7 +166,7 @@ function Stack({
                             return (
                                 <div 
                                     key={`icon-in-stack-${index}`}
-                                    className={`${styles['icon-in-stack']} hue----${hue}`}
+                                    className={`${styles['icon-of-each-portal']} hue----${hue}`}
                                 />
                             )
                         })}
@@ -173,7 +187,7 @@ function Stack({
             
             <div className={`${stylesPortal['body']}`}>
 
-                { kind === 'search' &&
+                { isIncludingSearching &&
                     <div className={`${stylesPortal['search']}`} >
                         <input type='text' value={inputSearch.value} onChange={inputSearch.onChange}/>
                     </div>
@@ -187,11 +201,6 @@ function Stack({
                 </div>
 
                 <div className={`${stylesPortal['actions']}`}>
-                    <button 
-                        value='move'
-                        onClick={onClick_Action}
-                    >   <IconMove className={`${stylesPortal['icon-move']}`} kind='light' />
-                    </button>
                     
                     <button 
                         value='edit'
@@ -202,7 +211,22 @@ function Stack({
                 </div>
 
                 <div className={`${stylesPortal['others']}`}>
-                    
+
+                    <ul className={`${styles['collection-portal']}`}>
+                        {listPortalInThisStack.map((portal, index)=>{
+                            const id = portal?.id
+                            const hue = portal?.hue
+                            return (
+                                <li
+                                    key={`portal-${index}`}
+                                    className={`${styles['portal']}`}
+                                >
+                                     <div> <div  className={`${styles['icon-of-each-portal']} hue----${hue}`} /> </div> 
+                                    <div className={`${styles['name-of-each-portal']}`}> {portal?.name} </div>
+                                </li>
+                            )
+                        })}
+                    </ul>                    
 
                 </div>
 

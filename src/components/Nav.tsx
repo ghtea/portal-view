@@ -83,40 +83,37 @@ function Nav({}: PropsNav) {
   return (
     <header className={`${styles['root']} showing----${showingNav}`}>
 
-      <div className={`${styles['left']}`} >
-        <a
-            className={`${styles['logo-app']}`}
-            onClick={()=>onClick_LinkInsideApp('/')}
-        >
-            <div>
-                <IconLogo className={`${styles['icon-logo']}`} />
-            </div>
-            <div>
-                <FormattedMessage id={`Nav.NameApp`} />
-            </div>
-        </a>
-      </div>
+        <div className={`${styles['left']}`} >
+            <a
+                className={`${styles['logo-app']}`}
+                onClick={()=>onClick_LinkInsideApp('/')}
+            >
+                <div>
+                    <IconLogo className={`${styles['icon-logo']}`} />
+                </div>
+                <div>
+                    <FormattedMessage id={`Nav.NameApp`} />
+                </div>
+            </a>
+        </div>
       
-      
-      <div className={`${styles['middle']}`} >
+        <div className={`${styles['middle']}`} >
+            <button
+                className={`${styles['tool-main']}`}
+                onClick={()=>onClick_ShowModal('searching')}
+            > 
+                <div> <IconSearch className={`${styles['icon-search']}`} /> </div>
+                <div> Search </div>
+            </button>
 
-          <button
-            className={`${styles['tool-main']}`}
-            onClick={()=>onClick_ShowModal('searching')}
-          > 
-            <div> <IconSearch className={`${styles['icon-search']}`} /> </div>
-            <div> Search </div>
-          </button>
-
-          <button
-            className={`${styles['tool-main']}`}
-            onClick={()=>onClick_ShowModal('creatingPortal')}
-          > 
-            <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
-            <div> Portal </div>
-          </button>
-
-      </div>
+            <button
+                className={`${styles['tool-main']}`}
+                onClick={()=>onClick_ShowModal('creatingPortal')}
+            > 
+                <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
+                <div> Portal </div>
+            </button>
+        </div>
 
       
 

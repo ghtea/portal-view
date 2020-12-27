@@ -51,6 +51,8 @@ function Portal({
     const dispatch = useDispatch();
 
     const idPortalOpen:string = useSelector((state: StateRoot) => state['status']['current']['portal']['open']);
+    const idStackOpen:string = useSelector((state: StateRoot) => state['status']['current']['stack']['open']);
+
     const [open, setOpen] = useState(false); 
 
     const intl = useIntl();
@@ -102,6 +104,10 @@ function Portal({
                 dispatch(actionsStatus.return__REPLACE({
                     listKey: ['current', 'portal', 'open'],
                     replacement: id
+                }));
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'stack', 'open'],
+                    replacement: ''
                 }));
             }
             else {
@@ -211,11 +217,6 @@ function Portal({
                 </div>
 
                 <div className={`${styles['actions']}`}>
-                    <button 
-                        value='move'
-                        onClick={onClick_Action}
-                    >   <IconMove className={`${styles['icon-move']}`} kind='light' />
-                    </button>
                     
                     <button 
                         value='edit'

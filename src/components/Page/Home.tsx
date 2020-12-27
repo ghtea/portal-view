@@ -16,7 +16,7 @@ import Portal from './Home/Portal';
 import Stack from './Home/Stack';
 
 import styles from './Home.module.scss';
-
+import IconSort from 'svgs/basic/IconSort';
 
 
 type PropsHome = {};
@@ -53,10 +53,16 @@ function Home({}: PropsHome) {
 
         <div className={`${styles['content']}`} >
 
-            <div className={`${styles['filters']}`} >
-                <div>  importance  </div>
-                <div>  hp  </div>
-                <div>  tags  </div>
+            <div className={`${styles['sort']}`} >
+                <div>
+                    <IconSort className={`${styles['icon-sort']}`} />
+                </div>
+
+                <ul>
+                    <li>  accessed  </li>
+                    <li>  hp  </li>
+                    <li>  tags  </li>
+                </ul>
             </div>
 
             {loadingListPortal && !readyListPortal && <div>loading</div>}
