@@ -133,14 +133,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                     urlUsing = encodeURI(url.replace(/{search}/, stringSearching));
                 }
                 
-                // because ios blocks window.open (sometimes maybe)
-                if (typeof (window.open) == "function") {
-                    window.open(urlUsing);
-                }
-                else {
-                    alert('using new way')
-                    window.location.href = urlUsing;
-                }
+                window.open(urlUsing, id);
 
                 // history.push('/');
                 

@@ -12,28 +12,29 @@
     width: 100%;
     height: 100%;
 
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    display: grid !important;
     
     .icon-in-stack {
-        width: 20%;
-        height: 20%;
-        border-radius: 20%;
+        width: 100%;
+        height: 100%;
+        border-radius: 25%;
     }
-    
+
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px 6px;
+
     &:global(.number-portal----1), &:global(.number-portal----2), &:global(.number-portal----3), &:global(.number-portal----4) {
-        .icon-in-stack {
-            width: 42%;
-            height: 42%;
-        }
+
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 8px;
     }
     &:global(.number-portal----5), &:global(.number-portal----6), &:global(.number-portal----7), &:global(.number-portal----8), &:global(.number-portal----9) {
-        .icon-in-stack {
-            width: 25%;
-            height: 25%;
-        }
+        
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px 6px;
     }
 }
 
@@ -42,6 +43,9 @@
 
     .icon-in-stack:global(.hue----#{$hue}) {
         // @include frame-each-theme(border, 2px, solid, hue-#{$hue}__5);
-        @include color-each-theme(background-color, hue-#{$hue}__5);
+        
+        //@include color-each-theme(background-color, hue-#{$hue}__5);
+
+        @include linear-gradient-each-theme(background, to bottom, (0%, 100%), (hue-#{$hue}__4, hue-#{$hue}__5));
     }
 }
