@@ -137,7 +137,8 @@ function EditingPortal({}: PropsEditingPortal) {
             dispatch(actionsPortal.return__MANIPULATE_PORTAL({
                 kind: 'update',
                 draft: draft,
-                id: idPortalEditing    
+                id: idPortalEditing,
+                idOwner: portalEditing.idUser,
             }));
         }, [idPortalEditing]
     );

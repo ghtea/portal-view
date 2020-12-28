@@ -53,7 +53,13 @@ function Home({}: PropsHome) {
             dispatch(actionsStack.return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS());
         }
     },[readyListPortal, readyListStack]);
-  
+    
+    useEffect(()=>{
+        if (readyListPortal){
+            dispatch(actionsPortal.return__CHECK_ALL_PORTALS());
+        }
+    },[readyListPortal]);
+
   return (
 
     <div className={`${styles['root']}`} >

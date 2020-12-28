@@ -41,6 +41,7 @@ function Portal({
         
         lifespan,
         listBooleanVisited,
+        dateChecked,
         dateVisitedLast,
         dateCreated,
 

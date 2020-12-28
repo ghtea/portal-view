@@ -15,6 +15,7 @@ export type Portal = {
     
     lifespan: number;
     listBooleanVisited: boolean[];  // [true, false, ...(30days)] 
+    dateChecked: number;
     dateVisitedLast: number;
     dateCreated: number;
 
@@ -41,7 +42,8 @@ export const name__MANIPULATE_PORTAL = 'portal/MANIPULATE_PORTAL';
 type Payload__MANIPULATE_PORTAL = {
     kind: 'create' | 'update',
     draft: any,
-    id? : string
+    id? : string,
+    idOwner?: string,
 }
 export const return__MANIPULATE_PORTAL = (payload: Payload__MANIPULATE_PORTAL) => {
     return {
@@ -78,6 +80,15 @@ export const return__GET_LIST_PORTAL = (payload: any) => {
     }
 };
 export type type__GET_LIST_PORTAL = ReturnType<typeof return__GET_LIST_PORTAL>;
+
+
+export const name__CHECK_ALL_PORTALS = 'portal/CHECK_ALL_PORTALS'; 
+export const return__CHECK_ALL_PORTALS = () => {
+    return {
+        type: name__CHECK_ALL_PORTALS
+    }
+};  
+export type type__CHECK_ALL_PORTALS = ReturnType<typeof return__CHECK_ALL_PORTALS>;
 
 
 

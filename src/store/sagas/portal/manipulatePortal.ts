@@ -31,10 +31,10 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     const idUserInApp = yield select((state:StateRoot)=>state.auth.user?.id);
-
+    
     const history = yield getContext('history');
     
-    const {kind, draft, id} = action.payload;
+    const {kind, draft, id, idOwner} = action.payload;
 
     try {
 
@@ -66,7 +66,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                 codeSituation: 'Portal_NotValidSearchUrl__E'
             }) );        
         }
-        else if ( (kind === 'update') && (idUserInApp !== draft.idUser) ) {
+        else if ( (kind === 'update') && (idUserInApp !== idOwner) ) {
             yield put( actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'Portal_NotOwner__E'
             }) );  
