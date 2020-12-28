@@ -15,6 +15,7 @@ import useInput from 'tools/hooks/useInput';
 
 
 import IconLinkExternal from 'svgs/basic/IconLinkExternal';
+import IconStack from 'svgs/basic/IconLayerGroup';
 
 import styles from './Searching.module.scss';
 import stylesModal from 'components/Modal.module.scss';
@@ -32,16 +33,8 @@ function Searching({}: PropsSearching) {
     const listPortal = useSelector((state: StateRoot) => state.portal.listPortal );
 
     const listStackSearching = useMemo(()=>{
-        return listStack.filter(stack => {
-            const listIdPortal = stack?.listIdPortal;
-            for (const idPortal of listIdPortal){
-                const portalEach = listPortal.find(portal => portal.id === idPortal);
-                if (portalEach?.kind === 'search'){
-                    return true;
-                } 
-            }
-        })
-    },[listStack, listPortal]);
+        return listStack.filter(stackEach => stackEach.kindAction === 'search')
+    },[listStack]);
 
     const listPortalSearching = useMemo(()=>{
         return listPortal.filter(portalEach => portalEach.kind === 'search')
@@ -56,32 +49,26 @@ function Searching({}: PropsSearching) {
         },[]
     );
 
+    
+    const [stringSearching, setStringSearching] = useState('');
 
-    const [option,setOption] = useState({
-        stringSearching: '',
-        kindItem: 'portal' as 'portal' | 'stack',
-        idItem: '',
-    });
-
-    const onChange_InputNormal = useCallback(
+    const onChange_InputSearch = useCallback(
         (event:React.ChangeEvent<HTMLInputElement>) => {
-            const replacement = {
-                ...option, 
-                [event.currentTarget.name]: event.currentTarget.value
-            }
-            setOption(replacement);
-            console.log(replacement);
-        },[option]
+            setStringSearching(event.currentTarget.value);
+        },[]
     ); 
 
 
     const onSubmit = useCallback(
-        (event: React.FormEvent<HTMLFormElement>) => {
+        (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
             event.preventDefault();
 
-            const {stringSearching, kindItem, idItem} = option;
+            console.log(event.currentTarget.value)
 
-            if (kindItem === 'stack'){
+            const idItem = event.currentTarget.value;
+            const kindItem = event.currentTarget.name;
+
+            if (kindItem === 'idStack'){
                 dispatch(actionsStack.return__VISIT_STACK({
                     id: idItem,
                     stringSearching: stringSearching,
@@ -92,9 +79,9 @@ function Searching({}: PropsSearching) {
                     id: idItem,
                     stringSearching: stringSearching,
                 }));
-            }
+            } 
             
-        }, [option]
+        }, [stringSearching]
     );
 
   
@@ -110,7 +97,7 @@ function Searching({}: PropsSearching) {
             className={`${stylesModal['modal']}`} 
         >
         
-            <div className={`${styles['content']}`} >
+            <form className={`${styles['content']}`} autoComplete="off" >
                 
 
                 <div className={`${styles['content__section']}`} >
@@ -120,8 +107,8 @@ function Searching({}: PropsSearching) {
                             type='search'
                             placeholder={intl.formatMessage({ id: 'Global.Search'})}
                             name='stringSearching'
-                            value={option.stringSearching}
-                            onChange={onChange_InputNormal} 
+                            value={stringSearching}
+                            onChange={onChange_InputSearch} 
                         /> 
                     </div>
                 </div>
@@ -131,17 +118,17 @@ function Searching({}: PropsSearching) {
                         return (
                             <li
                                 key={`stack-${index}`}
-                                className={`${styles['container__input-submit']}`}
+                                className={`${styles['container__input-submit']} ${styles['stack']}`}
                             >   
                                 <input 
-                                    className={styles['search-stack']}
                                     type="submit"
                                     id={`checkbox-${stack?.id}`}
                                     name="idStack"
                                     value={stack.id}
+                                    onClick={onSubmit}
                                 /> 
                                 <label htmlFor={`checkbox-${stack?.id}`}>  
-                                    <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
+                                    <div> <IconStack className={`${styles['icon-stack']}`} kind='solid' /> </div>
                                     <div> {stack?.name} </div> 
                                 </label>
                             </li> 
@@ -154,17 +141,22 @@ function Searching({}: PropsSearching) {
                         return (
                             <li
                                 key={`stack-${index}`}
-                                className={`${styles['container__input-submit']}`}
+                                className={`${styles['container__input-submit']}  ${styles['portal']}`}
                             >   
                                 <input 
-                                    className={styles['search-stack']}
                                     type="submit"
                                     id={`checkbox-${portal?.id}`}
-                                    name="idStack"
+                                    name="idPortal"
                                     value={portal.id}
+                                    onClick={onSubmit}
                                 /> 
                                 <label htmlFor={`checkbox-${portal?.id}`}>  
-                                    <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
+                                    <div> 
+                                        <IconLinkExternal 
+                                            className={`${styles['icon-link-external']} hue----${portal.hue}`} 
+                                            kind='solid' 
+                                        /> 
+                                    </div>
                                     <div> {portal?.name} </div> 
                                 </label>
                             </li> 
@@ -172,7 +164,7 @@ function Searching({}: PropsSearching) {
                     })}
                 </ul>
 
-            </div>
+            </form>
         </div>
 
     </div>

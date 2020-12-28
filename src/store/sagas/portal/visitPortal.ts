@@ -42,8 +42,6 @@ const requestVisitPortal = (id:string, update:any) => {
 
 function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
     
-    
-    console.log(action.payload)
     const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
     const idUserInApp =  yield select( (state:StateRoot) => state.auth.user?.id); 
 

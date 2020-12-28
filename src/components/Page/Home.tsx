@@ -47,11 +47,13 @@ function Home({}: PropsHome) {
         }
     },[readyUser, idUser]);
 
-    /*
+    
     useEffect(()=>{
-        dispatch(actionsStack.return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS());
-    },[listPortal, listStack]);
-  */
+        if (readyListPortal && readyListStack){
+            dispatch(actionsStack.return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS());
+        }
+    },[readyListPortal, readyListStack]);
+  
   return (
 
     <div className={`${styles['root']}`} >
