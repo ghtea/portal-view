@@ -15,7 +15,7 @@ export type State = typeof stateInitial;
 
 const stateInitial = {
   
-  listPortal: [] as (actionsPortal.Portal | null)[]
+  listPortal: [] as (actionsPortal.Portal)[]
   
 };
 

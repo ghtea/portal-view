@@ -62,6 +62,8 @@ const stateInitial = {
         addingPortalToStack: false,
         creatingStack: false,
         editingStack: false,
+
+        searching: false,
     }
   }
   

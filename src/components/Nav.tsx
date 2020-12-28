@@ -103,7 +103,7 @@ function Nav({}: PropsNav) {
                 onClick={()=>onClick_ShowModal('searching')}
             > 
                 <div> <IconSearch className={`${styles['icon-search']}`} /> </div>
-                <div> Search </div>
+                <div> <FormattedMessage id={`Global.Search`} /> </div>
             </button>
 
             <button
@@ -111,7 +111,7 @@ function Nav({}: PropsNav) {
                 onClick={()=>onClick_ShowModal('creatingPortal')}
             > 
                 <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
-                <div> Portal </div>
+                <div> <FormattedMessage id={`Global.Portal`} /> </div>
             </button>
         </div>
 

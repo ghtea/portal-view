@@ -64,11 +64,13 @@
     "Modal.AddingPortalToStack_Choose": "선택",
     "Modal.AddingPortalToStack_Add": "추가",
 
+    "Global.Portal": "포털",
     "Global.Add": "추가",
     "Global.Create": "만들기",
     "Global.Delete": "삭제",
     "Global.Update": "업데이트",
-    
+    "Global.Search": "검색",
+
     "Notification.Test1__S": "테스트에 성공하였습니다 1 !",
     "Notification.Test2__H": "테스트에 성공하였습니다 2 !",
     "Notification.NotLoggedIn__E": "먼저 로그인해야 합니다",

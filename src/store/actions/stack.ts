@@ -1,6 +1,6 @@
 
 export type Stack = {
-    id?: string,
+    id: string;
 
     idUser: string;   //  normal, search
 
@@ -10,8 +10,8 @@ export type Stack = {
     listTag: string[]
     listIdPortal: string[];
 
-    dateCreated?: number;
-    dateUpdated?: number;
+    dateCreated: number;
+    dateUpdated: number;
 }
 
 
@@ -87,13 +87,17 @@ export const return__GET_LIST_STACK = (payload: any) => {
 export type type__GET_LIST_STACK = ReturnType<typeof return__GET_LIST_STACK>;
 
 
-/*
+
 export const name__VISIT_STACK: string = `stack/VISIT_STACK`;    // 뒤에 as const 를 붙이면 reducer 에서 auth.REPLACE 로 쓸때 오류 뜬다. 아직 이해못
-export const return__VISIT_STACK = (payload: any) => {
+interface Payload__VISIT_STACK {
+    id: string;
+    stringSearching: string,
+}
+export const return__VISIT_STACK = (payload: Payload__VISIT_STACK) => {
     return {
         type: name__VISIT_STACK,
         payload: payload
     }
 };
 export type type__VISIT_STACK = ReturnType<typeof return__VISIT_STACK>;  // 리덕스에서의 type, 타입스크립트에서의 type 헷갈림 주의!
-*/
+

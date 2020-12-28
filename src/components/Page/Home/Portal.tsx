@@ -114,7 +114,7 @@ function Portal({
                 if (side === 'left') {
 
                     dispatch(actionsPortal.return__VISIT_PORTAL({
-                        idPortal: id as string, 
+                        id: id, 
                         stringSearching: inputSearch.value,
                     }));
 
@@ -156,9 +156,6 @@ function Portal({
                     listKey: ['showing', 'modal', 'addingPortalToStack'],
                     replacement: true
                 }));
-            }
-            else if (value === 'move'){
-                // move
             }
         },[id, idUser]
     );

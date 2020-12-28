@@ -54,7 +54,7 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
 
             if (kind === 'new'){
                 
-                let stack:actionsStack.Stack = {
+                let stack:any = {
                     idUser: idUserInApp, 
 
                     kind: 'manual',

@@ -48,7 +48,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
     const idUserInApp =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
     const listPortal =  yield select( (state:StateRoot) => state.portal.listPortal); 
-    const portalVisiting = listPortal.find((portal:actionsPortal.Portal) => portal.id === action.payload.idPortal)
+    const portalVisiting = listPortal.find((portal:actionsPortal.Portal) => portal.id === action.payload.id)
 
     const stringSearching = action.payload.stringSearching;
     const {

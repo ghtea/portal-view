@@ -15,7 +15,7 @@ export type State = typeof stateInitial;
 
 const stateInitial = {
   
-    listStack: [] as (actionsStack.Stack | null)[]
+    listStack: [] as (actionsStack.Stack)[]
   
 };
 

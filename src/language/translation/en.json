@@ -61,11 +61,12 @@
     "Modal.AddingPortalToStack_Choose": "Choose",
     "Modal.AddingPortalToStack_Add": "Add",
 
+    "Global.Portal": "Portal",
     "Global.Add": "Add",
     "Global.Create": "Create",
     "Global.Delete": "Delete",
     "Global.Update": "Update",
-
+    "Global.Search": "Search",
 
     "Notification.Test1__S": "Succuessfully tested 1 !",
     "Notification.Test2__H": "Succuessfully tested 2 !",

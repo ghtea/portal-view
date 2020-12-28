@@ -89,12 +89,10 @@ function Stack({
             }
             else {
                 if (side === 'left') {
-                    for (var iPortal = 0; iPortal < listIdPortal.length; iPortal++){
-                        dispatch(actionsPortal.return__VISIT_PORTAL({
-                            idPortal: listIdPortal[iPortal],
-                            stringSearching: inputSearch.value
-                        }));
-                    }
+                    dispatch(actionsStack.return__VISIT_STACK({
+                        id: id,
+                        stringSearching: inputSearch.value
+                    }));
                     setOpen(false);
                 }
                 else {  /// 'right'
@@ -133,9 +131,6 @@ function Stack({
                     listKey: ['showing', 'modal', 'addingStackToStack'],
                     replacement: true
                 }));
-            }
-            else if (value === 'move'){
-                // move
             }
         },[id, idUser]
     );
