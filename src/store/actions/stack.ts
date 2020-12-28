@@ -1,4 +1,6 @@
 
+import * as actionsPortal from './portal';
+
 export type Stack = {
     id: string;
 
@@ -12,6 +14,11 @@ export type Stack = {
 
     dateCreated: number;
     dateUpdated: number;
+
+
+    // based on portals which it contains
+    listPortal?: actionsPortal.Portal[];
+    kindAction?: 'normal' | 'search';
 }
 
 
