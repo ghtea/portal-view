@@ -86,6 +86,13 @@ export const return__GET_LIST_STACK = (payload: any) => {
 };
 export type type__GET_LIST_STACK = ReturnType<typeof return__GET_LIST_STACK>;
 
+export const name__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = 'stack/ADD_WHOLE_PORTALS_TO_LOCAL_STACKS'; 
+export const return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = () => {
+    return {
+        type: name__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS,
+    }
+};
+export type type__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = ReturnType<typeof return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS>;
 
 
 export const name__VISIT_STACK: string = `stack/VISIT_STACK`;    // 뒤에 as const 를 붙이면 reducer 에서 auth.REPLACE 로 쓸때 오류 뜬다. 아직 이해못

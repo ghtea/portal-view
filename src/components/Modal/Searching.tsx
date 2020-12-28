@@ -14,7 +14,7 @@ import {pascalToCamel} from 'tools/vanilla/convertName';
 import useInput from 'tools/hooks/useInput';
 
 
-import IconX from 'svgs/basic/IconX';
+import IconLinkExternal from 'svgs/basic/IconLinkExternal';
 
 import styles from './Searching.module.scss';
 import stylesModal from 'components/Modal.module.scss';
@@ -119,38 +119,58 @@ function Searching({}: PropsSearching) {
                         <input 
                             type='search'
                             placeholder={intl.formatMessage({ id: 'Global.Search'})}
-                            name='search'
+                            name='stringSearching'
                             value={option.stringSearching}
                             onChange={onChange_InputNormal} 
                         /> 
                     </div>
                 </div>
                 
-                <div className={`${styles['content__section']}`} >
+                <ul className={`${styles['content__section']} ${styles['collection__input-submit']}`} >
                     {listStackSearching.map((stack, index)=>{
                         return (
-                            <input
+                            <li
                                 key={`stack-${index}`}
-                                className={styles['search-stack']}
-                                type="submit"
-                                value={stack.name}
-                            />
+                                className={`${styles['container__input-submit']}`}
+                            >   
+                                <input 
+                                    className={styles['search-stack']}
+                                    type="submit"
+                                    id={`checkbox-${stack?.id}`}
+                                    name="idStack"
+                                    value={stack.id}
+                                /> 
+                                <label htmlFor={`checkbox-${stack?.id}`}>  
+                                    <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
+                                    <div> {stack?.name} </div> 
+                                </label>
+                            </li> 
                         )
                     })}
-                </div>
+                </ul>
 
-                <div className={`${styles['content__section']}`} >
+                <ul className={`${styles['content__section']} ${styles['collection__input-submit']}`} >
                     {listPortalSearching.map((portal, index)=>{
                         return (
-                            <input
-                                key={`portal-${index}`}
-                                className={styles['search-portal']}
-                                type="submit"
-                                value={portal.name}
-                            />
+                            <li
+                                key={`stack-${index}`}
+                                className={`${styles['container__input-submit']}`}
+                            >   
+                                <input 
+                                    className={styles['search-stack']}
+                                    type="submit"
+                                    id={`checkbox-${portal?.id}`}
+                                    name="idStack"
+                                    value={portal.id}
+                                /> 
+                                <label htmlFor={`checkbox-${portal?.id}`}>  
+                                    <div> <IconLinkExternal className={`${styles['icon-link-external']}`} kind='solid' /> </div>
+                                    <div> {portal?.name} </div> 
+                                </label>
+                            </li> 
                         )
                     })}
-                </div>
+                </ul>
 
             </div>
         </div>
