@@ -1,3 +1,4 @@
+import { StringLiteral } from "typescript";
 
 
 export type Portal = {
@@ -18,6 +19,7 @@ export type Portal = {
     dateChecked: number;
     dateVisited: number;
     dateCreated: number;
+    dateUpdated: number;
 
     listTag: string[];
     hue: string;
@@ -80,6 +82,22 @@ export const return__GET_LIST_PORTAL = (payload: any) => {
     }
 };
 export type type__GET_LIST_PORTAL = ReturnType<typeof return__GET_LIST_PORTAL>;
+
+
+export const name__SORT_LIST_PORTAL = 'portal/SORT_LIST_PORTAL'; 
+interface Payload__SORT_LIST_PORTAL  {
+    sorting: {
+        property: 'hp' | 'dateVisited', 
+        direction: 'ascending' | 'descending',
+    };
+}
+export const return__SORT_LIST_PORTAL = (payload: Payload__SORT_LIST_PORTAL) => {
+    return {
+        type: name__SORT_LIST_PORTAL,
+        payload: payload
+    }
+};
+export type type__SORT_LIST_PORTAL = ReturnType<typeof return__SORT_LIST_PORTAL>;
 
 
 export const name__CHECK_ALL_PORTALS = 'portal/CHECK_ALL_PORTALS'; 

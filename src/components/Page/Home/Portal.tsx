@@ -6,6 +6,8 @@ import * as actionsStatus from 'store/actions/status';
 import * as actionsPortal from 'store/actions/portal';
 
 import useInput from 'tools/hooks/useInput';
+import calculateHp from 'tools/others/calculateHp';
+
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import styles from './Portal.module.scss';
@@ -62,22 +64,7 @@ function Portal({
 
     const {ratioHp, hpMax, hpCurrent} = useMemo(()=>{
 
-        let hpMax:number = 0;
-        for (var i = 0; i < listBooleanVisited.length; i++){
-            const numberToAdd = (30-i);
-            hpMax += numberToAdd;
-        }
-        
-        let hpCurrent:number = 0;
-        for (var i = 0; i < listBooleanVisited.length; i++){
-            if (listBooleanVisited[i] === true){
-                const numberToAdd = (30-i);
-                hpCurrent += numberToAdd;
-            }
-        }
-        const ratioHp = Math.round((hpCurrent / hpMax) * 100) / 100;
-        
-        return {hpCurrent, hpMax, ratioHp}
+        return calculateHp(listBooleanVisited) 
 
     },[listBooleanVisited]);
 

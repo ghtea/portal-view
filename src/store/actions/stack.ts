@@ -14,7 +14,7 @@ export type Stack = {
 
     dateCreated: number;
     dateUpdated: number;
-
+    dateVisited: number;
 
     // based on portals which it contains
     listPortal?: actionsPortal.Portal[];
@@ -92,6 +92,21 @@ export const return__GET_LIST_STACK = (payload: any) => {
     }
 };
 export type type__GET_LIST_STACK = ReturnType<typeof return__GET_LIST_STACK>;
+
+export const name__SORT_LIST_STACK = 'portal/SORT_LIST_STACK'; 
+interface Payload__SORT_LIST_STACK  {
+    sorting: {
+        property: 'name' | 'dateVisited', 
+        direction: 'ascending' | 'descending',
+    };
+}
+export const return__SORT_LIST_STACK = (payload: Payload__SORT_LIST_STACK) => {
+    return {
+        type: name__SORT_LIST_STACK,
+        payload: payload
+    }
+};
+export type type__SORT_LIST_STACK = ReturnType<typeof return__SORT_LIST_STACK>;
 
 export const name__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = 'stack/ADD_WHOLE_PORTALS_TO_LOCAL_STACKS'; 
 export const return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = () => {

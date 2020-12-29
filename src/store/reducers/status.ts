@@ -41,11 +41,19 @@ const stateInitial = {
         open: '',
         editing: '',
         addingToStack: '',
+        sorting: {
+            property: 'hp' as 'hp' | 'dateVisited', 
+            direction: 'ascending' as 'ascending' | 'descending',
+        }
     },
 
     stack: {
         open: '',
         editing: '',
+        sorting: {
+            property: 'name' as 'name' | 'dateVisited', 
+            direction: 'ascending' as 'ascending' | 'descending',
+        }
     },
   },
   
