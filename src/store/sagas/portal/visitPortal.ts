@@ -60,7 +60,11 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
         
         lifespan,
         listBooleanVisited,  // [true, false, ...(30days)] 
-        dateVisitedLast, 
+
+        dateVisited,
+        dateStamped,
+        dateChecked,
+        dateUpdated,
         dateCreated,
 
         listTag,
@@ -81,17 +85,23 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
 
         else {
 
-            const date = Date.now();
-            const dateLast = dateVisitedLast || dateCreated;
-            const hoursBetween = (date - dateLast) / (1000 * 60 * 60);
+            const dateNow = Date.now();
 
-            let listBooleanVisitedReplacement:boolean[] = listBooleanVisited;
+            const dateCheckedUsing = dateChecked || dateCreated;
+            const dateStampedUsing = dateStamped || dateCreated;
+
+            const hoursSinceChecked = (dateNow - dateCheckedUsing) / (1000 * 60 * 60);
+            const hoursSinceStamped = (dateNow - dateStampedUsing) / (1000 * 60 * 60);
+
+
+            let listBooleanVisitedNew:boolean[] = [...listBooleanVisited];
+
             const hoursGapStandard = 20;
-            if (hoursBetween > hoursGapStandard) {   
+            if (hoursSinceStamped > hoursGapStandard) {   
                 let listToAdd:boolean[] = [];
                 listToAdd.push(true);
                 
-                let hoursBetweenRemaining = hoursBetween - 24;
+                let hoursBetweenRemaining = hoursSinceChecked - 24;
                 
                 for (var i = 0; i < lifespan; i++ ) {
                     if (hoursBetweenRemaining > hoursGapStandard){
@@ -101,18 +111,23 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                         listToAdd.push(false);
                     }
                 }
-                listBooleanVisitedReplacement = listToAdd.concat(listBooleanVisited);
-                console.log(listBooleanVisitedReplacement);
+                listBooleanVisitedNew = listToAdd.concat(listBooleanVisited);
                 for (var i = 0; i < lifespan; i++ ) {
-                    if (listBooleanVisitedReplacement.length > lifespan){
-                        listBooleanVisitedReplacement.pop();
+                    if (listBooleanVisitedNew.length > lifespan){
+                        listBooleanVisitedNew.pop();
                     }
                 }
-            };
+            }
+            else {
+                listBooleanVisitedNew[0] = true;
+            }
+                
+            console.log(listBooleanVisitedNew);
 
             const update = {
-                listBooleanVisited: listBooleanVisitedReplacement,
-                dateVisitedLast: date
+                listBooleanVisited: listBooleanVisitedNew,
+                dateVisited: dateNow,
+                dateChecked: dateNow,
             };
             
             try {
@@ -131,7 +146,7 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                     urlUsing = encodeURI(url.replace(/{search}/, stringSearching));
                 }
                 
-                window.open(urlUsing, id);
+                window.open(urlUsing, `id_${dateNow}`);
 
                 // history.push('/');
                 

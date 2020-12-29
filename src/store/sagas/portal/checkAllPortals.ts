@@ -74,8 +74,11 @@ function* checkAllPortals(action: actionsPortal.type__CHECK_ALL_PORTALS) {
                     
                     lifespan,
                     listBooleanVisited,
+
+                    dateVisited,
+                    dateStamped,
                     dateChecked,
-                    dateVisitedLast,
+                    dateUpdated,
                     dateCreated,
 
                     listTag,
@@ -83,59 +86,72 @@ function* checkAllPortals(action: actionsPortal.type__CHECK_ALL_PORTALS) {
                 } = portal;
 
 
-                const date = Date.now();
-                const dateLast = dateVisitedLast || dateCreated;
-                const hoursBetween = (date - dateLast) / (1000 * 60 * 60);
+                const dateNow = Date.now();
 
-                let listBooleanVisitedReplacement:boolean[] = listBooleanVisited;
-                const hoursGapStandard = 20;
-                if (hoursBetween > hoursGapStandard) {   
-                    let listToAdd:boolean[] = [];
-                    listToAdd.push(false);
-                    
-                    let hoursBetweenRemaining = hoursBetween - 24;
-                    
-                    for (var i = 0; i < lifespan; i++ ) {
-                        if (hoursBetweenRemaining > hoursGapStandard){
-                            
-                            hoursBetweenRemaining -= 24;
-                            
-                            listToAdd.push(false);
+                const dateCheckedUsing = dateChecked || dateCreated;
+                const dateStampedUsing = dateStamped || dateCreated;
+
+                const hoursSinceChecked = (dateNow - dateCheckedUsing) / (1000 * 60 * 60);
+                const hoursSinceStamped = (dateNow - dateStampedUsing) / (1000 * 60 * 60);
+
+                if (hoursSinceChecked > 1) {
+
+                    let update = {};
+
+                    let listBooleanVisitedNew:boolean[] = [...listBooleanVisited];
+
+                    const hoursGapStandard = 20;
+                    if (hoursSinceStamped > hoursGapStandard) {   
+                        let listToAdd:boolean[] = [];
+                        listToAdd.push(false);
+                        
+                        let hoursBetweenRemaining = hoursSinceStamped - 24;
+                        
+                        for (var i = 0; i < lifespan; i++ ) {
+                            if (hoursBetweenRemaining > hoursGapStandard){
+                                
+                                hoursBetweenRemaining -= 24;
+                                
+                                listToAdd.push(false);
+                            }
                         }
-                    }
-                    listBooleanVisitedReplacement = listToAdd.concat(listBooleanVisited);
-                    console.log(listBooleanVisitedReplacement);
-                    for (var i = 0; i < lifespan; i++ ) {
-                        if (listBooleanVisitedReplacement.length > lifespan){
-                            listBooleanVisitedReplacement.pop();
+                        listBooleanVisitedNew = listToAdd.concat(listBooleanVisited);
+
+                        console.log(listBooleanVisitedNew);
+                        for (var i = 0; i < lifespan; i++ ) {
+                            if (listBooleanVisitedNew.length > lifespan){
+                                listBooleanVisitedNew.pop();
+                            }
                         }
+
+                        update = {
+                            listBooleanVisited: listBooleanVisitedNew,
+                            dateStamped: dateNow,
+                            dateChecked: dateNow,
+                        };
+
                     }
-                };
+                    else { // no stamp changes
 
-                const update = {
-                    listBooleanVisited: listBooleanVisitedReplacement,
-                    dateChecked: date
-                };
+                        update = {
+                            dateChecked: dateNow,
+                        };
+                    }
+                    
+                    yield put (actionsPortal.return__MANIPULATE_PORTAL({
+                        kind: 'update',
+                        draft: update,
+                        id: id,
+                        idOwner: idUser,
+                    }));
 
+                }
                 
-                yield put (actionsPortal.return__MANIPULATE_PORTAL({
-                    kind: 'update',
-                    draft: update,
-                    id: id,
-                    idOwner: idUser,
-                }));
+                else {
+                    // dont need to chekc & update
+                }
 
-                let listPortalNew = listPortal.filter((portal:actionsPortal.Portal) => portal.id !== id);
-                listPortalNew.push({
-                    ...portal,
-                    ...update,
-                })
-
-                yield put (actionsPortal.return__REPLACE({
-                    listKey: ['listPortal'],
-                    replacement: listPortalNew,
-                }));
-
+        
             }
 
               

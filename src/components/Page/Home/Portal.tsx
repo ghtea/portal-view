@@ -42,7 +42,7 @@ function Portal({
         lifespan,
         listBooleanVisited,
         dateChecked,
-        dateVisitedLast,
+        dateVisited,
         dateCreated,
 
         listTag,
@@ -83,14 +83,14 @@ function Portal({
 
 
     const stringVisitedLast = useMemo(()=>{
-        const date = new Date(dateVisitedLast); 
+        const date = new Date(dateVisited); 
 
         var month = date.getUTCMonth() + 1; //months from 1-12
         var day = date.getUTCDate();
         var year = date.getUTCFullYear();
 
         return `${year}.${month}.${day}`
-    },[dateVisitedLast]);
+    },[dateVisited]);
 
     useEffect(()=>{
         if(idPortalOpen !== id){

@@ -32,6 +32,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     const idUserInApp = yield select((state:StateRoot)=>state.auth.user?.id);
     
+    const listPortal =  yield select( (state:StateRoot) => state.portal.listPortal); 
     const history = yield getContext('history');
     
     const {kind, draft, id, idOwner} = action.payload;
@@ -76,8 +77,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
         }
 
         else {
-            console.log('test')
-            console.log((/{search}/).test(draft.url) )
+
             // initials
             let initials = draft.initials;
             if (initials === "" ) {
@@ -97,37 +97,15 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
             } 
 
             
- 
-            //let listBooleanVisited:boolean[] = Array(draft.lifespan-1).fill(false);
-            //listBooleanVisited.unshift(true);
             const listBooleanVisited:boolean[] = [true]; 
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
 
+            const dateNow = Date.now();
 
-            const date = Date.now();
-
-            let portal:any = {
-
-                idUser: idUser,
-                kind: draft.kind,
-                     
-                name: draft.name,
-
-                kindIcon: draft.kindIcon,
-                initials: initials,
-        
-                url: draft.url,
-                
-                lifespan: parseInt(draft.lifespan),
-                listBooleanVisited: listBooleanVisited, 
-                dateVisitedLast: date,  
-                
-                listTag: draft.listTag,
-                hue: hue,
-            };
+            
 
             // image
+            let urlImageIcon ='';
             if (draft.kindIcon === 'image' && draft.urlImageLocal){
                 const refFirebase = firebaseStorage
                 .ref()
@@ -136,14 +114,39 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                 const response = yield call( uploadPhoto, refFirebase, draft.urlImageLocal); // upload photo
                 const urlImageFirebase = yield call (getUrlPhotoFirebase, response);
 
-                portal['urlImageIcon'] = urlImageFirebase;
+                urlImageIcon = urlImageFirebase;
             }
 
             if (kind === 'create'){
-                portal['dateCreated'] = date;
+
+                let portal:any = {
+
+                    idUser: idUserInApp,
+                    kind: draft.kind,
+                        
+                    name: draft.name,
+
+                    kindIcon: draft.kindIcon,
+                    initials: initials,
+            
+                    url: draft.url,
+                    
+                    lifespan: parseInt(draft.lifespan),
+                    listBooleanVisited: listBooleanVisited, 
+
+                    // dateVisited,
+                    // dateStamped,
+                    // dateChecked,
+                    // dateUpdated,
+                    dateCreated: dateNow,
+                    
+                    listTag: draft.listTag,
+                    hue: hue,
+                };
 
                 try {
                     const data =  yield call( requestCreatePortal , portal );
+                    console.log('after creating')
                     console.log(data);
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
                         codeSituation: 'CreatePortal_Succeeded__S'
@@ -159,7 +162,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                     
                     history.push('/');
                     yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: idUser
+                        idUser: idUserInApp
                     }));
                     // window.location.reload();
                 }
@@ -173,13 +176,55 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
             }
 
             else if (kind === 'update') {
-                portal['dateUpdated'] = date;
+
+                let update:any = {
+                    dateUpdated: dateNow,
+                };
+                
+                if (draft.kind){
+                    update['kind'] = draft.kind
+                }
+                if (draft.name){
+                    update['name'] = draft.name
+                }
+                if (draft.kindIcon){
+                    update['kindIcon'] = draft.kindIcon
+                }
+                if (initials){
+                    update['initials'] = initials
+                }
+                if (draft.url){
+                    update['url'] = draft.url
+                }
+                if (draft.lifespan){
+                    update['lifespan'] = parseInt(draft.lifespan)
+                }
+                if (listBooleanVisited){
+                    update['listBooleanVisited'] = listBooleanVisited
+                }
+                if (draft.dateVisited){
+                    update['dateVisited'] = draft.dateVisited
+                }
+                if (draft.dateStamped){
+                    update['dateStamped'] = draft.dateStamped
+                }
+                if (draft.dateChecked){
+                    update['dateChecked'] = draft.dateChecked
+                }
+                if (draft.listTag){
+                    update['listTag'] = draft.listTag
+                }
+                if (draft.hue){
+                    update['hue'] = draft.hue
+                }
                 
                 try {
-                    yield call( requestUpdatePortal, id as string, portal );
-                    yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                        codeSituation: 'UpdatePortal_Succeeded__S'
-                    }));
+                    yield call( requestUpdatePortal, id as string, update );
+                    /*
+                        yield put(actionsNotification.return__ADD_DELETE_BANNER({
+                            codeSituation: 'UpdatePortal_Succeeded__S'
+                        }));
+                    */
                     // dont forget these!!!
                     yield put(actionsStatus.return__REPLACE({
                         listKey: ['showing', 'modal', 'editingPortal'], 
@@ -189,10 +234,22 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                         listKey: ['current', 'portal', 'editing'], 
                         replacement: ''
                     })); 
-                    // history.push('/');
-                    yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: idUser
+
+
+                    // 수정후 다시 서버에서 불러오는게 아니라, 로컬에서 업데이트한다
+                    const portalEditing = listPortal.find((portalEach:actionsPortal.Portal) => portalEach.id === id);
+                    let listPortalNew = listPortal.filter((portalEach:actionsPortal.Portal) => portalEach.id !== id);
+                    listPortalNew.push({
+                        ...portalEditing,
+                        ...update,
+                    })
+
+                    yield put (actionsPortal.return__REPLACE({
+                        listKey: ['listPortal'],
+                        replacement: listPortalNew,
                     }));
+
+                    
                     // window.location.reload();
                 }
                 catch (error){ 

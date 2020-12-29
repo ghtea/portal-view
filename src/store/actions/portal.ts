@@ -16,7 +16,7 @@ export type Portal = {
     lifespan: number;
     listBooleanVisited: boolean[];  // [true, false, ...(30days)] 
     dateChecked: number;
-    dateVisitedLast: number;
+    dateVisited: number;
     dateCreated: number;
 
     listTag: string[];
