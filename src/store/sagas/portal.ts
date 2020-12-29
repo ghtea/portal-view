@@ -15,8 +15,8 @@ import * as actionsPortal from "../actions/portal";
 
 export default function* sagaPortal() {
     yield takeLatest( actionsPortal.name__GET_LIST_PORTAL, getListPortal ); 
-    yield takeLatest( actionsPortal.name__SORT_LIST_PORTAL, sortListPortal ); 
     yield takeLatest( actionsPortal.name__CHECK_ALL_PORTALS, checkAllPortals ); 
+    yield takeLatest( actionsPortal.name__SORT_LIST_PORTAL, sortListPortal ); 
 
     yield takeEvery( actionsPortal.name__MANIPULATE_PORTAL, manipulatePortal ); 
     yield takeEvery( actionsPortal.name__DELETE_PORTAL, deletePortal ); 

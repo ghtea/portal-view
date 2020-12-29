@@ -128,7 +128,8 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
                     kindIcon: draft.kindIcon,
                     initials: initials,
-            
+                    urlImageIcon: urlImageIcon,
+
                     url: draft.url,
                     
                     lifespan: parseInt(draft.lifespan),
@@ -178,45 +179,28 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
             else if (kind === 'update') {
 
                 let update:any = {
+
+                    ...(draft.kind && {kind: draft.kind} ),
+                    ...(draft.name && {name: draft.name} ),
+                    
+                    ...(draft.kindIcon && {kindIcon: draft.kindIcon} ),
+                    ...(initials && {initials: initials} ),
+                    ...(urlImageIcon && {urlImageIcon: urlImageIcon} ),
+
+                    ...(draft.url && {url: draft.url} ),
+
+                    ...(draft.lifespan && {lifespan: parseInt(draft.lifespan)} ),
+                    ...(listBooleanVisited && {listBooleanVisited: listBooleanVisited} ),
+                    
+                    ...(draft.dateVisited && {dateVisited: draft.dateVisited} ),
+                    ...(draft.dateStamped && {dateStamped: draft.dateStamped} ),
+                    ...(draft.dateChecked && {dateChecked: draft.dateChecked} ),
                     dateUpdated: dateNow,
-                };
+
+                    ...(draft.listTag && {listTag: draft.listTag} ),
+                    ...(hue && {hue: hue} ),
+                }
                 
-                if (draft.kind){
-                    update['kind'] = draft.kind
-                }
-                if (draft.name){
-                    update['name'] = draft.name
-                }
-                if (draft.kindIcon){
-                    update['kindIcon'] = draft.kindIcon
-                }
-                if (initials){
-                    update['initials'] = initials
-                }
-                if (draft.url){
-                    update['url'] = draft.url
-                }
-                if (draft.lifespan){
-                    update['lifespan'] = parseInt(draft.lifespan)
-                }
-                if (listBooleanVisited){
-                    update['listBooleanVisited'] = listBooleanVisited
-                }
-                if (draft.dateVisited){
-                    update['dateVisited'] = draft.dateVisited
-                }
-                if (draft.dateStamped){
-                    update['dateStamped'] = draft.dateStamped
-                }
-                if (draft.dateChecked){
-                    update['dateChecked'] = draft.dateChecked
-                }
-                if (draft.listTag){
-                    update['listTag'] = draft.listTag
-                }
-                if (draft.hue){
-                    update['hue'] = draft.hue
-                }
                 
                 try {
                     yield call( requestUpdatePortal, id as string, update );

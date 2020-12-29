@@ -65,7 +65,9 @@ function EditingPortal({}: PropsEditingPortal) {
         urlImageLocal : undefined as any,
 
         url: portalEditing.url as string,
+
         lifespan: portalEditing.lifespan as string,  // input.value is (maybe) always string!
+        
         listTag: portalEditing.listTag as string[],
         hue: portalEditing.hue as string,
 
@@ -184,12 +186,12 @@ function EditingPortal({}: PropsEditingPortal) {
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Kind`} /></div>
 
                     <div className={'container__input-radio'} > 
-                        <input type="radio" name="kind" value="normal" defaultChecked
+                        <input type="radio" name="kind" value="normal" defaultChecked={draft.kind === 'normal'}
                             id="kind----normal"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="kind----normal">normal</label>
 
-                        <input type="radio" name="kind" value="search"
+                        <input type="radio" name="kind" value="search" defaultChecked={draft.kind === 'search'}
                             id="kind----search"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="kind----search">search</label>
@@ -214,12 +216,12 @@ function EditingPortal({}: PropsEditingPortal) {
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_KindIcon`} /></div>
 
                     <div className={'container__input-radio'} > 
-                        <input type="radio" name="kindIcon" value="initials" defaultChecked
+                        <input type="radio" name="kindIcon" value="initials" defaultChecked={draft.kindIcon === 'initials'}
                             id="kindIcon----initials"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="kindIcon----initials">initials</label>
 
-                        <input type="radio" name="kindIcon" value="image"
+                        <input type="radio" name="kindIcon" value="image" defaultChecked={draft.kindIcon === 'image'}
                             id="kindIcon----image"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="kindIcon----image">image</label>

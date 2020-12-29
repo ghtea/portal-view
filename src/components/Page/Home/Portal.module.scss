@@ -4,7 +4,7 @@
 .root {
     display: flex;
     width: auto;
-    height: aut0;
+    height: auto;
 }
 
 $height__face: 60px;
@@ -98,7 +98,7 @@ $border-radius__face: 12px;
                 font-weight: bold;
                 
                 width: auto;
-                height: auto; max-height: calc(100% - 12px);
+                height: auto; max-height: calc(100% - 6px);
                 margin: 0px 6px 0px 6px;
                 padding: 0;
 

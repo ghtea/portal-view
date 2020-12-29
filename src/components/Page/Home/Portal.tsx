@@ -31,8 +31,8 @@ function Portal({
     const { 
         id,
         idUser,
+
         kind,
-            
         name,
                                 
         kindIcon,

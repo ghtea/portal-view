@@ -12,13 +12,16 @@ import * as actionsStack from "../actions/stack";
 
 
 export default function* sagaStack() {
-    yield takeLatest( actionsStack.name__GET_LIST_STACK, getListStack ); 
     
-    yield takeEvery( actionsStack.name__MANIPULATE_STACK, manipulateStack ); 
-    yield takeEvery( actionsStack.name__DELETE_STACK, deleteStack ); 
+    yield takeEvery( actionsStack.name__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS, addWholePortalsToStacks) ;
+
+    yield takeLatest( actionsStack.name__GET_LIST_STACK, getListStack ); 
+
+
     yield takeEvery( actionsStack.name__ADD_PORTAL_TO_STACK, addPortalToStack ); 
 
+    yield takeEvery( actionsStack.name__MANIPULATE_STACK, manipulateStack ); 
+    yield takeEvery( actionsStack.name__DELETE_STACK, deleteStack ); 
     yield takeEvery( actionsStack.name__VISIT_STACK, visitStack ); 
-    yield takeEvery( actionsStack.name__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS, addWholePortalsToStacks) ;
 }
 
