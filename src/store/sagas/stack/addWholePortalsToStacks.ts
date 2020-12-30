@@ -53,6 +53,13 @@ function* addWholePortalsToStacks(action: actionsStack.type__ADD_WHOLE_PORTALS_T
             listKey: ['listStack'],
             replacement: listStackNew
         }));
+
+        const {property, direction} =  yield select( (state:StateRoot) => state.status.current.stack.sorting); 
+
+        yield put (actionsStack.return__SORT_LIST_STACK({ 
+            property: property,
+            direction: direction,
+        }));
                     
 
     } catch (error) {

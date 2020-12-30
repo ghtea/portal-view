@@ -87,10 +87,8 @@ export type type__GET_LIST_PORTAL = ReturnType<typeof return__GET_LIST_PORTAL>;
 
 export const name__SORT_LIST_PORTAL = 'portal/SORT_LIST_PORTAL'; 
 interface Payload__SORT_LIST_PORTAL  {
-    sorting: {
-        property: 'hp' | 'dateVisited', 
-        direction: 'ascending' | 'descending',
-    };
+    property: 'hp' | 'dateVisited', 
+    direction: 'ascending' | 'descending',
 }
 export const return__SORT_LIST_PORTAL = (payload: Payload__SORT_LIST_PORTAL) => {
     return {

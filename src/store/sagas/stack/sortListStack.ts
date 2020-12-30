@@ -18,7 +18,7 @@ import calculateHp from 'tools/others/calculateHp';
 
 function* sortListStack(action: actionsStack.type__SORT_LIST_STACK) {
 
-    const {sorting: {property, direction}} = action.payload;
+    const {property, direction} = action.payload;
 
     const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
     const listStack = yield select( (state:StateRoot) => state.stack.listStack);

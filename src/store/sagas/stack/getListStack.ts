@@ -21,6 +21,7 @@ function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
 
     const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
     
+
     try {
 
         // !readyUser
@@ -62,21 +63,21 @@ function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
                     replacement: listStack
                 }) );
 
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['loading', 'listStack'],
-                    replacement: false
+                yield put( actionsStack.return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS({
+                    listStack: listStack
                 }) );
                 
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['ready', 'listStack'],
-                    replacement: true
-                }) );
 
             }
             catch (error) {   
 
                 yield put( actionsStatus.return__REPLACE({
                     listKey: ['loading', 'listStack'],
+                    replacement: false
+                }) );
+
+                yield put( actionsStatus.return__REPLACE({
+                    listKey: ['downloaded', 'listStack'],
                     replacement: false
                 }) );
                 

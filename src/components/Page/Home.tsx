@@ -41,19 +41,18 @@ function Home({}: PropsHome) {
             dispatch(actionsPortal.return__GET_LIST_PORTAL({
                 idUser: idUser
             }));
+        }
+    },[readyUser, idUser]);
+
+
+    useEffect(()=>{
+        if (readyUser && readyListPortal) {
             dispatch(actionsStack.return__GET_LIST_STACK({
                 idUser: idUser
             }));
         }
-    },[readyUser, idUser]);
+    },[readyUser, idUser, readyListPortal]);
 
-    
-    useEffect(()=>{
-        if (readyListPortal && readyListStack){
-            dispatch(actionsStack.return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS());
-        }
-    },[readyListPortal, readyListStack]);
-    
   return (
 
     <div className={`${styles['root']}`} >

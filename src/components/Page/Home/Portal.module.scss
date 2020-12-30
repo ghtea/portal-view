@@ -299,7 +299,7 @@ $border-radius__face: 12px;
                 & > *:nth-child(1) {
                     width: 15%;
                 }
-                & > *:nth-child(2) {
+                & > .containter__bar {
                     width: 50%;
                     height: 14px;
                     border-radius: 3px;
@@ -311,13 +311,19 @@ $border-radius__face: 12px;
                     align-items: center;
 
                     & > div {
-                        @include color-each-theme(background-color, success__5);
                         height: 12px;
                         border-radius: 3px;
                     }
                 }
-                & > *:nth-child(3) {
-                    width: 20%;
+
+                &:global(.kindHp----healthy) > .containter__bar > div {
+                    @include color-each-theme(background-color, success__5);
+                }
+                &:global(.kindHp----warninig) > .containter__bar > div {
+                    @include color-each-theme(background-color, warninig__5);
+                }
+                &:global(.kindHp----critical) > .containter__bar > div {
+                    @include color-each-theme(background-color, error__5);
                 }
                
             }

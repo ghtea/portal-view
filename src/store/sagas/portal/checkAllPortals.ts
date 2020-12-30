@@ -143,16 +143,14 @@ function* checkAllPortals(action:actionsPortal.type__CHECK_ALL_PORTALS) {
     
         } // for loop
 
-        yield put( actionsStatus.return__REPLACE({
-            listKey: ['loading', 'listPortal'],
-            replacement: false
-        }) );
-        
-        yield put( actionsStatus.return__REPLACE({
-            listKey: ['ready', 'listPortal'],
-            replacement: true
-        }) );
+        // return__MANIPULATE_PORTAL 에서 한개씩 따로 state 변경
 
+        const {property, direction} =  yield select( (state:StateRoot) => state.status.current.portal.sorting); 
+
+        yield put (actionsPortal.return__SORT_LIST_PORTAL({
+            property: property,
+            direction: direction,
+        }));
 
     
     } catch (error) {

@@ -64,7 +64,7 @@ function Portal({
 
     const inputSearch = useInput('');
 
-    const {ratioHp, hpMax, hpCurrent} = useMemo(()=>{
+    const {ratioHp, hpMax, hpCurrent, kindHp} = useMemo(()=>{
 
         return calculateHp(listBooleanVisited) 
 
@@ -228,10 +228,10 @@ function Portal({
                             </div>
                         ))}
                     </div>
-                    <div className={`${styles['hp']}`}>
+                    <div className={`${styles['hp']} kindHp----${kindHp}`}>
                         <div> HP </div>
                         <div 
-                            className={`${styles['bar']}`}
+                            className={`${styles['containter__bar']}`}
                         >   <div style={{width: `${ratioHp * 100}%`}}/>
                         </div>
                         {/*<div>  {`${ratioHp * 100}%`} </div>*/}

@@ -18,12 +18,23 @@ import calculateHp from 'tools/others/calculateHp';
 
 function* sortListPortal(action: actionsPortal.type__SORT_LIST_PORTAL) {
 
-    const {sorting: {property, direction}} = action.payload;
-
-    const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
-    const listPortal = yield select( (state:StateRoot) => state.portal.listPortal);
-
     try {
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'listPortal'],
+            replacement: true
+        }) );
+        
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['ready', 'listPortal'],
+            replacement: false
+        }) );
+
+        const {property, direction} = action.payload;
+
+        const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
+        const listPortal = yield select( (state:StateRoot) => state.portal.listPortal);
+
 
         let listPortalNew: actionsPortal.Portal[] = [...listPortal];
         
