@@ -54,12 +54,6 @@ function Home({}: PropsHome) {
         }
     },[readyListPortal, readyListStack]);
     
-    useEffect(()=>{
-        if (readyListPortal){
-            dispatch(actionsPortal.return__CHECK_ALL_PORTALS());
-        }
-    },[readyListPortal]);
-
   return (
 
     <div className={`${styles['root']}`} >

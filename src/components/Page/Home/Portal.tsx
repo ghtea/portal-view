@@ -44,7 +44,9 @@ function Portal({
         lifespan,
         listBooleanVisited,
         dateChecked,
+        dateStamped,
         dateVisited,
+        dateUpdated,
         dateCreated,
 
         listTag,
@@ -236,7 +238,7 @@ function Portal({
                     </div>
                     <div
                         className={`${styles['last-visit']}`}
-                    >  <div> last visit {stringVisitedLast} </div>
+                    >  <div> {dateVisited && `last visit ${stringVisitedLast}`} </div>
                     </div>
                 </div>
 

@@ -17,6 +17,7 @@ export type Portal = {
     lifespan: number;
     listBooleanVisited: boolean[];  // [true, false, ...(30days)] 
     dateChecked: number;
+    dateStamped: number;
     dateVisited: number;
     dateCreated: number;
     dateUpdated: number;
@@ -101,9 +102,13 @@ export type type__SORT_LIST_PORTAL = ReturnType<typeof return__SORT_LIST_PORTAL>
 
 
 export const name__CHECK_ALL_PORTALS = 'portal/CHECK_ALL_PORTALS'; 
-export const return__CHECK_ALL_PORTALS = () => {
+interface Payload__CHECK_ALL_PORTALS  {
+    listPortal: Portal[]
+}
+export const return__CHECK_ALL_PORTALS = (payload:Payload__CHECK_ALL_PORTALS) => {
     return {
-        type: name__CHECK_ALL_PORTALS
+        type: name__CHECK_ALL_PORTALS,
+        payload: payload,
     }
 };  
 export type type__CHECK_ALL_PORTALS = ReturnType<typeof return__CHECK_ALL_PORTALS>;

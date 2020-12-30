@@ -102,6 +102,16 @@ function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
         console.log(error);
         console.log('getListStack has been failed');
         
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'listStack'],
+            replacement: false
+        }) );
+        
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['ready', 'listStack'],
+            replacement: false
+        }) );
+
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
             codeSituation: 'GetListStack_UnknownError__E'
         }) );

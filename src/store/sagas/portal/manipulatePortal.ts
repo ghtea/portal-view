@@ -96,9 +96,11 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                 hue = listHue[Math.floor(Math.random() * listHue.length)]; 
             } 
 
-            
-            const listBooleanVisited:boolean[] = [true]; 
-
+            const lifespan = parseInt(draft.lifespan);
+            let listBooleanVisited:boolean[] = [true]
+            for (var i = lifespan-1; i > 0; i-- ){
+                listBooleanVisited.push(false);
+            }
 
             const dateNow = Date.now();
 
@@ -132,7 +134,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
                     url: draft.url,
                     
-                    lifespan: parseInt(draft.lifespan),
+                    lifespan: lifespan,
                     listBooleanVisited: listBooleanVisited, 
 
                     // dateVisited,
@@ -189,7 +191,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
                     ...(draft.url && {url: draft.url} ),
 
-                    ...(draft.lifespan && {lifespan: parseInt(draft.lifespan)} ),
+                    ...(lifespan && {lifespan: lifespan} ),
                     ...(listBooleanVisited && {listBooleanVisited: listBooleanVisited} ),
                     
                     ...(draft.dateVisited && {dateVisited: draft.dateVisited} ),

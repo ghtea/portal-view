@@ -11,7 +11,6 @@ import * as actionsStatus from "store/actions/status";
 import * as actionsNotification from "store/actions/notification";
 
 import * as actionsPortal from "store/actions/portal";
-import { isArray } from "util";
 
 
 const requestGetListPortal = (idUser:string) => {
@@ -48,64 +47,59 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             }) );
 
             
-            try {
-                const data =  yield call( requestGetListPortal, idUser );
-                
-                const listPortal:any[] = data.docs.map((document: any)=>(
-                    {
-                        ...document.data(),
-                        id: document.id
-                    }
-                ));
-               
-                    // data.map 으로 하면 잘 안된다...
-                
-                console.log(listPortal);
+            const data =  yield call( requestGetListPortal, idUser );
+            
+            const listPortal:actionsPortal.Portal[] = data.docs.map((document: any)=>(
+                {
+                    ...document.data(),
+                    id: document.id
+                }
+            ));
+            
+            //checkAllPortals(listPortal);
 
-                yield put( actionsPortal.return__REPLACE({
-                    listKey: ['listPortal'],
-                    replacement: listPortal
-                }) );
+            yield put( actionsPortal.return__REPLACE({
+                listKey: ['listPortal'],
+                replacement: listPortal
+            }) );
 
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['loading', 'listPortal'],
-                    replacement: false
-                }) );
-                
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['ready', 'listPortal'],
-                    replacement: true
-                }) );
+            yield put( actionsPortal.return__CHECK_ALL_PORTALS({
+                listPortal: listPortal
+            }) );
 
-            }
-            catch (error) {   
+            /*
+            yield put ( actionsPortal.return__CHECK_ALL_PORTALS({
+                listPortal: listPortal
+            }))
+            */
+            // data.map 으로 하면 잘 안된다...
+            // console.log(listPortal);
 
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['loading', 'listPortal'],
-                    replacement: false
-                }) );
-                
-                yield put( actionsStatus.return__REPLACE({
-                    listKey: ['ready', 'listPortal'],
-                    replacement: false
-                }) );
+            /*
+            yield put( actionsPortal.return__REPLACE({
+                listKey: ['listPortal'],
+                replacement: listPortal
+            }) );
+            */
 
-                console.log(error)
-                console.log('error occurred in firebase server')
-                
-                yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'GetListPortal_UnknownError__E'
-                }) );
-            }
-              
+            
         
         } // higher else
     
 
     } catch (error) {
         
-        console.log(error);
-        console.log('getListPortal has been failed');
+        console.log(error)
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'listPortal'],
+            replacement: false
+        }) );
+        
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['ready', 'listPortal'],
+            replacement: false
+        }) );
         
         yield put( actionsNotification.return__ADD_DELETE_BANNER({
             codeSituation: 'GetListPortal_UnknownError__E'
