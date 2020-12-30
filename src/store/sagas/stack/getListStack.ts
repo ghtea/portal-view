@@ -47,7 +47,7 @@ function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
             try {
                 const data =  yield call( requestGetListStack, idUser );
                 
-                const listStack:any[] = data.docs.map((document: any)=>(
+                const listStack = data.docs.map((document: any)=>(
                     {
                         ...document.data(),
                         id: document.id
@@ -64,7 +64,7 @@ function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
                 }) );
 
                 yield put( actionsStack.return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS({
-                    listStack: listStack
+                    listStack: listStack 
                 }) );
                 
 

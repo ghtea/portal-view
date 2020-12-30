@@ -17,6 +17,7 @@ import Stack from './Home/Stack';
 
 import styles from './Home.module.scss';
 import IconSort from 'svgs/basic/IconSort';
+import IconSortButton from 'svgs/basic/IconSortButton';
 
 
 type PropsHome = {};
@@ -24,18 +25,20 @@ type PropsHome = {};
 function Home({}: PropsHome) {
   
     const dispatch = useDispatch();     
-    const readyUser:boolean = useSelector((state: StateRoot) => state['status']['ready']['user']);
+    const readyUser = useSelector((state: StateRoot) => state['status']['ready']['user']);
     const idUser = useSelector((state: StateRoot) => state.auth.user?.id);
 
-    const readyListPortal:any = useSelector((state: StateRoot) => state['status']['ready']['listPortal']);
-    const loadingListPortal:any = useSelector((state: StateRoot) => state['status']['loading']['listPortal']);
-    const listPortal:any = useSelector((state: StateRoot) => state['portal']['listPortal']);
+    const readyListPortal = useSelector((state: StateRoot) => state['status']['ready']['listPortal']);
+    const loadingListPortal = useSelector((state: StateRoot) => state['status']['loading']['listPortal']);
+    const listPortal = useSelector((state: StateRoot) => state['portal']['listPortal']);
 
-    const readyListStack:any = useSelector((state: StateRoot) => state['status']['ready']['listStack']);
-    const loadingListStack:any = useSelector((state: StateRoot) => state['status']['loading']['listStack']);
-    const listStack:any = useSelector((state: StateRoot) => state['stack']['listStack']);
+    const readyListStack = useSelector((state: StateRoot) => state['status']['ready']['listStack']);
+    const loadingListStack = useSelector((state: StateRoot) => state['status']['loading']['listStack']);
+    const listStack = useSelector((state: StateRoot) => state['stack']['listStack']);
 
-
+    const {property: propertySortingPortal, direction: directionSortingPortal} = useSelector((state: StateRoot) => state.status.current.portal.sorting);
+    const {property: propertySortingStack, direction: directionSortingStack} = useSelector((state: StateRoot) => state.status.current.stack.sorting);
+    
     useEffect(()=>{
         if (readyUser) {
             dispatch(actionsPortal.return__GET_LIST_PORTAL({
@@ -59,21 +62,29 @@ function Home({}: PropsHome) {
 
         <div className={`${styles['content']}`} >
 
-            <div className={`${styles['sort']}`} >
-                <div>
-                    <IconSort className={`${styles['icon-sort']}`} />
-                </div>
-
-                <ul>
-                    <li>  accessed  </li>
-                    <li>  hp  </li>
-                    <li>  tags  </li>
-                </ul>
-            </div>
-
             {loadingListPortal && !readyListPortal && <div>loading</div>}
 
-            {readyListStack && 
+            {readyListStack && <>
+                <div className={`${styles['sort-stack']}`} >
+                    <div>
+                        <IconSort className={`${styles['icon-sort']}`} />
+                    </div>
+
+                    <ul className={`${styles['collection__option-sorting']}`} >
+                        <li
+                            className={`active----${propertySortingPortal === 'dateVisited'}`}
+                        >  
+                            <div> visited date  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={directionSortingPortal}/>  </div>
+                        </li>
+
+                        <li>  
+                            <div> name  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} />  </div>
+                        </li>
+                    </ul>
+                </div>
+
                 <div className={`${styles['collection-stack']}`} >
                     {listStack.map( (stack:any, index:number)=>(
                         <Stack
@@ -82,9 +93,28 @@ function Home({}: PropsHome) {
                         />
                     ))}
                 </div>
-            }
+            </> }
 
-            {readyListPortal && 
+
+            {readyListPortal && <>
+                <div className={`${styles['sort-portal']}`} >
+                    <div>
+                        <IconSort className={`${styles['icon-sort']}`} />
+                    </div>
+
+                    <ul className={`${styles['collection__option-sorting']}`} >
+                        <li>  
+                            <div> visited date  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} />  </div>
+                        </li>
+
+                        <li>  
+                            <div> hp  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} />  </div>
+                        </li>
+                    </ul>
+                </div>
+
                 <div className={`${styles['collection-portal']}`} >
                     {listPortal.map( (portal:any, index:number)=>(
                         <Portal
@@ -93,7 +123,7 @@ function Home({}: PropsHome) {
                         />
                     ))}
                 </div>
-            }
+            </> }
 
 
         </div>

@@ -12,7 +12,7 @@
     margin-bottom: 120px;
 
 
-    .sort {
+    .sort-stack, .sort-portal {
         width: auto;
         align-self: flex-end;
 
@@ -28,11 +28,14 @@
         }
 
         & > *:nth-child(1){
-            width: 16px;
-            height: 16px;
+            .icon-sort {
+                width: 22px;
+                height: 22px;
+                @include color-each-theme(color, basic__5);
+            }
         }
 
-        & > *:nth-child(2){
+        & > .collection__option-sorting {
             margin-left: 8px;
 
             display: flex;
@@ -42,6 +45,33 @@
 
             & > *:nth-child(n+2) {
                 margin-left: 4px;
+            }
+
+            & > * {    // li
+
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: flex-start;
+                align-items: center;
+
+                @include frame-each-theme(border, 1px, solid, basic__3);
+                @include color-each-theme(color, basic__5);
+
+                border-radius: 4px;
+                padding: 2px 2px 2px 5px;
+                
+                cursor: pointer;
+                
+                & > *:nth-child(1){   // name of option
+                    width: auto;
+                }
+                & > *:nth-child(2){   // name of option
+                    width: auto;
+                    .icon-sort-button{
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
             }
         }
     }

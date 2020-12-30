@@ -107,12 +107,13 @@ export const return__SORT_LIST_STACK = (payload: Payload__SORT_LIST_STACK) => {
 export type type__SORT_LIST_STACK = ReturnType<typeof return__SORT_LIST_STACK>;
 
 export const name__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = 'stack/ADD_WHOLE_PORTALS_TO_LOCAL_STACKS'; 
-interface Payload__SORT_LIST_STACK  {
+interface Payload__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS  {
     listStack: Stack[];
 }
-export const return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = () => {
+export const return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = (payload:Payload__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS) => {
     return {
         type: name__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS,
+        payload: payload
     }
 };
 export type type__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS = ReturnType<typeof return__ADD_WHOLE_PORTALS_TO_LOCAL_STACKS>;

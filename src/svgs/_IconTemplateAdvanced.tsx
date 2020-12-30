@@ -5,7 +5,7 @@ type PropsIcon = {
   
   className: string;
   kind?: 'regular' | 'solid' | 'light';  // thin, light, regular, solid, ...
-  directon?: 'right' | 'left' | 'up' | 'down'; 
+  direction?: 'right' | 'left' | 'up' | 'down'; 
   
 } & typeof propsDefault;
 
@@ -17,25 +17,25 @@ const propsDefault = {
 
 
 // Template
-const Icon = ({ className, kind, directon }: PropsIcon) => {
+const Icon = ({ className, kind, direction }: PropsIcon) => {
 
     const transform: string = useMemo(()=>{
-        if (directon === 'right'){
+        if (direction === 'right'){
             return 'rotate(0)'
         }
-        else if (directon === 'down'){
+        else if (direction === 'down'){
             return 'rotate(90)'
         }
-        else if (directon === 'left'){
+        else if (direction === 'left'){
             return 'rotate(180)'
         }
-        else if (directon === 'up'){
+        else if (direction === 'up'){
             return 'rotate(270)'
         }
         else {
             return 'rotate(0)'
         }
-    },[directon]);
+    },[direction]);
 
   return (
     <div className={`${className} icon`} >
