@@ -51,6 +51,7 @@ function* sortListStack(action: actionsStack.type__SORT_LIST_STACK) {
                         }
                     }
                 }
+
                 else if (property === 'dateVisited') { 
 
                     const {dateVisited: dateVisitedLeft} = portalLeft;

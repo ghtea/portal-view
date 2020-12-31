@@ -43,7 +43,7 @@ const stateInitial = {
         addingToStack: '',
         sorting: {
             property: 'hp' as 'hp' | 'dateVisited', 
-            direction: 'ascending' as 'ascending' | 'descending',
+            direction: 'ascending' as 'ascending' | 'descending', 
         }
     },
 
@@ -52,7 +52,7 @@ const stateInitial = {
         editing: '',
         sorting: {
             property: 'name' as 'name' | 'dateVisited', 
-            direction: 'ascending' as 'ascending' | 'descending',
+            direction: 'ascending' as 'ascending' | 'descending', 
         }
     },
   },

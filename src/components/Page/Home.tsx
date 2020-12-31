@@ -36,8 +36,8 @@ function Home({}: PropsHome) {
     const loadingListStack = useSelector((state: StateRoot) => state['status']['loading']['listStack']);
     const listStack = useSelector((state: StateRoot) => state['stack']['listStack']);
 
-    const {property: propertySortingPortal, direction: directionSortingPortal} = useSelector((state: StateRoot) => state.status.current.portal.sorting);
-    const {property: propertySortingStack, direction: directionSortingStack} = useSelector((state: StateRoot) => state.status.current.stack.sorting);
+    const sortingPortal = useSelector((state: StateRoot) => state.status.current.portal.sorting);
+    const sortingStack = useSelector((state: StateRoot) => state.status.current.stack.sorting);
     
     useEffect(()=>{
         if (readyUser) {
@@ -56,6 +56,47 @@ function Home({}: PropsHome) {
         }
     },[readyUser, idUser, readyListPortal]);
 
+    // event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    const onClick_Sort = useCallback(
+        ( kindItem: 'portal' |'stack', propertyNew:'name' | 'hp' | 'dateVisited') => {
+            
+            let directionNew = 'ascending' as 'ascending' | 'descending';
+
+            if (kindItem === 'portal'){
+                if (sortingPortal.property === propertyNew) {
+                    directionNew = (sortingPortal.direction === 'ascending') ? 'descending' : 'ascending';
+                }
+                else {
+                    directionNew = 'ascending'
+                }
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', kindItem, 'sorting'],
+                    replacement: {
+                        property: propertyNew,
+                        direction: directionNew,
+                    }
+                }) );
+            }
+            else if (kindItem === 'stack'){
+                if (sortingStack.property === propertyNew) {
+                    directionNew = (sortingStack.direction === 'ascending') ? 'descending' : 'ascending';
+                }
+                else {
+                    directionNew = 'ascending'
+                }
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', kindItem, 'sorting'],
+                    replacement: {
+                        property: propertyNew,
+                        direction: directionNew,
+                    }
+                }) );
+            }
+
+        }, [sortingPortal, sortingStack]
+    );
+
+
   return (
 
     <div className={`${styles['root']}`} >
@@ -72,15 +113,19 @@ function Home({}: PropsHome) {
 
                     <ul className={`${styles['collection__option-sorting']}`} >
                         <li
-                            className={`active----${propertySortingPortal === 'dateVisited'}`}
+                            className={`active----${sortingStack.property === 'name' }`}
+                            onClick={()=>onClick_Sort('stack', 'name')}
                         >  
-                            <div> visited date  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={directionSortingPortal}/>  </div>
+                            <div> name  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingStack.direction}/>  </div>
                         </li>
 
-                        <li>  
-                            <div> name  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} />  </div>
+                        <li
+                            className={`active----${sortingStack.property === 'dateVisited' }`}
+                            onClick={()=>onClick_Sort('stack', 'dateVisited')}
+                        >  
+                            <div> visited date  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingStack.direction}/>  </div>
                         </li>
                     </ul>
                 </div>
@@ -103,14 +148,20 @@ function Home({}: PropsHome) {
                     </div>
 
                     <ul className={`${styles['collection__option-sorting']}`} >
-                        <li>  
-                            <div> visited date  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} />  </div>
+                        <li
+                            className={`active----${sortingPortal.property === 'hp' }`}
+                            onClick={()=>onClick_Sort('stack', 'hp')}
+                        >  
+                            <div> hp  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} 여기 수정필요 direction={sortingPortal.direction}/>  </div>
                         </li>
 
-                        <li>  
-                            <div> hp  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} />  </div>
+                        <li
+                            className={`active----${sortingPortal.property === 'dateVisited' }`}
+                            onClick={()=>onClick_Sort('stack', 'dateVisited')}
+                        >  
+                            <div> visited date  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingPortal.direction}/>  </div>
                         </li>
                     </ul>
                 </div>

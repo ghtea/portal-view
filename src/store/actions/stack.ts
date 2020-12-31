@@ -95,8 +95,8 @@ export type type__GET_LIST_STACK = ReturnType<typeof return__GET_LIST_STACK>;
 
 export const name__SORT_LIST_STACK = 'portal/SORT_LIST_STACK'; 
 interface Payload__SORT_LIST_STACK  {
-    property: 'name' | 'dateVisited', 
-    direction: 'ascending' | 'descending',
+    property: 'name' | 'dateVisited';
+    direction: 'ascending' | 'descending';
 }
 export const return__SORT_LIST_STACK = (payload: Payload__SORT_LIST_STACK) => {
     return {

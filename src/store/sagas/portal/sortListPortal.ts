@@ -52,6 +52,7 @@ function* sortListPortal(action: actionsPortal.type__SORT_LIST_PORTAL) {
                         return -(ratioHpLeft - ratioHpRight)
                     }
                 }
+
                 else if (property === 'dateVisited') { 
 
                     const {dateVisited: dateVisitedLeft} = portalLeft;

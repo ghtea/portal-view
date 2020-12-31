@@ -54,12 +54,17 @@
                 justify-content: flex-start;
                 align-items: center;
 
-                @include frame-each-theme(border, 1px, solid, basic__3);
-                @include color-each-theme(color, basic__5);
-
                 border-radius: 4px;
                 padding: 2px 2px 2px 5px;
-                
+
+                @include frame-each-theme(border, 1px, solid, basic__5);
+                @include color-each-theme(color, basic__5);
+
+                &:global(.active----true){
+                    @include frame-each-theme(border, 1px, solid, main__6);
+                    @include color-each-theme(color, main__6);
+                }
+
                 cursor: pointer;
                 
                 & > *:nth-child(1){   // name of option
