@@ -66,9 +66,12 @@ function Portal({
 
     const {ratioHp, hpMax, hpCurrent, kindHp} = useMemo(()=>{
 
-        return calculateHp(listBooleanVisited) 
+        const result = calculateHp(listBooleanVisited);
+        console.log(result)
 
-    },[listBooleanVisited]);
+        return result;
+
+    },[]);
 
 
     const stringVisitedLast = useMemo(()=>{
@@ -153,7 +156,7 @@ function Portal({
 
   return (
       
-    <div className={`${styles['root']} open----${open} hue----${hue}`} >
+    <div className={`${styles['root']} open----${open} hue----${hue} kindHp----${kindHp}`} >
 
         <div 
             className={`${styles['outside']}`} 
@@ -231,7 +234,7 @@ function Portal({
                     <div className={`${styles['hp']} kindHp----${kindHp}`}>
                         <div> HP </div>
                         <div 
-                            className={`${styles['containter__bar']}`}
+                            className={`${styles['container__bar']}`}
                         >   <div style={{width: `${ratioHp * 100}%`}}/>
                         </div>
                         {/*<div>  {`${ratioHp * 100}%`} </div>*/}

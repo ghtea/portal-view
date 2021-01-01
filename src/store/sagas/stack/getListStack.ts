@@ -19,19 +19,9 @@ const requestGetListStack = (idUser:string) => {
 
 function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
 
-    const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
-    
-
+    const {idUser} = action.payload;
+ 
     try {
-
-        // !readyUser
-        if (false){
-            console.log("should log in first");
-
-        }
-        else {
-            
-            const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
             yield put( actionsStatus.return__REPLACE({
                 listKey: ['ready', 'listStack'],
@@ -42,7 +32,6 @@ function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
                 listKey: ['loading', 'listStack'],
                 replacement: true
             }) );
-
             
             try {
                 const data =  yield call( requestGetListStack, idUser );
@@ -93,10 +82,7 @@ function* getListStack(action: actionsStack.type__GET_LIST_STACK) {
                     codeSituation: 'GetListStack_UnknownError__E'
                 }) );
             }
-              
-        
-        } // higher else
-    
+                  
 
     } catch (error) {
         

@@ -54,8 +54,9 @@ function* addWholePortalsToStacks(action: actionsStack.type__ADD_WHOLE_PORTALS_T
             replacement: listStackNew
         }));
 
-        const {property, direction} =  yield select( (state:StateRoot) => state.status.current.stack.sorting); 
-
+        const property =  yield select( (state:StateRoot) => state.status.current.stack.sorting.property); 
+        const direction =  yield select( (state:StateRoot) => state.status.current.stack.sorting.direction[property as 'name' | 'dateVisited']); 
+ 
         yield put (actionsStack.return__SORT_LIST_STACK({ 
             property: property,
             direction: direction,

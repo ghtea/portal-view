@@ -20,67 +20,74 @@ function* sortListPortal(action: actionsPortal.type__SORT_LIST_PORTAL) {
 
     try {
 
-        yield put( actionsStatus.return__REPLACE({
-            listKey: ['loading', 'listPortal'],
-            replacement: true
-        }) );
-        
-        yield put( actionsStatus.return__REPLACE({
-            listKey: ['ready', 'listPortal'],
-            replacement: false
-        }) );
-
         const {property, direction} = action.payload;
-
+        
         const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
         const listPortal = yield select( (state:StateRoot) => state.portal.listPortal);
 
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['current', 'portal', 'sorting', 'property'],
+            replacement: property,
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['current', 'portal', 'sorting', 'direction', property],
+            replacement: direction,
+        }) );
 
         let listPortalNew: actionsPortal.Portal[] = [...listPortal];
         
-            listPortalNew.sort((portalLeft, portalRight) =>{
-                
-                if (property === 'hp') { 
-
-                    const {ratioHp: ratioHpLeft} = calculateHp(portalLeft.listBooleanVisited);
-                    const {ratioHp: ratioHpRight} = calculateHp(portalRight.listBooleanVisited);
-
-                    if (direction === 'ascending') {
-                        return (ratioHpLeft - ratioHpRight)
-                    }
-                    else {
-                        return -(ratioHpLeft - ratioHpRight)
-                    }
-                }
-
-                else if (property === 'dateVisited') { 
-
-                    const {dateVisited: dateVisitedLeft} = portalLeft;
-                    const {dateVisited: dateVisitedRight} = portalRight;
-
-                    if (direction === 'ascending') {
-                        return (dateVisitedLeft - dateVisitedRight)
-                    }
-                    else {
-                        return -(dateVisitedLeft - dateVisitedRight)
-                    }
-                }
-
-                else {
-                    return 0;
-                }
-
-            })
+        listPortalNew.sort((portalLeft, portalRight) =>{
             
-            yield put( actionsStatus.return__REPLACE({
-                listKey: ['loading', 'listPortal'],
-                replacement: false
-            }) );
+            if (property === 'hp') { 
 
-            yield put( actionsStatus.return__REPLACE({
-                listKey: ['ready', 'listPortal'],
-                replacement: true
-            }) );
+                const {ratioHp: ratioHpLeft} = calculateHp(portalLeft.listBooleanVisited);
+                const {ratioHp: ratioHpRight} = calculateHp(portalRight.listBooleanVisited);
+
+                console.log(ratioHpLeft);
+                console.log(ratioHpRight);
+
+                if (direction === 'ascending') {
+                    return (ratioHpLeft - ratioHpRight)
+                }
+                else {
+                    return -(ratioHpLeft - ratioHpRight)
+                }
+            }
+
+            else if (property === 'dateVisited') { 
+
+                const {dateVisited: dateVisitedLeft} = portalLeft;
+                const {dateVisited: dateVisitedRight} = portalRight;
+
+                if (direction === 'ascending') {
+                    return (dateVisitedLeft - dateVisitedRight)
+                }
+                else {
+                    return -(dateVisitedLeft - dateVisitedRight)
+                }
+            }
+
+            else {
+                return 0;
+            }
+
+        });
+        
+        yield put( actionsPortal.return__REPLACE({
+            listKey: ['listPortal'],
+            replacement: [...listPortalNew]
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'listPortal'],
+            replacement: false
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['ready', 'listPortal'],
+            replacement: true
+        }) );
 
 
     } catch (error) {

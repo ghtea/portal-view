@@ -41,7 +41,7 @@ function CreatingStack({}: PropsCreatingStack) {
     const [draft,setDraft] = useState({
         // idUser 는 saga에서!
         
-        kind: "manual",    //    'manula', 'tag'
+        kind: "manual" as 'manual' | 'tag',    //    'manula', 'tag'
         name: "",
 
         listTag: [] as string[],

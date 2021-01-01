@@ -25,24 +25,34 @@ type PropsLogIn = {};
 
 function LogIn() {
   
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const intl = useIntl();
+  
+    const readyUser = useSelector((state: StateRoot) => state['status']['ready']['user']);
+    const loadingUser = useSelector((state: StateRoot) => state['status']['loading']['user']);
+
     // when login button is pushed, notification code of reaction is added to  this list, when login button is pushed again this list cleared once 
     const listCodeSituationOthers:string[] = useSelector((state: StateRoot) => state['notification']['listCodeSituationOthers']);
 
   
-  const onClick_LinkInsideApp = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, destination:string) => {
-      history.push(destination);
-    },[history]
-  );
+    const onClick_LinkInsideApp = useCallback(
+        (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, destination:string) => {
+        history.push(destination);
+        },[history]
+    );
   
-  const inputEmail = useInput(""); // {value, setValue, onChange};
-  const inputPassword = useInput(""); // {value, setValue, onChange};
+    const inputEmail = useInput(""); // {value, setValue, onChange};
+    const inputPassword = useInput(""); // {value, setValue, onChange};
+    
+    const [codeSituationEmail, setCodeSituationEmail] = useState('');
+    const [codeSituationPassword, setCodeSituationPassword] = useState('');
   
-  const [codeSituationEmail, setCodeSituationEmail] = useState('');
-  const [codeSituationPassword, setCodeSituationPassword] = useState('');
-  
+    useEffect(()=>{
+        if (readyUser) {
+            history.push('/');
+        }
+    },[readyUser, loadingUser]);
+
     useEffect(()=>{
         if(listCodeSituationOthers.includes('LogIn_NoEmail__E')){
             setCodeSituationEmail('LogIn_NoEmail__E');

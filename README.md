@@ -1,20 +1,14 @@
 # Portal View
 입체적인 북마크 관리 웹 앱
 
-## goal
-- entire app based on React, TS, SCSS
 
-## skills
-skill |  level | memo
----|:---:|:---
-Sementic Markup | new | 
-React.js  | 3 | applied useMemo, useSelctor for almost all
-TypeScript  | 2nd time | 
-CSS (SCSS) | 4 | theme
-Redux | 3 | saved almost all status state in redux store
-Redux Saga | 2 | 
-Immer | 2 | 
-react-intl | new |
+## Points
+- My first decent react app based on Typescirpt & Sass
+   - moved from Styled Components
+- hue..
+- immer...
+
+## Things to improve
 
 
 ## system
@@ -26,11 +20,16 @@ react-intl | new |
 
 
 ### Components
+> divided ui to modal, page, ...
 
 ### Styles
+> hue, ...
 
 ### State Management
+> immer, saga...
 
 ### Language 
+> react-intl, ...
 
 ### Icons
+> svg components from font awesome svgs

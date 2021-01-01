@@ -18,68 +18,83 @@ import calculateHp from 'tools/others/calculateHp';
 
 function* sortListStack(action: actionsStack.type__SORT_LIST_STACK) {
 
+    try {
+        
     const {property, direction} = action.payload;
 
     const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
     const listStack = yield select( (state:StateRoot) => state.stack.listStack);
 
-    try {
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['current', 'stack', 'sorting', 'property'],
+            replacement: property,
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['current', 'stack', 'sorting', 'direction', property],
+            replacement: direction,
+        }) );
 
         let listStackNew: actionsStack.Stack[] = [...listStack];
         
             listStackNew.sort((portalLeft, portalRight) =>{
                 
-                if (property === 'name') { 
+            if (property === 'name') { 
 
-                    const {name: nameLeft} = portalLeft;
-                    const {name: nameRight} = portalRight;
+                const {name: nameLeft} = portalLeft;
+                const {name: nameRight} = portalRight;
 
-                    if (direction === 'ascending') {
-                        if  (nameLeft <= nameRight) {
-                            return -1;
-                        }
-                        else {
-                            return 1;
-                        }
+                if (direction === 'ascending') {
+                    if  (nameLeft <= nameRight) {
+                        return -1;
                     }
                     else {
-                        if  (nameLeft <= nameRight) {
-                            return 1;
-                        }
-                        else {
-                            return -1;
-                        }
+                        return 1;
                     }
                 }
-
-                else if (property === 'dateVisited') { 
-
-                    const {dateVisited: dateVisitedLeft} = portalLeft;
-                    const {dateVisited: dateVisitedRight} = portalRight;
-
-                    if (direction === 'ascending') {
-                        return (dateVisitedLeft - dateVisitedRight)
-                    }
-                    else {
-                        return -(dateVisitedLeft - dateVisitedRight)
-                    }
-                }
-
                 else {
-                    return 0;
+                    if  (nameLeft <= nameRight) {
+                        return 1;
+                    }
+                    else {
+                        return -1;
+                    }
                 }
+            }
 
-            })
-            
-            yield put( actionsStatus.return__REPLACE({
-                listKey: ['loading', 'listStack'],
-                replacement: false
-            }) );
+            else if (property === 'dateVisited') { 
 
-            yield put( actionsStatus.return__REPLACE({
-                listKey: ['ready', 'listStack'],
-                replacement: true
-            }) );
+                const {dateVisited: dateVisitedLeft} = portalLeft;
+                const {dateVisited: dateVisitedRight} = portalRight;
+
+                if (direction === 'ascending') {
+                    return (dateVisitedLeft - dateVisitedRight)
+                }
+                else {
+                    return -(dateVisitedLeft - dateVisitedRight)
+                }
+            }
+
+            else {
+                return 0;
+            }
+
+        })
+
+        yield put( actionsStack.return__REPLACE({
+            listKey: ['listStack'],
+            replacement: listStackNew
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['loading', 'listStack'],
+            replacement: false
+        }) );
+
+        yield put( actionsStatus.return__REPLACE({
+            listKey: ['ready', 'listStack'],
+            replacement: true
+        }) );
 
 
     } catch (error) {

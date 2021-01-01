@@ -59,7 +59,7 @@ $border-radius__face: 12px;
                     font-weight: 900;
                 }
                 &:global(.length-initials----2){
-                    font-size: 1.6rem;
+                    font-size: 1.4rem;
                     font-weight: 900;
                 }
                 &:global(.length-initials----3){
@@ -299,7 +299,7 @@ $border-radius__face: 12px;
                 & > *:nth-child(1) {
                     width: 15%;
                 }
-                & > .containter__bar {
+                & > .container__bar {
                     width: 50%;
                     height: 14px;
                     border-radius: 3px;
@@ -316,15 +316,6 @@ $border-radius__face: 12px;
                     }
                 }
 
-                &:global(.kindHp----healthy) > .containter__bar > div {
-                    @include color-each-theme(background-color, success__5);
-                }
-                &:global(.kindHp----warninig) > .containter__bar > div {
-                    @include color-each-theme(background-color, warninig__5);
-                }
-                &:global(.kindHp----critical) > .containter__bar > div {
-                    @include color-each-theme(background-color, error__5);
-                }
                
             }
 
@@ -342,7 +333,9 @@ $border-radius__face: 12px;
 @each $hue in $list-hue {
 
     :global(.hue----#{$hue}) {
+
         .face {
+
             // @include frame-each-theme(border, 1px, solid, hue-#{$hue}__3);
             // @include color-each-theme(color, hue-#{$hue}__7);
             // @include shadow-each-theme(box-shadow, 0px, 0px, 20px, 0px, shadow__hue-#{$hue}__normal);
@@ -417,3 +410,28 @@ $border-radius__face: 12px;
 
 
 }
+
+
+
+.root:global(.kindHp----healthy) {
+    .hp .container__bar > div {
+        @include color-each-theme(background-color, success__5);
+    }
+}
+.root:global(.kindHp----warning) {
+    &:global(.open----false) .face .right {
+        @include frame-each-theme(border, 2px, solid, warning__3);
+    }
+    .hp .container__bar > div {
+        @include color-each-theme(background-color, warning__5);
+    }
+}
+.root:global(.kindHp----critical) {
+    &:global(.open----false) .face .right {
+        @include frame-each-theme(border, 2px, solid, error__3);
+    }
+    .hp .container__bar > div {
+        @include color-each-theme(background-color, error__5);
+    }
+}
+

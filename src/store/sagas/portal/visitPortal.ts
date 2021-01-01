@@ -32,14 +32,6 @@ interface Update {
 }
 
 
-const requestVisitPortal = (id:string, update:any) => {
-    
-    return firebaseFirestore.doc(`Portal_/${id}`).update({
-      ...update
-    });
-};
-
-
 function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
     
     const readyUser =  yield select( (state:StateRoot) => state.status.ready.user); 
@@ -130,41 +122,28 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
                 dateChecked: dateNow,
             };
             
-            try {
+       
+            yield put (actionsPortal.return__MANIPULATE_PORTAL({
+                kind:'update',
+                draft: update,
+                id: id,
+                idOwner: idUser,
+            }))    
+             
                 
-                yield call( requestVisitPortal , id, update );
-
-                console.log('requestVisitPortal worked well');
-
-                /*
-                yield put(actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'VisitPortal_Succeeded__S'
-                }));
-                */
-                let urlUsing = url;
-                if (kind === 'search'){
-                    urlUsing = encodeURI(url.replace(/{search}/, stringSearching));
-                }
-                
-                window.open(urlUsing, `id_${dateNow}`);
-
-                // history.push('/');
-                
-                yield put(actionsPortal.return__GET_LIST_PORTAL({
-                    idUser: idUser
-                }));
-                // window.location.reload();
+            let urlUsing = url;
+            if (kind === 'search'){
+                urlUsing = encodeURI(url.replace(/{search}/, stringSearching));
             }
+            
+            window.open(urlUsing, `id_${dateNow}`);
 
-            catch (error){ 
-                
-                console.log(error);
-                console.log('error occurred in firebase server')
-                
-                yield put( actionsNotification.return__ADD_DELETE_BANNER({
-                    codeSituation: 'VisitPortal_UnknownError__E'
-                }) );
-            }
+            // history.push('/');
+            
+            yield put(actionsPortal.return__GET_LIST_PORTAL({
+                idUser: idUser
+            }));
+            // window.location.reload();
               
         }
     } catch (error) {

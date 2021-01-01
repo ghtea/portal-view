@@ -15,6 +15,8 @@ import useInput from 'tools/hooks/useInput';
 
 import IconX from 'svgs/basic/IconX';
 
+import styles  from './EditingPortal.module.scss';
+
 import stylesCreatingPortal from './CreatingPortal.module.scss';
 import stylesModal from 'components/Modal.module.scss';
 
@@ -53,8 +55,18 @@ function EditingPortal({}: PropsEditingPortal) {
         },[]
     );
 
-    const [draft,setDraft] = useState({
+    const onSubmit = useCallback( (event:React.FormEvent<HTMLFormElement>, draft:any) => {
+        event.preventDefault();
+        dispatch(actionsPortal.return__MANIPULATE_PORTAL({
+                kind: 'update',
+                draft: draft,
+                id: idPortalEditing,
+                idOwner: portalEditing.idUser,
+            }));
+    },[portalEditing]);
 
+    const [draft,setDraft] = useState({
+ 
         idUser: portalEditing.idUser as string,
 
         kind: portalEditing.kind as string,
@@ -134,16 +146,7 @@ function EditingPortal({}: PropsEditingPortal) {
         },[draft]
     );
     
-    const onClick_EditPortal = useCallback(
-        (draft) => {
-            dispatch(actionsPortal.return__MANIPULATE_PORTAL({
-                kind: 'update',
-                draft: draft,
-                id: idPortalEditing,
-                idOwner: portalEditing.idUser,
-            }));
-        }, [idPortalEditing]
-    );
+
 
     const onClick_DeletePortal = useCallback(
         () => {
@@ -160,7 +163,7 @@ function EditingPortal({}: PropsEditingPortal) {
 
   
   return (
-    <div className={`${stylesCreatingPortal['root']} ${stylesModal['root']}`} >
+    <div className={`${styles['styles']} ${stylesCreatingPortal['root']} ${stylesModal['root']}`} >
 
         <div 
             className={`${stylesModal['outside']}`} 
@@ -179,8 +182,10 @@ function EditingPortal({}: PropsEditingPortal) {
                 </div>
             </div>
         
-            <div className={`${stylesModal['content']}`} >
-                
+            <form 
+                className={`${stylesModal['content']}`} 
+                onSubmit={(event)=>onSubmit(event, draft)}
+            >  
 
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Kind`} /></div>
@@ -350,20 +355,20 @@ function EditingPortal({}: PropsEditingPortal) {
                 
 
                 <div className={`${stylesModal['content__section']}`} >
-                    <button
-                        className={`${stylesModal['button-main']}`}
-                        onClick={()=>onClick_EditPortal(draft)}
-                    > <FormattedMessage id={`Modal.Update`} /> </button>
+                    <input
+                        type="submit"
+                        value={intl.formatMessage({ id: 'Global.Update'})}
+                    />
                 </div>
 
                 <div className={`${stylesModal['content__section']}`} >
                     <button
                         className={`${stylesModal['button-delete']}`}
                         onClick={()=>onClick_DeletePortal()}
-                    > <FormattedMessage id={`Modal.Delete`} /> </button>
+                    > <FormattedMessage id={'Global.Delete'} /> </button>
                 </div>
 
-            </div>
+            </form>
         </div>
 
     </div>

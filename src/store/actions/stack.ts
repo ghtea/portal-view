@@ -56,7 +56,8 @@ export const name__MANIPULATE_STACK = 'stack/MANIPULATE_STACK';
 type Payload__MANIPULATE_STACK = {
     kind: 'create' | 'update',
     draft: any,
-    id? : string
+    id? : string,
+    idOwner?: string,
 }
 export const return__MANIPULATE_STACK = (payload: Payload__MANIPULATE_STACK) => {
     return {

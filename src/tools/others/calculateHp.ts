@@ -25,7 +25,6 @@ const calculateHp = (listBooleanVisited: boolean[]) => {
     else if (ratioHp < 0.4){
         kindHp = 'warning'
     }
-
     return {hpCurrent, hpMax, ratioHp, kindHp}
 }
 

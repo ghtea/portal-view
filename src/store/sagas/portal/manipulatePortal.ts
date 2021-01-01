@@ -97,11 +97,6 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
             } 
 
             const lifespan = parseInt(draft.lifespan);
-            let listBooleanVisited:boolean[] = [true]
-            for (var i = lifespan-1; i > 0; i-- ){
-                listBooleanVisited.push(false);
-            }
-
             const dateNow = Date.now();
 
             
@@ -120,6 +115,11 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
             }
 
             if (kind === 'create'){
+
+                let listBooleanVisited:boolean[] = [true]
+                for (var i = lifespan-1; i > 0; i-- ){
+                    listBooleanVisited.push(true);
+                }
 
                 let portal:any = {
 
@@ -180,6 +180,18 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
             else if (kind === 'update') {
 
+                const portalEditing = listPortal.find((portalEach:actionsPortal.Portal) => portalEach.id === id);
+                let listBooleanVisitedNew = [...(draft.listBooleanVisited || portalEditing.listBooleanVisited)];
+
+                if (lifespan){
+                    while (listBooleanVisitedNew.length > lifespan){
+                        listBooleanVisitedNew.pop();
+                    }
+                    while (listBooleanVisitedNew.length < lifespan){
+                        listBooleanVisitedNew.push(false);
+                    }
+                }
+
                 let update:any = {
 
                     ...(draft.kind && {kind: draft.kind} ),
@@ -192,7 +204,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                     ...(draft.url && {url: draft.url} ),
 
                     ...(lifespan && {lifespan: lifespan} ),
-                    ...(listBooleanVisited && {listBooleanVisited: listBooleanVisited} ),
+                    listBooleanVisited: listBooleanVisitedNew,
                     
                     ...(draft.dateVisited && {dateVisited: draft.dateVisited} ),
                     ...(draft.dateStamped && {dateStamped: draft.dateStamped} ),
@@ -223,7 +235,6 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
 
                     // 수정후 다시 서버에서 불러오는게 아니라, 로컬에서 업데이트한다
-                    const portalEditing = listPortal.find((portalEach:actionsPortal.Portal) => portalEach.id === id);
                     let listPortalNew = listPortal.filter((portalEach:actionsPortal.Portal) => portalEach.id !== id);
                     listPortalNew.push({
                         ...portalEditing,

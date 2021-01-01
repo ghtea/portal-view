@@ -23,16 +23,9 @@ const requestGetListPortal = (idUser:string) => {
 
 function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
 
-    const readyUser: boolean =  yield select( (state:StateRoot) => state.status.ready.user); 
-    
+    const {idUser} = action.payload;
+
     try {
-
-        // !readyUser
-        if (false){
-            console.log("should log in first");
-
-        }
-        else {
             
             const idUser: string =  yield select( (state:StateRoot) => state.auth.user?.id); 
 
@@ -57,7 +50,7 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
             ));
             
             //checkAllPortals(listPortal);
-
+                console.log()
             yield put( actionsPortal.return__REPLACE({
                 listKey: ['listPortal'],
                 replacement: listPortal
@@ -67,24 +60,6 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 listPortal: listPortal
             }) );
 
-            /*
-            yield put ( actionsPortal.return__CHECK_ALL_PORTALS({
-                listPortal: listPortal
-            }))
-            */
-            // data.map 으로 하면 잘 안된다...
-            // console.log(listPortal);
-
-            /*
-            yield put( actionsPortal.return__REPLACE({
-                listKey: ['listPortal'],
-                replacement: listPortal
-            }) );
-            */
-
-            
-        
-        } // higher else
     
 
     } catch (error) {

@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo } from "react";
+import history from 'historyApp';
 
 import { FormattedMessage } from 'react-intl';
 import axios from 'axios';
@@ -26,6 +26,8 @@ function Home({}: PropsHome) {
   
     const dispatch = useDispatch();     
     const readyUser = useSelector((state: StateRoot) => state['status']['ready']['user']);
+    const loadingUser = useSelector((state: StateRoot) => state['status']['loading']['user']);
+
     const idUser = useSelector((state: StateRoot) => state.auth.user?.id);
 
     const readyListPortal = useSelector((state: StateRoot) => state['status']['ready']['listPortal']);
@@ -37,10 +39,11 @@ function Home({}: PropsHome) {
     const listStack = useSelector((state: StateRoot) => state['stack']['listStack']);
 
     const sortingPortal = useSelector((state: StateRoot) => state.status.current.portal.sorting);
+    const filterPortal = useSelector((state: StateRoot) => state.status.current.portal.filter);
     const sortingStack = useSelector((state: StateRoot) => state.status.current.stack.sorting);
     
     useEffect(()=>{
-        if (readyUser) {
+        if (readyUser && idUser) {
             dispatch(actionsPortal.return__GET_LIST_PORTAL({
                 idUser: idUser
             }));
@@ -49,12 +52,28 @@ function Home({}: PropsHome) {
 
 
     useEffect(()=>{
-        if (readyUser && readyListPortal) {
+        if (readyUser && idUser && readyListPortal) {
             dispatch(actionsStack.return__GET_LIST_STACK({
                 idUser: idUser
             }));
         }
     },[readyUser, idUser, readyListPortal]);
+
+
+    const listPortalUsing = useMemo(()=>{
+        const {hidePortalsInStacks} = filterPortal;
+        let result = [...listPortal];
+        if (hidePortalsInStacks){
+            let listIdPortalInStacks: string[] = [];
+            for (const stackEach of listStack){
+                listIdPortalInStacks = [...listIdPortalInStacks, ...stackEach.listIdPortal];
+            }
+            return result.filter(portalEach => !listIdPortalInStacks.includes(portalEach.id) )
+        } 
+        else {
+            return result 
+        }
+    }, [listPortal, filterPortal, listStack]);
 
     // event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     const onClick_Sort = useCallback(
@@ -64,38 +83,48 @@ function Home({}: PropsHome) {
 
             if (kindItem === 'portal'){
                 if (sortingPortal.property === propertyNew) {
-                    directionNew = (sortingPortal.direction === 'ascending') ? 'descending' : 'ascending';
+                    directionNew = (sortingPortal['direction'][propertyNew] === 'ascending') ? 'descending' : 'ascending';
                 }
                 else {
                     directionNew = 'ascending'
                 }
-                dispatch(actionsStatus.return__REPLACE({
-                    listKey: ['current', kindItem, 'sorting'],
-                    replacement: {
-                        property: propertyNew,
-                        direction: directionNew,
-                    }
+                dispatch(actionsPortal.return__SORT_LIST_PORTAL({
+                    property: propertyNew as 'hp' | 'dateVisited',
+                    direction: directionNew,
                 }) );
             }
             else if (kindItem === 'stack'){
                 if (sortingStack.property === propertyNew) {
-                    directionNew = (sortingStack.direction === 'ascending') ? 'descending' : 'ascending';
+                    directionNew = (sortingStack['direction'][propertyNew] === 'ascending') ? 'descending' : 'ascending';
                 }
                 else {
                     directionNew = 'ascending'
                 }
-                dispatch(actionsStatus.return__REPLACE({
-                    listKey: ['current', kindItem, 'sorting'],
-                    replacement: {
-                        property: propertyNew,
-                        direction: directionNew,
-                    }
+                dispatch(actionsStack.return__SORT_LIST_STACK({
+                    property: propertyNew as 'name' | 'dateVisited',
+                    direction: directionNew,
                 }) );
             }
 
         }, [sortingPortal, sortingStack]
     );
+    
+    const onClick_Filter = useCallback(
+        ( kindItem: 'portal' |'stack', option: 'hidePortalsInStacks') => {
+            
+            let valueBefore = filterPortal[option];
 
+            if (kindItem === 'portal'){
+                dispatch(actionsStatus.return__REPLACE({
+                    listKey: ['current', 'portal', 'filter', option],
+                    replacement: !valueBefore
+                }) );
+            }
+            else if (kindItem === 'stack'){
+               
+            }
+        }, [filterPortal]
+    );
 
   return (
 
@@ -105,19 +134,18 @@ function Home({}: PropsHome) {
 
             {loadingListPortal && !readyListPortal && <div>loading</div>}
 
-            {readyListStack && <>
-                <div className={`${styles['sort-stack']}`} >
-                    <div>
-                        <IconSort className={`${styles['icon-sort']}`} />
-                    </div>
+            {readyListStack && 
 
+            <div className={`${styles['part-stack']}`} >
+
+                <div className={`${styles['sort-stack']}`} >
                     <ul className={`${styles['collection__option-sorting']}`} >
                         <li
                             className={`active----${sortingStack.property === 'name' }`}
                             onClick={()=>onClick_Sort('stack', 'name')}
                         >  
                             <div> name  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingStack.direction}/>  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingStack['direction']['name']}/>  </div>
                         </li>
 
                         <li
@@ -125,9 +153,10 @@ function Home({}: PropsHome) {
                             onClick={()=>onClick_Sort('stack', 'dateVisited')}
                         >  
                             <div> visited date  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingStack.direction}/>  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingStack['direction']['dateVisited']}/>  </div>
                         </li>
                     </ul>
+
                 </div>
 
                 <div className={`${styles['collection-stack']}`} >
@@ -138,43 +167,56 @@ function Home({}: PropsHome) {
                         />
                     ))}
                 </div>
-            </> }
+            </div> 
+            }
 
 
-            {readyListPortal && <>
+            {readyListPortal && 
+
+            <div className={`${styles['part-portal']}`} >
+
                 <div className={`${styles['sort-portal']}`} >
-                    <div>
-                        <IconSort className={`${styles['icon-sort']}`} />
-                    </div>
 
                     <ul className={`${styles['collection__option-sorting']}`} >
                         <li
                             className={`active----${sortingPortal.property === 'hp' }`}
-                            onClick={()=>onClick_Sort('stack', 'hp')}
+                            onClick={()=>onClick_Sort('portal', 'hp')}
                         >  
                             <div> hp  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} 여기 수정필요 direction={sortingPortal.direction}/>  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingPortal['direction']['hp']}/>  </div>
                         </li>
 
                         <li
                             className={`active----${sortingPortal.property === 'dateVisited' }`}
-                            onClick={()=>onClick_Sort('stack', 'dateVisited')}
+                            onClick={()=>onClick_Sort('portal', 'dateVisited')}
                         >  
                             <div> visited date  </div>
-                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingPortal.direction}/>  </div>
+                            <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingPortal['direction']['dateVisited']}/>  </div>
                         </li>
                     </ul>
+
+                    
+                    <ul className={`${styles['collection__option-filter']}`} >
+                        <li
+                            className={`active----${filterPortal.hidePortalsInStacks}`}
+                            onClick={()=>onClick_Filter('portal', 'hidePortalsInStacks')}
+                        >  
+                            <div> Hide ones in stacks  </div>
+                        </li>
+                    </ul>
+
                 </div>
 
                 <div className={`${styles['collection-portal']}`} >
-                    {listPortal.map( (portal:any, index:number)=>(
+                    {listPortalUsing.map( (portal:any, index:number)=>(
                         <Portal
                             key={`portal-${index}`}
                             portal={portal}
                         />
                     ))}
                 </div>
-            </> }
+            </div> 
+            }
 
 
         </div>

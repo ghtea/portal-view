@@ -75,12 +75,10 @@ function MyProfile({}: PropsMyProfile) {
     
     const onSubmit = useCallback( (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
         dispatch(actionsAuth.return__UPDATE_PROFILE({
             urlPhotoLocal: urlPhotoLocal,
             displayName: displayNameEditing
         }));
-        
     },[urlPhotoLocal, displayNameEditing]);
 
     const onClick_LogOut = useCallback(

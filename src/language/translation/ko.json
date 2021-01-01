@@ -48,13 +48,13 @@
     "Modal.CreatingPortal_Tags": "태그",
     "Modal.CreatingPortal_Create": "만들기",
 
-    "Modal.EditingPortal_Title": "포털 수정하기",
-    "Modal.EditingPortal_Update": "업데이트",
 
     "Modal.CreatingStack_Title": "스택 만들기",
     "Modal.CreatingStack_Kind": "종류",
     "Modal.CreatingStack_Name": "이름",
     "Modal.CreatingStack_Create": "만들기",
+    "Modal.EditingStack_Title": "스택 수정하기",
+
 
     "Modal.AddingPortalToStack_Title": "스택에 추가하기",
     "Modal.AddingPortalToStack_WhichStack": "스택 지정",
@@ -65,6 +65,7 @@
     "Modal.AddingPortalToStack_Add": "추가",
 
     "Global.Portal": "포털",
+    "Global.Name": "이름",
     "Global.Add": "추가",
     "Global.Create": "만들기",
     "Global.Delete": "삭제",

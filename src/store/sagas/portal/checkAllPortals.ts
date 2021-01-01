@@ -47,7 +47,7 @@ function* checkAllPortals(action:actionsPortal.type__CHECK_ALL_PORTALS) {
         const {listPortal} = action.payload;
 
         for (const portal of listPortal) {
-
+            console.log(portal)
             const {
                 id, 
                 idUser,
@@ -145,9 +145,10 @@ function* checkAllPortals(action:actionsPortal.type__CHECK_ALL_PORTALS) {
 
         // return__MANIPULATE_PORTAL 에서 한개씩 따로 state 변경
 
-        const {property, direction} =  yield select( (state:StateRoot) => state.status.current.portal.sorting); 
-
-        yield put (actionsPortal.return__SORT_LIST_PORTAL({
+        const property =  yield select( (state:StateRoot) => state.status.current.portal.sorting.property); 
+        const direction =  yield select( (state:StateRoot) => state.status.current.portal.sorting.direction[property as 'hp' | 'dateVisited']); 
+ 
+        yield put (actionsPortal.return__SORT_LIST_PORTAL({ 
             property: property,
             direction: direction,
         }));
