@@ -114,7 +114,11 @@
         margin-top: 5px;
     }
 
-    
+    .fixedValue {
+        display: inline;
+        margin-left: 4px;
+        font-weight: bold;
+    }
     .content__section {
 
         display: flex;
@@ -142,15 +146,6 @@
     
     }
 
-
-    .button-main {
-        width: 100%;
-        height: 36px;
-        @include color-each-theme(background-color, main__5);
-        @include color-each-theme(color, basic__0);
-
-        margin-top: 12px;
-    }
 
     .button-delete {
         width: 100%;

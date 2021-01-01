@@ -23,21 +23,28 @@ function* addWholePortalsToStacks(action: actionsStack.type__ADD_WHOLE_PORTALS_T
         const listPortal:actionsPortal.Portal[] = yield select((state:StateRoot)=>state.portal.listPortal);
         const listStack:actionsStack.Stack[] = yield select((state:StateRoot)=>state.stack.listStack);
 
-        let listStackNew = []
+        let listStackNew = [];
         for (const stackEach of listStack){
 
             let stackEachNew = stackEach;
-            const {listIdPortal} = stackEach;
+            const {listIdPortalManual, listTag} = stackEach;
 
             let kindAction: 'normal' | 'search' = 'normal';
             let listPortalInCurrentStack: actionsPortal.Portal[] = [];
-            for (const idPortal of listIdPortal){
-                const portalInThisStack = listPortal.find(portalEach => portalEach.id === idPortal);
-                if (portalInThisStack){
-                    listPortalInCurrentStack.push(portalInThisStack);
+            if (stackEach.kind === 'manual') {
+                for (const idPortal of listIdPortalManual){
+                    const portalInThisStack = listPortal.find(portalEach => portalEach.id === idPortal);
+                    if (portalInThisStack){
+                        listPortalInCurrentStack.push(portalInThisStack);
+                    }
+                    if (portalInThisStack?.kind === 'search'){
+                        kindAction = 'search';
+                    }
                 }
-                if (portalInThisStack?.kind === 'search'){
-                    kindAction = 'search';
+            }
+            else {
+                for (const tag of listTag){
+                    listPortalInCurrentStack = listPortal.filter(portalEach => portalEach.listTag.includes(tag));
                 }
             }
             
@@ -74,3 +81,4 @@ function* addWholePortalsToStacks(action: actionsStack.type__ADD_WHOLE_PORTALS_T
 }
 
 export default addWholePortalsToStacks;
+ 

@@ -118,7 +118,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
                 let listBooleanVisited:boolean[] = [true]
                 for (var i = lifespan-1; i > 0; i-- ){
-                    listBooleanVisited.push(true);
+                    listBooleanVisited.push(false);
                 }
 
                 let portal:any = {

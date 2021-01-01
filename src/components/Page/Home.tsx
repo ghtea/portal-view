@@ -66,7 +66,7 @@ function Home({}: PropsHome) {
         if (hidePortalsInStacks){
             let listIdPortalInStacks: string[] = [];
             for (const stackEach of listStack){
-                listIdPortalInStacks = [...listIdPortalInStacks, ...stackEach.listIdPortal];
+                listIdPortalInStacks = [...listIdPortalInStacks, ...stackEach.listIdPortalManual];
             }
             return result.filter(portalEach => !listIdPortalInStacks.includes(portalEach.id) )
         } 

@@ -76,9 +76,11 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
     const onChange_InputCheckbox = useCallback(
         (event:React.ChangeEvent<HTMLInputElement>) => {
             const idStackClicked = event.currentTarget.value;
-            let replacement = listIdStack;
+
+            let replacement = [...listIdStack];
+
             if (listIdStack.includes(idStackClicked)){
-                replacement = listIdStack.filter(idStackEach => idStackEach !== idStackClicked);
+                replacement = replacement.filter(idStackEach => idStackEach !== idStackClicked);
             }
             else {
                 replacement.push(idStackClicked)
@@ -176,7 +178,7 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
                                         id={`checkbox-${stack?.id}`}
                                         name="idStack"
                                         value={stack?.id}
-                                        defaultChecked={ stack?.listIdPortal.includes(idPortal) }
+                                        defaultChecked={ stack?.listIdPortalManual.includes(idPortal) }
                                         onChange={onChange_InputCheckbox} 
                                     /> 
                                     <label htmlFor={`checkbox-${stack?.id}`}>  

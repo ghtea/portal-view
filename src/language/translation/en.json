@@ -61,6 +61,7 @@
     "Modal.AddingPortalToStack_Add": "Add",
 
     "Global.Portal": "Portal",
+    "Global.Stack": "Stack",
     "Global.Name": "Name",
     "Global.Add": "Add",
     "Global.Create": "Create",
@@ -104,8 +105,8 @@
     "Notification.CreatePortal_UnknownError__E": "Failed to create the portal",
     "Notification.GetListPortal_UnknownError__E": "Failed to get portals",
     "Notification.VisitPortal_UnknownError__E": "Failed to update the portal which you visited",
-    "Notification.EditPortal_Succeeded__S": "Successfully edited portal!",
-    "Notification.EditPortal_UnknownError__E": "Failed to update the portal",
+    "Notification.UpdatePortal_Succeeded__S": "Successfully updated portal!",
+    "Notification.UpdatePortal_UnknownError__E": "Failed to update the portal",
     "Notification.DeletePortal_Succeeded__S": "Successfully deleted portal!",
     "Notification.DeletePortal_UnknownError__E": "Failed to delete the portal",
 
@@ -115,8 +116,8 @@
     "Notification.CreateStack_UnknownError__E": "Failed to create the stack",
     "Notification.GetListStack_UnknownError__E": "Failed to get stacks",
     "Notification.VisitStack_UnknownError__E": "Failed to update the some portals which you visited",
-    "Notification.EditStack_Succeeded__S": "Successfully edited stack!",
-    "Notification.EditStack_UnknownError__E": "Failed to update the stack",
+    "Notification.UpdateStack_Succeeded__S": "Successfully updated stack!",
+    "Notification.UpdateStack_UnknownError__E": "Failed to update the stack",
     "Notification.DeleteStack_Succeeded__S": "Successfully deleted stack!",
     "Notification.DeleteStack_UnknownError__E": "Failed to delete the stack",
 

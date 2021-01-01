@@ -113,6 +113,14 @@ function Nav({}: PropsNav) {
                 <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
                 <div> <FormattedMessage id={`Global.Portal`} /> </div>
             </button>
+
+            <button
+                className={`${styles['tool-main']}`}
+                onClick={()=>onClick_ShowModal('creatingStack')}
+            > 
+                <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
+                <div> <FormattedMessage id={'Global.Stack'} /> </div>
+            </button>
         </div>
 
       

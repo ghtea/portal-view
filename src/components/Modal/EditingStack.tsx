@@ -8,6 +8,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {StateRoot} from 'store/reducers';
 import * as actionsStatus from 'store/actions/status';
 import * as actionsStack from 'store/actions/stack';
+import * as actionsPortal from 'store/actions/portal';
 
 import {pascalToCamel} from 'tools/vanilla/convertName';
 import useInput from 'tools/hooks/useInput';
@@ -18,6 +19,7 @@ import IconCheck from 'svgs/basic/IconCheck';
 
 import styles from './EditingStack.module.scss';
 import stylesCreatingPortal from './CreatingPortal.module.scss';
+import stylesCreatingStack from './CreatingStack.module.scss';
 
 import stylesModal from 'components/Modal.module.scss';
 
@@ -31,8 +33,8 @@ function EditingStack({}: PropsEditingStack) {
 
     const idUserInApp = useSelector((state: StateRoot) => state.auth.user?.id);
     const idStackEditing:string = useSelector((state: StateRoot) => state['status']['current']['stack']['editing']);
-    const listStack:any[] = useSelector((state: StateRoot) => state['stack']['listStack']);
-
+    const listStack:actionsStack.Stack[] = useSelector((state: StateRoot) => state['stack']['listStack']);
+    const listPortal:actionsPortal.Portal[] = useSelector((state: StateRoot) => state['portal']['listPortal']);
 /*
     useEffect( ():any=>{
         return (
@@ -43,8 +45,8 @@ function EditingStack({}: PropsEditingStack) {
         )
     },[]); */ 
 
-    const stackEditing: any = useMemo(()=>{
-        return listStack.find(stackEach => stackEach.id === idStackEditing);
+    const stackEditing: actionsStack.Stack= useMemo(()=>{
+        return listStack.find(stackEach => stackEach.id === idStackEditing) || listStack[0]; 
     },[idStackEditing, listStack])
 
     const onClick_HideModal = useCallback(
@@ -72,9 +74,9 @@ function EditingStack({}: PropsEditingStack) {
         name: stackEditing.name as string,
 
         listTag: stackEditing.listTag as string[],
-        tagCurrent: stackEditing.tagCurrent as string,
+        tagCurrent: '',
         
-        listIdPortal: stackEditing.listIdPortal as string[],
+        listIdPortalManual: stackEditing.listIdPortalManual as string[],
 
         // lifespan: '15' as string,  // if edited, apply to all each portals
     });
@@ -93,16 +95,17 @@ function EditingStack({}: PropsEditingStack) {
     const onChange_InputCheckbox = useCallback(
         (event:React.ChangeEvent<HTMLInputElement>) => {
             const idPortalClicked = event.currentTarget.value;
-            let replacement = draft.listIdPortal;
-            if (draft.listIdPortal.includes(idPortalClicked)){
-                replacement = draft.listIdPortal.filter(idPortalEach => idPortalEach !== idPortalClicked);
+
+            let replacement = [...draft.listIdPortalManual];
+            if (draft.listIdPortalManual.includes(idPortalClicked)){
+                replacement = replacement.filter(idPortalEach => idPortalEach !== idPortalClicked);
             }
             else {
                 replacement.push(idPortalClicked)
             }
             setDraft({
                 ...draft,
-                listIdPortal: draft.listIdPortal,
+                listIdPortalManual: replacement,
             });
         },[draft]
     ); 
@@ -119,8 +122,7 @@ function EditingStack({}: PropsEditingStack) {
                 });
             }
         },[draft]
-    );
-
+    ); 
     const onClick_DeleteTag = useCallback(
         (tagDeleting:string) => {
             const {listTag} = draft;
@@ -175,18 +177,7 @@ function EditingStack({}: PropsEditingStack) {
 
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingStack_Kind`} /></div>
-
-                    <div className={'container__input-radio'} > 
-                        <input type="radio" name="kind" value="manual" defaultChecked={draft.kind === 'manual'}
-                            id="kind----manual"
-                            onChange={onChange_InputNormal} 
-                        /> <label htmlFor="kind----manual">manual</label>
-
-                        <input type="radio" name="kind" value="tag" defaultChecked={draft.kind === 'tag'}
-                            id="kind----tag"
-                            onChange={onChange_InputNormal} 
-                        /> <label htmlFor="kind----tag">tag</label>
-                    </div>
+                    <div className={`${stylesModal['fixedValue']}`}> {draft.kind} </div>
                 </div>
 
 
@@ -240,8 +231,8 @@ function EditingStack({}: PropsEditingStack) {
                 { (draft.kind === 'manual') && 
                     <div className={`${stylesModal['content__section']}`} >
                         <div> <FormattedMessage id={`Modal.AddingPortalToStack_Choose`} /> </div>
-                        <ul className={`${styles['collection-checkbox']}`} >
-                        {stackEditing?.listPortal.map(( portal, index)=>{
+                        <ul className={`${stylesCreatingStack['collection-checkbox']}`} >
+                        {listPortal.map(( portalEach, index)=>{
                             
                             return (
                                 <li
@@ -250,15 +241,15 @@ function EditingStack({}: PropsEditingStack) {
                                 >   
                                     <input 
                                         type="checkbox" 
-                                        id={`checkbox-${portal?.id}`}
+                                        id={`checkbox-${portalEach?.id}`}
                                         name="idStack"
-                                        value={portal?.id}
-                                        defaultChecked={ portal?.listIdPortal.includes(idPortal) }
+                                        value={portalEach?.id}
+                                        defaultChecked={ draft?.listIdPortalManual.includes(portalEach?.id) }
                                         onChange={onChange_InputCheckbox} 
                                     /> 
-                                    <label htmlFor={`checkbox-${portal?.id}`}>  
+                                    <label htmlFor={`checkbox-${portalEach?.id}`}>   
                                         <div> <IconCheck className={`${styles['icon-check']}`} kind='solid' /> </div>
-                                        <div> {portal?.name} </div> 
+                                        <div> {portalEach?.name} </div> 
                                     </label>
                                 </li> 
                             )

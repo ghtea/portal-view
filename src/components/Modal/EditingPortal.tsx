@@ -134,7 +134,6 @@ function EditingPortal({}: PropsEditingPortal) {
             }
         },[draft]
     );
-
     const onClick_DeleteTag = useCallback(
         (tagDeleting:string) => {
             const {listTag} = draft;

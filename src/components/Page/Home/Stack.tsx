@@ -36,7 +36,7 @@ function Stack({
         name,
 
         listTag,
-        listIdPortal,
+        listIdPortalManual,
 
         dateCreated,
         dateUpdated, 
@@ -61,7 +61,7 @@ function Stack({
     },[idStackOpen]);
 
     const listPortalInThisStack =useMemo(()=>{
-        return listPoratlAll.filter(portal => listIdPortal.includes(portal?.id as string) );
+        return listPoratlAll.filter(portal => listIdPortalManual.includes(portal?.id as string) );
     },[listPoratlAll])
 
 
@@ -99,7 +99,7 @@ function Stack({
                     setOpen(false);
                 }
             }
-        },[open, inputSearch, listIdPortal]
+        },[open, inputSearch, listIdPortalManual]
     );
 
 
@@ -154,7 +154,7 @@ function Stack({
                     className={`${stylesPortal['left']}`}
                     onClick={()=>onClick_Face('left')}
                 >   
-                    <div className={`${styles['icon']} number-portal----${listIdPortal.length}`} >
+                    <div className={`${styles['icon']} number-portal----${listIdPortalManual.length}`} >
                         {listPortalInThisStack.map((portal, index)=>{
                             const id = portal?.id
                             const hue = portal?.hue

@@ -10,7 +10,7 @@ export type Stack = {
     name: string;
 
     listTag: string[]
-    listIdPortal: string[];
+    listIdPortalManual: string[];
 
     dateCreated: number;
     dateUpdated: number;
