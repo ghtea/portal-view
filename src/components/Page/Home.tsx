@@ -17,6 +17,8 @@ import Stack from './Home/Stack';
 
 import styles from './Home.module.scss';
 import IconSort from 'svgs/basic/IconSort';
+import IconHide from 'svgs/basic/IconHide';
+
 import IconSortButton from 'svgs/basic/IconSortButton';
 
 
@@ -39,7 +41,7 @@ function Home({}: PropsHome) {
     const listStack = useSelector((state: StateRoot) => state['stack']['listStack']);
 
     const sortingPortal = useSelector((state: StateRoot) => state.status.current.portal.sorting);
-    const filterPortal = useSelector((state: StateRoot) => state.status.current.portal.filter);
+    const hidingPortal = useSelector((state: StateRoot) => state.status.current.portal.hiding);
     const sortingStack = useSelector((state: StateRoot) => state.status.current.stack.sorting);
     
     useEffect(()=>{
@@ -61,9 +63,9 @@ function Home({}: PropsHome) {
 
 
     const listPortalUsing = useMemo(()=>{
-        const {hidePortalsInStacks} = filterPortal;
+        const {inStacks} = hidingPortal;
         let result = [...listPortal];
-        if (hidePortalsInStacks){
+        if (inStacks){
             let listIdPortalInStacks: string[] = [];
             for (const stackEach of listStack){
                 listIdPortalInStacks = [...listIdPortalInStacks, ...stackEach.listIdPortalManual];
@@ -73,7 +75,7 @@ function Home({}: PropsHome) {
         else {
             return result 
         }
-    }, [listPortal, filterPortal, listStack]);
+    }, [listPortal, hidingPortal, listStack]);
 
     // event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     const onClick_Sort = useCallback(
@@ -109,21 +111,21 @@ function Home({}: PropsHome) {
         }, [sortingPortal, sortingStack]
     );
     
-    const onClick_Filter = useCallback(
-        ( kindItem: 'portal' |'stack', option: 'hidePortalsInStacks') => {
+    const onClick_Hide = useCallback(
+        ( kindItem: 'portal' |'stack', option: 'inStacks') => {
             
-            let valueBefore = filterPortal[option];
+            let valueBefore = hidingPortal[option];
 
             if (kindItem === 'portal'){
                 dispatch(actionsStatus.return__REPLACE({
-                    listKey: ['current', 'portal', 'filter', option],
+                    listKey: ['current', 'portal', 'hiding', option],
                     replacement: !valueBefore
                 }) );
             }
             else if (kindItem === 'stack'){
                
             }
-        }, [filterPortal]
+        }, [hidingPortal]
     );
 
   return (
@@ -138,7 +140,7 @@ function Home({}: PropsHome) {
 
             <div className={`${styles['part-stack']}`} >
 
-                <div className={`${styles['sort-stack']}`} >
+                <div className={`${styles['filter-stack']}`} >
                     <ul className={`${styles['collection__option-sorting']}`} >
                         <li
                             className={`active----${sortingStack.property === 'name' }`}
@@ -175,8 +177,8 @@ function Home({}: PropsHome) {
 
             <div className={`${styles['part-portal']}`} >
 
-                <div className={`${styles['sort-portal']}`} >
-
+                <div className={`${styles['filter-portal']}`} >
+                    <div className={`${styles['head']}`} > <IconSort className={`${styles['icon-sort']}`} /> </div>
                     <ul className={`${styles['collection__option-sorting']}`} >
                         <li
                             className={`active----${sortingPortal.property === 'hp' }`}
@@ -194,14 +196,16 @@ function Home({}: PropsHome) {
                             <div> <IconSortButton className={`${styles['icon-sort-button']}`} direction={sortingPortal['direction']['dateVisited']}/>  </div>
                         </li>
                     </ul>
+                </div>
 
-                    
-                    <ul className={`${styles['collection__option-filter']}`} >
+                <div className={`${styles['filter-portal']}`} >
+                    <div className={`${styles['head']}`} > <IconHide className={`${styles['icon-hide']}`} kind='solid'/> </div>
+                    <ul className={`${styles['collection__option-hiding']}`} >
                         <li
-                            className={`active----${filterPortal.hidePortalsInStacks}`}
-                            onClick={()=>onClick_Filter('portal', 'hidePortalsInStacks')}
+                            className={`active----${hidingPortal.inStacks}`}
+                            onClick={()=>onClick_Hide('portal', 'inStacks')}
                         >  
-                            <div> Hide ones in stacks  </div>
+                            <div> in stacks  </div>
                         </li>
                     </ul>
 

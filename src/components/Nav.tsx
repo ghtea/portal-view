@@ -14,6 +14,8 @@ import IconLogo from 'svgs/others/IconLogo';
 import IconSearch from 'svgs/basic/IconSearch'; 
 import IconPlus from 'svgs/basic/IconPlus';
 import IconAddStack from 'svgs/basic/IconLayerPlus';
+import IconStack from 'svgs/basic/IconLayerGroup';
+
 import IconSetting from 'svgs/basic/IconSetting';
 import IconUserCircle from 'svgs/basic/IconUserCircle';
 
@@ -118,7 +120,7 @@ function Nav({}: PropsNav) {
                 className={`${styles['tool-main']}`}
                 onClick={()=>onClick_ShowModal('creatingStack')}
             > 
-                <div> <IconPlus className={`${styles['icon-plus']}`} kind='light' /> </div>
+                <div> <IconStack className={`${styles['icon-stack']}`} kind='light' /> </div>
                 <div> <FormattedMessage id={'Global.Stack'} /> </div>
             </button>
         </div>

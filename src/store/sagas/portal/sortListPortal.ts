@@ -44,9 +44,6 @@ function* sortListPortal(action: actionsPortal.type__SORT_LIST_PORTAL) {
                 const {ratioHp: ratioHpLeft} = calculateHp(portalLeft.listBooleanVisited);
                 const {ratioHp: ratioHpRight} = calculateHp(portalRight.listBooleanVisited);
 
-                console.log(ratioHpLeft);
-                console.log(ratioHpRight);
-
                 if (direction === 'ascending') {
                     return (ratioHpLeft - ratioHpRight)
                 }

@@ -59,7 +59,7 @@ function CreatingStack({}: PropsCreatingStack) {
             kind: 'create',
             draft: draft,
         }));
-    },[idStackCreating]);
+    },[]);
 
 
     const [draft,setDraft] = useState({
@@ -184,7 +184,7 @@ function CreatingStack({}: PropsCreatingStack) {
                     </div>
                 </div>
 
-
+                {draft.kind === 'manual' && 
                 <div className={`${stylesModal['content__section']}`} >
                     <div> <FormattedMessage id={'Global.Name'} /> </div>
                     <div className={`${stylesCreatingPortal['container__input-name']}`} >
@@ -197,6 +197,7 @@ function CreatingStack({}: PropsCreatingStack) {
                         /> 
                     </div>
                 </div>
+                }
 
                 {draft.kind === 'tag' && 
                 <div className={`${stylesModal['content__section']}`} >
@@ -266,7 +267,7 @@ function CreatingStack({}: PropsCreatingStack) {
                 <div className={`${stylesModal['content__section']}`} >
                     <input
                         type="submit"
-                        value={intl.formatMessage({ id: 'Global.Update'})}
+                        value={intl.formatMessage({ id: 'Global.Create'})}
                     />
                 </div>
 

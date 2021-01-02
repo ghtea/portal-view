@@ -33,13 +33,15 @@ function Stack({
         idUser,   //  normal, search
 
         kind,    
-        name,
+        name: nameRaw,
 
         listTag,
         listIdPortalManual,
+        listPortal: listPortalInThisStack,
 
         dateCreated,
         dateUpdated, 
+        dateVisited,
     } = stack;
 
     const dispatch = useDispatch();
@@ -58,21 +60,35 @@ function Stack({
         if(idStackOpen !== id){
             setOpen(false);
         }
-    },[idStackOpen]);
-
-    const listPortalInThisStack =useMemo(()=>{
-        return listPoratlAll.filter(portal => listIdPortalManual.includes(portal?.id as string) );
-    },[listPoratlAll])
-
+    },[idStackOpen]); 
 
     const [isIncludingSearching, setIsIncludingSearching] = useState(false);
     useEffect(()=>{
-        for (const portal of listPortalInThisStack){
+        for (const portal of listPortalInThisStack || []){
             if (portal?.kind === 'search') {
                 setIsIncludingSearching(true);
             }
         }
     },[listPortalInThisStack])
+
+    const stringVisitedLast = useMemo(()=>{
+        const date = new Date(dateVisited); 
+
+        var month = date.getUTCMonth() + 1; //months from 1-12
+        var day = date.getUTCDate();
+        var year = date.getUTCFullYear();
+
+        return `${year}.${month}.${day}`
+    },[dateVisited]);
+
+    const nameUsing = useMemo(()=>{
+        if (kind === 'tag'){
+            return listTag.join(', ');
+        }
+        else {
+            return nameRaw;
+        }
+    },[kind, listTag, nameRaw]);
 
     const onClick_Face = useCallback(
         (side: string) => {
@@ -154,8 +170,8 @@ function Stack({
                     className={`${stylesPortal['left']}`}
                     onClick={()=>onClick_Face('left')}
                 >   
-                    <div className={`${styles['icon']} number-portal----${listIdPortalManual.length}`} >
-                        {listPortalInThisStack.map((portal, index)=>{
+                    <div className={`${styles['icon']} number-portal----${listPortalInThisStack?.length}`} >
+                        {listPortalInThisStack?.map((portal, index)=>{
                             const id = portal?.id
                             const hue = portal?.hue
                             return (
@@ -173,7 +189,7 @@ function Stack({
                     className={`${stylesPortal['right']}`}
                     onClick={()=>onClick_Face('right')}
                 >
-                    <div className={`${stylesPortal['name']}`} > {name} </div> 
+                    <div className={`${stylesPortal['name']}`} > {nameUsing } </div> 
                     <div> Close </div>
                 </div>
 
@@ -189,7 +205,7 @@ function Stack({
                 }
 
                 <div className={`${stylesPortal['name']}`} >   
-                    <div> {name}</div>
+                    <div> {nameUsing}</div>
                 </div>
 
                 <div className={`${stylesPortal['empty']}`} >   
@@ -208,7 +224,7 @@ function Stack({
                 <div className={`${stylesPortal['others']}`}>
 
                     <ul className={`${styles['collection-portal']}`}>
-                        {listPortalInThisStack.map((portal, index)=>{
+                        {listPortalInThisStack?.map((portal, index)=>{
                             const id = portal?.id
                             const hue = portal?.hue
                             return (
@@ -221,7 +237,12 @@ function Stack({
                                 </li>
                             )
                         })}
-                    </ul>                    
+                    </ul>
+
+                    <div
+                        className={`${stylesPortal['last-visit']}`}
+                    >  <div> {dateVisited && `last visit ${stringVisitedLast}`} </div>
+                    </div>                   
 
                 </div>
 

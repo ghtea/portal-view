@@ -48,8 +48,8 @@ const stateInitial = {
                 dateVisited: 'ascending' as 'ascending' | 'descending', 
             }
         },
-        filter: {
-            hidePortalsInStacks: false,
+        hiding: {
+            inStacks: false,
         },
     },
 

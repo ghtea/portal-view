@@ -103,6 +103,7 @@ function EditingStack({}: PropsEditingStack) {
             else {
                 replacement.push(idPortalClicked)
             }
+            console.log(replacement)
             setDraft({
                 ...draft,
                 listIdPortalManual: replacement,
@@ -180,7 +181,7 @@ function EditingStack({}: PropsEditingStack) {
                     <div className={`${stylesModal['fixedValue']}`}> {draft.kind} </div>
                 </div>
 
-
+                {draft.kind === 'manual' && 
                 <div className={`${stylesModal['content__section']}`} >
                     <div> <FormattedMessage id={'Global.Name'} /> </div>
                     <div className={`${stylesCreatingPortal['container__input-name']}`} >
@@ -193,6 +194,7 @@ function EditingStack({}: PropsEditingStack) {
                         /> 
                     </div>
                 </div>
+                }
 
                 {draft.kind === 'tag' && 
                 <div className={`${stylesModal['content__section']}`} >

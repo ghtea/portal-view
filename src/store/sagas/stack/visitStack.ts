@@ -37,18 +37,31 @@ function* visitStack(action: actionsStack.type__VISIT_STACK) {
             name,
 
             listTag,
-            listIdPortal,
+            listPortal,
 
             dateCreated,
             dateUpdated,
         } = stackVisiting;
         
-        for (var iPortal = 0; iPortal < listIdPortal.length; iPortal++){
+        for (var i = 0; i < listPortal.length; i++){
+
+            const idPortalEach = listPortal[i]['id'];
             yield put(actionsPortal.return__VISIT_PORTAL({
-                id: listIdPortal[iPortal],
+                id: idPortalEach,
                 stringSearching: stringSearching
             }));
         }
+
+        const date = Date.now();
+        
+        yield put(actionsStack.return__MANIPULATE_STACK({
+            kind: 'update',
+            draft: {
+                dateVisited: date
+            },
+            id: id,
+            idOwner: idUser,
+        }));
 
     } catch (error) {
         

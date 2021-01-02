@@ -90,7 +90,8 @@ function CreatingPortal({}: PropsCreatingPortal) {
 
 
     const onClick_AddTagCurrent = useCallback(
-        () => {
+        (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            event.preventDefault();
             const {tagCurrent, listTag} = draft;
             if ( tagCurrent !== "" && !listTag.includes(tagCurrent) ){
                 const listTagReplacement = [...listTag, tagCurrent];
@@ -101,6 +102,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
             }
         },[draft]
     );
+
     const onClick_DeleteTag = useCallback(
         (tagDeleting:string) => {
             const {listTag} = draft;
@@ -112,14 +114,20 @@ function CreatingPortal({}: PropsCreatingPortal) {
         },[draft]
     );
     
-    const onClick_CreatePortal = useCallback(
-        (draft) => {
-            dispatch(actionsPortal.return__MANIPULATE_PORTAL({
+
+    const onClick_Submit = useCallback( (event:React.MouseEvent<HTMLInputElement, MouseEvent>, draft:any) => {
+        event.preventDefault();
+        console.log(event) 
+        if (event.currentTarget.value === intl.formatMessage({ id: 'Global.Create'}) ) {
+            dispatch(actionsPortal.return__MANIPULATE_PORTAL({ 
                 kind: 'create',
-                draft: draft
+                draft: draft,
             }));
-        }, []
-    );
+        }
+        
+    },[]);
+
+
   
   return (
     <div className={`${styles['root']} ${stylesModal['root']}`} >
@@ -141,9 +149,10 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 </div>
             </div>
         
-            <div className={`${stylesModal['content']}`} >
-                
-
+            <form 
+                className={`${stylesModal['content']}`} 
+            >
+            
                 <div className={`${stylesModal['content__section']}`} >
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Kind`} /></div>
 
@@ -304,7 +313,7 @@ function CreatingPortal({}: PropsCreatingPortal) {
                             onChange={onChange_InputNormal} 
                         />
                         <button
-                            onClick={()=>onClick_AddTagCurrent()}
+                            onClick={(event)=>onClick_AddTagCurrent(event)}
                         > Add </button>
                     </div>
 
@@ -312,14 +321,15 @@ function CreatingPortal({}: PropsCreatingPortal) {
                 
 
                 <div className={`${stylesModal['content__section']}`} >
-                    <button
-                        className={`${stylesModal['button-main']}`}
-                        onClick={()=>onClick_CreatePortal(draft)}
-                    > <FormattedMessage id={`Modal.CreatingPortal_Create`} /> </button>
+                    <input
+                        type="submit"
+                        value={intl.formatMessage({ id: 'Global.Create'})}
+                        onClick={(event)=>onClick_Submit(event, draft)}
+                    /> 
                 </div>
 
 
-            </div>
+            </form>
         </div>
 
     </div>

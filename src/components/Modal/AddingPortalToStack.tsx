@@ -30,13 +30,14 @@ function AddingPortalToStack({}: PropsAddingPortalToStack) {
 
     const idUser = useSelector((state: StateRoot) => state.auth.user?.id );
     const idPortal = useSelector((state: StateRoot) => state.status.current.portal.addingToStack );
-    const listStackRaw = useSelector((state: StateRoot) => state.stack.listStack );
+    const listStackAll = useSelector((state: StateRoot) => state.stack.listStack );
 
     const listStackOrdered = useMemo(()=>{
-        let listStackReplacement = [...listStackRaw] ;
+        let listStackReplacement = [...listStackAll] ;
         listStackReplacement.sort();
+        listStackReplacement = listStackReplacement.filter(stackEach => stackEach.kind === 'manual')
         return listStackReplacement // a, b, c, ...
-    }, [listStackRaw])
+    }, [listStackAll])
 
     const onClick_HideModal = useCallback(
         () => {

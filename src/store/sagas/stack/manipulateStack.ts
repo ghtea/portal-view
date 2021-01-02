@@ -13,7 +13,7 @@ import * as actionsStack from "store/actions/stack";
 
 
 
-const requestCreateStack = (stack: actionsStack.Stack) => {
+const requestCreateStack = (stack: Partial<actionsStack.Stack>) => {
     return firebaseFirestore.collection("Stack_").add(stack) 
 };
 const requestUpdateStack = (id:string, update:any) => {
@@ -41,10 +41,7 @@ function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
             yield put(actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'NotLoggedIn__E'
             }) );
-        }
-        else if (draft.name === "") {
-            console.log('type name');
-        }
+        } 
         else if ( (kind === 'update') && (idUserInApp !== stackEditing.idUser) ){
             yield put( actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'Stack_NotOwner__E'
@@ -60,9 +57,13 @@ function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
 
             const date = Date.now();
 
+            if ( draft.kind === 'tag' ){
+                draft.name = '';
+            }
+
             if (kind === 'create'){
 
-                let stack:any = {
+                let stack:Partial<actionsStack.Stack> = {
 
                     idUser: idUserInApp, 
 
@@ -70,7 +71,7 @@ function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
                     name: draft.name,
                     
                     listTag: draft.listTag,
-                    listIdPortal: draft.listIdPortal,
+                    listIdPortalManual: draft.listIdPortalManual,
 
                     dateCreated: date,
                 };
@@ -102,8 +103,7 @@ function* manipulateStack(action: actionsStack.type__MANIPULATE_STACK) {
 
             else if (kind === 'update') {
 
-                let update:any = {
-
+                let update:Partial<actionsStack.Stack> = {
                     ...draft,
                     dateCreated: date,
                 };

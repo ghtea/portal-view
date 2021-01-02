@@ -61,7 +61,7 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
                     name: nameStack as string,
                     
                     listTag: [],
-                    listIdPortal: [idPortal],
+                    listIdPortalManual: [idPortal],
                 };
 
                 yield put(actionsStack.return__MANIPULATE_STACK({
@@ -72,13 +72,13 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
             }
             else if (kind === 'existing') {
 
-                const listStack = yield select ( (state:StateRoot) => state.stack.listStack); 
+                const listStack: actionsStack.Stack[] = yield select ( (state:StateRoot) => state.stack.listStack); 
                 // const stackEditing = listStack.find((stack:any) => stack.id === idStack);
                 console.log(listStack)
                 for (var iStack = 0; iStack < listStack?.length; iStack++){
 
                     const stackEach = listStack[iStack];
-                    let listIdPortalNewEach = stackEach.listIdPortal;
+                    let listIdPortalNewEach = stackEach.listIdPortalManual;
 
                     if ( listIdStackNew?.includes(stackEach['id'])  ) { 
                         listIdPortalNewEach = listIdPortalNewEach.filter((idPortalEach:string) => idPortalEach !== idPortal); // 중복입력 방지  
@@ -89,7 +89,7 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
                     }
                     
                     let update: any = {
-                        listIdPortal: listIdPortalNewEach
+                        listIdPortalManual: listIdPortalNewEach
                     };
 
                     yield put(actionsStack.return__MANIPULATE_STACK({
@@ -97,10 +97,14 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
                         draft: update,
                         id: stackEach['id']
                     }));
-                }
-                
+                }    
 
             }
+
+            yield put(actionsStatus.return__REPLACE({ 
+                listKey: ['showing', 'modal', 'addingToStack'], 
+                replacement: false
+            }));
 
               
         }

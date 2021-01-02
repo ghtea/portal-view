@@ -47,6 +47,7 @@
     "Modal.CreatingPortal_Hue": "색상",
     "Modal.CreatingPortal_Tags": "태그",
     "Modal.CreatingPortal_Create": "만들기",
+    "Modal.EditingPortal_Title": "포털 수정하기",
 
 
     "Modal.CreatingStack_Title": "스택 만들기",
@@ -109,8 +110,8 @@
     "Notification.CreatePortal_UnknownError__E": "포털을 만들지 못했습니다",
     "Notification.GetListPortal_UnknownError__E": "포털들을 불러오지 못했습니다",
     "Notification.VisitPortal_UnknownError__E": "방문한 포털의 상태를 업데이트하지 못했습니다",
-    "Notification.EditPortal_Succeeded__S": "성공적으로 포털을 수정했습니다!",
-    "Notification.EditPortal_UnknownError__E": "포털을 수정하지 못했습니다",
+    "Notification.UpdatePortal_Succeeded__S": "성공적으로 포털을 수정했습니다!",
+    "Notification.UpdatePortal_UnknownError__E": "포털을 수정하지 못했습니다",
     "Notification.DeletePortal_Succeeded__S": "성공적으로 포털을 삭제했습니다!",
     "Notification.DeletePortal_UnknownError__E": "포털을 삭제하지 못했습니다",
 
@@ -119,8 +120,8 @@
     "Notification.CreateStack_UnknownError__E": "스택을 만들지 못했습니다",
     "Notification.GetListStack_UnknownError__E": "스택들을 불러오지 못했습니다",
     "Notification.VisitStack_UnknownError__E": "방문한 포털들의 상태를 업데이트하지 못했습니다",
-    "Notification.EditStack_Succeeded__S": "성공적으로 스택을 수정했습니다!",
-    "Notification.EditStack_UnknownError__E": "스택을 수정하지 못했습니다",
+    "Notification.UpdateStack_Succeeded__S": "성공적으로 스택을 수정했습니다!",
+    "Notification.UpdateStack_UnknownError__E": "스택을 수정하지 못했습니다",
     "Notification.DeleteStack_Succeeded__S": "성공적으로 스택을 삭제했습니다!",
     "Notification.DeleteStack_UnknownError__E": "스택을 삭제하지 못했습니다",
 

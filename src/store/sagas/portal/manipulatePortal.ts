@@ -117,11 +117,17 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
             if (kind === 'create'){
 
                 let listBooleanVisited:boolean[] = [true]
-                for (var i = lifespan-1; i > 0; i-- ){
-                    listBooleanVisited.push(false);
+
+                for (var i = 1; i < lifespan; i++ ){
+                    if (i % 2 === 1){
+                        listBooleanVisited.push(false);
+                    }
+                    else {
+                        listBooleanVisited.push(true);
+                    }
                 }
 
-                let portal:any = {
+                let portal:Partial<actionsPortal.Portal> = {
 
                     idUser: idUserInApp,
                     kind: draft.kind,
@@ -149,8 +155,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
                 try {
                     const data =  yield call( requestCreatePortal , portal );
-                    console.log('after creating')
-                    console.log(data);
+                     
                     yield put(actionsNotification.return__ADD_DELETE_BANNER({
                         codeSituation: 'CreatePortal_Succeeded__S'
                     }));
@@ -192,7 +197,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                     }
                 }
 
-                let update:any = {
+                let update:Partial<actionsPortal.Portal> = {
 
                     ...(draft.kind && {kind: draft.kind} ),
                     ...(draft.name && {name: draft.name} ),
@@ -233,19 +238,22 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                         replacement: ''
                     })); 
 
-
+                    yield put(actionsPortal.return__GET_LIST_PORTAL({
+                        idUser: idUserInApp
+                    }));
+                    /*
                     // 수정후 다시 서버에서 불러오는게 아니라, 로컬에서 업데이트한다
                     let listPortalNew = listPortal.filter((portalEach:actionsPortal.Portal) => portalEach.id !== id);
                     listPortalNew.push({
                         ...portalEditing,
                         ...update,
                     })
-
+                    
                     yield put (actionsPortal.return__REPLACE({
                         listKey: ['listPortal'],
                         replacement: listPortalNew,
                     }));
-
+                    */
                     
                     // window.location.reload();
                 }
