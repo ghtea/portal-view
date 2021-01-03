@@ -285,9 +285,8 @@
 ### Language 
 [back to to top](#system)
 > react-intl
-    - work well with Notification
-
-    ```javascript 
+- work well with Notification
+    ```typescript
         const intl = useIntl();
         //
         <input 
@@ -302,7 +301,7 @@
         <FormattedMessage id={`Notification.${codeSituationPassword}`}/>
     ```
 
-    ```json
+    ```
     // en.json // there is ko.json too
     {
         "Blank": "",
