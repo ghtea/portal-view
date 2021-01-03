@@ -102,7 +102,7 @@ function* addPortalToStack(action: actionsStack.type__ADD_PORTAL_TO_STACK) {
             }
 
             yield put(actionsStatus.return__REPLACE({ 
-                listKey: ['showing', 'modal', 'addingToStack'], 
+                listKey: ['showing', 'modal', 'addingPortalToStack'], 
                 replacement: false
             }));
 
