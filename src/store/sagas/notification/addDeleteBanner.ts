@@ -12,16 +12,6 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
     const listBannerPrevious: Banner[] =  yield select( (state:StateRoot) => state.notification.listBanner ); 
         
     const id = uuidv4();
-    /*
-    let id:string = '';
-    
-    if (action.payload.id){
-      id = action.payload.id;
-    }
-    else {
-      id = uuidv4();
-    }
-    */
     
     const codeSituation: string = action.payload.codeSituation;
     
@@ -39,14 +29,9 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
         kindSituation = 'error';
     }
     
-    //catalogSituation[codeSituation]['kind'];
-    
     const idMessage: string = `Notification.${codeSituation}`;
-    //console.log(message);
-    
     
     let levelTimeBanner:actionsNotification.LevelTimeBanner = 'normal';
-    
     
     if ( kindSituation === 'success'){
       levelTimeBanner = 'short';
@@ -73,20 +58,16 @@ function* addDeleteBanner(action: actionsNotification.type__ADD_DELETE_BANNER) {
     
     const listBannerNew = [bannerAdding, ...listBannerPrevious];
         
-        
     yield put( actionsNotification.return__REPLACE({
         listKey: ['listBanner'],
         replacement: listBannerNew
     }) );
-    
     
     yield delay( msTime );
 
     yield put( actionsNotification.return__DELETE_BANNER({
         id: id
     }) );
-    
-    
 }
 
 export default addDeleteBanner;

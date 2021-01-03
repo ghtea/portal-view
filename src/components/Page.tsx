@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./Page/Home";
 import LogIn from "./Page/LogIn";
 import SignUp from "./Page/SignUp";
-import Test from "./Page/Test";
 import NotFound from "./Page/NotFound";
 
 //import SignUp from "./components/Auth/SignUp";
@@ -30,10 +29,6 @@ function Page({}: PropsPage) {
 
             <Route path="/sign-up" >
                 <SignUp />
-            </Route>
-            
-            <Route path="/test" >
-                <Test />
             </Route>
 
             <Route >

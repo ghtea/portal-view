@@ -63,9 +63,6 @@ const stateInitial = {
                 dateVisited: 'ascending' as 'ascending' | 'descending', 
             }
         },
-        filter: {
-            
-        },
     },
   },
   
