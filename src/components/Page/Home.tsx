@@ -205,7 +205,7 @@ function Home({}: PropsHome) {
                             className={`active----${hidingPortal.inStacks}`}
                             onClick={()=>onClick_Hide('portal', 'inStacks')}
                         >  
-                            <div> in stacks  </div>
+                            <div> in manual stacks  </div>
                         </li>
                     </ul>
 
