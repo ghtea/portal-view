@@ -84,7 +84,7 @@ function EditingPortal({}: PropsEditingPortal) {
         hue: portalEditing.hue as string,
 
         tagCurrent: portalEditing.tagCurrent as string,
-        hueOption: portalEditing.hueOption as string,
+        hueOption: (portalEditing.hue === 'grey') ? 'grey' : 'choose' as string,
     });
     const urlImageIcon = portalEditing.urlImageIcon;
 
@@ -123,7 +123,9 @@ function EditingPortal({}: PropsEditingPortal) {
 
 
     const onClick_AddTagCurrent = useCallback(
-        () => {
+        (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+
+            event.preventDefault();
             const {tagCurrent, listTag} = draft;
             if ( tagCurrent !== "" && !listTag.includes(tagCurrent) ){
                 const listTagReplacement = [...listTag, tagCurrent];
@@ -291,17 +293,20 @@ function EditingPortal({}: PropsEditingPortal) {
                     <div>  <FormattedMessage id={`Modal.CreatingPortal_Hue`} /></div>
 
                     <div className={'container__input-radio'} > 
-                        <input type="radio" name="hueOption" value="random" defaultChecked
+                        <input type="radio" name="hueOption" value="random"
+                            defaultChecked={ draft?.hueOption === 'random' }
                             id="hueOption----random"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="hueOption----random">random</label>
 
                         <input type="radio" name="hueOption" value="choose"
+                            defaultChecked={ draft?.hueOption === 'choose' }
                             id="hueOption----choose"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="hueOption----choose">choose</label>
 
                         <input type="radio" name="hueOption" value="grey"
+                            defaultChecked={ draft?.hueOption === 'grey' }
                             id="hueOption----grey"
                             onChange={onChange_InputNormal} 
                         /> <label htmlFor="hueOption----grey">grey</label>
@@ -346,7 +351,7 @@ function EditingPortal({}: PropsEditingPortal) {
                             onChange={onChange_InputNormal} 
                         />
                         <button
-                            onClick={()=>onClick_AddTagCurrent()}
+                            onClick={(event)=>onClick_AddTagCurrent(event)}
                         > Add </button>
                     </div>
 

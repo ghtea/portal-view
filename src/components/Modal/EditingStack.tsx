@@ -113,7 +113,8 @@ function EditingStack({}: PropsEditingStack) {
     
 
     const onClick_AddTagCurrent = useCallback(
-        () => {
+        (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            event.preventDefault();
             const {tagCurrent, listTag} = draft;
             if ( tagCurrent !== "" && !listTag.includes(tagCurrent) ){
                 const listTagReplacement = [...listTag, tagCurrent];
@@ -223,7 +224,7 @@ function EditingStack({}: PropsEditingStack) {
                             onChange={onChange_InputNormal} 
                         />
                         <button
-                            onClick={()=>onClick_AddTagCurrent()}
+                            onClick={(event)=>onClick_AddTagCurrent(event)}
                         > Add </button>
                     </div>
                 </div>

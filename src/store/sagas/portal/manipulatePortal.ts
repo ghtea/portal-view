@@ -86,7 +86,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
             // hue
             let hue = draft.hue;
-            if (hue === 'random'){
+            if (draft.hueOption === 'random'){
                 const listHue = [
                     '0', '10', '20', '30', '40', '50', '60', '70', '80', '90',
                     '100', '110', '120', '130', '140', '150', '160', '170', '180', '190',
@@ -95,6 +95,9 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                 ]
                 hue = listHue[Math.floor(Math.random() * listHue.length)]; 
             } 
+            else if (draft.hueOption === 'grey'){
+                hue = 'grey';
+            }
 
             const lifespan = parseInt(draft.lifespan);
             const dateNow = Date.now();
