@@ -21,6 +21,7 @@
 - Semantic HTML
 - Better saga coding for rendering/using firebase less
 - More complicate UI
+- Automatic testing
 
 
 ---
@@ -390,7 +391,6 @@
 > svg components from font awesome svgs
     ```javascript
     import React from "react";
-
 
     type PropsIcon = {
         className?: string;
