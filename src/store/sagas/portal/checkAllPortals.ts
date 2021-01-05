@@ -46,7 +46,7 @@ function* checkAllPortals(action:actionsPortal.type__CHECK_ALL_PORTALS) {
         
         const {listPortal} = action.payload;
 
-        for (const portal of listPortal) {
+        for ( const [iEachPortal, portal] of listPortal.entries() ){
             console.log(portal)
             const {
                 id, 
@@ -127,11 +127,18 @@ function* checkAllPortals(action:actionsPortal.type__CHECK_ALL_PORTALS) {
                     };
                 }
                 
+
+                let triggering = false;
+                if (iEachPortal === listPortal.length){
+                    triggering = true;
+                }
+
                 yield put (actionsPortal.return__MANIPULATE_PORTAL({
                     kind: 'update',
                     draft: update,
                     id: id,
                     idOwner: idUser,
+                    triggering: triggering,
                 }));
 
             }

@@ -62,6 +62,7 @@ function EditingPortal({}: PropsEditingPortal) {
                 draft: draft,
                 id: idPortalEditing,
                 idOwner: portalEditing.idUser,
+                triggering: true,
             }));
     },[portalEditing]);
 

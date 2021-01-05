@@ -47,6 +47,7 @@ type Payload__MANIPULATE_PORTAL = {
     draft: any,
     id? : string,
     idOwner?: string,
+    triggering?: boolean,
 }
 export const return__MANIPULATE_PORTAL = (payload: Payload__MANIPULATE_PORTAL) => {
     return {

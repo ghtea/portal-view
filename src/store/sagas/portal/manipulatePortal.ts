@@ -35,7 +35,7 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
     const listPortal =  yield select( (state:StateRoot) => state.portal.listPortal); 
     const history = yield getContext('history');
     
-    const {kind, draft, id, idOwner} = action.payload;
+    const {kind, draft, id, idOwner, triggering} = action.payload;
 
     try {
 
@@ -241,9 +241,12 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                         replacement: ''
                     })); 
 
-                    yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: idUserInApp
-                    }));
+                    if (triggering === true) {
+                        yield put(actionsPortal.return__GET_LIST_PORTAL({
+                            idUser: idUserInApp
+                        }));
+                    } 
+                    
                     /*
                     // 수정후 다시 서버에서 불러오는게 아니라, 로컬에서 업데이트한다
                     let listPortalNew = listPortal.filter((portalEach:actionsPortal.Portal) => portalEach.id !== id);
