@@ -47,7 +47,8 @@ function Home({}: PropsHome) {
     useEffect(()=>{
         if (readyUser && idUser) {
             dispatch(actionsPortal.return__GET_LIST_PORTAL({
-                idUser: idUser
+                idUser: idUser,
+                triggeringCheckAllPortals: true,
             }));
         }
     },[readyUser, idUser]);

@@ -47,7 +47,7 @@ function* checkAllPortals(action:actionsPortal.type__CHECK_ALL_PORTALS) {
         const {listPortal} = action.payload;
 
         for ( const [iEachPortal, portal] of listPortal.entries() ){
-            console.log(portal)
+            //console.log(portal)
             const {
                 id, 
                 idUser,

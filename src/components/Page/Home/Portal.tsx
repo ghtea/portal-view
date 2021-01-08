@@ -67,7 +67,7 @@ function Portal({
     const {ratioHp, hpMax, hpCurrent, kindHp} = useMemo(()=>{
 
         const result = calculateHp(listBooleanVisited);
-        console.log(result)
+        //console.log(result)
 
         return result;
 

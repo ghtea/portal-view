@@ -141,7 +141,8 @@ function* visitPortal(action: actionsPortal.type__VISIT_PORTAL) {
             // history.push('/');
             
             yield put(actionsPortal.return__GET_LIST_PORTAL({
-                idUser: idUser
+                idUser: idUser,
+                triggeringCheckAllPortals: false,
             }));
             // window.location.reload();
               

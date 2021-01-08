@@ -23,7 +23,7 @@ const requestGetListPortal = (idUser:string) => {
 
 function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
 
-    const {idUser} = action.payload;
+    const {idUser, triggeringCheckAllPortals} = action.payload;
 
     try {
             
@@ -56,10 +56,12 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                 replacement: listPortal
             }) );
 
-            yield put( actionsPortal.return__CHECK_ALL_PORTALS({
-                listPortal: listPortal
-            }) );
-
+            if (triggeringCheckAllPortals === true){
+                yield put( actionsPortal.return__CHECK_ALL_PORTALS({
+                    listPortal: listPortal
+                }) );
+            }
+            
     
 
     } catch (error) {

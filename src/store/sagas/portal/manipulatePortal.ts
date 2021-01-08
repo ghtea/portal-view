@@ -173,7 +173,8 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
                     
                     history.push('/');
                     yield put(actionsPortal.return__GET_LIST_PORTAL({
-                        idUser: idUserInApp
+                        idUser: idUserInApp,
+                        triggeringCheckAllPortals: false,
                     }));
                     // window.location.reload();
                 }
@@ -243,7 +244,8 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
 
                     if (triggering === true) {
                         yield put(actionsPortal.return__GET_LIST_PORTAL({
-                            idUser: idUserInApp
+                            idUser: idUserInApp,
+                            triggeringCheckAllPortals: false
                         }));
                     } 
                     

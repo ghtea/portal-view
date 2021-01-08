@@ -77,7 +77,11 @@ export type type__DELETE_PORTAL = ReturnType<typeof return__DELETE_PORTAL>;
 
 
 export const name__GET_LIST_PORTAL = 'portal/GET_LIST_PORTAL'; 
-export const return__GET_LIST_PORTAL = (payload: any) => {
+interface Payload__GET_LIST_PORTAL {
+    idUser: string;
+    triggeringCheckAllPortals: boolean;
+}
+export const return__GET_LIST_PORTAL = (payload: Payload__GET_LIST_PORTAL) => {
     return {
         type: name__GET_LIST_PORTAL,
         payload: payload
@@ -102,7 +106,7 @@ export type type__SORT_LIST_PORTAL = ReturnType<typeof return__SORT_LIST_PORTAL>
 
 export const name__CHECK_ALL_PORTALS = 'portal/CHECK_ALL_PORTALS'; 
 interface Payload__CHECK_ALL_PORTALS  {
-    listPortal: Portal[]
+    listPortal: Portal[];
 }
 export const return__CHECK_ALL_PORTALS = (payload:Payload__CHECK_ALL_PORTALS) => {
     return {

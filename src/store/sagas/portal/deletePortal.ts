@@ -69,7 +69,8 @@ function* deletePortal(action: actionsPortal.type__DELETE_PORTAL) {
                     codeSituation: 'DeletePortal_Succeeded__S'
                 }));   
                 yield put(actionsPortal.return__GET_LIST_PORTAL({
-                    idUser: idUser
+                    idUser: idUserInApp,
+                    triggeringCheckAllPortals: false,
                 }));
             
             }
