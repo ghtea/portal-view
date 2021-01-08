@@ -51,9 +51,6 @@ function* manipulatePortal(action: actionsPortal.type__MANIPULATE_PORTAL) {
         else if (draft.url === "" ) {
             console.log('type url');
         }
-        else if (draft.kindIcon === 'initials' && draft.initials == ''){
-            console.log('type initials');
-        }
         else if (draft.kindIcon === 'initials' &&draft.initials.length > 4) {
             yield put( actionsNotification.return__ADD_DELETE_BANNER({
                 codeSituation: 'Portal_InitialsTooLong__E'

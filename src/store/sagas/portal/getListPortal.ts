@@ -61,7 +61,15 @@ function* getListPortal(action: actionsPortal.type__GET_LIST_PORTAL) {
                     listPortal: listPortal
                 }) );
             }
-            
+            else {
+                const property =  yield select( (state:StateRoot) => state.status.current.portal.sorting.property); 
+                const direction =  yield select( (state:StateRoot) => state.status.current.portal.sorting.direction[property as 'hp' | 'dateVisited']); 
+        
+                yield put (actionsPortal.return__SORT_LIST_PORTAL({ 
+                    property: property,
+                    direction: direction,
+                }));
+            }
     
 
     } catch (error) {
