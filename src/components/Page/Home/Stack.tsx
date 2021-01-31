@@ -6,6 +6,8 @@ import * as actionsStatus from 'store/actions/status';
 import * as actionsPortal from 'store/actions/portal';
 import * as actionsStack from 'store/actions/stack';
 
+import { History } from 'history';
+import history from 'historyApp'
 import useInput from 'tools/hooks/useInput';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -61,6 +63,17 @@ function Stack({
             setOpen(false);
         }
     },[idStackOpen]); 
+
+    const onClick_Portal = useCallback(
+        (event: React.MouseEvent<HTMLAnchorElement>) => {
+            event.preventDefault();
+            const idPortal = event.currentTarget.getAttribute('data-idPortal') || '';
+            dispatch(actionsPortal.return__VISIT_PORTAL({
+                id: idPortal, 
+                stringSearching: '',
+            }));
+        },[]
+    );
 
     const [isIncludingSearching, setIsIncludingSearching] = useState(false);
     useEffect(()=>{
@@ -232,8 +245,13 @@ function Stack({
                                     key={`portal-${index}`}
                                     className={`${styles['portal']}`}
                                 >
-                                     <div> <div  className={`${styles['icon-of-each-portal']} hue----${hue}`} /> </div> 
+                                <a
+                                    data-idPortal={id}
+                                    onClick={onClick_Portal}
+                                > 
+                                    <div><div  className={`${styles['icon-of-each-portal']} hue----${hue}`} /> </div> 
                                     <div className={`${styles['name-of-each-portal']}`}> {portal?.name} </div>
+                                </a>
                                 </li>
                             )
                         })}
