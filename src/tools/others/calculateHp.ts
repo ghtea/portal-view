@@ -19,7 +19,10 @@ const calculateHp = (listBooleanVisited: boolean[]) => {
     const ratioHp = Math.round((hpCurrent / hpMax) * 100) / 100;
     
     let kindHp = 'healthy';
-    if (ratioHp < 0.2){
+    if (ratioHp === 0){
+        kindHp = 'dead'
+    }
+    else if (ratioHp < 0.2){
         kindHp = 'critical'
     }
     else if (ratioHp < 0.4){
