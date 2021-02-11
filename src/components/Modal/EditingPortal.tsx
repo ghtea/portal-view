@@ -368,6 +368,7 @@ function EditingPortal({}: PropsEditingPortal) {
 
                 <div className={`${stylesModal['content__section']}`} >
                     <button
+                        type='button'
                         className={`${stylesModal['button-delete']}`}
                         onClick={()=>onClick_DeletePortal()}
                     > <FormattedMessage id={'Global.Delete'} /> </button>
