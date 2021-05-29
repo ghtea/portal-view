@@ -5,6 +5,11 @@
     - Warning for website where user has not visited recently
 - One click for visiting multiple websites (Chrome)
 
+## 참고 이미지
+![PortalView](https://user-images.githubusercontent.com/47841931/120080100-49572a80-c0f2-11eb-9696-15bf28033458.png)
+![PortalView skills](https://user-images.githubusercontent.com/47841931/120080102-4a885780-c0f2-11eb-9976-c7c98a0e540d.png)
+
+
 ---
 ## Focused (compared to past projects)
 - Used Typescirpt on entire app 
