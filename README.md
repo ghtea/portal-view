@@ -1,13 +1,27 @@
 # Portal View
-[link](https://pv.nextwing.me/)
->Dynamic bookmark managing app
-- Visualize how often user visited the webiste
-    - Warning for website where user has not visited recently
-- One click for visiting multiple websites (Chrome)
+[웹사이트 방문](https://pv.nextwing.me/) 
+( email: test@test.com   pw: 12345678 로 로그인 가능)
+
+- 동적인 북마크 관리하는 웹사이트
+- 해당 웹사이트는 얼마나 방문했는지 시각화
+    - 방문안한지 오래되면 경고 표시
+- 한번에 클릭으로 여러 웹사이트 열기 가능 (Chrome)
+- 검색어 입력해서 클릭한번에 방문+검색 가능
+
 
 ## 참고 이미지
 ![PortalView](https://user-images.githubusercontent.com/47841931/120080100-49572a80-c0f2-11eb-9696-15bf28033458.png)
 ![PortalView skills](https://user-images.githubusercontent.com/47841931/120080102-4a885780-c0f2-11eb-9976-c7c98a0e540d.png)
+
+
+## 이용 예
+### 북마크 만들기
+- 검색 지원여부, 색상, 태그 등 설정 가능
+![Create](https://user-images.githubusercontent.com/47841931/120093789-8e617800-c157-11eb-92da-3fed35d41884.gif)
+
+### 스택 (그룹) 이용
+- 검색어도 한번에 여러 웹사이트 이용 가능
+![StackSearch](https://user-images.githubusercontent.com/47841931/120093808-a638fc00-c157-11eb-95c6-f6eb7c4c1127.gif)
 
 
 ---
